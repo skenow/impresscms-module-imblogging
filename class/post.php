@@ -11,6 +11,17 @@
 
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
+// including the IcmsPersistabelSeoObject
+include_once ICMS_ROOT_PATH."/kernel/icmspersistableseoobject.php";
+
+/**
+ * Post status definitions
+ */
+define ('IMBLOGGING_POST_STATUS_PUBLISHED', 1);
+define ('IMBLOGGING_POST_STATUS_PENDING', 2);
+define ('IMBLOGGING_POST_STATUS_DRAFT', 3);
+define ('IMBLOGGING_POST_STATUS_PRIVATE', 4);
+
 class ImbloggingPost extends IcmsPersistableSeoObject {
 
     function ImbloggingPost(&$handler) {
@@ -21,13 +32,18 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
         $this->quickInitVar('post_content', XOBJ_DTYPE_TXTAREA);
 		$this->quickInitVar('post_published_date', XOBJ_DTYPE_LTIME);
 		$this->quickInitVar('post_uid', XOBJ_DTYPE_INT);
-		$this->quickInitVar('post_status', XOBJ_DTYPE_INT);
-		$this->quickInitVar('post_cancomment', XOBJ_DTYPE_INT);
+		$this->quickInitVar('post_status', XOBJ_DTYPE_INT, false, false, false, IMBLOGGING_POST_STATUS_PUBLISHED);
+		$this->quickInitVar('post_cancomment', XOBJ_DTYPE_INT, false, false, false, true);
 
 		$this->initCommonVar('counter', false);
 
 		$this->setControl('post_content', 'dhtmltextarea');
 		$this->setControl('post_uid', 'user');
+		$this->setControl('post_status', array(
+											'itemHandler' => 'post',
+											'method' => 'getPost_statusArray',
+											 'module' => 'imblogging'));
+
 		$this->setControl('post_cancomment', 'yesno');
 
 		$this->IcmsPersistableSeoObject();
@@ -45,7 +61,9 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
     }
 
     function post_status() {
-        return "post_status() metod to be done";
+        $ret = $this->getVar('post_status', 'e');
+        $post_statusArray = $this->handler->getPost_statusArray();
+        return $post_statusArray[$ret];
     }
 
 }
@@ -59,7 +77,10 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 
     function getPost_statusArray() {
 	    if (!$this->_post_statusArray) {
-			//...
+			$this->_post_statusArray[IMBLOGGING_POST_STATUS_PUBLISHED] = _CO_IMBLOGGING_POST_STATUS_PUBLISHED;
+			$this->_post_statusArray[IMBLOGGING_POST_STATUS_PENDING] = _CO_IMBLOGGING_POST_STATUS_PENDING;
+			$this->_post_statusArray[IMBLOGGING_POST_STATUS_DRAFT] = _CO_IMBLOGGING_POST_STATUS_DRAFT;
+			$this->_post_statusArray[IMBLOGGING_POST_STATUS_PRIVATE] = _CO_IMBLOGGING_POST_STATUS_PRIVATE;
 	    }
 	    return $this->_post_statusArray;
     }

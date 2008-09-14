@@ -12,9 +12,7 @@
 * @version		$Id$
 */
 
-if (!defined("ILOG_NOCPFUNC")) {
-	include_once '../../../include/cp_header.php';
-}
+include_once '../../../include/cp_header.php';
 
 include_once ICMS_ROOT_PATH.'/modules/' . basename(dirname(dirname(__FILE__))) .'/include/common.php';
 

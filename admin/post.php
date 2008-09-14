@@ -74,7 +74,7 @@ switch ($op) {
 		smart_xoops_cp_header();
 		smart_adminMenu(1, _AM_IMBLOGGING_POST_VIEW . ' > ' . $postObj->getVar('post_title'));
 
-		smart_collapsableBar('postview', $postObj->getVar('post_title') . $postObj->getEditLogLink(), _AM_IMBLOGGING_POST_VIEW_DSC);
+		smart_collapsableBar('postview', $postObj->getVar('post_title') . $postObj->getEditItemLink(), _AM_IMBLOGGING_POST_VIEW_DSC);
 
 		$postObj->displaySingleObject();
 
@@ -104,21 +104,19 @@ switch ($op) {
 
 		$xoopsModule->displayAdminMenu(0, _AM_IMBLOGGING_POSTS);
 
-		//smart_collapsableBar('createdposts', _AM_IMBLOGGING_POSTS, _AM_IMBLOGGING_POSTS_DSC);
-
 		include_once ICMS_ROOT_PATH."/kernel/icmspersistabletable.php";
 		$objectTable = new IcmsPersistableTable($imblogging_post_handler);
 		$objectTable->addColumn(new IcmsPersistableColumn('post_title', 'left'));
-		$objectTable->addColumn(new IcmsPersistableColumn('post_published_date', 'left', 150));
-		$objectTable->addColumn(new IcmsPersistableColumn('post_uid', 'left', 150));
+		$objectTable->addColumn(new IcmsPersistableColumn('post_published_date', 'center', 150));
+		$objectTable->addColumn(new IcmsPersistableColumn('post_uid', 'center', 150));
+		$objectTable->addColumn(new IcmsPersistableColumn('post_status', 'center', 150));
 
 		$objectTable->addIntroButton('addpost', 'post.php?op=mod', _AM_IMBLOGGING_POST_CREATE);
-
 		$objectTable->addQuickSearch(array('post_name', 'post_description_small'));
-
 		$objectTable->render();
 
-		//smart_close_collapsable('createdposts');
+		$icmsAdminTpl->assign('imblogging_post_title', _AM_IMBLOGGING_POSTS);
+		$icmsAdminTpl->assign('imblogging_post_info', _AM_IMBLOGGING_POSTS_DSC);
 
 		break;
 }

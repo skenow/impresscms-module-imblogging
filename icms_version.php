@@ -110,10 +110,21 @@ $modversion['blocks'][$i]['template'] = "smartsection_items_new.html";
  */
 $i = 0;
 
+$i++;
+$modversion['templates'][$i]['file'] = 'imblogging_header.html';
+$modversion['templates'][$i]['description'] = 'Module Header';
 
 $i++;
-$modversion['templates'][$i]['file'] = 'imtranslating_admin_index.html';
-$modversion['templates'][$i]['description'] = 'Admin Index';
+$modversion['templates'][$i]['file'] = 'imblogging_footer.html';
+$modversion['templates'][$i]['description'] = 'Module Footer';
+
+$i++;
+$modversion['templates'][$i]['file'] = 'imblogging_admin_post.html';
+$modversion['templates'][$i]['description'] = 'Post Index';
+
+$i++;
+$modversion['templates'][$i]['file'] = 'imblogging_index.html';
+$modversion['templates'][$i]['description'] = 'Post Index';
 
 /**
  * Preferences information

@@ -1,0 +1,10 @@
+<h1><{$imblogging_post_title}></h1>
+<p><{$imblogging_post_info}></p>
+
+<{if $imblogging_post_table}>
+	<{$imblogging_post_table}>
+<{/if}>
+
+<{if $addpost}>
+	<{includeq file='db:system_common_form.html' form=$addpost}>
+<{/if}>
