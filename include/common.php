@@ -34,8 +34,8 @@ $imblogging_isAdmin = icms_userIsAdmin(IMBLOGGING_DIRNAME);
 // Creating the module config array to make it available throughout the module
 $imbloggingConfig = icms_getModuleConfig(IMBLOGGING_DIRNAME);
 
-// including the IcmsPersistabelObject
-include_once ICMS_ROOT_PATH."/kernel/icmspersistableobject.php";
+// including the IcmsPersistabelSeoObject
+include_once ICMS_ROOT_PATH."/kernel/icmspersistableseoobject.php";
 
 // including the post class
 include_once(IMBLOGGING_ROOT_PATH . 'class/post.php');

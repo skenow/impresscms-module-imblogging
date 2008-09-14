@@ -11,7 +11,7 @@
 
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
-class ImbloggingPost extends IcmsPersistableObject {
+class ImbloggingPost extends IcmsPersistableSeoObject {
 
     function ImbloggingPost(&$handler) {
     	$this->IcmsPersistableObject($handler);
@@ -25,14 +25,12 @@ class ImbloggingPost extends IcmsPersistableObject {
 		$this->quickInitVar('post_cancomment', XOBJ_DTYPE_INT);
 
 		$this->initCommonVar('counter', false);
-		$this->initCommonVar('meta_keywords');
-		$this->initCommonVar('meta_description');
-		$this->initCommonVar('short_url');
 
 		$this->setControl('post_content', 'dhtmltextarea');
 		$this->setControl('post_uid', 'user');
 		$this->setControl('post_cancomment', 'yesno');
-		$this->setControl('post_meta_keywords', 'textarea');
+
+		$this->IcmsPersistableSeoObject();
     }
 
     function getVar($key, $format = 's') {
