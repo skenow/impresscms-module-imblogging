@@ -12,7 +12,7 @@
 */
 function editpost($showmenu = false, $post_id = 0, $parentid =0)
 {
-	global $imblogging_post_handler, $xoopsModule;
+	global $imblogging_post_handler, $xoopsModule, $icmsAdminTpl;
 
 	$postObj = $imblogging_post_handler->get($post_id);
 
@@ -25,14 +25,17 @@ function editpost($showmenu = false, $post_id = 0, $parentid =0)
 			$xoopsModule->displayAdminMenu(0, _AM_IMBLOGGING_POSTS . " > " . _CO_ICMS_EDITING);
 		}
 		$sform = $postObj->getForm(_AM_IMBLOGGING_POST_EDIT, 'addpost');
-		$sform->display();
+		$sform->assign($icmsAdminTpl);
+
 	} else {
 		if ($showmenu) {
 			$xoopsModule->displayAdminMenu(0, _AM_IMBLOGGING_POSTS . " > " . _CO_ICMS_CREATINGNEW);
 		}
 		$sform = $postObj->getForm(_AM_IMBLOGGING_POST_CREATE, 'addpost');
-		$sform->display();
+		$sform->assign($icmsAdminTpl);
+
 	}
+	$icmsAdminTpl->display('db:imblogging_admin_post.html');
 }
 
 include_once("admin_header.php");
@@ -113,11 +116,9 @@ switch ($op) {
 
 		$objectTable->addIntroButton('addpost', 'post.php?op=mod', _AM_IMBLOGGING_POST_CREATE);
 		$objectTable->addQuickSearch(array('post_name', 'post_description_small'));
-		$objectTable->render();
+		$icmsAdminTpl->assign('imblogging_post_table', $objectTable->fetch());
 
-		$icmsAdminTpl->assign('imblogging_post_title', _AM_IMBLOGGING_POSTS);
-		$icmsAdminTpl->assign('imblogging_post_info', _AM_IMBLOGGING_POSTS_DSC);
-
+		$icmsAdminTpl->display('db:imblogging_admin_post.html');
 		break;
 }
 
