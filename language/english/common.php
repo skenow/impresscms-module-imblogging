@@ -29,6 +29,6 @@ define("_CO_IMBLOGGING_POST_POST_CANCOMMENT_DSC", "");
 // post status
 define("_CO_IMBLOGGING_POST_STATUS_PUBLISHED", "Published");
 define("_CO_IMBLOGGING_POST_STATUS_PENDING", "Pending review");
-define("_CO_IMBLOGGING_POST_STATUS_DRAFT", "Draf");
+define("_CO_IMBLOGGING_POST_STATUS_DRAFT", "Draft");
 define("_CO_IMBLOGGING_POST_STATUS_PRIVATE", "Private");
 ?>
