@@ -25,7 +25,7 @@ include_once(IMBLOGGING_ROOT_PATH . "include/functions.php");
 // Creating the module object to make it available throughout the module
 $imbloggingModule = icms_getModuleInfo(IMBLOGGING_DIRNAME);
 if (is_object($imbloggingModule)){
-	$ilog_moduleName = $imbloggingModule->getVar('name');
+	$imblogging_moduleName = $imbloggingModule->getVar('name');
 }
 
 // Find if the user is admin of the module and make this info available throughout the module

@@ -11,8 +11,8 @@
 
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
-$xoopsTpl->assign("imblogging_adminpage", icms_getModuleAdminLink());
-$xoopsTpl->assign("isAdmin", $imblogging_isAdmin);
+$xoopsTpl->assign("imblogging_adminpage", imblogging_getModuleAdminLink());
+$xoopsTpl->assign("imblogging_is_admin", $imblogging_isAdmin);
 $xoopsTpl->assign('imblogging_url', IMBLOGGING_URL);
 $xoopsTpl->assign('imblogging_images_url', IMBLOGGING_IMAGES_URL);
 

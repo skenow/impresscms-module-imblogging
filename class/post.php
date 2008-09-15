@@ -25,6 +25,8 @@ define ('IMBLOGGING_POST_STATUS_PRIVATE', 4);
 class ImbloggingPost extends IcmsPersistableSeoObject {
 
     function ImbloggingPost(&$handler) {
+    	global $xoopsConfig;
+
     	$this->IcmsPersistableObject($handler);
 
         $this->quickInitVar('post_id', XOBJ_DTYPE_INT, true);
@@ -36,6 +38,11 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 		$this->quickInitVar('post_cancomment', XOBJ_DTYPE_INT, false, false, false, true);
 
 		$this->initCommonVar('counter', false);
+		$this->initCommonVar('dohtml', false, true);
+		$this->initCommonVar('dobr', false, $xoopsConfig['editor_default'] == 'dhtmltextarea');
+		$this->initCommonVar('doimage', false, true);
+		$this->initCommonVar('dosmiley', false, true);
+		$this->initCommonVar('doxcode', false, true);
 
 		$this->setControl('post_content', 'dhtmltextarea');
 		$this->setControl('post_uid', 'user');
@@ -66,6 +73,32 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
         return $post_statusArray[$ret];
     }
 
+    function getPosterLink() {
+    	$member_handler = xoops_getHandler('member');
+    	$poster_uid = $this->getVar('post_uid', 'e');
+    	$userObj = $member_handler->getuser($poster_uid);
+
+    	return '<a href="' . IMBLOGGING_URL . 'poster.php?uid=' . $poster_uid . '">' . $userObj->getVar('uname') . '</a>';
+    }
+
+    function getPostInfo() {
+		$ret = sprintf(_CO_IMBLOGGING_POST_INFO, $this->getPosterLink(), $this->getVar('post_published_date'));
+		return $ret;
+    }
+
+    function getPostLead() {
+    	$ret = $this->getVar('post_content');
+    	$slices = explode('[more]', $ret);
+    	return $slices[0];
+    }
+
+    function toArray() {
+		$ret = parent::toArray();
+		$ret['post_info'] = $this->getPostInfo();
+		$ret['post_lead'] = $this->getPostLead();
+		return $ret;
+    }
+
 }
 class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 
@@ -83,6 +116,14 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 			$this->_post_statusArray[IMBLOGGING_POST_STATUS_PRIVATE] = _CO_IMBLOGGING_POST_STATUS_PRIVATE;
 	    }
 	    return $this->_post_statusArray;
+    }
+
+    function getPosts() {
+    	$criteria = new CriteriaCompo();
+    	$criteria->setSort('post_published_date');
+    	$criteria->setOrder('DESC');
+    	$ret = $this->getObjects($criteria, true, false);
+    	return $ret;
     }
 }
 ?>

@@ -12,5 +12,5 @@
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
 
-
+define('_MD_IMBLOGGING_ADMIN_PAGE', ':: Admin page ::');
 ?>

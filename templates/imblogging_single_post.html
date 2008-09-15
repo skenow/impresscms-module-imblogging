@@ -1,0 +1,10 @@
+<{if $imblogging_post}>
+	<h1><{$imblogging_post.post_title}></h1>
+	<div id="imblogging_post_info"><{$imblogging_post.post_info}></div>
+	<div id="imblogging_post_content">
+		<{$imblogging_post.post_content}>
+	</div>
+	<{if $imblogging_is_admin}>
+		<div id="imblogging_admin_links"><{$imblogging_post.editItemLink}><{$imblogging_post.deleteItemLink}></div>
+	<{/if}>
+<{/if}>

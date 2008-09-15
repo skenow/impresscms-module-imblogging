@@ -85,7 +85,7 @@ $modversion['hasSearch'] = 0;
 /**
  * Menu information
  */
-$modversion['hasMain'] = 0;
+$modversion['hasMain'] = 1;
 //$modversion['sub'][1]['name'] = ...;
 //$modversion['sub'][1]['url'] = ...;
 
@@ -125,6 +125,15 @@ $modversion['templates'][$i]['description'] = 'Post Index';
 $i++;
 $modversion['templates'][$i]['file'] = 'imblogging_index.html';
 $modversion['templates'][$i]['description'] = 'Post Index';
+
+$i++;
+$modversion['templates'][$i]['file'] = 'imblogging_single_post.html';
+$modversion['templates'][$i]['description'] = 'Single post template';
+
+$i++;
+$modversion['templates'][$i]['file'] = 'imblogging_post.html';
+$modversion['templates'][$i]['description'] = 'Post page';
+
 
 /**
  * Preferences information

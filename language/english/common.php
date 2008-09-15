@@ -26,6 +26,8 @@ define("_CO_IMBLOGGING_POST_POST_STATUS_DSC", "");
 define("_CO_IMBLOGGING_POST_POST_CANCOMMENT", "Can comment ?");
 define("_CO_IMBLOGGING_POST_POST_CANCOMMENT_DSC", "");
 
+define("_CO_IMBLOGGING_POST_INFO", "Published by %s on %s.");
+
 // post status
 define("_CO_IMBLOGGING_POST_STATUS_PUBLISHED", "Published");
 define("_CO_IMBLOGGING_POST_STATUS_PENDING", "Pending review");

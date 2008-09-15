@@ -1,5 +1,14 @@
 <{includeq file='db:imblogging_header.html'}>
 
+<{foreach item=imblogging_post from=$imblogging_posts}>
+	<h1><{$imblogging_post.itemLink}></h1>
+	<div id="imblogging_post_info"><{$imblogging_post.post_info}></div>
+	<div id="imblogging_post_content">
+		<{$imblogging_post.post_lead}>
+	</div>
+	<{if $imblogging_is_admin}>
+		<div id="imblogging_admin_links"><{$imblogging_post.editItemLink}><{$imblogging_post.deleteItemLink}></div>
+	<{/if}>
+<{/foreach}>
 
-
-<{includeq file='db:iimblogging_footer.html'}>
+<{includeq file='db:imblogging_footer.html'}>
