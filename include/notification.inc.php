@@ -21,9 +21,14 @@
  * @return array containing 'name' and 'url' of the related item
  */
 function imblogging_notify_iteminfo($category, $item_id){
-	/**
-	 * @todo this will need to be implemented when we are adding notification in the module
-	 */
+    global $xoopsModule, $xoopsModuleConfig, $xoopsConfig;
+
+    if ($category == 'global') {
+        $item['name'] = '';
+        $item['url'] = '';
+        return $item;
+    }
+
 }
 
 ?>

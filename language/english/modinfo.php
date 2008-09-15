@@ -20,4 +20,13 @@ define("_MI_IMBLOGGING_MD_DESC", "ImpressCMS Simple Blogging module");
 
 define("_MI_IMBLOGGING_POSTS", "Posts");
 
+// Notifications
+define("_MI_IMBLOGGING_GLOBAL_NOTIFY", "All posts");
+define("_MI_IMBLOGGING_GLOBAL_NOTIFY_DSC", "Notifications related to all posts in the module");
+define("_MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY", "New post published");
+define("_MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY_CAP", "Notify me when a new post is published");
+define("_MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY_DSC", "Receive notification when any new post is published.");
+define("_MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY_SBJ", "[{X_SITENAME}] {X_MODULE} auto-notify : New post published");
+
+
 ?>

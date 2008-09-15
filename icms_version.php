@@ -167,22 +167,22 @@ $modversion['comments']['callback']['update'] = 'imblogging_com_update';
 /**
  * Notification information
  */
-$modversion['hasNotification'] = 0;
-/*
+$modversion['hasNotification'] = 1;
+
 $modversion['notification']['lookup_file'] = 'include/notification.inc.php';
-$modversion['notification']['lookup_func'] = 'smartsection_notify_iteminfo';
+$modversion['notification']['lookup_func'] = 'imblogging_notify_iteminfo';
 
-$modversion['notification']['category'][1]['name'] = 'global_item';
-$modversion['notification']['category'][1]['title'] = _MI_SSECTION_GLOBAL_ITEM_NOTIFY;
-$modversion['notification']['category'][1]['description'] = _MI_SSECTION_GLOBAL_ITEM_NOTIFY_DSC;
-$modversion['notification']['category'][1]['subscribe_from'] = array('index.php', 'category.php', 'item.php');
+$modversion['notification']['category'][1]['name'] = 'global';
+$modversion['notification']['category'][1]['title'] = _MI_IMBLOGGING_GLOBAL_NOTIFY;
+$modversion['notification']['category'][1]['description'] = _MI_IMBLOGGING_GLOBAL_NOTIFY_DSC;
+$modversion['notification']['category'][1]['subscribe_from'] = array('index.php', 'post.php');
 
-$modversion['notification']['event'][1]['name'] = 'category_created';
-$modversion['notification']['event'][1]['category'] = 'global_item';
-$modversion['notification']['event'][1]['title'] = _MI_SSECTION_GLOBAL_ITEM_CATEGORY_CREATED_NOTIFY;
-$modversion['notification']['event'][1]['caption'] = _MI_SSECTION_GLOBAL_ITEM_CATEGORY_CREATED_NOTIFY_CAP;
-$modversion['notification']['event'][1]['description'] = _MI_SSECTION_GLOBAL_ITEM_CATEGORY_CREATED_NOTIFY_DSC;
-$modversion['notification']['event'][1]['mail_template'] = 'global_item_category_created';
-$modversion['notification']['event'][1]['mail_subject'] = _MI_SSECTION_GLOBAL_ITEM_CATEGORY_CREATED_NOTIFY_SBJ;
-*/
+$modversion['notification']['event'][1]['name'] = 'post_published';
+$modversion['notification']['event'][1]['category'] = 'global';
+$modversion['notification']['event'][1]['title'] = _MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY;
+$modversion['notification']['event'][1]['caption'] = _MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY_CAP;
+$modversion['notification']['event'][1]['description'] = _MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY_DSC;
+$modversion['notification']['event'][1]['mail_template'] = 'global_post_published';
+$modversion['notification']['event'][1]['mail_subject'] = _MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY_SBJ;
+
 ?>

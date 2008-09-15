@@ -42,6 +42,9 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 		$this->quickInitVar('post_comments', XOBJ_DTYPE_INT);
 		$this->hideFieldFromForm('post_comments');
 
+		$this->quickInitVar('post_notification_sent', XOBJ_DTYPE_INT);
+		$this->hideFieldFromForm('post_notification_sent');
+
 		$this->initCommonVar('counter', false);
 		$this->initCommonVar('dohtml', false, true);
 		$this->initCommonVar('dobr', false, $xoopsConfig['editor_default'] == 'dhtmltextarea');
@@ -108,6 +111,17 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
     	$ret = $this->getVar('post_content');
     	$slices = explode('[more]', $ret);
     	return $slices[0];
+    }
+
+    function sendNotifPostPublished() {
+    	global $imbloggingModule;
+    	$module_id = $imbloggingModule->getVar('mid');
+		$notification_handler = xoops_getHandler('notification');
+
+		$tags['POST_TITLE'] = $this->getVar('post_title');
+		$tags['POST_URL'] = $this->getItemLink(true);
+
+		$notification_handler->triggerEvent('global', 0, 'post_published', $tags, array(), $module_id);
     }
 
     function toArray() {
@@ -181,6 +195,23 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 			$postObj->setVar('post_comments', $total_num);
 			$this->insert($postObj, true);
 		}
+    }
+
+	/**
+	 * AfterSave event
+	 *
+	 * Event automatically triggered by IcmsPersistable Framework after the object is inserted or updated
+	 *
+	 * @param object $obj ImbloggingPost object
+	 * @return true
+	 */
+    function afterSave(&$obj){
+		if (!$obj->getVar('post_notification_sent') && $obj->getVar('post_status', 'e') == IMBLOGGING_POST_STATUS_PUBLISHED) {
+			$obj->sendNotifPostPublished();
+			$obj->setVar('post_notification_sent', true);
+			$this->insert($obj);
+		}
+		return true;
     }
 }
 ?>
