@@ -13,5 +13,19 @@
 .imblogging_breadcrumb {font-size: 0.8em; line-height: 18px;}
 .imblogging_adminlinks {padding-top: 15px; padding-bottom: 5px; font-size: 0.8em; text-align: center; line-height: 18px;}
 
-.imblogging_message {padding-top: 10px;}
+.imblogging_post_container {
+	margin-bottom: 20px;
+}
+.imblogging_post_info {}
+.imblogging_post_content {}
+#imblogging_post_comments_container {}
+.imblogging_post_comments {
+	background-image: url(images/comments.gif);
+	background-repeat: no-repeat;
+	padding-left: 15px;
+	vertical-align: middle;
+	font-size: 80%;
+}
+.imblogging_admin_links {}
+
 

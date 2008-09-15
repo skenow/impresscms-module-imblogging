@@ -32,9 +32,11 @@ if ($post_id > 0) {
 	redirect_header(IMBLOGGING_URL, 3, _NOPERM);
 }
 
+if ($xoopsModuleConfig['com_rule'] && $postObj->getVar('post_cancomment')) {
+	$xoopsTpl->assign('imblogging_post_comment', true);
+	include_once ICMS_ROOT_PATH . "/include/comment_view.php";
+}
 $xoopsTpl->assign('imblogging_module_home', imblogging_getModuleName(true, true));
-
-
 
 include_once("footer.php");
 ?>

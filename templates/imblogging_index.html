@@ -1,14 +1,19 @@
 <{includeq file='db:imblogging_header.html'}>
 
 <{foreach item=imblogging_post from=$imblogging_posts}>
-	<h1><{$imblogging_post.itemLink}></h1>
-	<div id="imblogging_post_info"><{$imblogging_post.post_info}></div>
-	<div id="imblogging_post_content">
-		<{$imblogging_post.post_lead}>
+	<div class="imblogging_post_container">
+		<h1><{$imblogging_post.itemLink}></h1>
+		<div class="imblogging_post_info"><{$imblogging_post.post_info}></div>
+		<div class="imblogging_post_content">
+			<{$imblogging_post.post_lead}>
+		</div>
+		<div class="imblogging_post_comments">
+			<{$imblogging_post.post_comment_info}>
+		</div>
+		<{if $imblogging_is_admin}>
+			<div class="imblogging_admin_links"><{$imblogging_post.editItemLink}><{$imblogging_post.deleteItemLink}></div>
+		<{/if}>
 	</div>
-	<{if $imblogging_is_admin}>
-		<div id="imblogging_admin_links"><{$imblogging_post.editItemLink}><{$imblogging_post.deleteItemLink}></div>
-	<{/if}>
 <{/foreach}>
 
 <{includeq file='db:imblogging_footer.html'}>

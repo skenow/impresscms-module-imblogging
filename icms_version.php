@@ -153,16 +153,16 @@ $modversion['config'][$i]['valuetype'] = 'text';
 /**
  * Comments information
  */
-$modversion['hasComments'] = 0;
-/*
-$modversion['comments']['itemName'] = 'itemid';
-$modversion['comments']['pageName'] = 'item.php';
+$modversion['hasComments'] = 1;
+
+$modversion['comments']['itemName'] = 'post_id';
+$modversion['comments']['pageName'] = 'post.php';
 
 // Comment callback functions
-$modversion['comments']['callbackFile'] = 'include/comment_functions.php';
-$modversion['comments']['callback']['approve'] = 'smartsection_com_approve';
-$modversion['comments']['callback']['update'] = 'smartsection_com_update';
-*/
+$modversion['comments']['callbackFile'] = 'include/comment.inc.php';
+$modversion['comments']['callback']['approve'] = 'imblogging_com_approve';
+$modversion['comments']['callback']['update'] = 'imblogging_com_update';
+
 
 /**
  * Notification information

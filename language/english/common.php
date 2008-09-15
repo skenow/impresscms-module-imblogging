@@ -28,6 +28,8 @@ define("_CO_IMBLOGGING_POST_POST_CANCOMMENT_DSC", "");
 
 define("_CO_IMBLOGGING_POST_INFO", "Published by %s on %s.");
 define("_CO_IMBLOGGING_POST_FROM_USER", "All posts of %s");
+define("_CO_IMBLOGGING_POST_COMMENTS_INFO", "%d comments");
+define("_CO_IMBLOGGING_POST_NO_COMMENT", "No comment");
 
 // post status
 define("_CO_IMBLOGGING_POST_STATUS_PUBLISHED", "Published");

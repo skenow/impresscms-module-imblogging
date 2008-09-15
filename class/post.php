@@ -24,6 +24,9 @@ define ('IMBLOGGING_POST_STATUS_PRIVATE', 4);
 
 class ImbloggingPost extends IcmsPersistableSeoObject {
 
+	/**
+	 * Constructor
+	 */
     function ImbloggingPost(&$handler) {
     	global $xoopsConfig;
 
@@ -36,6 +39,8 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 		$this->quickInitVar('post_uid', XOBJ_DTYPE_INT);
 		$this->quickInitVar('post_status', XOBJ_DTYPE_INT, false, false, false, IMBLOGGING_POST_STATUS_PUBLISHED);
 		$this->quickInitVar('post_cancomment', XOBJ_DTYPE_INT, false, false, false, true);
+		$this->quickInitVar('post_comments', XOBJ_DTYPE_INT);
+		$this->hideFieldFromForm('post_comments');
 
 		$this->initCommonVar('counter', false);
 		$this->initCommonVar('dohtml', false, true);
@@ -90,6 +95,15 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 		return $ret;
     }
 
+    function getCommentsInfo() {
+    	$post_comments = $this->getVar('post_comments');
+		if ($post_comments) {
+			return '<a href="' . $this->getItemLink(true) . '#comments_container">' . sprintf(_CO_IMBLOGGING_POST_COMMENTS_INFO, $post_comments) . '</a>';
+		} else {
+			return _CO_IMBLOGGING_POST_NO_COMMENT;
+		}
+    }
+
     function getPostLead() {
     	$ret = $this->getVar('post_content');
     	$slices = explode('[more]', $ret);
@@ -100,18 +114,30 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 		$ret = parent::toArray();
 		$ret['post_info'] = $this->getPostInfo();
 		$ret['post_lead'] = $this->getPostLead();
+		$ret['post_comment_info'] = $this->getCommentsInfo();
 		return $ret;
     }
 
 }
 class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 
+    /**
+     * @var array of status
+     */
     var $_post_statusArray = array();
 
+	/**
+	 * Constructor
+	 */
     function ImbloggingPostHandler($db) {
         $this->IcmsPersistableObjectHandler($db, 'post', 'post_id', 'post_title', '', 'imblogging');
     }
 
+	/**
+	 * Retreive the possible status of a post object
+	 *
+	 * @return array of status
+	 */
     function getPost_statusArray() {
 	    if (!$this->_post_statusArray) {
 			$this->_post_statusArray[IMBLOGGING_POST_STATUS_PUBLISHED] = _CO_IMBLOGGING_POST_STATUS_PUBLISHED;
@@ -122,6 +148,12 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 	    return $this->_post_statusArray;
     }
 
+    /**
+     * Get posts as array, ordered by post_published_date DESC
+     *
+     * @param int $post_uid if specifid, only the post of this user will be returned
+     * @return array of posts
+     */
     function getPosts($post_uid = false) {
     	$criteria = new CriteriaCompo();
     	$criteria->setSort('post_published_date');
@@ -131,6 +163,24 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
     	}
     	$ret = $this->getObjects($criteria, true, false);
     	return $ret;
+    }
+
+	/**
+	 * Update number of comments on a post
+	 *
+	 * This method is triggered by imblogging_com_update in include/functions.php which is
+	 * called by ImpressCMS when updating comments
+	 *
+	 * @param int $post_id id of the post to update
+	 * @param int $total_num total number of comments so far in this post
+	 * @return VOID
+	 */
+    function updateComments($post_id, $total_num) {
+		$postObj = $this->get($post_id);
+		if ($postObj && !$postObj->isNew()) {
+			$postObj->setVar('post_comments', $total_num);
+			$this->insert($postObj, true);
+		}
     }
 }
 ?>
