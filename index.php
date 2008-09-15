@@ -16,10 +16,14 @@ include_once(ICMS_ROOT_PATH . "/header.php");
 
 $imblogging_post_handler = xoops_getModuleHandler('post');
 
-if (isset($_GET['op'])) $op = $_GET['op'];
+$post_uid = isset($_GET['uid']) ? intval($_GET['uid']) : false;
 
-$xoopsTpl->assign('imblogging_posts', $imblogging_post_handler->getPosts());
+$xoopsTpl->assign('imblogging_posts', $imblogging_post_handler->getPosts($post_uid));
 $xoopsTpl->assign('imblogging_module_home', imblogging_getModuleName(true, true));
+
+if ($post_uid) {
+	$xoopsTpl->assign('imblogging_category_path', sprintf(_CO_IMBLOGGING_POST_FROM_USER, icms_getLinkedUnameFromId($post_uid)));
+}
 
 include_once("footer.php");
 ?>

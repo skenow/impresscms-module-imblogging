@@ -24,7 +24,7 @@ if ($post_id > 0) {
 	$postObj = $imblogging_post_handler->get($post_id);
 	if ($postObj && !$postObj->isNew()) {
 		$xoopsTpl->assign('imblogging_post', $postObj->toArray());
-		$xoopsTpl->assign('imblogging_category_path', $postObj->getVar('post_uid') . ' > ' . $postObj->getVar('post_title'));
+		$xoopsTpl->assign('imblogging_category_path', $postObj->getVar('post_title'));
 	} else {
 		redirect_header(IMBLOGGING_URL, 3, _NOPERM);
 	}

@@ -73,16 +73,20 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
         return $post_statusArray[$ret];
     }
 
-    function getPosterLink() {
+    function getPoster($link=false) {
     	$member_handler = xoops_getHandler('member');
     	$poster_uid = $this->getVar('post_uid', 'e');
     	$userObj = $member_handler->getuser($poster_uid);
 
-    	return '<a href="' . IMBLOGGING_URL . 'poster.php?uid=' . $poster_uid . '">' . $userObj->getVar('uname') . '</a>';
+		if ($link) {
+			return '<a href="' . IMBLOGGING_URL . 'index.php?uid=' . $poster_uid . '">' . $userObj->getVar('uname') . '</a>';
+		} else {
+			return $userObj->getVar('uname');
+		}
     }
 
     function getPostInfo() {
-		$ret = sprintf(_CO_IMBLOGGING_POST_INFO, $this->getPosterLink(), $this->getVar('post_published_date'));
+		$ret = sprintf(_CO_IMBLOGGING_POST_INFO, $this->getPoster(true), $this->getVar('post_published_date'));
 		return $ret;
     }
 
@@ -118,10 +122,13 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 	    return $this->_post_statusArray;
     }
 
-    function getPosts() {
+    function getPosts($post_uid = false) {
     	$criteria = new CriteriaCompo();
     	$criteria->setSort('post_published_date');
     	$criteria->setOrder('DESC');
+    	if ($post_uid) {
+    		$criteria->add(new Criteria('post_uid', $post_uid));
+    	}
     	$ret = $this->getObjects($criteria, true, false);
     	return $ret;
     }
