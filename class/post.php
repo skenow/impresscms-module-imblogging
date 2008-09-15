@@ -172,11 +172,33 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
     	$criteria = new CriteriaCompo();
     	$criteria->setSort('post_published_date');
     	$criteria->setOrder('DESC');
+    	$criteria->add(new Criteria('post_status', IMBLOGGING_POST_STATUS_PUBLISHED));
     	if ($post_uid) {
     		$criteria->add(new Criteria('post_uid', $post_uid));
     	}
     	$ret = $this->getObjects($criteria, true, false);
     	return $ret;
+    }
+
+    function getPostsForSearch($queryarray, $andor, $limit, $offset, $userid) {
+		$criteria = new CriteriaCompo();
+
+		if ($userid != 0) {
+			$criteria->add(new Criteria('post_uid', $userid));
+		}
+		if ($queryarray) {
+			$criteriaKeywords = new CriteriaCompo();
+			for ($i = 0; $i < count($queryarray); $i++) {
+				$criteriaKeyword = new CriteriaCompo();
+				$criteriaKeyword->add(new Criteria('post_title', '%' . $queryarray[$i] . '%', 'LIKE'), 'OR');
+				$criteriaKeyword->add(new Criteria('post_content', '%' . $queryarray[$i] . '%', 'LIKE'), 'OR');
+				$criteriaKeywords->add($criteriaKeyword, $andor);
+				unset($criteriaKeyword);
+			}
+			$criteria->add($criteriaKeywords);
+		}
+		$criteria->add(new Criteria('post_status', IMBLOGGING_POST_STATUS_PUBLISHED));
+		return $this->getObjects($criteria, true, false);
     }
 
 	/**

@@ -79,8 +79,9 @@ $modversion['onUpdate'] = "include/onupdate.inc.php";
 /**
  * Search information
  */
-$modversion['hasSearch'] = 0;
-
+$modversion['hasSearch'] = 1;
+$modversion['search']['file'] = "include/search.inc.php";
+$modversion['search']['func'] = "imblogging_search";
 
 /**
  * Menu information
