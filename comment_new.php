@@ -24,7 +24,7 @@ if ($com_itemid > 0) {
 			$com_replytext .= '<br /><br />'.$bodytext.'';
 		}
 		$com_replytitle = $postObj->getVar('post_title');
-		include_once XOOPS_ROOT_PATH.'/include/comment_new.php';
+		include_once ICMS_ROOT_PATH .'/include/comment_new.php';
 	}
 }
 

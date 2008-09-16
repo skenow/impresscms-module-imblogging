@@ -11,6 +11,6 @@
 * @version		$Id$
 */
 include_once 'header.php';
-include_once XOOPS_ROOT_PATH . '/include/comment_reply.php';
+include_once ICMS_ROOT_PATH . '/include/comment_reply.php';
 
 ?>
