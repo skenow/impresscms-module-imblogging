@@ -78,6 +78,14 @@ switch ($op) {
 		}
 		break;
 }
+
+/**
+ * Generating meta information for this page
+ */
+$icms_metagen = new IcmsMetagen($postObj->getVar('post_title'), $postObj->getVar('meta_keywords','n'), $postObj->getVar('meta_description', 'n'));
+$icms_metagen->createMetaTags();
+
+
 $xoopsTpl->assign('imblogging_module_home', imblogging_getModuleName(true, true));
 include_once("footer.php");
 ?>
