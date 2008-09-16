@@ -87,8 +87,13 @@ $modversion['search']['func'] = "imblogging_search";
  * Menu information
  */
 $modversion['hasMain'] = 1;
-//$modversion['sub'][1]['name'] = ...;
-//$modversion['sub'][1]['url'] = ...;
+if (is_object($xoopsModule) && $xoopsModule->dirname() == 'imblogging') {
+	$imblogging_post_handler = xoops_getModuleHandler('post', 'imblogging');
+	if ($imblogging_post_handler->userCanSubmit()) {
+		$modversion['sub'][1]['name'] = _SUBMIT;
+		$modversion['sub'][1]['url'] = 'post.php?op=mod';
+	}
+}
 
 /**
  * Blocks information
