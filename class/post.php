@@ -107,6 +107,13 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 		}
     }
 
+    function getPostContent() {
+    	$ret = $this->getVar('post_content');
+    	$ret = str_replace('<p>[more]</p>', '', $ret);
+    	$ret = str_replace('[more]', '', $ret);
+    	return $ret;
+    }
+
     function getPostLead() {
     	$ret = $this->getVar('post_content');
     	$slices = explode('[more]', $ret);
@@ -129,6 +136,7 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 		$ret['post_info'] = $this->getPostInfo();
 		$ret['post_lead'] = $this->getPostLead();
 		$ret['post_comment_info'] = $this->getCommentsInfo();
+		$ret['post_content'] = $this->getPostContent();
 		return $ret;
     }
 
