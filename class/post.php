@@ -64,6 +64,14 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 		$this->IcmsPersistableSeoObject();
     }
 
+    /**
+     * Overriding the IcmsPersistableObject::getVar method to assign a custom method on some
+     * specific fields to handle the value before returning it
+     *
+     * @param str $key key of the field
+     * @param str $format format that is requested
+     * @return mixed value of the field that is requested
+     */
     function getVar($key, $format = 's') {
         if ($format == 's' && in_array($key, array('post_uid', 'post_status'))) {
             return call_user_func(array($this,$key));
@@ -71,10 +79,20 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
         return parent::getVar($key, $format);
     }
 
+	/**
+	 * Retrieving the name of the poster, linked to his profile
+	 *
+	 * @return str name of the poster
+	 */
     function post_uid() {
         return icms_getLinkedUnameFromId($this->getVar('post_uid', 'e'));
     }
 
+	/**
+	 * Retrieving the status of the post
+	 *
+	 * @param str status of the post
+	 */
     function post_status() {
         $ret = $this->getVar('post_status', 'e');
         $post_statusArray = $this->handler->getPost_statusArray();
@@ -96,6 +114,12 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 		return $this->getVar('post_status', 'e') == IMBLOGGING_POST_STATUS_PUBLISHED || $imblogging_isAdmin || $this->getVar('post_uid', 'e') == $xoopsUser->uid();
     }
 
+	/**
+	 * Get the poster
+	 *
+	 * @param bool $link with link or not
+	 * @return str poster name linked on his module poster page, or simply poster name
+	 */
     function getPoster($link=false) {
     	$member_handler = xoops_getHandler('member');
     	$poster_uid = $this->getVar('post_uid', 'e');
@@ -108,11 +132,21 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 		}
     }
 
+	/**
+	 * Retrieve post info (poster and date)
+	 *
+	 * @return str post info
+	 */
     function getPostInfo() {
 		$ret = sprintf(_CO_IMBLOGGING_POST_INFO, $this->getPoster(true), $this->getVar('post_published_date'));
 		return $ret;
     }
 
+	/**
+	 * Retrieve post comment info (number of comments)
+	 *
+	 * @return str post comment info
+	 */
     function getCommentsInfo() {
     	$post_comments = $this->getVar('post_comments');
 		if ($post_comments) {
@@ -122,6 +156,11 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 		}
     }
 
+    /**
+     * Retrieve the post content without [more] tag
+     *
+     * @return str post content
+     */
     function getPostContent() {
     	$ret = $this->getVar('post_content');
     	$ret = str_replace('<p>[more]</p>', '', $ret);
@@ -129,12 +168,22 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
     	return $ret;
     }
 
+	/**
+	 * Retrieve post lead, which is everything before the [more] tag
+	 *
+	 * @return str post lead
+	 */
     function getPostLead() {
     	$ret = $this->getVar('post_content');
     	$slices = explode('[more]', $ret);
     	return $slices[0];
     }
 
+	/**
+	 * Sending the notification related to a post being published
+	 *
+	 * @return VOID
+	 */
     function sendNotifPostPublished() {
     	global $imbloggingModule;
     	$module_id = $imbloggingModule->getVar('mid');
@@ -146,6 +195,11 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 		$notification_handler->triggerEvent('global', 0, 'post_published', $tags, array(), $module_id);
     }
 
+	/**
+	 * Overridding IcmsPersistable::toArray() method to add a few info
+	 *
+	 * @return array of post info
+	 */
     function toArray() {
 		$ret = parent::toArray();
 		$ret['post_info'] = $this->getPostInfo();
@@ -203,6 +257,16 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
     	return $ret;
     }
 
+	/**
+	 * Get Posts requested by the global search feature
+	 *
+	 * @param array array containing the searched keywords
+	 * @param bool $andor wether the keywords should be searched with AND or OR
+	 * @param int $limit maximum results returned
+	 * @param int $offset where to start in the resulting dataset
+	 * @param int $userid should we return posts by specific poster ?
+	 * @return array array of posts
+	 */
     function getPostsForSearch($queryarray, $andor, $limit, $offset, $userid) {
 		$criteria = new CriteriaCompo();
 
