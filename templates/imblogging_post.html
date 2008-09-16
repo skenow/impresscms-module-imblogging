@@ -8,4 +8,13 @@
 	<{/foreach}>
 <{/if}>
 
+<{if $imblogging_postform}>
+	<{includeq file='db:system_common_form.html' form=$imblogging_postform}>
+<{/if}>
+
+<{if $smartobject_delete_confirm}>
+	<{$smartobject_delete_confirm}>
+<{/if}>
+
+
 <{includeq file='db:imblogging_footer.html'}>

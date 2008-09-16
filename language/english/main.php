@@ -13,4 +13,9 @@ if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
 
 define('_MD_IMBLOGGING_ADMIN_PAGE', ':: Admin page ::');
+define('_MD_IMBLOGGING_POST_EDIT', 'Edit post');
+define('_MD_IMBLOGGING_POST_SUBMIT', 'Submit post');
+define('_MD_IMBLOGGING_POST_MODIFIED', 'The post was successfully modified.');
+define('_MD_IMBLOGGING_POST_CREATED', 'The post has been successfully created.');
+
 ?>

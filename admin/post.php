@@ -10,27 +10,20 @@
 * @author		marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
 * @version		$Id$
 */
-function editpost($showmenu = false, $post_id = 0, $parentid =0)
+function editpost($post_id = 0)
 {
 	global $imblogging_post_handler, $xoopsModule, $icmsAdminTpl;
 
 	$postObj = $imblogging_post_handler->get($post_id);
 
-	$post_listid = isset($_GET['post_listid']) ? intval($_GET['post_listid']) : 0;
-	$postObj->setVar('post_listid', $post_listid);
-
 	if (!$postObj->isNew()){
 
-		if ($showmenu) {
-			$xoopsModule->displayAdminMenu(0, _AM_IMBLOGGING_POSTS . " > " . _CO_ICMS_EDITING);
-		}
+		$xoopsModule->displayAdminMenu(0, _AM_IMBLOGGING_POSTS . " > " . _CO_ICMS_EDITING);
 		$sform = $postObj->getForm(_AM_IMBLOGGING_POST_EDIT, 'addpost');
 		$sform->assign($icmsAdminTpl);
 
 	} else {
-		if ($showmenu) {
-			$xoopsModule->displayAdminMenu(0, _AM_IMBLOGGING_POSTS . " > " . _CO_ICMS_CREATINGNEW);
-		}
+		$xoopsModule->displayAdminMenu(0, _AM_IMBLOGGING_POSTS . " > " . _CO_ICMS_CREATINGNEW);
 		$sform = $postObj->getForm(_AM_IMBLOGGING_POST_CREATE, 'addpost');
 		$sform->assign($icmsAdminTpl);
 
@@ -55,7 +48,7 @@ switch ($op) {
 
 		xoops_cp_header();
 
-		editpost(true, $post_id);
+		editpost($post_id);
 		break;
 	case "addpost":
         include_once ICMS_ROOT_PATH."/kernel/icmspersistablecontroller.php";
