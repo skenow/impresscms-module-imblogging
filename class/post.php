@@ -206,6 +206,8 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 		$ret['post_lead'] = $this->getPostLead();
 		$ret['post_comment_info'] = $this->getCommentsInfo();
 		$ret['post_content'] = $this->getPostContent();
+		$ret['editItemLink'] = $this->getEditItemLink(false, true, true);
+		$ret['deleteItemLink'] = $this->getDeleteItemLink(false, true, true);
 		return $ret;
     }
 

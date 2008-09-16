@@ -39,6 +39,7 @@ if (isset($_GET['op'])) $op = $_GET['op'];
 if (isset($_POST['op'])) $op = $_POST['op'];
 
 $post_id = isset($_GET['post_id']) ? intval($_GET['post_id']) : 0 ;
+$postObj = $imblogging_post_handler->get($post_id);
 
 switch ($op) {
 	case "mod":
@@ -51,8 +52,15 @@ switch ($op) {
 		$controller->storeFromDefaultForm(_MD_IMBLOGGING_POST_CREATED, _MD_IMBLOGGING_POST_MODIFIED);
 		break;
 
+	case "del":
+	    include_once ICMS_ROOT_PATH."/kernel/icmspersistablecontroller.php";
+        $controller = new IcmsPersistableController($imblogging_post_handler);
+		$controller->handleObjectDeletionFromUserSide();
+		$xoopsTpl->assign('imblogging_category_path', $postObj->getVar('post_title') . ' > ' . _DELETE);
+
+		break;
+
 	default:
-		$postObj = $imblogging_post_handler->get($post_id);
 		if ($postObj && !$postObj->isNew() && $postObj->accessGranted()) {
 			$xoopsTpl->assign('imblogging_post', $postObj->toArray());
 			$xoopsTpl->assign('imblogging_category_path', $postObj->getVar('post_title'));
