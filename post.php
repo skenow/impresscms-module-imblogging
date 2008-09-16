@@ -22,7 +22,7 @@ $post_id = isset($_GET['post_id']) ? intval($_GET['post_id']) : 0 ;
 
 if ($post_id > 0) {
 	$postObj = $imblogging_post_handler->get($post_id);
-	if ($postObj && !$postObj->isNew()) {
+	if ($postObj && !$postObj->isNew() && $postObj->accessGranted()) {
 		$xoopsTpl->assign('imblogging_post', $postObj->toArray());
 		$xoopsTpl->assign('imblogging_category_path', $postObj->getVar('post_title'));
 	} else {

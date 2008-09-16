@@ -81,6 +81,21 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
         return $post_statusArray[$ret];
     }
 
+	/**
+	 * Check is user has access to view this post
+	 *
+	 * User will be able to view the post if
+	 *    - the status of the post is Published OR
+	 *    - he is an admin OR
+	 * 	  - he is the poster of this post
+	 *
+	 * @return bool true if user can view this post, false if not
+	 */
+    function accessGranted() {
+		global $imblogging_isAdmin, $xoopsUser;
+		return $this->getVar('post_status', 'e') == IMBLOGGING_POST_STATUS_PUBLISHED || $imblogging_isAdmin || $this->getVar('post_uid', 'e') == $xoopsUser->uid();
+    }
+
     function getPoster($link=false) {
     	$member_handler = xoops_getHandler('member');
     	$poster_uid = $this->getVar('post_uid', 'e');
