@@ -10,7 +10,7 @@
 		<div class="imblogging_post_comments">
 			<{$imblogging_post.post_comment_info}>
 		</div>
-		<{if $imblogging_is_admin}>
+		<{if $imblogging_post.userCanEditAndDelete}>
 			<div class="imblogging_admin_links"><{$imblogging_post.editItemLink}><{$imblogging_post.deleteItemLink}></div>
 		<{/if}>
 	</div>

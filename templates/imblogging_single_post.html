@@ -5,7 +5,7 @@
 		<div class="imblogging_post_content">
 			<{$imblogging_post.post_content}>
 		</div>
-		<{if $imblogging_is_admin}>
+		<{if $imblogging_post.userCanEditAndDelete}>
 			<div class="imblogging_admin_links"><{$imblogging_post.editItemLink}><{$imblogging_post.deleteItemLink}></div>
 		<{/if}>
 	</div>

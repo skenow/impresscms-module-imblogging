@@ -179,6 +179,22 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
     	return $slices[0];
     }
 
+    /**
+     * Check to see wether the current user can edit or delete this post
+     *
+     * @return bool true if he can, false if not
+     */
+    function userCanEditAndDelete() {
+		global $xoopsUser, $imblogging_isAdmin;
+		if (!is_object($xoopsUser)) {
+			return false;
+		}
+		if ($imblogging_isAdmin) {
+			return true;
+		}
+		return $this->getVar('post_uid', 'e') == $xoopsUser->uid();
+    }
+
 	/**
 	 * Sending the notification related to a post being published
 	 *
@@ -208,6 +224,7 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 		$ret['post_content'] = $this->getPostContent();
 		$ret['editItemLink'] = $this->getEditItemLink(false, true, true);
 		$ret['deleteItemLink'] = $this->getDeleteItemLink(false, true, true);
+		$ret['userCanEditAndDelete'] = $this->userCanEditAndDelete();
 		return $ret;
     }
 
@@ -274,9 +291,9 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
      * @return array of posts
      */
     function getPosts($start=0, $post_uid=false) {
-    	global $xoopsModuleConfig;
+    	$imbloggingModuleConfig = icms_getModuleConfig('imblogging');
 
-		$criteria = $this->getPostsCriteria($start, $xoopsModuleConfig['posts_limit'], $post_uid);
+		$criteria = $this->getPostsCriteria($start, $imbloggingModuleConfig['posts_limit'], $post_uid);
     	$ret = $this->getObjects($criteria, true, false);
     	return $ret;
     }
@@ -339,6 +356,25 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 			$postObj->setVar('post_comments', $total_num);
 			$this->insert($postObj, true);
 		}
+    }
+
+    /**
+     * Check wether the current user can submit a new post or not
+     *
+     * @return bool true if he can false if not
+     */
+    function userCanSubmit() {
+		global $xoopsUser, $imblogging_isAdmin;
+		$imbloggingModuleConfig = icms_getModuleConfig('imblogging');
+
+		if (!is_object($xoopsUser)) {
+			return false;
+		}
+		if ($imblogging_isAdmin) {
+			return true;
+		}
+		$user_groups = $xoopsUser->getGroups();
+		return count(array_intersect($imbloggingModuleConfig['poster_groups'], $user_groups)) > 0;
     }
 
 	/**
