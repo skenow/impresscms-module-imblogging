@@ -141,15 +141,20 @@ $modversion['templates'][$i]['description'] = 'Post page';
  */
 $i = 0;
 
-/*
+// Retreive the group user list, because the automatic group_multi config formtype does not include Anonymous group :-(
+$member_handler =& xoops_getHandler('member');
+$groups_array = $member_handler->getGroupList();
+foreach($groups_array as $k=>$v) {
+	$select_groups_options[$v] = $k;
+}
 $i++;
-$modversion['config'][$i]['name'] = 'default_editor';
-$modversion['config'][$i]['title'] = '_CO_SOBJECT_EDITOR';
-$modversion['config'][$i]['description'] = '_CO_SOBJECT_EDITOR_DSC';
-$modversion['config'][$i]['formtype'] = 'select';
-$modversion['config'][$i]['valuetype'] = 'text';
-*/
-
+$modversion['config'][$i]['name'] = 'poster_groups';
+$modversion['config'][$i]['title'] = '_MI_IMBLOGGING_POSTERGR';
+$modversion['config'][$i]['description'] = '_MI_IMBLOGGING_POSTERGRDSC';
+$modversion['config'][$i]['formtype'] = 'select_multi';
+$modversion['config'][$i]['valuetype'] = 'array';
+$modversion['config'][$i]['options'] = $select_groups_options;
+$modversion['config'][$i]['default'] =  '1';
 
 /**
  * Comments information
