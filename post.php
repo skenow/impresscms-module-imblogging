@@ -30,7 +30,7 @@ function editpost($post_id = 0)
 		$postObj->setVar('post_uid', $xoopsUser->uid());
 		$postObj->setVar('post_published_date', time());
 		$postObj->hideFieldFromForm(array('post_published_date', 'post_uid', 'meta_keywords', 'meta_description', 'short_url'));
-		$sform = $postObj->getForm(_MD_IMBLOGGING_POST_SUBMIT, 'addpost');
+		$sform = $postObj->getSecureForm(_MD_IMBLOGGING_POST_SUBMIT, 'addpost');
 		$sform->assign($xoopsTpl, 'imblogging_postform');
 		$xoopsTpl->assign('imblogging_category_path', _SUBMIT);
 	}
