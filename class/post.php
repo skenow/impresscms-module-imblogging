@@ -223,7 +223,7 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 	 * Constructor
 	 */
     function ImbloggingPostHandler($db) {
-        $this->IcmsPersistableObjectHandler($db, 'post', 'post_id', 'post_title', '', 'imblogging');
+        $this->IcmsPersistableObjectHandler($db, 'post', 'post_id', 'post_title', 'post_content', 'imblogging');
     }
 
 	/**
