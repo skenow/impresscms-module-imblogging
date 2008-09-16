@@ -15,5 +15,8 @@
 		<{/if}>
 	</div>
 <{/foreach}>
+<{if $navbar}>
+	<div id="imblogging_navbar">Pages: <{$navbar}></div>
+<{/if}>
 
 <{includeq file='db:imblogging_footer.html'}>

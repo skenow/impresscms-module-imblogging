@@ -156,6 +156,14 @@ $modversion['config'][$i]['valuetype'] = 'array';
 $modversion['config'][$i]['options'] = $select_groups_options;
 $modversion['config'][$i]['default'] =  '1';
 
+$i++;
+$modversion['config'][$i]['name'] = 'posts_limit';
+$modversion['config'][$i]['title'] = '_MI_IMBLOGGING_LIMIT';
+$modversion['config'][$i]['description'] = '_MI_IMBLOGGING_LIMITDSC';
+$modversion['config'][$i]['formtype'] = 'textbox';
+$modversion['config'][$i]['valuetype'] = 'text';
+$modversion['config'][$i]['default'] = 5;
+
 /**
  * Comments information
  */

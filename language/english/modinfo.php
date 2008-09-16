@@ -23,6 +23,8 @@ define("_MI_IMBLOGGING_POSTS", "Posts");
 // Configs
 define("_MI_IMBLOGGING_POSTERGR", "Groups allowed to posts");
 define("_MI_IMBLOGGING_POSTERGRDSC", "Select the groups which are allowed to create new posts. Please note that a user belonging to one of these groups will be able to post directly on the site. The module currently has no moderation feature.");
+define("_MI_IMBLOGGING_LIMIT", "Posts limit");
+define("_MI_IMBLOGGING_LIMITDSC", "Number of posts to display on user side.");
 
 // Notifications
 define("_MI_IMBLOGGING_GLOBAL_NOTIFY", "All posts");

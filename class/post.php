@@ -242,22 +242,55 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
     }
 
     /**
-     * Get posts as array, ordered by post_published_date DESC
+     * Create the criteria that will be used by getPosts and getPostsCount
      *
+     * @param int $start to which record to start
+     * @param int $limit limit of posts to return
      * @param int $post_uid if specifid, only the post of this user will be returned
-     * @return array of posts
+     * @return CriteriaCompo $criteria
      */
-    function getPosts($post_uid = false) {
+    function getPostsCriteria($start=0, $limit=0, $post_uid=false) {
     	$criteria = new CriteriaCompo();
+    	if ($start) {
+    		$criteria->setStart($start);
+    	}
+    	if ($limit) {
+	    	$criteria->setLimit(intval($limit));
+    	}
     	$criteria->setSort('post_published_date');
     	$criteria->setOrder('DESC');
     	$criteria->add(new Criteria('post_status', IMBLOGGING_POST_STATUS_PUBLISHED));
     	if ($post_uid) {
     		$criteria->add(new Criteria('post_uid', $post_uid));
     	}
+    	return $criteria;
+    }
+
+    /**
+     * Get posts as array, ordered by post_published_date DESC
+     *
+     * @param int $start to which record to start
+     * @param int $post_uid if specifid, only the post of this user will be returned
+     * @return array of posts
+     */
+    function getPosts($start=0, $post_uid=false) {
+    	global $xoopsModuleConfig;
+
+		$criteria = $this->getPostsCriteria($start, $xoopsModuleConfig['posts_limit'], $post_uid);
     	$ret = $this->getObjects($criteria, true, false);
     	return $ret;
     }
+
+    /**
+     * Get posts count
+     *
+     * @param int $post_uid if specifid, only the post of this user will be returned
+     * @return array of posts
+     */
+    function getPostsCount($post_uid) {
+		$criteria = $this->getPostsCriteria(false, false, $post_uid);
+    	return $this->getCount($criteria);
+     }
 
 	/**
 	 * Get Posts requested by the global search feature
