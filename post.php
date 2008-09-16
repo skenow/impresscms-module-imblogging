@@ -20,7 +20,7 @@ function editpost($post_id = 0)
 			redirect_header($postObj->getItemLink(true), 3, _NOPERM);
 		}
 		$postObj->hideFieldFromForm(array('post_published_date', 'post_uid', 'meta_keywords', 'meta_description', 'short_url'));
-		$sform = $postObj->getForm(_MD_IMBLOGGING_POST_EDIT, 'addpost');
+		$sform = $postObj->getSecureForm(_MD_IMBLOGGING_POST_EDIT, 'addpost');
 		$sform->assign($xoopsTpl, 'imblogging_postform');
 		$xoopsTpl->assign('imblogging_category_path', $postObj->getVar('post_title') . ' > ' . _EDIT);
 	} else {
@@ -57,12 +57,23 @@ switch ($op) {
 		break;
 
 	case "addpost":
+        if (!$xoopsSecurity->check()) {
+        	redirect_header($impresscms->urls['previouspage'], 3, _MD_IMBLOGGING_SECURITY_CHECK_FAILED . implode('<br />', $xoopsSecurity->getErrors()));
+        }
         include_once ICMS_ROOT_PATH."/kernel/icmspersistablecontroller.php";
         $controller = new IcmsPersistableController($imblogging_post_handler);
 		$controller->storeFromDefaultForm(_MD_IMBLOGGING_POST_CREATED, _MD_IMBLOGGING_POST_MODIFIED);
 		break;
 
 	case "del":
+		if (!$postObj->userCanEditAndDelete()) {
+			redirect_header($postObj->getItemLink(true), 3, _NOPERM);
+		}
+		if (isset($_POST['confirm'])) {
+		    if (!$xoopsSecurity->check()) {
+		    	redirect_header($impresscms->urls['previouspage'], 3, _MD_IMBLOGGING_SECURITY_CHECK_FAILED . implode('<br />', $xoopsSecurity->getErrors()));
+		    }
+		}
 	    include_once ICMS_ROOT_PATH."/kernel/icmspersistablecontroller.php";
         $controller = new IcmsPersistableController($imblogging_post_handler);
 		$controller->handleObjectDeletionFromUserSide();
