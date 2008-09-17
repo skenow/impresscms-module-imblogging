@@ -63,5 +63,22 @@ function imblogging_getModuleName($withLink = true, $forBreadCrumb = false, $mod
 	}
 }
 
-
+/**
+ * Get URL of previous page
+ *
+ * @todo to be moved in ImpressCMS 1.2 core
+ *
+ * @param string $default default page if previous page is not found
+ * @return string previous page URL
+ */
+function imblogging_getPreviousPage($default=false) {
+	global $impresscms;
+	if (isset($impresscms->urls['previouspage'])) {
+		return $impresscms->urls['previouspage'];
+	} elseif($default) {
+		return $default;
+	} else {
+		return ICMS_URL;
+	}
+}
 ?>
