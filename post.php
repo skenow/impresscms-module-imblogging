@@ -9,6 +9,18 @@
 * @version		$Id$
 */
 
+
+
+
+
+/**
+ * Edit a Blog Post
+ * 
+ * 
+ * 
+ * 
+ * @param object $postObj Post Object to be edited
+*/
 function editpost($postObj)
 {
 	global $imblogging_post_handler, $xoopsTpl, $xoopsUser;

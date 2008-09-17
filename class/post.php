@@ -24,9 +24,12 @@ define ('IMBLOGGING_POST_STATUS_PRIVATE', 4);
 
 class ImbloggingPost extends IcmsPersistableSeoObject {
 
-	/**
-	 * Constructor
-	 */
+    /**
+     * Constructor
+     * 
+     * 
+     * @param object $handler Handler object for the blogging post
+     */
     function ImbloggingPost(&$handler) {
     	global $xoopsConfig;
 
@@ -64,6 +67,7 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 		$this->IcmsPersistableSeoObject();
     }
 
+
     /**
      * Overriding the IcmsPersistableObject::getVar method to assign a custom method on some
      * specific fields to handle the value before returning it
@@ -88,17 +92,23 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
         return icms_getLinkedUnameFromId($this->getVar('post_uid', 'e'));
     }
 
-	/**
-	 * Retrieving the status of the post
-	 *
-	 * @param str status of the post
-	 */
+    /**
+     * Retrieving the status of the post
+     *
+     * @param str status of the post
+     * @return mixed $post_statusArray[$ret] status of the post
+     */
     function post_status() {
         $ret = $this->getVar('post_status', 'e');
         $post_statusArray = $this->handler->getPost_statusArray();
         return $post_statusArray[$ret];
     }
 
+	/**
+	 * Returns the need to br
+	 *
+   * @return bool true | false
+	 */
 	function need_do_br() {
 		global $xoopsConfig, $xoopsUser;
 
@@ -129,6 +139,10 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 		return $this->getVar('post_status', 'e') == IMBLOGGING_POST_STATUS_PUBLISHED || $imblogging_isAdmin || $this->getVar('post_uid', 'e') == $xoopsUser->uid();
     }
 
+
+
+
+
 	/**
 	 * Get the poster
 	 *
@@ -146,6 +160,10 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 			return $userObj->getVar('uname');
 		}
     }
+
+
+
+
 
 	/**
 	 * Retrieve post info (poster and date)
@@ -327,7 +345,7 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 	/**
 	 * Get Posts requested by the global search feature
 	 *
-	 * @param array array containing the searched keywords
+	 * @param array $queryarray array containing the searched keywords
 	 * @param bool $andor wether the keywords should be searched with AND or OR
 	 * @param int $limit maximum results returned
 	 * @param int $offset where to start in the resulting dataset

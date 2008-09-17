@@ -10,6 +10,17 @@
 * @author		marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
 * @version		$Id$
 */
+
+
+
+/**
+ * Edit a Blog Post
+ * 
+ * 
+ * 
+ * 
+ * @param int $post_id Postid to be edited
+*/
 function editpost($post_id = 0)
 {
 	global $imblogging_post_handler, $xoopsModule, $icmsAdminTpl;
