@@ -9,11 +9,9 @@
 * @version		$Id$
 */
 
-function editpost($post_id = 0)
+function editpost($postObj)
 {
 	global $imblogging_post_handler, $xoopsTpl, $xoopsUser;
-
-	$postObj = $imblogging_post_handler->get($post_id);
 
 	if (!$postObj->isNew()){
 		if (!$postObj->userCanEditAndDelete()) {
@@ -53,12 +51,15 @@ $postObj = $imblogging_post_handler->get($post_id);
 
 switch ($op) {
 	case "mod":
-		editpost($post_id);
+		if ($post_id > 0 && $postObj->isNew()) {
+			redirect_header(imblogging_getPreviousPage('index.php'), 3, _NOPERM);
+		}
+		editpost($postObj);
 		break;
 
 	case "addpost":
         if (!$xoopsSecurity->check()) {
-        	redirect_header($impresscms->urls['previouspage'], 3, _MD_IMBLOGGING_SECURITY_CHECK_FAILED . implode('<br />', $xoopsSecurity->getErrors()));
+        	redirect_header(imblogging_getPreviousPage('index.php'), 3, _MD_IMBLOGGING_SECURITY_CHECK_FAILED . implode('<br />', $xoopsSecurity->getErrors()));
         }
         include_once ICMS_ROOT_PATH."/kernel/icmspersistablecontroller.php";
         $controller = new IcmsPersistableController($imblogging_post_handler);
