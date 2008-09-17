@@ -87,6 +87,7 @@ $modversion['search']['func'] = "imblogging_search";
  * Menu information
  */
 $modversion['hasMain'] = 1;
+global $xoopsModule;
 if (is_object($xoopsModule) && $xoopsModule->dirname() == 'imblogging') {
 	$imblogging_post_handler = xoops_getModuleHandler('post', 'imblogging');
 	if ($imblogging_post_handler->userCanSubmit()) {
