@@ -47,7 +47,7 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 
 		$this->initCommonVar('counter', false);
 		$this->initCommonVar('dohtml', false, true);
-		$this->initCommonVar('dobr', false, $xoopsConfig['editor_default'] == 'dhtmltextarea');
+		$this->initCommonVar('dobr', false);
 		$this->initCommonVar('doimage', false, true);
 		$this->initCommonVar('dosmiley', false, true);
 		$this->initCommonVar('doxcode', false, true);
@@ -98,6 +98,21 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
         $post_statusArray = $this->handler->getPost_statusArray();
         return $post_statusArray[$ret];
     }
+
+	function need_do_br() {
+		global $xoopsConfig, $xoopsUser;
+
+		$imblogging_module = icms_getModuleInfo('imblogging');
+		$groups = $xoopsUser->getGroups();
+
+		$editor_default = $xoopsConfig['editor_default'];
+		$gperm_handler = xoops_getHandler('groupperm');
+		if( file_exists( ICMS_EDITOR_PATH."/".$editor_default."/xoops_version.php" ) && $gperm_handler->checkRight('use_wysiwygeditor', $imblogging_module->mid(), $groups)){
+			return false;
+		} else {
+			return true;
+		}
+	}
 
 	/**
 	 * Check is user has access to view this post
@@ -375,6 +390,19 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 		}
 		$user_groups = $xoopsUser->getGroups();
 		return count(array_intersect($imbloggingModuleConfig['poster_groups'], $user_groups)) > 0;
+    }
+
+	/**
+	 * BeforeSave event
+	 *
+	 * Event automatically triggered by IcmsPersistable Framework before the object is inserted or updated.
+	 *
+	 * @param object $obj ImbloggingPost object
+	 * @return true
+	 */
+    function beforeSave(&$obj) {
+    	$obj->setVar('dobr', $obj->need_do_br());
+    	return true;
     }
 
 	/**
