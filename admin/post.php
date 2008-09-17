@@ -15,10 +15,7 @@
 
 /**
  * Edit a Blog Post
- * 
- * 
- * 
- * 
+ *
  * @param int $post_id Postid to be edited
 */
 function editpost($post_id = 0)

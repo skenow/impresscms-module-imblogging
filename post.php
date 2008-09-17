@@ -9,17 +9,10 @@
 * @version		$Id$
 */
 
-
-
-
-
 /**
  * Edit a Blog Post
- * 
- * 
- * 
- * 
- * @param object $postObj Post Object to be edited
+ *
+ * @param object $postObj ImblogginPost object to be edited
 */
 function editpost($postObj)
 {

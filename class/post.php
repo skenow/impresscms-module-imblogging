@@ -26,9 +26,8 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 
     /**
      * Constructor
-     * 
-     * 
-     * @param object $handler Handler object for the blogging post
+     *
+     * @param object $handler ImbloggingPostHandler object
      */
     function ImbloggingPost(&$handler) {
     	global $xoopsConfig;
@@ -139,10 +138,6 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 		return $this->getVar('post_status', 'e') == IMBLOGGING_POST_STATUS_PUBLISHED || $imblogging_isAdmin || $this->getVar('post_uid', 'e') == $xoopsUser->uid();
     }
 
-
-
-
-
 	/**
 	 * Get the poster
 	 *
@@ -160,10 +155,6 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 			return $userObj->getVar('uname');
 		}
     }
-
-
-
-
 
 	/**
 	 * Retrieve post info (poster and date)
@@ -260,7 +251,6 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 		$ret['userCanEditAndDelete'] = $this->userCanEditAndDelete();
 		return $ret;
     }
-
 }
 class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 
