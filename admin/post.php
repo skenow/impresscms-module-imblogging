@@ -42,17 +42,18 @@ function editpost($post_id = 0)
 include_once("admin_header.php");
 
 $imblogging_post_handler = xoops_getModuleHandler('post');
-
-$op = '';
+/** Use a naming convention that indicates the source of the content of the variable */
+$clean_op = '';
 /** Create a whitelist of valid values, be sure to use appropriate types for each value
  * Be sure to include a value for no parameter, if you have a default condition 
  */
 $valid_op = array ('mod','changedField','addpost','del','view','');
 
-if (isset($_GET['op'])) $op = htmlentities($_GET['op']);
-if (isset($_POST['op'])) $op = htmlentities($_POST['op']);
+if (isset($_GET['op'])) $clean_op = htmlentities($_GET['op']);
+if (isset($_POST['op'])) $clean_op = htmlentities($_POST['op']);
 
-$post_id = isset($_GET['post_id']) ? (int) $_GET['post_id'] : 0 ;
+/** Again, use a naming convention that indicates the source of the content of the variable */
+$clean_post_id = isset($_GET['post_id']) ? (int) $_GET['post_id'] : 0 ;
 
 /** 
  * in_array() is a native PHP function that will determine if the value of the
@@ -60,14 +61,14 @@ $post_id = isset($_GET['post_id']) ? (int) $_GET['post_id'] : 0 ;
  * are case sensitive and the 3rd argument determines whether type matching is 
  * required   
 */
-if (in_array($op,$valid_op,true)){ 
-  switch ($op) {
+if (in_array($clean_op,$valid_op,true)){ 
+  switch ($clean_op) {
   	case "mod":
   	case "changedField":
   
   		xoops_cp_header();
   
-  		editpost($post_id);
+  		editpost($clean_post_id);
   		break;
   	case "addpost":
           include_once ICMS_ROOT_PATH."/kernel/icmspersistablecontroller.php";
@@ -84,7 +85,7 @@ if (in_array($op,$valid_op,true)){
   		break;
   
   	case "view" :
-  		$postObj = $imblogging_post_handler->get($post_id);
+  		$postObj = $imblogging_post_handler->get($clean_post_id);
   
   		smart_xoops_cp_header();
   		smart_adminMenu(1, _AM_IMBLOGGING_POST_VIEW . ' > ' . $postObj->getVar('post_title'));
@@ -98,14 +99,14 @@ if (in_array($op,$valid_op,true)){
   		smart_collapsableBar('postview_posts', _AM_IMBLOGGING_POSTS, _AM_IMBLOGGING_POSTS_IN_POST_DSC);
   
   		$criteria = new CriteriaCompo();
-  		$criteria->add(new Criteria('post_id', $post_id));
+  		$criteria->add(new Criteria('post_id', $clean_post_id));
   
   		$objectTable = new SmartObjectTable($imblogging_post_handler, $criteria);
   		$objectTable->addColumn(new SmartObjectColumn('post_date', 'left', 150));
   		$objectTable->addColumn(new SmartObjectColumn('post_message'));
   		$objectTable->addColumn(new SmartObjectColumn('post_uid', 'left', 150));
   
-  		$objectTable->addIntroButton('addpost', 'post.php?op=mod&post_id=' . $post_id, _AM_IMBLOGGING_POST_CREATE);
+  		$objectTable->addIntroButton('addpost', 'post.php?op=mod&post_id=' . $clean_post_id, _AM_IMBLOGGING_POST_CREATE);
   
   		$objectTable->render();
   

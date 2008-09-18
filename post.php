@@ -39,24 +39,34 @@ function editpost($postObj)
 	}
 }
 
-include_once('header.php');
+include_once 'header.php';
 
 $xoopsOption['template_main'] = 'imblogging_post.html';
-include_once(ICMS_ROOT_PATH . "/header.php");
+include_once ICMS_ROOT_PATH . '/header.php';
 
 $imblogging_post_handler = xoops_getModuleHandler('post');
 
-$op = '';
+/** Use a naming convention that indicates the source of the content of the variable */
+$clean_op = '';
 
-if (isset($_GET['op'])) $op = $_GET['op'];
-if (isset($_POST['op'])) $op = $_POST['op'];
+if (isset($_GET['op'])) $clean_op = $_GET['op'];
+if (isset($_POST['op'])) $clean_op = $_POST['op'];
 
-$post_id = isset($_GET['post_id']) ? intval($_GET['post_id']) : 0 ;
-$postObj = $imblogging_post_handler->get($post_id);
+/** Again, use a naming convention that indicates the source of the content of the variable */
+$clean_post_id = isset($_GET['post_id']) ? intval($_GET['post_id']) : 0 ;
+$postObj = $imblogging_post_handler->get($clean_post_id);
 
-switch ($op) {
+/** Create a whitelist of valid values, be sure to use appropriate types for each value
+ * Be sure to include a value for no parameter, if you have a default condition 
+ */
+$valid_op = array ('mod','addpost','del','');
+/** 
+ * Only proceed if the supplied operation is a valid operation
+ */ 
+if (in_array($clean_op,$valid_op,true)){ 
+  switch ($clean_op) {
 	case "mod":
-		if ($post_id > 0 && $postObj->isNew()) {
+  		if ($clean_post_id > 0 && $postObj->isNew()) {
 			redirect_header(imblogging_getPreviousPage('index.php'), 3, _NOPERM);
 		}
 		editpost($postObj);
@@ -66,7 +76,7 @@ switch ($op) {
         if (!$xoopsSecurity->check()) {
         	redirect_header(imblogging_getPreviousPage('index.php'), 3, _MD_IMBLOGGING_SECURITY_CHECK_FAILED . implode('<br />', $xoopsSecurity->getErrors()));
         }
-        include_once ICMS_ROOT_PATH."/kernel/icmspersistablecontroller.php";
+          include_once ICMS_ROOT_PATH.'/kernel/icmspersistablecontroller.php';
         $controller = new IcmsPersistableController($imblogging_post_handler);
 		$controller->storeFromDefaultForm(_MD_IMBLOGGING_POST_CREATED, _MD_IMBLOGGING_POST_MODIFIED);
 		break;
@@ -80,7 +90,7 @@ switch ($op) {
 		    	redirect_header($impresscms->urls['previouspage'], 3, _MD_IMBLOGGING_SECURITY_CHECK_FAILED . implode('<br />', $xoopsSecurity->getErrors()));
 		    }
 		}
-	    include_once ICMS_ROOT_PATH."/kernel/icmspersistablecontroller.php";
+  	    include_once ICMS_ROOT_PATH.'/kernel/icmspersistablecontroller.php';
         $controller = new IcmsPersistableController($imblogging_post_handler);
 		$controller->handleObjectDeletionFromUserSide();
 		$xoopsTpl->assign('imblogging_category_path', $postObj->getVar('post_title') . ' > ' . _DELETE);
@@ -97,7 +107,7 @@ switch ($op) {
 
 		if ($xoopsModuleConfig['com_rule'] && $postObj->getVar('post_cancomment')) {
 			$xoopsTpl->assign('imblogging_post_comment', true);
-			include_once ICMS_ROOT_PATH . "/include/comment_view.php";
+  			include_once ICMS_ROOT_PATH . '/include/comment_view.php';
 		}
 		break;
 }
@@ -108,7 +118,7 @@ switch ($op) {
 $icms_metagen = new IcmsMetagen($postObj->getVar('post_title'), $postObj->getVar('meta_keywords','n'), $postObj->getVar('meta_description', 'n'));
 $icms_metagen->createMetaTags();
 
-
+}  
 $xoopsTpl->assign('imblogging_module_home', imblogging_getModuleName(true, true));
-include_once("footer.php");
+include_once 'footer.php';
 ?>
