@@ -321,6 +321,11 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
     	return $ret;
     }
 
+    function getPostersArray() {
+    	$member_handler = xoops_getHandler('member');
+    	return $member_handler->getUserList();
+    }
+
     /**
      * Get posts count
      *

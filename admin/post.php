@@ -131,6 +131,7 @@ if (in_array($clean_op,$valid_op,true)){
   		$objectTable->addQuickSearch(array('post_title', 'post_content'));
 
   		$objectTable->addFilter('post_status', 'getPost_statusArray');
+  		$objectTable->addFilter('post_uid', 'getPostersArray');
 
   		$icmsAdminTpl->assign('imblogging_post_table', $objectTable->fetch());
 
