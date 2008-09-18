@@ -129,6 +129,9 @@ if (in_array($clean_op,$valid_op,true)){
 
   		$objectTable->addIntroButton('addpost', 'post.php?op=mod', _AM_IMBLOGGING_POST_CREATE);
   		$objectTable->addQuickSearch(array('post_title', 'post_content'));
+
+  		$objectTable->addFilter('post_status', 'getPost_statusArray');
+
   		$icmsAdminTpl->assign('imblogging_post_table', $objectTable->fetch());
 
   		$icmsAdminTpl->display('db:imblogging_admin_post.html');
