@@ -44,85 +44,99 @@ include_once("admin_header.php");
 $imblogging_post_handler = xoops_getModuleHandler('post');
 
 $op = '';
+/** Create a whitelist of valid values, be sure to use appropriate types for each value
+ * Be sure to include a value for no parameter, if you have a default condition 
+ */
+$valid_op = array ('mod','changedField','addpost','del','view','');
 
-if (isset($_GET['op'])) $op = $_GET['op'];
-if (isset($_POST['op'])) $op = $_POST['op'];
+if (isset($_GET['op'])) $op = htmlentities($_GET['op']);
+if (isset($_POST['op'])) $op = htmlentities($_POST['op']);
 
-$post_id = isset($_GET['post_id']) ? intval($_GET['post_id']) : 0 ;
+$post_id = isset($_GET['post_id']) ? (int) $_GET['post_id'] : 0 ;
 
-switch ($op) {
-	case "mod":
-	case "changedField":
-
-		xoops_cp_header();
-
-		editpost($post_id);
-		break;
-	case "addpost":
-        include_once ICMS_ROOT_PATH."/kernel/icmspersistablecontroller.php";
-        $controller = new IcmsPersistableController($imblogging_post_handler);
-		$controller->storeFromDefaultForm(_AM_IMBLOGGING_POST_CREATED, _AM_IMBLOGGING_POST_MODIFIED);
-
-		break;
-
-	case "del":
-	    include_once ICMS_ROOT_PATH."/kernel/icmspersistablecontroller.php";
-        $controller = new IcmsPersistableController($imblogging_post_handler);
-		$controller->handleObjectDeletion();
-
-		break;
-
-	case "view" :
-		$postObj = $imblogging_post_handler->get($post_id);
-
-		smart_xoops_cp_header();
-		smart_adminMenu(1, _AM_IMBLOGGING_POST_VIEW . ' > ' . $postObj->getVar('post_title'));
-
-		smart_collapsableBar('postview', $postObj->getVar('post_title') . $postObj->getEditItemLink(), _AM_IMBLOGGING_POST_VIEW_DSC);
-
-		$postObj->displaySingleObject();
-
-		smart_close_collapsable('postview');
-
-		smart_collapsableBar('postview_posts', _AM_IMBLOGGING_POSTS, _AM_IMBLOGGING_POSTS_IN_POST_DSC);
-
-		$criteria = new CriteriaCompo();
-		$criteria->add(new Criteria('post_id', $post_id));
-
-		$objectTable = new SmartObjectTable($imblogging_post_handler, $criteria);
-		$objectTable->addColumn(new SmartObjectColumn('post_date', 'left', 150));
-		$objectTable->addColumn(new SmartObjectColumn('post_message'));
-		$objectTable->addColumn(new SmartObjectColumn('post_uid', 'left', 150));
-
-		$objectTable->addIntroButton('addpost', 'post.php?op=mod&post_id=' . $post_id, _AM_IMBLOGGING_POST_CREATE);
-
-		$objectTable->render();
-
-		smart_close_collapsable('postview_posts');
-
-		break;
-
-	default:
-
-		xoops_cp_header();
-
-		$xoopsModule->displayAdminMenu(0, _AM_IMBLOGGING_POSTS);
-
-		include_once ICMS_ROOT_PATH."/kernel/icmspersistabletable.php";
-		$objectTable = new IcmsPersistableTable($imblogging_post_handler);
-		$objectTable->addColumn(new IcmsPersistableColumn('post_title', 'left'));
-		$objectTable->addColumn(new IcmsPersistableColumn('post_published_date', 'center', 150));
-		$objectTable->addColumn(new IcmsPersistableColumn('post_uid', 'center', 150));
-		$objectTable->addColumn(new IcmsPersistableColumn('post_status', 'center', 150));
-
-		$objectTable->addIntroButton('addpost', 'post.php?op=mod', _AM_IMBLOGGING_POST_CREATE);
-		$objectTable->addQuickSearch(array('post_name', 'post_description_small'));
-		$icmsAdminTpl->assign('imblogging_post_table', $objectTable->fetch());
-
-		$icmsAdminTpl->display('db:imblogging_admin_post.html');
-		break;
+/** 
+ * in_array() is a native PHP function that will determine if the value of the
+ * first argument is found in the array listed in the second argument. Strings
+ * are case sensitive and the 3rd argument determines whether type matching is 
+ * required   
+*/
+if (in_array($op,$valid_op,true)){ 
+  switch ($op) {
+  	case "mod":
+  	case "changedField":
+  
+  		xoops_cp_header();
+  
+  		editpost($post_id);
+  		break;
+  	case "addpost":
+          include_once ICMS_ROOT_PATH."/kernel/icmspersistablecontroller.php";
+          $controller = new IcmsPersistableController($imblogging_post_handler);
+  		$controller->storeFromDefaultForm(_AM_IMBLOGGING_POST_CREATED, _AM_IMBLOGGING_POST_MODIFIED);
+  
+  		break;
+  
+  	case "del":
+  	    include_once ICMS_ROOT_PATH."/kernel/icmspersistablecontroller.php";
+          $controller = new IcmsPersistableController($imblogging_post_handler);
+  		$controller->handleObjectDeletion();
+  
+  		break;
+  
+  	case "view" :
+  		$postObj = $imblogging_post_handler->get($post_id);
+  
+  		smart_xoops_cp_header();
+  		smart_adminMenu(1, _AM_IMBLOGGING_POST_VIEW . ' > ' . $postObj->getVar('post_title'));
+  
+  		smart_collapsableBar('postview', $postObj->getVar('post_title') . $postObj->getEditItemLink(), _AM_IMBLOGGING_POST_VIEW_DSC);
+  
+  		$postObj->displaySingleObject();
+  
+  		smart_close_collapsable('postview');
+  
+  		smart_collapsableBar('postview_posts', _AM_IMBLOGGING_POSTS, _AM_IMBLOGGING_POSTS_IN_POST_DSC);
+  
+  		$criteria = new CriteriaCompo();
+  		$criteria->add(new Criteria('post_id', $post_id));
+  
+  		$objectTable = new SmartObjectTable($imblogging_post_handler, $criteria);
+  		$objectTable->addColumn(new SmartObjectColumn('post_date', 'left', 150));
+  		$objectTable->addColumn(new SmartObjectColumn('post_message'));
+  		$objectTable->addColumn(new SmartObjectColumn('post_uid', 'left', 150));
+  
+  		$objectTable->addIntroButton('addpost', 'post.php?op=mod&post_id=' . $post_id, _AM_IMBLOGGING_POST_CREATE);
+  
+  		$objectTable->render();
+  
+  		smart_close_collapsable('postview_posts');
+  
+  		break;
+  
+  	default:
+  
+  		xoops_cp_header();
+  
+  		$xoopsModule->displayAdminMenu(0, _AM_IMBLOGGING_POSTS);
+  
+  		include_once ICMS_ROOT_PATH."/kernel/icmspersistabletable.php";
+  		$objectTable = new IcmsPersistableTable($imblogging_post_handler);
+  		$objectTable->addColumn(new IcmsPersistableColumn('post_title', 'left'));
+  		$objectTable->addColumn(new IcmsPersistableColumn('post_published_date', 'center', 150));
+  		$objectTable->addColumn(new IcmsPersistableColumn('post_uid', 'center', 150));
+  		$objectTable->addColumn(new IcmsPersistableColumn('post_status', 'center', 150));
+  
+  		$objectTable->addIntroButton('addpost', 'post.php?op=mod', _AM_IMBLOGGING_POST_CREATE);
+  		$objectTable->addQuickSearch(array('post_name', 'post_description_small'));
+  		$icmsAdminTpl->assign('imblogging_post_table', $objectTable->fetch());
+  
+  		$icmsAdminTpl->display('db:imblogging_admin_post.html');
+  		break;
+  }
+  xoops_cp_footer();
 }
-
-xoops_cp_footer();
-
+/**
+ * If you want to have a specific action taken because the user input was invalid,
+ * place it at this point. Otherwise, a blank page will be displayed
+ */ 
 ?>
