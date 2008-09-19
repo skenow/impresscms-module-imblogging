@@ -18,19 +18,19 @@ global $xoopsModule;
 define("_MI_IMBLOGGING_MD_NAME", "imBlogging");
 define("_MI_IMBLOGGING_MD_DESC", "ImpressCMS - einfaches Blog Modul");
 
-define("_MI_IMBLOGGING_POSTS", "Posts");
+define("_MI_IMBLOGGING_POSTS", "Beiträge");
 
 // Configs
-define("_MI_IMBLOGGING_POSTERGR", "Groups allowed to posts");
-define("_MI_IMBLOGGING_POSTERGRDSC", "Select the groups which are allowed to create new posts. Please note that a user belonging to one of these groups will be able to post directly on the site. The module currently has no moderation feature.");
-define("_MI_IMBLOGGING_LIMIT", "Posts limit");
-define("_MI_IMBLOGGING_LIMITDSC", "Number of posts to display on user side.");
+define("_MI_IMBLOGGING_POSTERGR", "Gruppen die Beiträge schreiben dürfen");
+define("_MI_IMBLOGGING_POSTERGRDSC", "Wählen Sie die Gruppen aus, denen erlaubt ist neue Beiträge zu schreiben. Beachten Sie welche Mitglieder in welche Gruppe sich befinden! Das Modul verfügt derzeit über keine Moderatorenfunktion.");
+define("_MI_IMBLOGGING_LIMIT", "Beiträge anzeigen");
+define("_MI_IMBLOGGING_LIMITDSC", "Anzahl der Beiträge die in der Webseite angezeigt werden sollen.");
 
 // Notifications
-define("_MI_IMBLOGGING_GLOBAL_NOTIFY", "All posts");
+define("_MI_IMBLOGGING_GLOBAL_NOTIFY", "Alle Beiträge");
 define("_MI_IMBLOGGING_GLOBAL_NOTIFY_DSC", "Notifications related to all posts in the module");
-define("_MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY", "New post published");
-define("_MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY_CAP", "Notify me when a new post is published");
+define("_MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY", "Neuer Beitrag veröffentlicht");
+define("_MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY_CAP", "Mich benachrichtigen, wenn ein neuer Beitrag veröffentlicht wurde");
 define("_MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY_DSC", "Receive notification when any new post is published.");
 define("_MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY_SBJ", "[{X_SITENAME}] {X_MODULE} auto-notify : New post published");
 ?>

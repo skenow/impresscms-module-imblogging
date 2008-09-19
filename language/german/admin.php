@@ -17,13 +17,13 @@ define("_AM_IMBLOGGING_FIRST_USE", "This is the first time you access this modul
 
 // Post
 define("_AM_IMBLOGGING_POSTS_DSC", "All posts in the module");
-define("_AM_IMBLOGGING_POST_CREATE", "Add a post");
+define("_AM_IMBLOGGING_POST_CREATE", "Blogeintrag schreiben");
 define("_AM_IMBLOGGING_POST", "Post");
 define("_AM_IMBLOGGING_POST_CREATE_INFO", "Fill-out the following form to create a new post.");
 define("_AM_IMBLOGGING_POST_EDIT", "Edit this post");
 define("_AM_IMBLOGGING_POST_EDIT_INFO", "Fill-out the following form in order to edit this post.");
-define("_AM_IMBLOGGING_POST_MODIFIED", "The post was successfully modified.");
-define("_AM_IMBLOGGING_POST_CREATED", "The post has been successfully created.");
+define("_AM_IMBLOGGING_POST_MODIFIED", "Der Beitrag wurde geändert.");
+define("_AM_IMBLOGGING_POST_CREATED", "Der Beitrag wurde erstellt.");
 define("_AM_IMBLOGGING_POST_VIEW", "Post info");
 define("_AM_IMBLOGGING_POST_VIEW_DSC", "Here is the info about this post.");
 ?>
