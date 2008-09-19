@@ -29,7 +29,7 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
      *
      * @param object $handler ImbloggingPostHandler object
      */
-    function ImbloggingPost(&$handler) {
+    public function __construct(&$handler){
     	global $xoopsConfig;
 
     	$this->IcmsPersistableObject($handler);
@@ -262,7 +262,7 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 	/**
 	 * Constructor
 	 */
-    function ImbloggingPostHandler($db) {
+    public function __construct(&$db){
         $this->IcmsPersistableObjectHandler($db, 'post', 'post_id', 'post_title', 'post_content', 'imblogging');
     }
 
@@ -321,6 +321,11 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
     	return $ret;
     }
 
+    /**
+     * Get a list of users
+     *
+     * @return array list of users
+     */
     function getPostersArray() {
     	$member_handler = xoops_getHandler('member');
     	return $member_handler->getUserList();

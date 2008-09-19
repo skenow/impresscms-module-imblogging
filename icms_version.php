@@ -78,12 +78,22 @@ if (is_object($xoopsModule) && $xoopsModule->dirname() == 'imblogging') {
 	}
 }
 
+/** Blocks information */
+$modversion['blocks'][1] = array(
+  'file' => 'post_recent.php',
+  'name' => _MI_IMBLOGGING_POSTRECENT,
+  'description' => _MI_IMBLOGGING_POSTRECENTDSC,
+  'show_func' => 'imblogging_post_recent_show',
+  'edit_func' => 'imblogging_post_edit',
+  'options' => '5',
+  'template' => 'imblogging_post_recent.html');
+
 /** Templates information */
 $modversion['templates'][1] = array(
   'file' => 'imblogging_header.html',
   'description' => 'Module Header');
 
-$modversion['templates'][] = array( 
+$modversion['templates'][] = array(
   'file' => 'imblogging_footer.html',
   'description' => 'Module Footer');
 

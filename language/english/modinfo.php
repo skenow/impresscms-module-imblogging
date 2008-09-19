@@ -26,6 +26,11 @@ define("_MI_IMBLOGGING_POSTERGRDSC", "Select the groups which are allowed to cre
 define("_MI_IMBLOGGING_LIMIT", "Posts limit");
 define("_MI_IMBLOGGING_LIMITDSC", "Number of posts to display on user side.");
 
+// Blocks
+define("_MI_IMBLOGGING_POSTRECENT", "Recent posts");
+define("_MI_IMBLOGGING_POSTRECENTDSC", "Display most recent posts");
+
+
 // Notifications
 define("_MI_IMBLOGGING_GLOBAL_NOTIFY", "All posts");
 define("_MI_IMBLOGGING_GLOBAL_NOTIFY_DSC", "Notifications related to all posts in the module");
