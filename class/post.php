@@ -350,7 +350,7 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
     	return $this->getCount($criteria);
      }
 
-     function getPostsByMonth() {
+     function getPostsCountByMonth() {
      	$sql =  'SELECT count(post_id) AS posts_count, MONTH(FROM_UNIXTIME(post_published_date)) AS posts_month ' .
      			'FROM ' . $this->table . ' ' .
      			'GROUP BY posts_month ' .
