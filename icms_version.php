@@ -79,7 +79,6 @@ if (is_object($xoopsModule) && $xoopsModule->dirname() == 'imblogging') {
 }
 
 /** Blocks information */
-
 $modversion['blocks'][1] = array(
   'file' => 'post_recent.php',
   'name' => _MI_IMBLOGGING_POSTRECENT,
