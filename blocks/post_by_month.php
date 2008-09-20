@@ -1,8 +1,8 @@
 <?php
 /**
-* Recent posts block file
+* Posts by month block file
 *
-* This file holds the functions needed for the recent posts block
+* This file holds the functions needed for the posts by month block
 *
 * @copyright	http://smartfactory.ca The SmartFactory
 * @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
@@ -13,16 +13,16 @@
 
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
-function imblogging_post_recent_show($options)
+function imblogging_post_by_month_show($options)
 {
 	include_once(ICMS_ROOT_PATH . '/modules/imblogging/include/common.php');
 	$imblogging_post_handler = xoops_getModuleHandler('post', 'imblogging');
-	$block['posts'] = $imblogging_post_handler->getPosts(0, $options[0]);
+	$block['months'] = $imblogging_post_handler->getPostsByMonth();
 
 	return $block;
 }
 
-function imblogging_post_recent_edit($options)
+function imblogging_post_by_month_edit($options)
 {
 	include_once(ICMS_ROOT_PATH . '/modules/imblogging/include/common.php');
 

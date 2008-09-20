@@ -11,5 +11,5 @@
 
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
-
+define("_MB_IMBLOGGING_POST_RECENT_LIMIT", "Post limit: ");
 ?>

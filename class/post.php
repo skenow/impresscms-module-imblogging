@@ -350,6 +350,20 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
     	return $this->getCount($criteria);
      }
 
+     function getPostsByMonth() {
+     	$sql =  'SELECT count(post_id) AS posts_count, MONTH(FROM_UNIXTIME(post_published_date)) AS posts_month ' .
+     			'FROM ' . $this->table . ' ' .
+     			'GROUP BY posts_month ' .
+     			'HAVING posts_count > 0 ' .
+     			'ORDER BY posts_month DESC';
+		$postsByMonthArray = $this->query($sql, false);
+		$ret = array();
+		foreach ($postsByMonthArray as $postByMonth) {
+			$ret[imblogging_getMonthNameById($postByMonth['posts_month'])] = $postByMonth['posts_count'];
+		}
+		return $ret;
+     }
+
 	/**
 	 * Get Posts requested by the global search feature
 	 *

@@ -81,4 +81,54 @@ function imblogging_getPreviousPage($default=false) {
 		return ICMS_URL;
 	}
 }
+
+/**
+ * Get month name by its ID
+ *
+ * @todo to be moved in ImpressCMS 1.2 core
+ *
+ * @param int $month_id ID of the month
+ * @return string month name
+ */
+function imblogging_getMonthNameById($month_id) {
+	icms_loadLanguageFile('core', 'calendar');
+	switch($month_id) {
+		case 1:
+			return _CAL_JANUARY;
+		break;
+		case 2:
+			return _CAL_FEBRUARY;
+		break;
+		case 3:
+			return _CAL_MARCH;
+		break;
+		case 4:
+			return _CAL_APRIL;
+		break;
+		case 5:
+			return _CAL_MAY;
+		break;
+		case 6:
+			return _CAL_JUNE;
+		break;
+		case 7:
+			return _CAL_JULY;
+		break;
+		case 8:
+			return _CAL_AUGUST;
+		break;
+		case 9:
+			return _CAL_SEPTEMBER;
+		break;
+		case 10:
+			return _CAL_OCTOBER;
+		break;
+		case 11:
+			return _CAL_NOVEMBER;
+		break;
+		case 12:
+			return _CAL_DECEMBER;
+		break;
+	}
+}
 ?>

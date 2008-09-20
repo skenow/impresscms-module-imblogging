@@ -20,7 +20,7 @@ $clean_post_uid = isset($_GET['uid']) ? intval($_GET['uid']) : false;
 
 $imblogging_post_handler = xoops_getModuleHandler('post');
 
-$xoopsTpl->assign('imblogging_posts', $imblogging_post_handler->getPosts($clean_start, $clean_post_uid));
+$xoopsTpl->assign('imblogging_posts', $imblogging_post_handler->getPosts($clean_start, $xoopsModuleConfig['posts_limit'], $clean_post_uid));
 
 /**
  * Create Navbar
