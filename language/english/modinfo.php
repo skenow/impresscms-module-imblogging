@@ -29,7 +29,8 @@ define("_MI_IMBLOGGING_LIMITDSC", "Number of posts to display on user side.");
 // Blocks
 define("_MI_IMBLOGGING_POSTRECENT", "Recent posts");
 define("_MI_IMBLOGGING_POSTRECENTDSC", "Display most recent posts");
-
+define("_MI_IMBLOGGING_POSTBYMONTH", "Posts by month");
+define("_MI_IMBLOGGING_POSTBYMONTHDSC", "Display list of months in which there were posts");
 
 // Notifications
 define("_MI_IMBLOGGING_GLOBAL_NOTIFY", "All posts");
