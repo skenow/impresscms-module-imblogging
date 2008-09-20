@@ -323,10 +323,8 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
      * @param int $post_uid if specifid, only the post of this user will be returned
      * @return array of posts
      */
-    function getPosts($start=0, $post_uid=false) {
-    	$imbloggingModuleConfig = icms_getModuleConfig('imblogging');
-
-		$criteria = $this->getPostsCriteria($start, $imbloggingModuleConfig['posts_limit'], $post_uid);
+    function getPosts($start=0, $limit=0, $post_uid=false) {
+		$criteria = $this->getPostsCriteria($start, $limit, $post_uid);
     	$ret = $this->getObjects($criteria, true, false);
     	return $ret;
     }
