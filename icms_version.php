@@ -88,6 +88,14 @@ $modversion['blocks'][1] = array(
   'options' => '5',
   'template' => 'imblogging_post_recent.html');
 
+$modversion['blocks'][] = array(
+  'file' => 'post_by_month.php',
+  'name' => _MI_IMBLOGGING_POSTBYMONTH,
+  'description' => _MI_IMBLOGGING_POSTBYMONTHDSC,
+  'show_func' => 'imblogging_post_by_month_show',
+  'edit_func' => 'imblogging_post_by_month_edit',
+  'options' => '',
+  'template' => 'imblogging_post_by_month.html');
 
 /** Templates information */
 $modversion['templates'][1] = array(
