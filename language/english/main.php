@@ -18,5 +18,4 @@ define('_MD_IMBLOGGING_POST_SUBMIT', 'Submit post');
 define('_MD_IMBLOGGING_POST_MODIFIED', 'The post was successfully modified.');
 define('_MD_IMBLOGGING_POST_CREATED', 'The post has been successfully created.');
 define('_MD_IMBLOGGING_SECURITY_CHECK_FAILED', 'Security check failed...');
-
 ?>
