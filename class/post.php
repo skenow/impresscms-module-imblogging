@@ -149,11 +149,21 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
     	$poster_uid = $this->getVar('post_uid', 'e');
     	$userObj = $member_handler->getuser($poster_uid);
 
-		if ($link) {
-			return '<a href="' . IMBLOGGING_URL . 'index.php?uid=' . $poster_uid . '">' . $userObj->getVar('uname') . '</a>';
-		} else {
-			return $userObj->getVar('uname');
-		}
+		/**
+		 * We need to make sure the poster is a valid user object. It is possible the user no longer
+		 * exists if, for example, he was previously deleted. In that case, we will return Anonymous
+		 */
+    	if (is_object($userObj)) {
+			if ($link) {
+				return '<a href="' . IMBLOGGING_URL . 'index.php?uid=' . $poster_uid . '">' . $userObj->getVar('uname') . '</a>';
+			} else {
+				return $userObj->getVar('uname');
+			}
+    	} else {
+			global $xoopsConfig;
+			return $xoopsConfig['anonymous'];
+    	}
+
     }
 
 	/**
