@@ -9,6 +9,7 @@
 * @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
 * @since		1.0
 * @author		http://inboxinternational.com INBOX International inc.
+* @package imblogging
 * @version		$Id$
 */
 

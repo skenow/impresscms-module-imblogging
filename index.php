@@ -6,12 +6,14 @@
 * @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
 * @since		1.0
 * @author		marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
+* @package imblogging
 * @version		$Id$
 */
-
+/** Include the module's header for all pages */
 include_once 'header.php';
 
 $xoopsOption['template_main'] = 'imblogging_index.html';
+/** Include the ICMS header file */
 include_once ICMS_ROOT_PATH . '/header.php';
 
 // At which record shall we start display
@@ -39,6 +41,6 @@ $xoopsTpl->assign('imblogging_module_home', imblogging_getModuleName(true, true)
 if ($clean_post_uid) {
 	$xoopsTpl->assign('imblogging_category_path', sprintf(_CO_IMBLOGGING_POST_FROM_USER, icms_getLinkedUnameFromId($clean_post_uid)));
 }
-
+/** Include the module's footer */
 include_once 'footer.php';
 ?>
