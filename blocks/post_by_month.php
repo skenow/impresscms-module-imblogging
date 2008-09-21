@@ -17,7 +17,7 @@ function imblogging_post_by_month_show($options)
 {
 	include_once(ICMS_ROOT_PATH . '/modules/imblogging/include/common.php');
 	$imblogging_post_handler = xoops_getModuleHandler('post', 'imblogging');
-	$block['months'] = $imblogging_post_handler->getPostsCountByMonth();
+	$block['posts_by_months'] = $imblogging_post_handler->getPostsCountByMonth();
 
 	return $block;
 }

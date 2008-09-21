@@ -297,9 +297,11 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
      * @param int $start to which record to start
      * @param int $limit limit of posts to return
      * @param int $post_uid if specifid, only the post of this user will be returned
+     * @param int $year of posts to display
+     * @param int $month of posts to display
      * @return CriteriaCompo $criteria
      */
-    function getPostsCriteria($start=0, $limit=0, $post_uid=false) {
+    function getPostsCriteria($start=0, $limit=0, $post_uid=false, $year=false, $month=false) {
     	$criteria = new CriteriaCompo();
     	if ($start) {
     		$criteria->setStart($start);
@@ -313,6 +315,12 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
     	if ($post_uid) {
     		$criteria->add(new Criteria('post_uid', $post_uid));
     	}
+    	if ($year && $month) {
+    		$criteriaYearMonth = new CriteriaCompo();
+			$criteriaYearMonth->add(new Criteria('MONTH(FROM_UNIXTIME(post_published_date))', $month));
+			$criteriaYearMonth->add(new Criteria('YEAR(FROM_UNIXTIME(post_published_date))', $year));
+			$criteria->add($criteriaYearMonth);
+    	}
     	return $criteria;
     }
 
@@ -320,11 +328,14 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
      * Get posts as array, ordered by post_published_date DESC
      *
      * @param int $start to which record to start
+     * @param int $limit max posts to display
      * @param int $post_uid if specifid, only the post of this user will be returned
+     * @param int $year of posts to display
+     * @param int $month of posts to display
      * @return array of posts
      */
-    function getPosts($start=0, $limit=0, $post_uid=false) {
-		$criteria = $this->getPostsCriteria($start, $limit, $post_uid);
+    function getPosts($start=0, $limit=0, $post_uid=false, $year=false, $month=false) {
+		$criteria = $this->getPostsCriteria($start, $limit, $post_uid, $year, $month);
     	$ret = $this->getObjects($criteria, true, false);
     	return $ret;
     }
@@ -344,22 +355,25 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
      *
      * @param int $post_uid if specifid, only the post of this user will be returned
      * @return array of posts
+     * @param int $year of posts to display
+     * @param int $month of posts to display
      */
-    function getPostsCount($post_uid) {
-		$criteria = $this->getPostsCriteria(false, false, $post_uid);
+    function getPostsCount($post_uid, $year=false, $month=false) {
+		$criteria = $this->getPostsCriteria(false, false, $post_uid, $year, $month);
     	return $this->getCount($criteria);
      }
 
      function getPostsCountByMonth() {
-     	$sql =  'SELECT count(post_id) AS posts_count, MONTH(FROM_UNIXTIME(post_published_date)) AS posts_month ' .
+     	$sql =  'SELECT count(post_id) AS posts_count, MONTH(FROM_UNIXTIME(post_published_date)) AS posts_month, YEAR(FROM_UNIXTIME(post_published_date)) AS posts_year ' .
      			'FROM ' . $this->table . ' ' .
-     			'GROUP BY posts_month ' .
+     			'GROUP BY posts_year, posts_month ' .
      			'HAVING posts_count > 0 ' .
-     			'ORDER BY posts_month DESC';
+     			'ORDER BY posts_year DESC, posts_month DESC';
 		$postsByMonthArray = $this->query($sql, false);
 		$ret = array();
 		foreach ($postsByMonthArray as $postByMonth) {
-			$ret[imblogging_getMonthNameById($postByMonth['posts_month'])] = $postByMonth['posts_count'];
+			$postByMonth['posts_month_name'] = imblogging_getMonthNameById($postByMonth['posts_month']);
+			$ret[] = $postByMonth;
 		}
 		return $ret;
      }

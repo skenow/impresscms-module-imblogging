@@ -1,5 +1,5 @@
 <ul>
-<{foreach item=posts_count key=posts_month from=$block.months}>
-	<li><{$posts_month}> (<{$posts_count}>)</li>
+<{foreach item=posts_by_month from=$block.posts_by_months}>
+	<li><a href="<{$xoops_url}>/modules/imblogging/index.php?y=<{$posts_by_month.posts_year}>&m=<{$posts_by_month.posts_month}>"><{$posts_by_month.posts_month_name}> <{$posts_by_month.posts_year}> (<{$posts_by_month.posts_count}>)</li></a>
 <{/foreach}>
 </ul>
