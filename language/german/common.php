@@ -28,6 +28,7 @@ define("_CO_IMBLOGGING_POST_POST_CANCOMMENT_DSC", "");
 
 define("_CO_IMBLOGGING_POST_INFO", "Veröffentlicht von %s am %s.");
 define("_CO_IMBLOGGING_POST_FROM_USER", "Alle Beiträge von %s");
+define("_CO_IMBLOGGING_POST_FROM_MONTH", "Alle Beiträge vom Monat %s %u");
 define("_CO_IMBLOGGING_POST_COMMENTS_INFO", "%d Kommentar(e)");
 define("_CO_IMBLOGGING_POST_NO_COMMENT", "Kein Kommentar");
 
