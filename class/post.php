@@ -24,6 +24,8 @@ define ('IMBLOGGING_POST_STATUS_PRIVATE', 4);
 
 class ImbloggingPost extends IcmsPersistableSeoObject {
 
+	private $post_date_info=false;
+
     /**
      * Constructor
      *
@@ -163,7 +165,6 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 			global $xoopsConfig;
 			return $xoopsConfig['anonymous'];
     	}
-
     }
 
 	/**
@@ -214,6 +215,67 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
     }
 
     /**
+     * Get post year, month and day and assign value to proper var
+     *
+     * @return VOID
+     */
+    function getPostDateInfo() {
+    	$post_date = $this->getVar('post_published_date', 'n');
+		$this->post_date_info['year'] = date('Y', $post_date);
+		$this->post_date_info['month'] = imblogging_getMonthNameById(date('n', $post_date));
+		$this->post_date_info['day'] = date('D', $post_date);
+		$this->post_date_info['day_number'] = date('d', $post_date);
+    }
+
+	/**
+	 * Get year of this post
+	 *
+	 * @return int year of this post
+	 */
+    function getPostYear() {
+    	if (!$this->post_date_info) {
+    		$this->getPostDateInfo();
+    	}
+    	return $this->post_date_info['year'];
+    }
+
+	/**
+	 * Get month of this post
+	 *
+	 * @return str month of this post
+	 */
+    function getPostMonth() {
+    	if (!$this->post_date_info) {
+    		$this->getPostDateInfo();
+    	}
+    	return $this->post_date_info['month'];
+    }
+
+	/**
+	 * Get day of this post
+	 *
+	 * @return str day of this post
+	 */
+    function getPostDay() {
+    	if (!$this->post_date_info) {
+    		$this->getPostDateInfo();
+    	}
+    	return $this->post_date_info['day'];
+    }
+
+	/**
+	 * Get day number of this post
+	 *
+	 * @return str day number of this post
+	 */
+    function getPostDayNumber() {
+    	if (!$this->post_date_info) {
+    		$this->getPostDateInfo();
+    	}
+    	return $this->post_date_info['day_number'];
+    }
+
+    /**
      * Check to see wether the current user can edit or delete this post
      *
      * @return bool true if he can, false if not
@@ -254,6 +316,10 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 		$ret = parent::toArray();
 		$ret['post_info'] = $this->getPostInfo();
 		$ret['post_lead'] = $this->getPostLead();
+		$ret['post_year'] = $this->getPostYear();
+		$ret['post_month'] = $this->getPostMonth();
+		$ret['post_day'] = $this->getPostDay();
+		$ret['post_day_number'] = $this->getPostDayNumber();
 		$ret['post_comment_info'] = $this->getCommentsInfo();
 		$ret['post_content'] = $this->getPostContent();
 		$ret['editItemLink'] = $this->getEditItemLink(false, true, true);
