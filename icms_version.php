@@ -74,7 +74,7 @@ global $xoopsModule;
 if (is_object($xoopsModule) && $xoopsModule->dirname() == 'imblogging') {
 	$imblogging_post_handler = xoops_getModuleHandler('post', 'imblogging');
 	if ($imblogging_post_handler->userCanSubmit()) {
-		$modversion['sub'][1]['name'] = _SUBMIT;
+		$modversion['sub'][1]['name'] = _MI_IMBLOGGING_POST_ADD;
 		$modversion['sub'][1]['url'] = 'post.php?op=mod';
 	}
 }
