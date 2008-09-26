@@ -30,6 +30,8 @@ define("_MI_IMBLOGGING_LIMITDSC", "Aantal berichten weer te geven aan gebruikers
 // Blocks
 define("_MI_IMBLOGGING_POSTRECENT", "Recente berichten");
 define("_MI_IMBLOGGING_POSTRECENTDSC", "Geef meest recente berichten weer");
+define("_MI_IMBLOGGING_POSTBYMONTH", "Berichten per maand");
+define("_MI_IMBLOGGING_POSTBYMONTHDSC", "Geef lijst van maanden weer waarin geen berichten zijn");
 
 
 // Notifications
@@ -40,5 +42,6 @@ define("_MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY_CAP", "Breng me op de hoogte
 define("_MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY_DSC", "Ontvang bericht wanneer een nieuwe bericht wordt gepubliceerd.");
 define("_MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY_SBJ", "[{X_SITENAME}] {X_MODULE} auto-bericht : Nieuw berichten gepubliceerd");
 
-
+// Submit button
+define("_MI_IMBLOGGING_POST_ADD", "Voeg nieuw bericht toe");
 ?>

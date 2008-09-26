@@ -29,6 +29,7 @@ define("_CO_IMBLOGGING_POST_POST_CANCOMMENT_DSC", "");
 
 define("_CO_IMBLOGGING_POST_INFO", "Gepubliceerd door %s op %s.");
 define("_CO_IMBLOGGING_POST_FROM_USER", "Alle berichtenen van %s");
+define("_CO_IMBLOGGING_POST_FROM_MONTH", "Alle berichten gemaakt in %s %u");
 define("_CO_IMBLOGGING_POST_COMMENTS_INFO", "%d commentaren");
 define("_CO_IMBLOGGING_POST_NO_COMMENT", "Geen commentaar");
 
