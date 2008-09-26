@@ -58,13 +58,13 @@ $clean_post_id = isset($_GET['post_id']) ? intval($_GET['post_id']) : 0 ;
 $postObj = $imblogging_post_handler->get($clean_post_id);
 
 /** Create a whitelist of valid values, be sure to use appropriate types for each value
- * Be sure to include a value for no parameter, if you have a default condition 
+ * Be sure to include a value for no parameter, if you have a default condition
  */
 $valid_op = array ('mod','addpost','del','');
-/** 
+/**
  * Only proceed if the supplied operation is a valid operation
- */ 
-if (in_array($clean_op,$valid_op,true)){ 
+ */
+if (in_array($clean_op,$valid_op,true)){
   switch ($clean_op) {
 	case "mod":
   		if ($clean_post_id > 0 && $postObj->isNew()) {
@@ -100,6 +100,7 @@ if (in_array($clean_op,$valid_op,true)){
 
 	default:
 		if ($postObj && !$postObj->isNew() && $postObj->accessGranted()) {
+			$postObj->updateCounter();
 			$xoopsTpl->assign('imblogging_post', $postObj->toArray());
 			$xoopsTpl->assign('imblogging_category_path', $postObj->getVar('post_title'));
 		} else {
@@ -119,7 +120,7 @@ if (in_array($clean_op,$valid_op,true)){
 $icms_metagen = new IcmsMetagen($postObj->getVar('post_title'), $postObj->getVar('meta_keywords','n'), $postObj->getVar('meta_description', 'n'));
 $icms_metagen->createMetaTags();
 
-}  
+}
 $xoopsTpl->assign('imblogging_module_home', imblogging_getModuleName(true, true));
 include_once 'footer.php';
 ?>

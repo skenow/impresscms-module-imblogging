@@ -276,6 +276,19 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
     }
 
     /**
+     * Update the counter field of the post object
+     *
+     * @todo add this in directly in the IPF
+     *
+     * @return VOID
+     */
+    function updateCounter() {
+    	$counter = $this->getVar('counter');
+		$this->setVar('counter', $counter+1);
+		$this->handler->insert($this, true);
+    }
+
+    /**
      * Check to see wether the current user can edit or delete this post
      *
      * @return bool true if he can, false if not
