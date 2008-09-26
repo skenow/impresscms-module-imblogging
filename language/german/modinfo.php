@@ -37,6 +37,9 @@ define("_MI_IMBLOGGING_GLOBAL_NOTIFY", "Alle Beiträge");
 define("_MI_IMBLOGGING_GLOBAL_NOTIFY_DSC", "Benachrichtigungen im Zusammenhang mit allen Beiträgen");
 define("_MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY", "Neuer Beitrag veröffentlicht");
 define("_MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY_CAP", "Mich benachrichtigen, wenn ein neuer Beitrag veröffentlicht wurde");
-define("_MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY_DSC", "Receive notification when any new post is published.");
-define("_MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY_SBJ", "[{X_SITENAME}] {X_MODULE} auto-notify : New post published");
+define("_MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY_DSC", "Benachrichtigung erhalten, wenn ein Beitrag veröffentlicht wurde.");
+define("_MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY_SBJ", "[{X_SITENAME}] {X_MODULE} auto-notify : Neuer Beitrag veröffentlicht");
+
+// Submit button
+define("_MI_IMBLOGGING_POST_ADD", "Beitrag hinzufügen");
 ?>
