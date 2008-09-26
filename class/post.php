@@ -350,6 +350,7 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 		$ret['editItemLink'] = $this->getEditItemLink(false, true, true);
 		$ret['deleteItemLink'] = $this->getDeleteItemLink(false, true, true);
 		$ret['userCanEditAndDelete'] = $this->userCanEditAndDelete();
+		$ret['post_posterid'] = $this->getVar('post_uid','e');
 		return $ret;
 	}
 }

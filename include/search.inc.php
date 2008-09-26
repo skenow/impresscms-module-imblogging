@@ -18,12 +18,14 @@ function imblogging_search($queryarray, $andor, $limit, $offset, $userid)
 	$imblogging_post_handler = xoops_getModuleHandler('post', 'imblogging');
 	$postsArray = $imblogging_post_handler->getPostsForSearch($queryarray, $andor, $limit, $offset, $userid);
 
+	$ret = array();
+	
 	foreach ($postsArray as $postArray) {
 		$item['image'] = "images/post.png";
 		$item['link'] = $postArray['itemUrl'];
 		$item['title'] = $postArray['post_title'];
 		$item['time'] = strtotime($postArray['post_published_date']);
-		$item['uid'] = $postArray['post_uid'];
+		$item['uid'] = $postArray['post_posterid'];
 		$ret[] = $item;
 		unset($item);
 	}
