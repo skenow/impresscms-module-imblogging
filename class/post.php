@@ -235,6 +235,7 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 		$post_date = $this->getVar('post_published_date', 'n');
 		$this->post_date_info['year'] = date('Y', $post_date);
 		$this->post_date_info['month'] = imblogging_getMonthNameById(date('n', $post_date));
+		$this->post_date_info['month_short'] = date('M', $post_date);
 		$this->post_date_info['day'] = date('D', $post_date);
 		$this->post_date_info['day_number'] = date('d', $post_date);
 	}
@@ -261,6 +262,18 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 			$this->getPostDateInfo();
 		}
 		return $this->post_date_info['month'];
+	}
+
+	/**
+	 * Get month short name of this post
+	 *
+	 * @return str month of this post
+	 */
+	function getPostMonthShort() {
+		if (!$this->post_date_info) {
+			$this->getPostDateInfo();
+		}
+		return $this->post_date_info['month_short'];
 	}
 
 	/**
@@ -344,6 +357,7 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 		$ret['post_lead'] = $this->getPostLead();
 		$ret['post_year'] = $this->getPostYear();
 		$ret['post_month'] = $this->getPostMonth();
+		$ret['post_month_short'] = $this->getPostMonthShort();
 		$ret['post_day'] = $this->getPostDay();
 		$ret['post_day_number'] = $this->getPostDayNumber();
 		$ret['post_comment_info'] = $this->getCommentsInfo();
