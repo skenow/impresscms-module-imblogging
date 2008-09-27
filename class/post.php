@@ -47,6 +47,8 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 		$this->quickInitVar('post_status', XOBJ_DTYPE_INT, false, false, false, IMBLOGGING_POST_STATUS_PUBLISHED);
 		$this->quickInitVar('post_cancomment', XOBJ_DTYPE_INT, false, false, false, true);
 		$this->quickInitVar('post_comments', XOBJ_DTYPE_INT);
+
+
 		$this->hideFieldFromForm('post_comments');
 
 		$this->quickInitVar('post_notification_sent', XOBJ_DTYPE_INT);
@@ -293,7 +295,6 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 	 * @return VOID
 	 */
 	function updateCounter() {
-		icms_debug('666');
 		$this->updating_counter = true;
 		$counter = $this->getVar('counter');
 		$this->setVar('counter', $counter +1);
