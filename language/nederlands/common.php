@@ -38,4 +38,9 @@ define("_CO_IMBLOGGING_POST_STATUS_PUBLISHED", "Gepubliceerd");
 define("_CO_IMBLOGGING_POST_STATUS_PENDING", "In afwachting van recensie");
 define("_CO_IMBLOGGING_POST_STATUS_DRAFT", "Ontwerp");
 define("_CO_IMBLOGGING_POST_STATUS_PRIVATE", "Privé");
+
+// common language
+define("_CO_IMBLOGGING_POST_PUBLISHED", "Gepubliceerd");
+define("_CO_IMBLOGGING_POST_ON", "op");
+define("_CO_IMBLOGGING_POST_BY", "door");
 ?>
