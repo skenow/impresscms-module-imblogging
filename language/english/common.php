@@ -37,4 +37,9 @@ define("_CO_IMBLOGGING_POST_STATUS_PUBLISHED", "Published");
 define("_CO_IMBLOGGING_POST_STATUS_PENDING", "Pending review");
 define("_CO_IMBLOGGING_POST_STATUS_DRAFT", "Draft");
 define("_CO_IMBLOGGING_POST_STATUS_PRIVATE", "Private");
+
+// common language
+define("_CO_IMBLOGGING_POST_PUBLISHED", "Published");
+define("_CO_IMBLOGGING_POST_ON", "on");
+define("_CO_IMBLOGGING_POST_BY", "by");
 ?>
