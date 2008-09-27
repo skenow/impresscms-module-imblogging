@@ -1,0 +1,21 @@
+smarty variables:
+
+<{$imblogging_post.post_info}> (user, date + hour)
+
+<{$imblogging_post.post_day}> (ex: Fri)
+<{$imblogging_post.post_day_number}> (ex: 31)
+<{$imblogging_post.post_month}> (ex: Januar)
+<{$imblogging_post.post_month_short}> (ex:Jan)
+<{$imblogging_post.post_year}> (ex: 2008)
+
+<{$imblogging_post.itemLink}>
+<{$imblogging_post.itemUrl}>
+
+<{$imblogging_post.editItemLink}>
+<{$imblogging_post.deleteItemLink}>
+
+ <{$imblogging_post.post_uid}> (postername)
+ <{$imblogging_post.post_posterid}> (poster-uid)
+ <{$imblogging_post.post_published_date}>
+ 
+ 
