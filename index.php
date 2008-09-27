@@ -25,7 +25,6 @@ $clean_month = isset($_GET['m']) ? intval($_GET['m']) : false;
 $imblogging_post_handler = xoops_getModuleHandler('post');
 
 $xoopsTpl->assign('imblogging_posts', $imblogging_post_handler->getPosts($clean_start, $xoopsModuleConfig['posts_limit'], $clean_post_uid, $clean_year, $clean_month));
-
 /**
  * Create Navbar
  */

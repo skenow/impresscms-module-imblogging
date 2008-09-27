@@ -37,4 +37,9 @@ define("_CO_IMBLOGGING_POST_STATUS_PUBLISHED", "Jetzt Veröffentlichen");
 define("_CO_IMBLOGGING_POST_STATUS_PENDING", "Zur Überprüfung wartend");
 define("_CO_IMBLOGGING_POST_STATUS_DRAFT", "Als Entwurf speichern");
 define("_CO_IMBLOGGING_POST_STATUS_PRIVATE", "Privat");
+
+// common language
+define("_CO_IMBLOGGING_POST_PUBLISHED", "Veröffentlicht");
+define("_CO_IMBLOGGING_POST_ON", "von");
+define("_CO_IMBLOGGING_POST_BY", "am");
 ?>

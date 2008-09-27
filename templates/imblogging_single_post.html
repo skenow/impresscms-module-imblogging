@@ -1,9 +1,18 @@
 <{if $imblogging_post}>
 	<div class="imblogging_post_container">
-		<h1><{$imblogging_post.post_title}></h1>
-		<div class="imblogging_post_info"><{$imblogging_post.post_info}></div>
+	
+	<div class="post-date">
+		<span class="month"><{$imblogging_post.post_month_short}></span>
+		<span class="day"><{$imblogging_post.post_day_number}></span>
+	</div>
+
+		<h1 class="post-title"><{$imblogging_post.post_title}></h1>
+		<div class="imblogging_post_info"><{$lang_co_imblogging_post_published}> <{$lang_co_imblogging_post_on}> <{$imblogging_post.post_uid}> <{$lang_co_imblogging_post_by}> <{$imblogging_post.post_day}> <{$imblogging_post.post_day_number}> <{$imblogging_post.post_month}> <{$imblogging_post.post_year}> </div>
 		<div class="imblogging_post_content">
 			<{$imblogging_post.post_content}>
+		</div>
+		<div class="imblogging_post_more">
+			<{$lang_co_imblogging_global_notify}> <{$imblogging_post.post_info}>
 		</div>
 		<{if $imblogging_post.userCanEditAndDelete}>
 			<div class="imblogging_admin_links"><{$imblogging_post.editItemLink}><{$imblogging_post.deleteItemLink}></div>

@@ -122,5 +122,11 @@ $icms_metagen->createMetaTags();
 
 }
 $xoopsTpl->assign('imblogging_module_home', imblogging_getModuleName(true, true));
+
+$xoopsTpl->assign('lang_co_imblogging_post_published', _CO_IMBLOGGING_POST_PUBLISHED);
+$xoopsTpl->assign('lang_co_imblogging_post_on', _CO_IMBLOGGING_POST_ON);
+$xoopsTpl->assign('lang_co_imblogging_post_by', _CO_IMBLOGGING_POST_BY);
+$xoopsTpl->assign('lang_co_imblogging_global_notify', _MI_IMBLOGGING_GLOBAL_NOTIFY);
+
 include_once 'footer.php';
 ?>

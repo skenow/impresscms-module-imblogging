@@ -19,6 +19,7 @@ if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
  * @param string $moduleName dirname of the moodule
  * @return string URL of the admin side of the module
  */
+
 function imblogging_getModuleAdminLink($moduleName='imblogging') {
 	global $xoopsModule;
 	if (!$moduleName && (isset ($xoopsModule) && is_object($xoopsModule))) {
