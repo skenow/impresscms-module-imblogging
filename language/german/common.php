@@ -25,6 +25,7 @@ define("_CO_IMBLOGGING_POST_POST_STATUS", "Status");
 define("_CO_IMBLOGGING_POST_POST_STATUS_DSC", "");
 define("_CO_IMBLOGGING_POST_POST_CANCOMMENT", "Erlaube Kommentare?");
 define("_CO_IMBLOGGING_POST_POST_CANCOMMENT_DSC", "");
+define("_CO_IMBLOGGING_POST_ALL_POSTS", "Alle Beiträge");
 
 define("_CO_IMBLOGGING_POST_INFO", "Veröffentlicht von %s am %s.");
 define("_CO_IMBLOGGING_POST_FROM_USER", "Alle Beiträge von %s");
