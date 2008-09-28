@@ -18,4 +18,6 @@ define('_MD_IMBLOGGING_POST_SUBMIT', 'Beitrag hinzufügen');
 define('_MD_IMBLOGGING_POST_MODIFIED', 'Der Beitrag wurde geändert.');
 define('_MD_IMBLOGGING_POST_CREATED', 'Der Beitrag wurde erstellt.');
 define('_MD_IMBLOGGING_SECURITY_CHECK_FAILED', 'Sicherheitscheck fehlgeschlagen... bitte erneut versuchen.');
+
+define('_MD_IMBLOGGING_NAV_PAGES', 'Seiten: ');
 ?>
