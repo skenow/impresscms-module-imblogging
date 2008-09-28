@@ -19,3 +19,8 @@ smarty variables:
  <{$imblogging_post.post_published_date}>
  
  
+ for language variables:
+<{$smarty.const._MI_IMBLOGGING_GLOBAL_NOTIFY}>
+
+for images:
+<img src="<{$imblogging_images_url}>user.gif" alt="something..." /> 
