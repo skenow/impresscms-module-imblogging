@@ -27,6 +27,7 @@ define('IMBLOGGING_POST_STATUS_PRIVATE', 4);
 class ImbloggingPost extends IcmsPersistableSeoObject {
 
 	private $post_date_info = false;
+	private $poster_info = false;
 	public $updating_counter = false;
 
 	/**
@@ -158,23 +159,29 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 	 * @return str poster name linked on his module poster page, or simply poster name
 	 */
 	function getPoster($link = false) {
-		$member_handler = xoops_getHandler('member');
-		$poster_uid = $this->getVar('post_uid', 'e');
-		$userObj = $member_handler->getuser($poster_uid);
+		if (!$this->poster_info) {
+			$member_handler = xoops_getHandler('member');
+			$poster_uid = $this->getVar('post_uid', 'e');
+			$userObj = $member_handler->getuser($poster_uid);
 
-		/**
-		 * We need to make sure the poster is a valid user object. It is possible the user no longer
-		 * exists if, for example, he was previously deleted. In that case, we will return Anonymous
-		 */
-		if (is_object($userObj)) {
-			if ($link) {
-				return '<a href="' . IMBLOGGING_URL . 'index.php?uid=' . $poster_uid . '">' . $userObj->getVar('uname') . '</a>';
+			/**
+			 * We need to make sure the poster is a valid user object. It is possible the user no longer
+			 * exists if, for example, he was previously deleted. In that case, we will return Anonymous
+			 */
+			if (is_object($userObj)) {
+				$this->poster_info['uid'] = $poster_uid;
+				$this->poster_info['uname'] = $userObj->getVar('uname');
+				$this->poster_info['link'] = '<a href="' . IMBLOGGING_URL . 'index.php?uid=' . $this->poster_info['uid'] . '">' . $this->poster_info['uname'] . '</a>';
 			} else {
-				return $userObj->getVar('uname');
+				global $xoopsConfig;
+				$this->poster_info['uid'] = 0;
+				$this->poster_info['uname'] = $xoopsConfig['anonymous'];
 			}
+		}
+		if ($link && $this->poster_info['uid']) {
+			return $this->poster_info['link'];
 		} else {
-			global $xoopsConfig;
-			return $xoopsConfig['anonymous'];
+			return $this->poster_info['uname'];
 		}
 	}
 
