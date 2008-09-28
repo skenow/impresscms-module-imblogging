@@ -14,7 +14,8 @@ if (!defined("ICMS_ROOT_PATH"))
 	die("ICMS root path not defined");
 
 // including the IcmsPersistabelSeoObject
-include_once ICMS_ROOT_PATH . "/kernel/icmspersistableseoobject.php";
+include_once ICMS_ROOT_PATH . '/kernel/icmspersistableseoobject.php';
+include_once(ICMS_ROOT_PATH . '/modules/imblogging/include/functions.php');
 
 /**
  * Post status definitions
@@ -238,7 +239,6 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 	 * @return VOID
 	 */
 	function getPostDateInfo() {
-		include_once(ICMS_ROOT_PATH . '/modules/imblogging/include/functions.php');
 		$post_date = $this->getVar('post_published_date', 'n');
 		$this->post_date_info['year'] = date('Y', $post_date);
 		$this->post_date_info['month'] = imblogging_getMonthNameById(date('n', $post_date));
