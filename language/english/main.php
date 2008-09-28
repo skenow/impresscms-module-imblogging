@@ -20,5 +20,4 @@ define('_MD_IMBLOGGING_POST_CREATED', 'The post has been successfully created.')
 define('_MD_IMBLOGGING_SECURITY_CHECK_FAILED', 'Security check failed...');
 
 define('_MD_IMBLOGGING_NAV_PAGES', 'Pages: ');
-
 ?>
