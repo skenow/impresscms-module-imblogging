@@ -21,7 +21,7 @@
 	</div>
 <{/foreach}>
 <{if $navbar}>
-	<div id="imblogging_navbar">Pages: <{$navbar}></div>
+	<div id="imblogging_navbar"><{$smarty.const._MD_IMBLOGGING_NAV_PAGES}> <{$navbar}></div>
 <{/if}>
 
 <{includeq file='db:imblogging_footer.html'}>
