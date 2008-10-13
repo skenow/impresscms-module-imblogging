@@ -19,7 +19,7 @@ $xoopsTpl->assign('imblogging_images_url', IMBLOGGING_IMAGES_URL);
 
 $xoTheme->addStylesheet(IMBLOGGING_URL . 'module.css');
 
-$xoopsTpl->assign("ref_smartfactory", "imBlogging is developed by The SmartFactory (http://smartfactory.ca), a division of INBOX International (http://inboxinternational.com)");
+$xoopsTpl->assign("ref_smartfactory", "imBlogging is developed by The SmartFactory (http://smartfactory.ca), a division of INBOX International inc. (http://inboxinternational.com)");
 
 include_once(ICMS_ROOT_PATH . '/footer.php');
 
