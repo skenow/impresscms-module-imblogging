@@ -32,22 +32,27 @@ $modversion = array(
   'image'=> "images/icon_big.png", /* for backward compatibility */
 
 /**  Development information */
-  'status_version'=> "Beta 1",
-  'status'=> "Beta",
-  'date'=> "unreleased",
+  'status_version'=> "RC 1",
+  'status'=> "RC",
+  'date'=> "2008-10-13",
   'author_word'=> "",
 
 /** Contributors */
   'developer_website_url' => "http://smartfactory.ca",
   'developer_website_name' => "The SmartFactory",
   'developer_email' => "info@smartfactory.ca");
-$modversion['people']['developers'][] = "[url=http://smartfactory.ca/userinfo.php?uid=1]marcan[/url] (Marc-Andr&eacute; Lanciault)";
-$modversion['people']['developers'][] = "[url=http://smartfactory.ca/userinfo.php?uid=112]felix[/url] (F&eacute;lix Tousignant)";
-//$modversion['people']['testers'][] = "";
-//$modversion['people']['translators'][] = "";
-//$modversion['people']['documenters'][] = "";
+$modversion['people']['developers'][] = "[url=http://community.impresscms.org/userinfo.php?uid=168]marcan[/url] (Marc-Andr&eacute; Lanciault)";
+$modversion['people']['developers'][] = "[url=http://community.impresscms.org/userinfo.php?uid=69]vaughan[/url]";
+$modversion['people']['developers'][] = "[url=http://community.impresscms.org/userinfo.php?uid=54]skenow[/url]";
+$modversion['people']['developers'][] = "[url=http://community.impresscms.org/userinfo.php?uid=10]sato-san[/url]";
+$modversion['people']['testers'][] = "[url=http://community.impresscms.org/userinfo.php?uid=53]davidl2[/url]";
+$modversion['people']['testers'][] = "[url=http://community.impresscms.org/userinfo.php?uid=340]nekro[/url]";
+$modversion['people']['translators'][] = "[url=http://community.impresscms.org/userinfo.php?uid=10]sato-san[/url]";
+$modversion['people']['translators'][] = "[url=http://community.impresscms.org/userinfo.php?uid=179]McDonald[/url]";
+$modversion['people']['translators'][] = "[url=http://community.impresscms.org/userinfo.php?uid=14]GibaPhp[/url]";
+$modversion['people']['documenters'][] = "[url=http://community.impresscms.org/userinfo.php?uid=372]UnderDog[/url]";
 //$modversion['people']['other'][] = "";
-//$modversion['warning'] = _CO_SOBJECT_WARNING_BETA;
+$modversion['warning'] = _MODABOUT_WARNING_RC;
 
 /** Administrative information */
 $modversion['hasAdmin'] = 1;
