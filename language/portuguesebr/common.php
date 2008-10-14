@@ -26,6 +26,7 @@ define("_CO_IMBLOGGING_POST_POST_STATUS", "Status");
 define("_CO_IMBLOGGING_POST_POST_STATUS_DSC", "");
 define("_CO_IMBLOGGING_POST_POST_CANCOMMENT", "Pode Comentar ?");
 define("_CO_IMBLOGGING_POST_POST_CANCOMMENT_DSC", "");
+define("_CO_IMBLOGGING_POST_ALL_POSTS", "All posts");
 
 define("_CO_IMBLOGGING_POST_INFO", "Publicado por %s no %s.");
 define("_CO_IMBLOGGING_POST_FROM_USER", "Todos Blogs de %s");
@@ -38,4 +39,9 @@ define("_CO_IMBLOGGING_POST_STATUS_PUBLISHED", "Publicado");
 define("_CO_IMBLOGGING_POST_STATUS_PENDING", "Pendente");
 define("_CO_IMBLOGGING_POST_STATUS_DRAFT", "Rascunho");
 define("_CO_IMBLOGGING_POST_STATUS_PRIVATE", "Privado");
+
+// common language
+define("_CO_IMBLOGGING_POST_PUBLISHED", "Published");
+define("_CO_IMBLOGGING_POST_ON", "on");
+define("_CO_IMBLOGGING_POST_BY", "by");
 ?>

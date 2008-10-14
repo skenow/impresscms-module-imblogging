@@ -40,4 +40,7 @@ define("_MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY", "Novo Blog publicado");
 define("_MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY_CAP", "Avise-me quando um novo Blog for publicado");
 define("_MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY_DSC", "Receber notificações quando algum novo Blog for publicado.");
 define("_MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY_SBJ", "[{X_SITENAME}] {X_MODULE} Aviso-Automático : Novo Blog publicado");
+
+// Submit button
+define("_MI_IMBLOGGING_POST_ADD", "Add a new post");
 ?>
