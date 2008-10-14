@@ -20,4 +20,5 @@ define('_MD_IMBLOGGING_POST_MODIFIED', 'Het berichten was succesvol gemodificeer
 define('_MD_IMBLOGGING_POST_CREATED', 'Het berichten is succesvol opgeslagen.');
 define('_MD_IMBLOGGING_SECURITY_CHECK_FAILED', 'Veiligheidscontrole heeft gefaalt...');
 
+define('_MD_IMBLOGGING_NAV_PAGES', 'Pages: ');
 ?>
