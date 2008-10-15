@@ -52,7 +52,7 @@ $modversion['people']['translators'][] = "[url=http://community.impresscms.org/u
 $modversion['people']['translators'][] = "[url=http://community.impresscms.org/userinfo.php?uid=14]GibaPhp[/url]";
 $modversion['people']['documenters'][] = "[url=http://community.impresscms.org/userinfo.php?uid=372]UnderDog[/url]";
 //$modversion['people']['other'][] = "";
-$modversion['warning'] = _MODABOUT_WARNING_RC;
+$modversion['warning'] = _MI_IMBLOGGING_RC;
 
 /** Administrative information */
 $modversion['hasAdmin'] = 1;
