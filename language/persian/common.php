@@ -26,6 +26,7 @@ define("_CO_IMBLOGGING_POST_POST_STATUS", "وضعیت");
 define("_CO_IMBLOGGING_POST_POST_STATUS_DSC", "");
 define("_CO_IMBLOGGING_POST_POST_CANCOMMENT", "آیا خوانندگان می توانند دیدگاه‌های خود را بنویسند؟");
 define("_CO_IMBLOGGING_POST_POST_CANCOMMENT_DSC", "");
+define("_CO_IMBLOGGING_POST_ALL_POSTS", "All posts");
 
 define("_CO_IMBLOGGING_POST_INFO", "نوشته شده توسط %s به‌تاریخ %s.");
 define("_CO_IMBLOGGING_POST_FROM_USER", "تمام نوشته‌های %s");
@@ -38,4 +39,9 @@ define("_CO_IMBLOGGING_POST_STATUS_PUBLISHED", "منتشر شود");
 define("_CO_IMBLOGGING_POST_STATUS_PENDING", "منتظر برای تایید");
 define("_CO_IMBLOGGING_POST_STATUS_DRAFT", "در چرکنویس‌ها قرار گیرد");
 define("_CO_IMBLOGGING_POST_STATUS_PRIVATE", "پیام خصوصی می‌باشد");
+
+// common language
+define("_CO_IMBLOGGING_POST_PUBLISHED", "Published");
+define("_CO_IMBLOGGING_POST_ON", "on");
+define("_CO_IMBLOGGING_POST_BY", "by");
 ?>

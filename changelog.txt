@@ -1,3 +1,7 @@
+<b><u>=> Unreleased: Version 1.0 Final</u></b>
+
+- Fixing undefined constant WARNING_RC (malanciault)
+
 <b><u>=> 2008-10-13: Version 1.0 RC</u></b>
 
 - First public release of the module.

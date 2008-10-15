@@ -19,4 +19,6 @@ define('_MD_IMBLOGGING_POST_SUBMIT', 'Enviar Blog');
 define('_MD_IMBLOGGING_POST_MODIFIED', 'O Blog foi corretamente modificado.');
 define('_MD_IMBLOGGING_POST_CREATED', 'O Blog foi criado corretamente.');
 define('_MD_IMBLOGGING_SECURITY_CHECK_FAILED', 'Verificação de Segurança falhou...');
+
+define('_MD_IMBLOGGING_NAV_PAGES', 'Pages: ');
 ?>

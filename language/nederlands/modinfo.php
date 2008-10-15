@@ -33,7 +33,6 @@ define("_MI_IMBLOGGING_POSTRECENTDSC", "Geef meest recente berichten weer");
 define("_MI_IMBLOGGING_POSTBYMONTH", "Berichten per maand");
 define("_MI_IMBLOGGING_POSTBYMONTHDSC", "Geef lijst van maanden weer waarin geen berichten zijn");
 
-
 // Notifications
 define("_MI_IMBLOGGING_GLOBAL_NOTIFY", "Alle berichten");
 define("_MI_IMBLOGGING_GLOBAL_NOTIFY_DSC", "Notificaties gerelateerd aan alle berichten in de module");
