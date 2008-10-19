@@ -1,6 +1,6 @@
 <?php
 /**
-* English language constants used in the user side of the module
+* * Spanish language constants used in admin section of the module (traducción por debianus)
 *
 * @copyright	http://smartfactory.ca The SmartFactory
 * @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
@@ -12,12 +12,12 @@
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
 
-define('_MD_IMBLOGGING_ADMIN_PAGE', ':: Admin page ::');
-define('_MD_IMBLOGGING_POST_EDIT', 'Edit post');
-define('_MD_IMBLOGGING_POST_SUBMIT', 'Submit post');
-define('_MD_IMBLOGGING_POST_MODIFIED', 'The post was successfully modified.');
-define('_MD_IMBLOGGING_POST_CREATED', 'The post has been successfully created.');
-define('_MD_IMBLOGGING_SECURITY_CHECK_FAILED', 'Security check failed...');
+define('_MD_IMBLOGGING_ADMIN_PAGE', ':: Administración ::');
+define('_MD_IMBLOGGING_POST_EDIT', 'Modificar artículo');
+define('_MD_IMBLOGGING_POST_SUBMIT', 'Enviar artículo');
+define('_MD_IMBLOGGING_POST_MODIFIED', 'El artículo fue modificado con éxito.');
+define('_MD_IMBLOGGING_POST_CREATED', 'El artículo fue creado con éxito.');
+define('_MD_IMBLOGGING_SECURITY_CHECK_FAILED', 'Comprobación de seguridad fallida...');
 
-define('_MD_IMBLOGGING_NAV_PAGES', 'Pages: ');
+define('_MD_IMBLOGGING_NAV_PAGES', 'Páginas: ');
 ?>
