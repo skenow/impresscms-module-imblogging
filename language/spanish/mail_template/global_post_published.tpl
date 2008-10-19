@@ -1,24 +1,24 @@
-Hello {X_UNAME},
+Hola {X_UNAME},
 
-The following post has been published on {X_SITENAME} :
+El siguiente artículo ha sido publicado en {X_SITENAME} :
 
 "{POST_TITLE}"
 
-You can read this item here:
+Puede leer el mismo haciendo clic en:
 
 {POST_URL}
 
 -----------
 
-You are receiving this message because you selected to be notified when new items are published in the {MODULE_NAME} module of our site.
+Recibe este mensaje porque decidió ser notificado cuando un nuevo artículo fuese publicado en el sitio.
 
-if this is an error or you wish not to receive further  notifications, please update your subscriptions by visiting the link below:
+Si considera que se trata de un error dicha notificación, por favor actualice su subscripción en el siguiente vínculo:
 {X_UNSUBSCRIBE_URL}
 
-Please do not reply to this message.
+Por favor, no responda a este mensaje.
 
 -----------
 
-{X_SITENAME} ({X_SITEURL})
-The Webmaster
+{X_SITENAME} ({X_SITEURL}) 
+El administrador
 {X_ADMINMAIL}
