@@ -14,7 +14,7 @@ if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
 // general
 define("_AM_IMBLOGGING_POSTS", "Berichten");
-define("_AM_IMBLOGGING_FIRST_USE", "Dit is de eerste keer dat je deze module gebruikt. Update de module alstublieft om de nodige database dynamisch aan te maken.");
+define("_AM_IMBLOGGING_FIRST_USE", "Dit is de eerste keer dat u deze module gebruikt. Update de module alstublieft om de nodige database dynamisch aan te maken.");
 
 // Post
 define("_AM_IMBLOGGING_POSTS_DSC", "Alle berichten in deze module");
