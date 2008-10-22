@@ -45,6 +45,9 @@ if ($clean_post_uid) {
 if ($clean_year && $clean_month) {
 	$xoopsTpl->assign('imblogging_category_path', sprintf(_CO_IMBLOGGING_POST_FROM_MONTH, imblogging_getMonthNameById($clean_month), $clean_year));
 }
+
+$xoopsTpl->assign('imblogging_showSubmitLink', true);
+
 /** Include the module's footer */
 include_once 'footer.php';
 ?>
