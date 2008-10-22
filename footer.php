@@ -16,6 +16,7 @@ $xoopsTpl->assign("imblogging_adminpage", imblogging_getModuleAdminLink());
 $xoopsTpl->assign("imblogging_is_admin", $imblogging_isAdmin);
 $xoopsTpl->assign('imblogging_url', IMBLOGGING_URL);
 $xoopsTpl->assign('imblogging_images_url', IMBLOGGING_IMAGES_URL);
+$xoopsTpl->assign('imblogging_userCanSubmit', $imblogging_post_handler->userCanSubmit());
 
 $xoTheme->addStylesheet(IMBLOGGING_URL . 'module.css');
 
