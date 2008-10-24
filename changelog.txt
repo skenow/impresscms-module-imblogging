@@ -1,4 +1,4 @@
-<b><u>=> Unreleased: Version 1.0 Final</u></b>
+<b><u>=> 2008-10-24: Version 1.0 Final</u></b>
 
 - Fixing undefined constant WARNING_RC (malanciault)
 - Adding a Submit link in header of the module for users who can post (malanciault)
