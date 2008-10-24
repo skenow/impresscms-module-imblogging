@@ -32,9 +32,9 @@ $modversion = array(
   'image'=> "images/icon_big.png", /* for backward compatibility */
 
 /**  Development information */
-  'status_version'=> "RC 1",
-  'status'=> "RC",
-  'date'=> "2008-10-13",
+  'status_version'=> "Final",
+  'status'=> "Final",
+  'date'=> "2008-10-24",
   'author_word'=> "",
 
 /** Contributors */
@@ -52,7 +52,7 @@ $modversion['people']['translators'][] = "[url=http://community.impresscms.org/u
 $modversion['people']['translators'][] = "[url=http://community.impresscms.org/userinfo.php?uid=14]GibaPhp[/url]";
 $modversion['people']['documenters'][] = "[url=http://community.impresscms.org/userinfo.php?uid=372]UnderDog[/url]";
 //$modversion['people']['other'][] = "";
-$modversion['warning'] = _MI_IMBLOGGING_RC;
+$modversion['warning'] = _MI_IMBLOGGING_FINAL;
 
 /** Administrative information */
 $modversion['hasAdmin'] = 1;
