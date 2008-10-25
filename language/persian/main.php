@@ -20,5 +20,5 @@ define('_MD_IMBLOGGING_POST_MODIFIED', 'این نوشته با موفقیت وی
 define('_MD_IMBLOGGING_POST_CREATED', 'نوشته‌ی شما با موفقیت ایجاد شد.');
 define('_MD_IMBLOGGING_SECURITY_CHECK_FAILED', 'بررسی‌های امنیتی بی نتیجه ماندند ...');
 
-define('_MD_IMBLOGGING_NAV_PAGES', 'Pages: ');
+define('_MD_IMBLOGGING_NAV_PAGES', 'صفخات: ');
 ?>
