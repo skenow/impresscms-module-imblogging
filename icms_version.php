@@ -32,9 +32,9 @@ $modversion = array(
   'image'=> "images/icon_big.png", /* for backward compatibility */
 
 /**  Development information */
-  'status_version'=> "RC 1",
-  'status'=> "RC",
-  'date'=> "2008-10-13",
+  'status_version'=> "Final",
+  'status'=> "Final",
+  'date'=> "2008-10-24",
   'author_word'=> "",
 
 /** Contributors */
