@@ -16,7 +16,7 @@ if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 // The name of this module
 
 global $xoopsModule;
-define("_MI_IMBLOGGING_MD_NAME", "وبلاگ می‌نویسم");
+define("_MI_IMBLOGGING_MD_NAME", "وبلاگ");
 define("_MI_IMBLOGGING_MD_DESC", "ماژولی برای وبلاگ نویسی در ایمپرس سی‌ام‌اس");
 
 define("_MI_IMBLOGGING_POSTS", "نوشته‌ها");
