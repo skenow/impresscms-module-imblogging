@@ -20,11 +20,6 @@ define("_MI_IMBLOGGING_MD_DESC", "ImpressCMS Simple Blogging module");
 
 define("_MI_IMBLOGGING_POSTS", "Posts");
 
-define("_MI_IMBLOGGING_BETA", "This module comes as is, without any guarantees whatsoever. This module is BETA, meaning it is still under active development. This release is meant for <b>testing purposes only</b> and we <b>strongly</b> recommend that you do not use it on a live website or in a production environment.");
-define("_MI_IMBLOGGING_FINAL", "This module comes as is, without any guarantees whatsoever. Although this module is not beta, it is still under active development. This release can be used in a live website or a production environment, but its use is under your own responsibility, which means the author is not responsible.");
-define("_MI_IMBLOGGING_RC", "This module comes as is, without any guarantees whatsoever. This module is a Release Candidate and should not be used on a production web site. The module is still under active development and its use is under your own responsibility, which means the author is not responsible.");
-
-
 // Configs
 define("_MI_IMBLOGGING_POSTERGR", "Groups allowed to posts");
 define("_MI_IMBLOGGING_POSTERGRDSC", "Select the groups which are allowed to create new posts. Please note that a user belonging to one of these groups will be able to post directly on the site. The module currently has no moderation feature.");

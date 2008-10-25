@@ -20,10 +20,6 @@ define("_MI_IMBLOGGING_MD_DESC", "ImpressCMS - einfaches Blog Modul");
 
 define("_MI_IMBLOGGING_POSTS", "Beiträge");
 
-define("_MI_IMBLOGGING_BETA", "Das Modul befindet sich in der vollen Entwicklungsphase. Es ist eine BETA-Version, damit ist gemeint dass es sich in einer aktiven Entwicklungsphase befindet. Daher sollte das Modul <b>nur zu Testzwecken</b> eingesetzt werden. Wir empfehlen das Modul nicht für produktive Webseiten einzusetzen, da es noch schwere Fehler besitzten könnte.");
-define("_MI_IMBLOGGING_FINAL", "Dieses Modul kommt ohne Gewähr. Obwohl dieses Modul sich nicht in einer Beta Version befindet, steht ist es immer noch im Rahmen einer aktiven Entwicklung. Diese Version kann für produktive Webseiten verwendet werden oder einer Produktions-Umgebung, aber die Verwendung ist unter Ihrer eigenen Verantwortung. Das bedeutet, dass der Autor nicht verantwortlich ist.");
-define("_MI_IMBLOGGING_RC", "Das Modul befindet sich in der vollen Entwicklungsphase. Es ist eine 'Release Candidate' (RC) Version. Daher sollte das Modul <b>nur zu Testzwecken</b> eingesetzt werden. Wir empfehlen das Modul nicht für produktive Webseiten einzusetzen, da es noch kleine Fehler vorhanden sein könnten.");
-
 
 // Configs
 define("_MI_IMBLOGGING_POSTERGR", "Gruppen die Beiträge schreiben dürfen");

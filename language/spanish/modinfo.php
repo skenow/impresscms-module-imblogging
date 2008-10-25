@@ -5,7 +5,7 @@
 * @copyright	http://smartfactory.ca The SmartFactory
 * @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
 * @since		1.0
-* @author		marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
+* @author		marcan aka Marc-Andr Lanciault <marcan@smartfactory.ca>
 * @version		$Id$
 */
 
@@ -19,11 +19,6 @@ define("_MI_IMBLOGGING_MD_NAME", "imBlogging");
 define("_MI_IMBLOGGING_MD_DESC", "M?dulo de creaci?n de blogs para ImpressCMS");
 
 define("_MI_IMBLOGGING_art?culos", "Art?culos");
-define('_MI_IMBLOGGING_BETA', "Este m?dulo se proporciona como es y sin ninguna garant?a. Es una versi?n BETA, lo que significa que todav?a est? en activo desarrollo y se proporciona <b>solo con la finalidad de testear</b>; le recomendamos  <b>encarecidamente</b> que no la use en un sitio web final.");
-
-define('_MI_IMBLOGGING_RC', "Este m?dulo se proporciona como es y sin ninguna garant?a. Este m?dulo es una 'Versi?n Candidata' y no deber?a ser usada en un sitio web final porque est? todav?a bajo desarrollo y si lo usa es bajo su propia responsabilidad, lo que significa que su autor no es responsable.");
-
-define('_MI_IMBLOGGING_FINAL', "Este m?dulo se proporciona como es y sin ninguna garant?a. Aunque no es una versi?n beta todav?a est? bajo desarrollo. Esta versi?n puede ser usada en un sitio web o entorno de producci?n pero bajo su propia responsabilidad; el autor no es responsable.");
 
 // Configs
 define("_MI_IMBLOGGING_POSTERGR", "Grupos a los que se permite publicar art?culos");

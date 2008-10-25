@@ -21,10 +21,6 @@ define("_MI_IMBLOGGING_MD_DESC", "Eenvoudige Blog module voor ImpressCMS");
 
 define("_MI_IMBLOGGING_POSTS", "Berichten");
 
-define('_MI_IMBLOGGING_BETA', "Deze module komt zoals hij is, zonder welke garantie dan ook. De status van deze module is BETA, wat betekent dat hij nog steeds in actieve ontwikkeling is. Deze uitgave is alleen bedoelt voor <b>test doeleinden</b> en wij raden u <b>ten zeerste</b> aan dat deze module niet wordt gebruikt binnen een actieve/online website of in een productieve omgeving.");
-define('_MI_IMBLOGGING_FINAL', "Deze module komt zoals hij is, zonder welke garantie dan ook. Ondanks dat de status van deze module geen beta is, is de module nog steeds in actieve ontwikkeling. Deze uitgave kan worden gebruikt in een actieve/online website of in een productieve omgeving, maar het gebruik valt volledig onder uw eigen verantwoordelijkheid, dit betekent dat de auteur niet verantwoordelijk is.");
-define('_MI_IMBLOGGING_RC', "Deze module komt zoals hij is, zonder welke garantie dan ook. Deze module is een uitgave kandidaat en dient niet te worden gebruikt in een actieve/online website of in een productieve omgeving. De module is nog steeds in actieve ontwikkeling en het gebruik ervan valt onder uw eigen verantwoordelijkheid, dit betekent dat de auteur niet verantwoordelijk is.");
-
 // Configs
 define("_MI_IMBLOGGING_POSTERGR", "Groeps toegestaan om te posten");
 define("_MI_IMBLOGGING_POSTERGRDSC", "Selecteer de groepen die nieuwe berichten mogen inzenden. Gelieve op te merken op dat een gebruiker die tot één van deze groepen behoort direct op de plaats zal kunnen posten. De module heeft momenteel geen modificatie optie.");
