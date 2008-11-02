@@ -13,6 +13,8 @@ if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
 
 // post
+define("_CO_IMBLOGGING_POST_CATEGORIES", "Kategorien");
+define("_CO_IMBLOGGING_POST_CATEGORIES_DSC", "Mit welchen Kategorien soll der Beitrag verknüpft werden?");
 define("_CO_IMBLOGGING_POST_POST_TITLE", "Titel");
 define("_CO_IMBLOGGING_POST_POST_TITLE_DSC", "");
 define("_CO_IMBLOGGING_POST_POST_CONTENT", "Inhalt");
