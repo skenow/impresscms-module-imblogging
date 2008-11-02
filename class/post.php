@@ -433,11 +433,12 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 	 * @param int $start to which record to start
 	 * @param int $limit limit of posts to return
 	 * @param int $post_uid if specifid, only the post of this user will be returned
+	 * @param int $cid if specifid, only the post related to this category will be returned
 	 * @param int $year of posts to display
 	 * @param int $month of posts to display
 	 * @return CriteriaCompo $criteria
 	 */
-	function getPostsCriteria($start = 0, $limit = 0, $post_uid = false, $year = false, $month = false) {
+	function getPostsCriteria($start = 0, $limit = 0, $post_uid = false, $cid = false, $year = false, $month = false) {
 		$criteria = new CriteriaCompo();
 		if ($start) {
 			$criteria->setStart($start);
@@ -450,6 +451,11 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 		$criteria->add(new Criteria('post_status', IMBLOGGING_POST_STATUS_PUBLISHED));
 		if ($post_uid) {
 			$criteria->add(new Criteria('post_uid', $post_uid));
+		}
+		if ($cid) {
+			$imtagging_category_link_handler = xoops_getModuleHandler('category_link', 'imtagging');
+			$categoryids = $imtagging_category_link_handler->getItemidsForCategory($cid, $this);
+			$criteria->add(new Criteria('post_id', '(' . implode(',', $categoryids) . ')', 'IN'));
 		}
 		if ($year && $month) {
 			$criteriaYearMonth = new CriteriaCompo();
@@ -466,12 +472,13 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 	 * @param int $start to which record to start
 	 * @param int $limit max posts to display
 	 * @param int $post_uid if specifid, only the post of this user will be returned
+	 * @param int $cid if specifid, only the post related to this category will be returned
 	 * @param int $year of posts to display
 	 * @param int $month of posts to display
 	 * @return array of posts
 	 */
-	function getPosts($start = 0, $limit = 0, $post_uid = false, $year = false, $month = false) {
-		$criteria = $this->getPostsCriteria($start, $limit, $post_uid, $year, $month);
+	function getPosts($start = 0, $limit = 0, $post_uid = false, $cid=false, $year = false, $month = false) {
+		$criteria = $this->getPostsCriteria($start, $limit, $post_uid, $cid, $year, $month);
 		$ret = $this->getObjects($criteria, true, false);
 		return $ret;
 	}
@@ -490,12 +497,13 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 	 * Get posts count
 	 *
 	 * @param int $post_uid if specifid, only the post of this user will be returned
+	 * @param int $cid if specifid, only the post related to this category will be returned
 	 * @return array of posts
 	 * @param int $year of posts to display
 	 * @param int $month of posts to display
 	 */
-	function getPostsCount($post_uid, $year = false, $month = false) {
-		$criteria = $this->getPostsCriteria(false, false, $post_uid, $year, $month);
+	function getPostsCount($post_uid, $cid = false, $year = false, $month = false) {
+		$criteria = $this->getPostsCriteria(false, false, $post_uid, $cid, $year, $month);
 		return $this->getCount($criteria);
 	}
 
