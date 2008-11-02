@@ -25,8 +25,8 @@ function editpost($post_id = 0)
 	$postObj = $imblogging_post_handler->get($post_id);
 
 	if (!$postObj->isNew()){
-
 		$xoopsModule->displayAdminMenu(0, _AM_IMBLOGGING_POSTS . " > " . _CO_ICMS_EDITING);
+		$postObj->loadCategories();
 		$sform = $postObj->getForm(_AM_IMBLOGGING_POST_EDIT, 'addpost');
 		$sform->assign($icmsAdminTpl);
 

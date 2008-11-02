@@ -42,6 +42,10 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 		$this->IcmsPersistableObject($handler);
 
 		$this->quickInitVar('post_id', XOBJ_DTYPE_INT, true);
+		/**
+		 * @todo IPF needs to be able to know what to do with XOBJ_DTYPE_ARRAY, which it does not right now...
+		 */
+		$this->initNonPersistableVar('categories', XOBJ_DTYPE_INT, 'category', false, false, false, true);
 		$this->quickInitVar('post_title', XOBJ_DTYPE_TXTBOX);
 		$this->quickInitVar('post_content', XOBJ_DTYPE_TXTAREA);
 		$this->quickInitVar('post_published_date', XOBJ_DTYPE_LTIME);
@@ -49,7 +53,6 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 		$this->quickInitVar('post_status', XOBJ_DTYPE_INT, false, false, false, IMBLOGGING_POST_STATUS_PUBLISHED);
 		$this->quickInitVar('post_cancomment', XOBJ_DTYPE_INT, false, false, false, true);
 		$this->quickInitVar('post_comments', XOBJ_DTYPE_INT);
-
 
 		$this->hideFieldFromForm('post_comments');
 
@@ -63,6 +66,11 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 		$this->initCommonVar('dosmiley', false, true);
 		$this->initCommonVar('doxcode', false, true);
 
+		$this->setControl('categories', array(
+				'name'=>'categories',
+				'module'=>'imtagging',
+				'multiple'=>true
+			));
 		$this->setControl('post_content', 'dhtmltextarea');
 		$this->setControl('post_uid', 'user');
 		$this->setControl('post_status', array (
@@ -85,16 +93,29 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 	 * @return mixed value of the field that is requested
 	 */
 	function getVar($key, $format = 's') {
-		if ($format == 's' && in_array($key, array (
-				'post_uid',
-				'post_status'
-			))) {
-			return call_user_func(array (
-				$this,
-				$key
-			));
+		if ($format == 's' && in_array($key, array ('post_uid',	'post_status', 'categories'))) {
+			return call_user_func(array ($this,	$key));
+		} elseif($format == 'e' && in_array($key, array ('categories'))) {
+			return call_user_func(array ($this,	$key));
 		}
 		return parent :: getVar($key, $format);
+	}
+
+	/**
+	 * Load categories linked to this post
+	 *
+	 * @return void
+	 */
+	function loadCategories() {
+		$imtagging_category_link_handler = xoops_getModuleHandler('category_link', 'imtagging');
+		$ret = $imtagging_category_link_handler->getCategoriesForObject($this->id(), $this->handler->_itemname, $this->handler->_moduleName);
+		$this->setVar('categories', $ret);
+	}
+
+	function categories() {
+		$ret = $this->getVar('categories', 'n');
+		$ret = $this->vars['categories']['value'];
+		return is_array($ret) ? $ret : false;
 	}
 
 	/**
@@ -586,6 +607,10 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 	 */
 	function afterSave(& $obj) {
 		if ($obj->updating_counter)	return true;
+
+		// storing categories
+		$imtagging_category_link_handler = xoops_getModuleHandler('category_link', 'imtagging');
+		$imtagging_category_link_handler->storeCategoriesForObject($obj);
 
 		if (!$obj->getVar('post_notification_sent') && $obj->getVar('post_status', 'e') == IMBLOGGING_POST_STATUS_PUBLISHED) {
 			$obj->sendNotifPostPublished();
