@@ -14,6 +14,8 @@ if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
 
 // post
+define("_CO_IMBLOGGING_POST_CATEGORIES", "Categorieën");
+define("_CO_IMBLOGGING_POST_CATEGORIES_DSC", "Kies de categorieën waarna u deze blog post wilt linken");
 define("_CO_IMBLOGGING_POST_POST_TITLE", "Titel");
 define("_CO_IMBLOGGING_POST_POST_TITLE_DSC", "");
 define("_CO_IMBLOGGING_POST_POST_CONTENT", "Inhoud");
