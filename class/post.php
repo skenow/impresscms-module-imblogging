@@ -27,9 +27,10 @@ define('IMBLOGGING_POST_STATUS_PRIVATE', 4);
 
 class ImbloggingPost extends IcmsPersistableSeoObject {
 
-	private $post_date_info = false;
+	private	$post_date_info = false;
 	private $poster_info = false;
-	public $updating_counter = false;
+	public 	$updating_counter = false;
+	public	$categories = false;
 
 	/**
 	 * Constructor
@@ -108,7 +109,7 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 	 */
 	function loadCategories() {
 		$imtagging_category_link_handler = xoops_getModuleHandler('category_link', 'imtagging');
-		$ret = $imtagging_category_link_handler->getCategoriesForObject($this->id(), $this->handler->_itemname, $this->handler->_moduleName);
+		$ret = $imtagging_category_link_handler->getCategoriesForObject($this->id(), $this->handler);
 		$this->setVar('categories', $ret);
 	}
 
@@ -480,6 +481,28 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 	function getPosts($start = 0, $limit = 0, $post_uid = false, $cid=false, $year = false, $month = false) {
 		$criteria = $this->getPostsCriteria($start, $limit, $post_uid, $cid, $year, $month);
 		$ret = $this->getObjects($criteria, true, false);
+
+		// retrieve the ids of all Posts retrieved
+		$postIds = $this->getIdsFromObjectsAsArray($ret);
+
+		// retrieve categories linked to these postIds
+		$imtagging_category_link_handler = xoops_getModuleHandler('category_link', 'imtagging');
+		$categoriesObj = $imtagging_category_link_handler->getCategoriesFromObjectIds($postIds, $this);
+
+		// put the category info in each postObj
+		foreach($categoriesObj as $categoryObj) {
+			if (isset($categoryObj->items['imblogging']['post']))
+			foreach($categoryObj->items['imblogging']['post'] as $postid) {
+				icms_debug(1);
+				$ret[$postid]['categories'][] = array(
+						'id' => $categoryObj->id(),
+						'title' => $categoryObj->getVar('category_title')
+				);
+			}
+		}
+		foreach($ret as $postArray) {
+			icms_debug_vardump($postArray['categories']);
+		}
 		return $ret;
 	}
 

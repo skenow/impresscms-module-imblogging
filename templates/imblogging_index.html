@@ -12,6 +12,13 @@
 		<div class="imblogging_post_content">
 			<{$imblogging_post.post_lead}>
 		</div>
+		<{if $imblogging_post.categories}>
+			<div class="imblogging_post_categories">
+				<{foreach item=category from=$imblogging_post.categories name=loop}>
+					<a href="index.php?cid=<{$category.id}>"><{$category.title}></a><{if !$smarty.foreach.loop.last}>, <{/if}>
+			 	<{/foreach}>
+			 </div>
+		 <{/if}>
 		<div class="imblogging_post_comments">
 			<{$imblogging_post.post_comment_info}>
 		</div>

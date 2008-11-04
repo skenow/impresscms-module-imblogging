@@ -33,6 +33,13 @@
 	font-size: 80%;
 }
 .imblogging_post_content {clear:both;margin:0; overflow:hidden;text-align:justify;}
+.imblogging_post_categories {
+	background: url(images/category.png) 0px 10px no-repeat;
+	padding: 5px 20px;
+	border-top: 2px solid silver;
+	border-bottom: 2px solid silver;
+	vertical-align: middle;
+}
 #imblogging_post_comments_container {}
 .imblogging_post_comments {
 	background-image: url(images/comments.gif);
