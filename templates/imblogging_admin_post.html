@@ -18,13 +18,15 @@
 
 	function imtaggingAddCategory() {
 		var newCategory;
+		var parentCategory;
 		newCategory = jQuery("#new_category_title").val();
+		parentCategory = jQuery("#category_pid").val();
 		jQuery("#imtagging_categories_container").append('<input name="categories[]" value="-1" checked="checked" type="checkbox">' + newCategory + '<br>');
 
 		jQuery.post("post.php",
-		  { op: "addcategory", category_title: newCategory },
+		  { op: "addcategory", category_title: newCategory, category_pid: parentCategory},
 		  function(data){
-		    alert("Data Loaded: " + data);
+
 		  }
 		);
 

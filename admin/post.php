@@ -63,6 +63,7 @@ if (isset($_POST['op'])) $clean_op = htmlentities($_POST['op']);
 
 /** Again, use a naming convention that indicates the source of the content of the variable */
 $clean_post_id = isset($_GET['post_id']) ? (int) $_GET['post_id'] : 0 ;
+$clean_category_pid = isset($_POST['category_pid']) ? (int) $_POST['category_pid'] : 0 ;
 
 /**
  * in_array() is a native PHP function that will determine if the value of the
@@ -76,6 +77,9 @@ if (in_array($clean_op,$valid_op,true)){
 		$imtagging_category_handler = xoops_getModuleHandler('category', 'imtagging');
 		$categoryObj = $imtagging_category_handler->create();
 		$categoryObj->setVar('category_title', $_POST['category_title']);
+		icms_debug_vardump($_POST);
+		$categoryObj->setVar('category_pid', $clean_category_pid);
+
 		$imtagging_category_handler->insert($categoryObj);
 		exit;
   	break;
