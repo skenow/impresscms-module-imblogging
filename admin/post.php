@@ -20,7 +20,7 @@
 */
 function editpost($post_id = 0)
 {
-	global $imblogging_post_handler, $xoopsModule, $icmsAdminTpl;
+	global $imblogging_post_handler, $xoopsModule, $icmsAdminTpl, $xoTheme;
 
 	$postObj = $imblogging_post_handler->get($post_id);
 
@@ -39,6 +39,15 @@ function editpost($post_id = 0)
 	$icmsAdminTpl->display('db:imblogging_admin_post.html');
 }
 
+$icmsOnDemandPreload[] = array(
+	'module'=>'imtagging',
+	'filename'=>'jquery.php'
+);
+$icmsOnDemandPreload[] = array(
+	'module'=>'imtagging',
+	'filename'=>'imtaggingadmincss.php'
+);
+
 include_once("admin_header.php");
 
 $imblogging_post_handler = xoops_getModuleHandler('post');
@@ -47,7 +56,7 @@ $clean_op = '';
 /** Create a whitelist of valid values, be sure to use appropriate types for each value
  * Be sure to include a value for no parameter, if you have a default condition
  */
-$valid_op = array ('mod','changedField','addpost','del','view','');
+$valid_op = array ('mod','changedField','addpost', 'addcategory', 'del','view','');
 
 if (isset($_GET['op'])) $clean_op = htmlentities($_GET['op']);
 if (isset($_POST['op'])) $clean_op = htmlentities($_POST['op']);
@@ -63,6 +72,13 @@ $clean_post_id = isset($_GET['post_id']) ? (int) $_GET['post_id'] : 0 ;
 */
 if (in_array($clean_op,$valid_op,true)){
   switch ($clean_op) {
+  	case "addcategory":
+		$imtagging_category_handler = xoops_getModuleHandler('category', 'imtagging');
+		$categoryObj = $imtagging_category_handler->create();
+		$categoryObj->setVar('category_title', $_POST['category_title']);
+		$imtagging_category_handler->insert($categoryObj);
+		exit;
+  	break;
   	case "mod":
   	case "changedField":
 
@@ -73,7 +89,7 @@ if (in_array($clean_op,$valid_op,true)){
   	case "addpost":
           include_once ICMS_ROOT_PATH."/kernel/icmspersistablecontroller.php";
           $controller = new IcmsPersistableController($imblogging_post_handler);
-  		$controller->storeFromDefaultForm(_AM_IMBLOGGING_POST_CREATED, _AM_IMBLOGGING_POST_MODIFIED);
+  		  $controller->storeFromDefaultForm(_AM_IMBLOGGING_POST_CREATED, _AM_IMBLOGGING_POST_MODIFIED);
 
   		break;
 

@@ -12,3 +12,22 @@
 <{if $addpost}>
 	<{includeq file='db:system_common_form.html' form=$addpost}>
 <{/if}>
+
+<script language="JavaScript" type="text/JavaScript">
+	jQuery("#new_category_tray").hide();
+
+	function imtaggingAddCategory() {
+		var newCategory;
+		newCategory = jQuery("#new_category_title").val();
+		jQuery("#imtagging_categories_container").append('<input name="categories[]" value="-1" checked="checked" type="checkbox">' + newCategory + '<br>');
+
+		jQuery.post("post.php",
+		  { op: "addcategory", category_title: newCategory },
+		  function(data){
+		    alert("Data Loaded: " + data);
+		  }
+		);
+
+	}
+
+</script>
