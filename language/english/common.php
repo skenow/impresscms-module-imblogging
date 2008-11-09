@@ -34,6 +34,7 @@ define("_CO_IMBLOGGING_POST_FROM_USER", "All posts of %s");
 define("_CO_IMBLOGGING_POST_FROM_MONTH", "All posts made in %s %u");
 define("_CO_IMBLOGGING_POST_COMMENTS_INFO", "%d comments");
 define("_CO_IMBLOGGING_POST_NO_COMMENT", "No comment");
+define("_CO_IMBLOGGING_POST_NEW_CATEGORY_PARENT", "Parent category");
 
 // post status
 define("_CO_IMBLOGGING_POST_STATUS_PUBLISHED", "Published");
