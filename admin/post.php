@@ -77,7 +77,6 @@ if (in_array($clean_op,$valid_op,true)){
 		$imtagging_category_handler = xoops_getModuleHandler('category', 'imtagging');
 		$categoryObj = $imtagging_category_handler->create();
 		$categoryObj->setVar('category_title', $_POST['category_title']);
-		icms_debug_vardump($_POST);
 		$categoryObj->setVar('category_pid', $clean_category_pid);
 
 		$imtagging_category_handler->insert($categoryObj);
