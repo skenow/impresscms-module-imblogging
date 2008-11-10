@@ -11,8 +11,6 @@
 * @version		$Id$
 */
 
-
-
 /**
  * Edit a Blog Post
  *
@@ -36,6 +34,7 @@ function editpost($post_id = 0)
 		$sform->assign($icmsAdminTpl);
 
 	}
+	$icmsAdminTpl->assign('postid', $post_id);
 	$icmsAdminTpl->display('db:imblogging_admin_post.html');
 }
 
@@ -63,6 +62,7 @@ if (isset($_POST['op'])) $clean_op = htmlentities($_POST['op']);
 
 /** Again, use a naming convention that indicates the source of the content of the variable */
 $clean_post_id = isset($_GET['post_id']) ? (int) $_GET['post_id'] : 0 ;
+$clean_post_id = isset($_POST['post_id']) ? (int) $_POST['post_id'] : $clean_post_id;
 $clean_category_pid = isset($_POST['category_pid']) ? (int) $_POST['category_pid'] : 0 ;
 
 /**
@@ -74,12 +74,23 @@ $clean_category_pid = isset($_POST['category_pid']) ? (int) $_POST['category_pid
 if (in_array($clean_op,$valid_op,true)){
   switch ($clean_op) {
   	case "addcategory":
+  		// the logger needs to be disabled in an AJAX request
+  		$xoopsLogger->disableLogger();
+
+		// adding the new category
 		$imtagging_category_handler = xoops_getModuleHandler('category', 'imtagging');
 		$categoryObj = $imtagging_category_handler->create();
 		$categoryObj->setVar('category_title', $_POST['category_title']);
 		$categoryObj->setVar('category_pid', $clean_category_pid);
-
 		$imtagging_category_handler->insert($categoryObj);
+
+		// rebuild the ImtaggingCategoryTreeElement control
+		$postObj = $imblogging_post_handler->get($clean_post_id);
+
+		include_once(ICMS_ROOT_PATH . "/class/xoopsformloader.php");
+		include_once(ICMS_ROOT_PATH . '/modules/imtagging/class/form/elements/imtaggingcategorytreeelement.php');
+		$category_tree_element = new ImtaggingCategoryTreeElement($postObj, 'categories');
+		echo $category_tree_element->render();
 		exit;
   	break;
   	case "mod":
@@ -98,7 +109,7 @@ if (in_array($clean_op,$valid_op,true)){
 
   	case "del":
   	    include_once ICMS_ROOT_PATH."/kernel/icmspersistablecontroller.php";
-          $controller = new IcmsPersistableController($imblogging_post_handler);
+        $controller = new IcmsPersistableController($imblogging_post_handler);
   		$controller->handleObjectDeletion();
 
   		break;
