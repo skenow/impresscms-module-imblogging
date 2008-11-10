@@ -37,7 +37,7 @@ define("_CO_IMBLOGGING_POST_NO_COMMENT", "دیدگاهی نوشته نشده ا�
 // post status
 define("_CO_IMBLOGGING_POST_STATUS_PUBLISHED", "منتشر شود");
 define("_CO_IMBLOGGING_POST_STATUS_PENDING", "منتظر برای تایید");
-define("_CO_IMBLOGGING_POST_STATUS_DRAFT", "در چرکنویس‌ها قرار گیرد");
+define("_CO_IMBLOGGING_POST_STATUS_DRAFT", "در پیشنویس‌ها قرار گیرد");
 define("_CO_IMBLOGGING_POST_STATUS_PRIVATE", "پیام خصوصی می‌باشد");
 
 // common language

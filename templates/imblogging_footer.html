@@ -1,3 +1,4 @@
+<div id="imblogging_rss"><a href="<{$imblogging_rss_url}>"><img src="<{$imblogging_url}>images/rss.png" alt="<{$imblogging_rss_info}>" title="<{$imblogging_rss_info}>"></a></div>
 <{if $imblogging_is_admin}>
 	<div class="imblogging_adminlinks"><{$imblogging_adminpage}></div>
 <{/if}>
@@ -6,7 +7,7 @@
 <{if $imblogging_post_comment}>
  	<table id="comments_container" border="0" width="100%" cellspacing="1" cellpadding="0" align="center" >
    		<tr>
-		    <td colspan="3" align ="left">
+		    <td colspan="3" align ="<{$smarty.const._GLOBAL_LEFT}>">
 		    	<div style="text-align: center; padding: 3px; margin:3px;"> <{$commentsnav}> <{$lang_notice}></div>
       		  	<div style="margin:3px; padding: 3px;">
 			        <!-- start comments loop -->

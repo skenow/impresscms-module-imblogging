@@ -107,6 +107,9 @@ if (in_array($clean_op,$valid_op,true)){
 			redirect_header(IMBLOGGING_URL, 3, _NOPERM);
 		}
 		$xoopsTpl->assign('imblogging_showSubmitLink', true);
+		$xoopsTpl->assign('imblogging_rss_url', IMBLOGGING_URL . 'rss.php');
+		$xoopsTpl->assign('imblogging_rss_info', _MD_IMBLOGGING_RSS_GLOBAL);
+
 		if ($xoopsModuleConfig['com_rule'] && $postObj->getVar('post_cancomment')) {
 			$xoopsTpl->assign('imblogging_post_comment', true);
   			include_once ICMS_ROOT_PATH . '/include/comment_view.php';

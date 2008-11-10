@@ -1,6 +1,6 @@
 <?php
 /**
-*  language constants commonly used in the module
+*  Portuguese language constants commonly used in the module
 *
 * @copyright	http://smartfactory.ca The SmartFactory
 * @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
@@ -41,7 +41,7 @@ define("_CO_IMBLOGGING_POST_STATUS_DRAFT", "Rascunho");
 define("_CO_IMBLOGGING_POST_STATUS_PRIVATE", "Privado");
 
 // common language
-define("_CO_IMBLOGGING_POST_PUBLISHED", "Published");
+define("_CO_IMBLOGGING_POST_PUBLISHED", "Publicado");
 define("_CO_IMBLOGGING_POST_ON", "on");
-define("_CO_IMBLOGGING_POST_BY", "by");
+define("_CO_IMBLOGGING_POST_BY", "por");
 ?>

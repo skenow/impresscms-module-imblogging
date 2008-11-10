@@ -1,3 +1,11 @@
+<b><u>=> Unreleased: Version 1.0.1 RC</u></b>
+
+- Implementing RSS feed for latest posts, globally or by poster (malanciault)
+- Implementing RSS image + link on in user side footer (malanciault)
+- Fixing undefined constant WARNING_RC (stranger)
+- Fixing date issues with Jalali calendar (stranger)
+
+
 <b><u>=> 2008-10-24: Version 1.0 Final</u></b>
 
 - Fixing undefined constant WARNING_RC (malanciault/stranger)

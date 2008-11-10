@@ -35,6 +35,16 @@ $extr_argArray = array();
 $category_pathArray = array();
 
 if ($clean_post_uid) {
+	$imblogging_poster_link = icms_getLinkedUnameFromId($clean_post_uid);
+	$xoopsTpl->assign('imblogging_rss_url', IMBLOGGING_URL . 'rss.php?uid=' . $clean_post_uid);
+	$xoopsTpl->assign('imblogging_rss_info', _MD_IMBLOGGING_RSS_POSTER);
+	$extr_arg = 'uid=' . $clean_post_uid;
+} else {
+	$xoopsTpl->assign('imblogging_rss_url', IMBLOGGING_URL . 'rss.php');
+	$xoopsTpl->assign('imblogging_rss_info', _MD_IMBLOGGING_RSS_GLOBAL);
+	$extr_arg = '';
+}
+if ($clean_post_uid) {
 	$extr_argArray[] = 'uid=' . $clean_post_uid;
 	$category_pathArray[] = sprintf(_CO_IMBLOGGING_POST_FROM_USER, icms_getLinkedUnameFromId($clean_post_uid));
 }

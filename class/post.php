@@ -261,12 +261,13 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 	 * @return VOID
 	 */
 	function getPostDateInfo() {
+	global $xoopsConfig;
 		$post_date = $this->getVar('post_published_date', 'n');
-		$this->post_date_info['year'] = date('Y', $post_date);
-		$this->post_date_info['month'] = imblogging_getMonthNameById(date('n', $post_date));
-		$this->post_date_info['month_short'] = date('M', $post_date);
-		$this->post_date_info['day'] = date('D', $post_date);
-		$this->post_date_info['day_number'] = date('d', $post_date);
+		$this->post_date_info['year'] = formatTimestamp($post_date, 'Y');
+		$this->post_date_info['month'] = imblogging_getMonthNameById(formatTimestamp($post_date, 'n'));
+		$this->post_date_info['month_short'] = formatTimestamp($post_date, 'month');
+		$this->post_date_info['day'] = formatTimestamp($post_date, 'D');
+		$this->post_date_info['day_number'] = formatTimestamp($post_date, 'daynumber');
 	}
 
 	/**
@@ -384,6 +385,7 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 		$ret = parent :: toArray();
 		$ret['post_info'] = $this->getPostInfo();
 		$ret['post_lead'] = $this->getPostLead();
+		$ret['post_published_date_int'] = $this->getVar('post_published_date', 'e');
 		$ret['post_year'] = $this->getPostYear();
 		$ret['post_month'] = $this->getPostMonth();
 		$ret['post_month_short'] = $this->getPostMonthShort();

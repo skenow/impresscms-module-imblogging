@@ -20,4 +20,7 @@ define('_MD_IMBLOGGING_POST_CREATED', 'The post has been successfully created.')
 define('_MD_IMBLOGGING_SECURITY_CHECK_FAILED', 'Security check failed...');
 
 define('_MD_IMBLOGGING_NAV_PAGES', 'Pages: ');
+
+define('_MD_IMBLOGGING_RSS_GLOBAL', 'Subscribe to latest posts');
+define('_MD_IMBLOGGING_RSS_POSTER', 'Subscribe to latest posts from this poster');
 ?>

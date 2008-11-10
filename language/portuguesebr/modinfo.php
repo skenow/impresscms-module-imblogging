@@ -20,6 +20,11 @@ define("_MI_IMBLOGGING_MD_NAME", "imBlogging");
 define("_MI_IMBLOGGING_MD_DESC", "Módulo simples de Blog para o ImpressCMS");
 
 define("_MI_IMBLOGGING_POSTS", "Blogs");
+//temporary, correct is using file communs kernel.....
+define("_MI_IMBLOGGING_BETA", "This module comes as is, without any guarantees whatsoever. This module is BETA, meaning it is still under active development. This release is meant for <b>testing purposes only</b> and we <b>strongly</b> recommend that you do not use it on a live website or in a production environment.");
+define("_MI_IMBLOGGING_FINAL", "This module comes as is, without any guarantees whatsoever. Although this module is not beta, it is still under active development. This release can be used in a live website or a production environment, but its use is under your own responsibility, which means the author is not responsible.");
+define("_MI_IMBLOGGING_RC", "This module comes as is, without any guarantees whatsoever. This module is a Release Candidate and should not be used on a production web site. The module is still under active development and its use is under your own responsibility, which means the author is not responsible.");
+
 
 // Configs
 define("_MI_IMBLOGGING_POSTERGR", "Grupos permitidos para enviar Blogs");
@@ -42,5 +47,5 @@ define("_MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY_DSC", "Receber notificaçõe
 define("_MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY_SBJ", "[{X_SITENAME}] {X_MODULE} Aviso-Automático : Novo Blog publicado");
 
 // Submit button
-define("_MI_IMBLOGGING_POST_ADD", "Add a new post");
+define("_MI_IMBLOGGING_POST_ADD", "Incluir novo Blog");
 ?>
