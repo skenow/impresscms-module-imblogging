@@ -25,11 +25,11 @@ function editpost($post_id = 0)
 	if (!$postObj->isNew()){
 		$xoopsModule->displayAdminMenu(0, _AM_IMBLOGGING_POSTS . " > " . _CO_ICMS_EDITING);
 		$postObj->loadCategories();
-		$postObj->setVar('post_uid', $xoopsUser->uid());
 		$sform = $postObj->getForm(_AM_IMBLOGGING_POST_EDIT, 'addpost');
 		$sform->assign($icmsAdminTpl);
 
 	} else {
+		$postObj->setVar('post_uid', $xoopsUser->uid());
 		$xoopsModule->displayAdminMenu(0, _AM_IMBLOGGING_POSTS . " > " . _CO_ICMS_CREATINGNEW);
 		$sform = $postObj->getForm(_AM_IMBLOGGING_POST_CREATE, 'addpost');
 		$sform->assign($icmsAdminTpl);
