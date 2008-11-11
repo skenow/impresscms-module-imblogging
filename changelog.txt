@@ -4,6 +4,7 @@
 - Implementing RSS image + link on in user side footer (malanciault)
 - Fixing undefined constant WARNING_RC (stranger)
 - Fixing date issues with Jalali calendar (stranger)
+- Fixing issues with RTL (stranger)
 
 
 <b><u>=> 2008-10-24: Version 1.0 Final</u></b>
