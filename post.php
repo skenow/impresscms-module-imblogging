@@ -17,7 +17,13 @@
 */
 function editpost($postObj)
 {
-	global $imblogging_post_handler, $xoopsTpl, $xoopsUser;
+	global $imblogging_post_handler, $xoTheme, $xoopsTpl, $xoopsUser;
+
+	$postObj->setControl('categories', array(
+		'name'=>'categories',
+		'module'=>'imtagging',
+		'userside'=>true
+	));
 
 	if (!$postObj->isNew()){
 		if (!$postObj->userCanEditAndDelete()) {
@@ -38,6 +44,8 @@ function editpost($postObj)
 		$sform->assign($xoopsTpl, 'imblogging_postform');
 		$xoopsTpl->assign('imblogging_category_path', _SUBMIT);
 	}
+
+	$xoTheme->addStylesheet(ICMS_URL . '/modules/imtagging/module.css');
 }
 
 include_once 'header.php';

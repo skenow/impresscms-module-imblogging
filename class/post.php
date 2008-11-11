@@ -69,8 +69,7 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 
 		$this->setControl('categories', array(
 				'name'=>'categories',
-				'module'=>'imtagging',
-				'multiple'=>true
+				'module'=>'imtagging'
 			));
 		$this->setControl('post_content', 'dhtmltextarea');
 		$this->setControl('post_uid', 'user');
