@@ -20,5 +20,8 @@ define('_MD_IMBLOGGING_POST_MODIFIED', 'O Blog foi corretamente modificado.');
 define('_MD_IMBLOGGING_POST_CREATED', 'O Blog foi criado corretamente.');
 define('_MD_IMBLOGGING_SECURITY_CHECK_FAILED', 'Verificação de Segurança falhou...');
 
-define('_MD_IMBLOGGING_NAV_PAGES', 'Pages: ');
+define('_MD_IMBLOGGING_NAV_PAGES', 'Páginas: ');
+
+define('_MD_IMBLOGGING_RSS_GLOBAL', 'Inscrever-se nas últimas mensagens');
+define('_MD_IMBLOGGING_RSS_POSTER', 'Inscrever-se nas últimas mensagens a partir deste momento');
 ?>

@@ -15,6 +15,8 @@ if (!defined("ICMS_ROOT_PATH")) die("O caminho para o raiz do site não foi defi
 
 // post - Blog
 define("_CO_IMBLOGGING_POST_POST_TITLE", "Título");
+define("_CO_IMBLOGGING_POST_CATEGORIES_DSC", "Escolha qual as categorias que você gostaria de vincular este blog");
+define("_CO_IMBLOGGING_POST_POST_TITLE", "Título");
 define("_CO_IMBLOGGING_POST_POST_TITLE_DSC", "");
 define("_CO_IMBLOGGING_POST_POST_CONTENT", "Conteúdo");
 define("_CO_IMBLOGGING_POST_POST_CONTENT_DSC", "");
