@@ -100,7 +100,7 @@ function imblogging_getMonthNameById($month_id) {
 			return _CAL_FARVARDIN;
 		break;
 		case 2:
-			return _CAL_ORDIBEHEST;
+			return _CAL_ORDIBEHESHT;
 		break;
 		case 3:
 			return _CAL_KHORDAD;
@@ -112,7 +112,7 @@ function imblogging_getMonthNameById($month_id) {
 			return _CAL_MORDAD;
 		break;
 		case 6:
-			return _CAL_SAHRIVAR;
+			return _CAL_SHAHRIVAR;
 		break;
 		case 7:
 			return _CAL_MEHR;

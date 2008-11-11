@@ -54,7 +54,20 @@ if ($clean_cid) {
 	$category_pathArray[] = $category_name;
 	$extr_argArray[] = 'cid=' . $clean_cid;
 }
+	$config_handler =& xoops_gethandler('config');
+	$xoopsConfig =& $config_handler->getConfigsByCat(XOOPS_CONF);
 if ($clean_year && $clean_month) {
+if($xoopsConfig['language'] == "persian" && defined('_EXT_DATE_FUNC') && $xoopsConfig['use_ext_date'] == 1 && _EXT_DATE_FUNC && file_exists(ICMS_ROOT_PATH.'/language/'.$xoopsConfig['language'].'/ext/ext_date_function.php'))
+{
+		include_once ICMS_ROOT_PATH.'/language/'.$xoopsConfig['language'].'/ext/ext_date_function.php';
+		$gyear = $clean_year;
+		$gmonth = $clean_month;
+		$gday = 1;
+		list($jyear, $jmonth, $jday) = gregorian_to_jalali( $gyear, $gmonth, $gday );
+		$clean_year =  $jyear;
+		$clean_month = $jmonth;
+
+}
 	$category_pathArray[] = sprintf(_CO_IMBLOGGING_POST_FROM_MONTH, imblogging_getMonthNameById($clean_month), $clean_year);
 }
 
