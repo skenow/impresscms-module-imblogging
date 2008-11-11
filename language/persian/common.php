@@ -14,6 +14,8 @@ if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
 
 // post
+define("_CO_IMBLOGGING_POST_CATEGORIES", "Categories");
+define("_CO_IMBLOGGING_POST_CATEGORIES_DSC", "Select the categories to which you would like to link this blog post");
 define("_CO_IMBLOGGING_POST_POST_TITLE", "عنوان");
 define("_CO_IMBLOGGING_POST_POST_TITLE_DSC", "");
 define("_CO_IMBLOGGING_POST_POST_CONTENT", "متن");

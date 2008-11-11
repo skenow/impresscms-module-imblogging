@@ -31,7 +31,7 @@ define("_MI_IMBLOGGING_LIMITDSC", "تعداد پیام‌های نمایان د�
 define("_MI_IMBLOGGING_POSTRECENT", "آخرین نوشته‌ها");
 define("_MI_IMBLOGGING_POSTRECENTDSC", "نمایش آخرین پیام‌های ارسالی");
 define("_MI_IMBLOGGING_POSTBYMONTH", "نوشته‌های ماهانه");
-define("_MI_IMBLOGGING_POSTBYMONTHDSC", "نمایش فهرست ماه‌هایی که در آن‌ها پیامی نوشته و ارسال شده است");
+define("_MI_IMBLOGGING_POSTBYMONTHDSC", "Display list of months in which there were posts");
 
 // Notifications
 define("_MI_IMBLOGGING_GLOBAL_NOTIFY", "تمام پیام‌ها");

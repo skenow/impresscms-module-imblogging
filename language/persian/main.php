@@ -21,4 +21,7 @@ define('_MD_IMBLOGGING_POST_CREATED', 'نوشته‌ی شما با موفقیت 
 define('_MD_IMBLOGGING_SECURITY_CHECK_FAILED', 'بررسی‌های امنیتی بی نتیجه ماندند ...');
 
 define('_MD_IMBLOGGING_NAV_PAGES', 'صفخات: ');
+
+define('_MD_IMBLOGGING_RSS_GLOBAL', 'Subscribe to latest posts');
+define('_MD_IMBLOGGING_RSS_POSTER', 'Subscribe to latest posts from this poster');
 ?>
