@@ -495,15 +495,11 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 		foreach($categoriesObj as $categoryObj) {
 			if (isset($categoryObj->items['imblogging']['post']))
 			foreach($categoryObj->items['imblogging']['post'] as $postid) {
-				icms_debug(1);
 				$ret[$postid]['categories'][] = array(
 						'id' => $categoryObj->id(),
 						'title' => $categoryObj->getVar('category_title')
 				);
 			}
-		}
-		foreach($ret as $postArray) {
-			icms_debug_vardump($postArray['categories']);
 		}
 		return $ret;
 	}
