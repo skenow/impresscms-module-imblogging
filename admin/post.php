@@ -18,13 +18,14 @@
 */
 function editpost($post_id = 0)
 {
-	global $imblogging_post_handler, $xoopsModule, $icmsAdminTpl, $xoTheme;
+	global $imblogging_post_handler, $xoopsModule, $icmsAdminTpl, $xoTheme, $xoopsUser;
 
 	$postObj = $imblogging_post_handler->get($post_id);
 
 	if (!$postObj->isNew()){
 		$xoopsModule->displayAdminMenu(0, _AM_IMBLOGGING_POSTS . " > " . _CO_ICMS_EDITING);
 		$postObj->loadCategories();
+		$postObj->setVar('post_uid', $xoopsUser->uid());
 		$sform = $postObj->getForm(_AM_IMBLOGGING_POST_EDIT, 'addpost');
 		$sform->assign($icmsAdminTpl);
 
