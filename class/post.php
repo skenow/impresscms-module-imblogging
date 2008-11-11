@@ -558,6 +558,9 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 	function getPostsForSearch($queryarray, $andor, $limit, $offset, $userid) {
 		$criteria = new CriteriaCompo();
 
+		$criteria->setStart($offset);
+		$criteria->setLimit($limit);
+
 		if ($userid != 0) {
 			$criteria->add(new Criteria('post_uid', $userid));
 		}
