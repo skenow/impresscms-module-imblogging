@@ -484,7 +484,7 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 	 */
 	function getPosts($start = 0, $limit = 0, $post_uid = false, $cid=false, $year = false, $month = false, $post_id = false) {
 		$criteria = $this->getPostsCriteria($start, $limit, $post_uid, $cid, $year, $month, $post_id);
-		$ret = $this->getObjectsD($criteria, true, false);
+		$ret = $this->getObjects($criteria, true, false);
 
 		// retrieve the ids of all Posts retrieved
 		$postIds = $this->getIdsFromObjectsAsArray($ret);
