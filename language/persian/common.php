@@ -32,7 +32,7 @@ define("_CO_IMBLOGGING_POST_ALL_POSTS", "همه‌ی نوشته‌ها");
 
 define("_CO_IMBLOGGING_POST_INFO", "نوشته شده توسط %s به‌تاریخ %s.");
 define("_CO_IMBLOGGING_POST_FROM_USER", "تمام نوشته‌های %s");
-define("_CO_IMBLOGGING_POST_FROM_MONTH", "تمام پیام‌های نوشته شده در %s %u");
+define("_CO_IMBLOGGING_POST_FROM_MONTH", "تمام پیام‌های نوشته شده در %s %s");
 define("_CO_IMBLOGGING_POST_COMMENTS_INFO", "%d دیدگاه");
 define("_CO_IMBLOGGING_POST_NO_COMMENT", "دیدگاهی نوشته نشده است");
 

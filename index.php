@@ -64,7 +64,7 @@ if($xoopsConfig['language'] == "persian" && defined('_EXT_DATE_FUNC') && $xoopsC
 		$gmonth = $clean_month;
 		$gday = 1;
 		list($jyear, $jmonth, $jday) = gregorian_to_jalali( $gyear, $gmonth, $gday );
-		$clean_year =  $jyear;
+		$clean_year =  Convertnumber2farsi($jyear);
 		$clean_month = $jmonth;
 
 }

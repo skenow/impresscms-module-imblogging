@@ -537,8 +537,25 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 		'ORDER BY posts_year DESC, posts_month DESC';
 		$postsByMonthArray = $this->query($sql, false);
 		$ret = array ();
+	$config_handler =& xoops_gethandler('config');
+	$xoopsConfig =& $config_handler->getConfigsByCat(XOOPS_CONF);
 		foreach ($postsByMonthArray as $postByMonth) {
-			$postByMonth['posts_month_name'] = imblogging_getMonthNameById($postByMonth['posts_month']);
+			$postByMonthnr = $postByMonth['posts_month'];
+			$postByYearnr = $postByMonth['posts_year'];
+		if($xoopsConfig['language'] == "persian" && defined('_EXT_DATE_FUNC') && $xoopsConfig['use_ext_date'] == 1 && _EXT_DATE_FUNC && file_exists(ICMS_ROOT_PATH.'/language/'.$xoopsConfig['language'].'/ext/ext_date_function.php'))
+{
+		include_once ICMS_ROOT_PATH.'/language/'.$xoopsConfig['language'].'/ext/ext_date_function.php';
+		include_once ICMS_ROOT_PATH.'/language/'.$xoopsConfig['language'].'/calendar.php';
+		$gyear = $postByYearnr;
+		$gmonth = $postByMonthnr;
+		$gday = 1;
+		list($jyear, $jmonth, $jday) = gregorian_to_jalali( $gyear, $gmonth, $gday );
+		$postByYearnr =  Convertnumber2farsi($jyear);
+		$postByMonthnr = $jmonth;
+
+}
+			$postByMonth['posts_month_name'] = imblogging_getMonthNameById($postByMonthnr);
+			$postByMonth['posts_year_name'] = $postByYearnr;
 			$ret[] = $postByMonth;
 		}
 		return $ret;
