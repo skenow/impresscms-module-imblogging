@@ -41,5 +41,5 @@ define("_MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY_DSC", "Получить из
 define("_MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY_SBJ", "[{X_SITENAME}] {X_MODULE} автоизвещение : Опубликовано новое сообщение");
 
 // Submit button
-define("_MI_IMBLOGGING_POST_ADD", "Добавить новое сообщение");
+define("_MI_IMBLOGGING_POST_ADD", "Добавить сообщение");
 ?>
