@@ -4,7 +4,7 @@ der folgende Beitrag wurde veröffentlicht bei {X_SITENAME} :
 
 "{POST_TITLE}"
 
-Dieser Beitrag kann hier gelesen:
+Diesen Beitrag jetzt lesen:
 
 {POST_URL}
 
