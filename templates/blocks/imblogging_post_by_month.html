@@ -1,5 +1,7 @@
+<div style="float: <{$smarty.const._GLOBAL_LEFT}>;">
 <ul>
 <{foreach item=posts_by_month from=$block.posts_by_months}>
 	<li><a href="<{$xoops_url}>/modules/imblogging/index.php?y=<{$posts_by_month.posts_year}>&m=<{$posts_by_month.posts_month}>"><{$posts_by_month.posts_month_name}> <{$posts_by_month.posts_year_name}> (<{$posts_by_month.posts_count}>)</li></a>
 <{/foreach}>
 </ul>
+</div>
