@@ -331,20 +331,6 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 	}
 
 	/**
-	 * Update the counter field of the post object
-	 *
-	 * @todo add this in directly in the IPF
-	 *
-	 * @return VOID
-	 */
-	function updateCounter() {
-		$this->updating_counter = true;
-		$counter = $this->getVar('counter');
-		$this->setVar('counter', $counter +1);
-		$this->handler->insert($this, true);
-	}
-
-	/**
 	 * Check to see wether the current user can edit or delete this post
 	 *
 	 * @return bool true if he can, false if not
@@ -439,9 +425,10 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 	 * @param int $cid if specifid, only the post related to this category will be returned
 	 * @param int $year of posts to display
 	 * @param int $month of posts to display
+	 * @param int $post_id ID of a single post to retrieve
 	 * @return CriteriaCompo $criteria
 	 */
-	function getPostsCriteria($start = 0, $limit = 0, $post_uid = false, $cid = false, $year = false, $month = false) {
+	function getPostsCriteria($start = 0, $limit = 0, $post_uid = false, $cid = false, $year = false, $month = false, $post_id = false) {
 		$criteria = new CriteriaCompo();
 		if ($start) {
 			$criteria->setStart($start);
@@ -466,7 +453,21 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 			$criteriaYearMonth->add(new Criteria('YEAR(FROM_UNIXTIME(post_published_date))', $year));
 			$criteria->add($criteriaYearMonth);
 		}
+		if ($post_id) {
+			$criteria->add(new Criteria('post_id', $post_id));
+		}
 		return $criteria;
+	}
+
+	/**
+	 * Get single post object
+	 *
+	 * @param int $post_id
+	 * @return object ImbloggingPost object
+	 */
+	function getPost($post_id) {
+		$ret = $this->getPosts(0, 0, false, false, false, false, $post_id);
+		return isset($ret[$post_id]) ? $ret[$post_id] : false;
 	}
 
 	/**
@@ -478,11 +479,12 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 	 * @param int $cid if specifid, only the post related to this category will be returned
 	 * @param int $year of posts to display
 	 * @param int $month of posts to display
+	 * @param int $post_id ID of a single post to retrieve
 	 * @return array of posts
 	 */
-	function getPosts($start = 0, $limit = 0, $post_uid = false, $cid=false, $year = false, $month = false) {
-		$criteria = $this->getPostsCriteria($start, $limit, $post_uid, $cid, $year, $month);
-		$ret = $this->getObjects($criteria, true, false);
+	function getPosts($start = 0, $limit = 0, $post_uid = false, $cid=false, $year = false, $month = false, $post_id = false) {
+		$criteria = $this->getPostsCriteria($start, $limit, $post_uid, $cid, $year, $month, $post_id);
+		$ret = $this->getObjectsD($criteria, true, false);
 
 		// retrieve the ids of all Posts retrieved
 		$postIds = $this->getIdsFromObjectsAsArray($ret);
@@ -647,6 +649,19 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 			$this->insert($obj);
 		}
 		return true;
+	}
+
+	/**
+	 * Update the counter field of the post object
+	 *
+	 * @todo add this in directly in the IPF
+	 * @param int $post_id
+	 *
+	 * @return VOID
+	 */
+	function updateCounter($post_id) {
+		$sql = 'UPDATE ' . $this->table . ' SET counter = counter + 1 WHERE post_id = ' . $post_id;
+		$this->query($sql, null, true);
 	}
 }
 ?>
