@@ -29,6 +29,7 @@ function editpost($postObj)
 		if (!$postObj->userCanEditAndDelete()) {
 			redirect_header($postObj->getItemLink(true), 3, _NOPERM);
 		}
+		$postObj->loadCategories();
 		$postObj->hideFieldFromForm(array('post_published_date', 'post_uid', 'meta_keywords', 'meta_description', 'short_url'));
 		$sform = $postObj->getSecureForm(_MD_IMBLOGGING_POST_EDIT, 'addpost');
 		$sform->assign($xoopsTpl, 'imblogging_postform');
