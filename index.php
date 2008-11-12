@@ -25,12 +25,18 @@ $clean_cid = isset($_GET['cid']) ? intval($_GET['cid']) : false;
 if($xoopsConfig['language'] == "persian" && defined('_EXT_DATE_FUNC') && $xoopsConfig['use_ext_date'] == 1 && _EXT_DATE_FUNC && file_exists(ICMS_ROOT_PATH.'/language/'.$xoopsConfig['language'].'/ext/ext_date_function.php'))
 {
 		include_once ICMS_ROOT_PATH.'/language/'.$xoopsConfig['language'].'/ext/ext_date_function.php';
-		$gyear = $clean_year;
-		$gmonth = $clean_month;
-		$gday = 30;
-		list($jyear, $jmonth, $jday) = jalali_to_gregorian( $gyear, $gmonth, $gday );
-		$clean_year =  $jyear;
-		$clean_month = $jmonth;
+		$jyear = $clean_year;
+		$jmonth = $clean_month;
+		if ($jmonth <= '6'){
+			$jday = '31';
+		}elseif($jmonth > '6' && $jmonth <= '11'){
+			$jday = '31';
+		}else{
+						$jday = '29';
+		}
+		list($gyear, $gmonth, $gday) = jalali_to_gregorian( $jyear, $jmonth, $jday );
+		$clean_year =  $gyear;
+		$clean_month = $gmonth;
 
 }
 
