@@ -45,4 +45,5 @@ define("_CO_IMBLOGGING_POST_STATUS_PRIVATE", "Privat");
 define("_CO_IMBLOGGING_POST_PUBLISHED", "Veröffentlicht");
 define("_CO_IMBLOGGING_POST_ON", "am");
 define("_CO_IMBLOGGING_POST_BY", "von");
+define("_CO_IMBLOGGING_FILED_UNDER", "Abgelegt unter: ");
 ?>
