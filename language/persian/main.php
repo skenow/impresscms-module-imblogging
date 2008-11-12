@@ -22,6 +22,6 @@ define('_MD_IMBLOGGING_SECURITY_CHECK_FAILED', 'بررسی‌های امنیتی
 
 define('_MD_IMBLOGGING_NAV_PAGES', 'صفخات: ');
 
-define('_MD_IMBLOGGING_RSS_GLOBAL', 'Subscribe to latest posts');
-define('_MD_IMBLOGGING_RSS_POSTER', 'Subscribe to latest posts from this poster');
+define('_MD_IMBLOGGING_RSS_GLOBAL', 'از آخرین پست‌ها آگاه شوید');
+define('_MD_IMBLOGGING_RSS_POSTER', 'از آخرین پست‌های این نویسنده آگاه شوید');
 ?>
