@@ -43,4 +43,5 @@ define("_CO_IMBLOGGING_POST_STATUS_PRIVATE", "Privado");
 define("_CO_IMBLOGGING_POST_PUBLISHED", "Publicado");
 define("_CO_IMBLOGGING_POST_ON", "el");
 define("_CO_IMBLOGGING_POST_BY", "por");
+define("_CO_IMBLOGGING_FILED_UNDER", "Guardado en: ");//pendiente de ver donde se utiliza
 ?>
