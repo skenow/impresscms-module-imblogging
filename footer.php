@@ -18,7 +18,7 @@ $xoopsTpl->assign('imblogging_url', IMBLOGGING_URL);
 $xoopsTpl->assign('imblogging_images_url', IMBLOGGING_IMAGES_URL);
 $xoopsTpl->assign('imblogging_userCanSubmit', $imblogging_post_handler->userCanSubmit());
 
-$xoTheme->addStylesheet(IMBLOGGING_URL . 'module.css');
+$xoTheme->addStylesheet(IMBLOGGING_URL . 'module'.(( defined("_ADM_USE_RTL") && _ADM_USE_RTL )?'_rtl':'').'.css');
 
 $xoopsTpl->assign("ref_smartfactory", "imBlogging is developed by The SmartFactory (http://smartfactory.ca), a division of INBOX International inc. (http://inboxinternational.com)");
 
