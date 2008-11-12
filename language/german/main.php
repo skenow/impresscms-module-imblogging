@@ -20,4 +20,7 @@ define('_MD_IMBLOGGING_POST_CREATED', 'Der Beitrag wurde erstellt.');
 define('_MD_IMBLOGGING_SECURITY_CHECK_FAILED', 'Sicherheitscheck fehlgeschlagen... bitte erneut versuchen.');
 
 define('_MD_IMBLOGGING_NAV_PAGES', 'Seiten: ');
+
+define('_MD_IMBLOGGING_RSS_GLOBAL', 'Subscribe to latest posts');
+define('_MD_IMBLOGGING_RSS_POSTER', 'Subscribe to latest posts from this poster');
 ?>
