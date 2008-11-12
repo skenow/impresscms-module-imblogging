@@ -22,9 +22,9 @@ $clean_post_uid = isset($_GET['uid']) ? intval($_GET['uid']) : false;
 $clean_year = isset($_GET['y']) ? intval($_GET['y']) : false;
 $clean_month = isset($_GET['m']) ? intval($_GET['m']) : false;
 $clean_cid = isset($_GET['cid']) ? intval($_GET['cid']) : false;
-if(!empty($_GET['y']) && !empty($_GET['m']) && $xoopsConfig['language'] == "persian" && defined('_EXT_DATE_FUNC') && $xoopsConfig['use_ext_date'] == 1 && _EXT_DATE_FUNC && file_exists(ICMS_ROOT_PATH.'/language/'.$xoopsConfig['language'].'/ext/ext_date_function.php'))
+ $Basic_Check = $xoopsConfig['language'] == "persian" && defined('_EXT_DATE_FUNC') && $xoopsConfig['use_ext_date'] == 1 && _EXT_DATE_FUNC && file_exists(ICMS_ROOT_PATH.'/language/'.$xoopsConfig['language'].'/ext/ext_date_function.php');
+if(!empty($_GET['y']) && !empty($_GET['m']) && $Basic_Check)
 {
-		include_once ICMS_ROOT_PATH.'/language/'.$xoopsConfig['language'].'/ext/ext_date_function.php';
 		$jyear = $clean_year;
 		$jmonth = $clean_month;
 		if ($jmonth <= '6'){
@@ -74,9 +74,8 @@ if ($clean_cid) {
 	$config_handler =& xoops_gethandler('config');
 	$xoopsConfig =& $config_handler->getConfigsByCat(XOOPS_CONF);
 if ($clean_year && $clean_month) {
-if($xoopsConfig['language'] == "persian" && defined('_EXT_DATE_FUNC') && $xoopsConfig['use_ext_date'] == 1 && _EXT_DATE_FUNC && file_exists(ICMS_ROOT_PATH.'/language/'.$xoopsConfig['language'].'/ext/ext_date_function.php'))
+if($Basic_Check)
 {
-		include_once ICMS_ROOT_PATH.'/language/'.$xoopsConfig['language'].'/ext/ext_date_function.php';
 		$gyear = $clean_year;
 		$gmonth = $clean_month;
 		$gday = 1;
