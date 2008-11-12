@@ -22,6 +22,17 @@ $clean_post_uid = isset($_GET['uid']) ? intval($_GET['uid']) : false;
 $clean_year = isset($_GET['y']) ? intval($_GET['y']) : false;
 $clean_month = isset($_GET['m']) ? intval($_GET['m']) : false;
 $clean_cid = isset($_GET['cid']) ? intval($_GET['cid']) : false;
+if($xoopsConfig['language'] == "persian" && defined('_EXT_DATE_FUNC') && $xoopsConfig['use_ext_date'] == 1 && _EXT_DATE_FUNC && file_exists(ICMS_ROOT_PATH.'/language/'.$xoopsConfig['language'].'/ext/ext_date_function.php'))
+{
+		include_once ICMS_ROOT_PATH.'/language/'.$xoopsConfig['language'].'/ext/ext_date_function.php';
+		$gyear = $clean_year;
+		$gmonth = $clean_month;
+		$gday = 30;
+		list($jyear, $jmonth, $jday) = jalali_to_gregorian( $gyear, $gmonth, $gday );
+		$clean_year =  $jyear;
+		$clean_month = $jmonth;
+
+}
 
 $imblogging_post_handler = xoops_getModuleHandler('post');
 
