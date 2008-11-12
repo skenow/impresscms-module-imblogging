@@ -25,7 +25,7 @@ define("_CO_IMBLOGGING_POST_POST_UID", "Отправитель");
 define("_CO_IMBLOGGING_POST_POST_UID_DSC", "");
 define("_CO_IMBLOGGING_POST_POST_STATUS", "Статус");
 define("_CO_IMBLOGGING_POST_POST_STATUS_DSC", "");
-define("_CO_IMBLOGGING_POST_POST_CANCOMMENT", "Можно комментировать ?");
+define("_CO_IMBLOGGING_POST_POST_CANCOMMENT", "Можно комментировать?");
 define("_CO_IMBLOGGING_POST_POST_CANCOMMENT_DSC", "");
 define("_CO_IMBLOGGING_POST_ALL_POSTS", "Все сообщения");
 
@@ -45,4 +45,5 @@ define("_CO_IMBLOGGING_POST_STATUS_PRIVATE", "Приватный");
 define("_CO_IMBLOGGING_POST_PUBLISHED", "Опубликовано");
 define("_CO_IMBLOGGING_POST_ON", "на");
 define("_CO_IMBLOGGING_POST_BY", " ");
+define("_CO_IMBLOGGING_FILED_UNDER", "Filed under: ");
 ?>
