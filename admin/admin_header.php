@@ -15,8 +15,8 @@
 include_once '../../../include/cp_header.php';
 
 include_once ICMS_ROOT_PATH.'/modules/' . basename(dirname(dirname(__FILE__))) .'/include/common.php';
-
 if( !defined("IMBLOGGING_ADMIN_URL") ) define('IMBLOGGING_ADMIN_URL', IMBLOGGING_URL . "admin/");
+include_once(IMBLOGGING_ROOT_PATH . 'include/requirements.php');
 
 /**
 * First use page of the module
