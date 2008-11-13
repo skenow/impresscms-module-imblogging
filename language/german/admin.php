@@ -11,6 +11,13 @@
 
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
+// Requirements
+define("_AM_IMBLOGGING_REQUIREMENTS", "Voraussetzungen für Blog");
+define("_AM_IMBLOGGING_REQUIREMENTS_INFO", "Es wurde Ihr System geprüft, leider erfüllt es nicht alle Anforderungen damit es genutzt werden kann. Folgende Anforderungen werden benötigt.");
+define("_AM_IMBLOGGING_REQUIREMENTS_ICMS_BUILD", "Das Modul benötigt mindestens ImpressCMS 1.1.1 RC 1.");
+define("_AM_IMBLOGGING_REQUIREMENTS_IMTAGGING", "Es muss vorher das Modul imTagging installiert sein, sonst können keine Kategorien und Tags angelegt werden. Das imTagging kann bei <a href='http://www.impresscms.de/search.php?query=imTagging&action=results'>http://www.impresscms.de</a> gefunden werden.");
+define("_AM_IMBLOGGING_REQUIREMENTS_SUPPORT", "Sollten Sie Fragen oder Bedenken haben, besuchen Sie das <a href='http://www.impresscms.de/modules/newbb/'>Impresscms.de - Forum</a>.");
+
 // general
 define("_AM_IMBLOGGING_POSTS", "Beiträge");
 define("_AM_IMBLOGGING_FIRST_USE", "Das ist der erste Start von diesem Modul, es aktualisiert sich automatisch und erstellt ein Datenbankschema.");
