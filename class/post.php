@@ -681,8 +681,8 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 	 *
 	 * @return VOID
 	 */
-	function updateCounter($post_id) {
-		$sql = 'UPDATE ' . $this->table . ' SET counter = counter + 1 WHERE post_id = ' . $post_id;
+	function updateCounter($id) {
+		$sql = 'UPDATE ' . $this->table . ' SET counter = counter + 1 WHERE ' . $this->keyName . ' = ' . $id;
 		$this->query($sql, null, true);
 	}
 }
