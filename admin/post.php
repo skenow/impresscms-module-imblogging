@@ -133,9 +133,9 @@ if (in_array($clean_op,$valid_op,true)){
   		$criteria->add(new Criteria('post_id', $clean_post_id));
 
   		$objectTable = new SmartObjectTable($imblogging_post_handler, $criteria);
-  		$objectTable->addColumn(new SmartObjectColumn('post_date', 'left', 150));
+  		$objectTable->addColumn(new SmartObjectColumn('post_date', _GLOBAL_LEFT, 150));
   		$objectTable->addColumn(new SmartObjectColumn('post_message'));
-  		$objectTable->addColumn(new SmartObjectColumn('post_uid', 'left', 150));
+  		$objectTable->addColumn(new SmartObjectColumn('post_uid', _GLOBAL_LEFT, 150));
 
   		$objectTable->addIntroButton('addpost', 'post.php?op=mod&post_id=' . $clean_post_id, _AM_IMBLOGGING_POST_CREATE);
 
@@ -153,7 +153,7 @@ if (in_array($clean_op,$valid_op,true)){
 
   		include_once ICMS_ROOT_PATH."/kernel/icmspersistabletable.php";
   		$objectTable = new IcmsPersistableTable($imblogging_post_handler);
-  		$objectTable->addColumn(new IcmsPersistableColumn('post_title', 'left'));
+  		$objectTable->addColumn(new IcmsPersistableColumn('post_title', _GLOBAL_LEFT));
   		$objectTable->addColumn(new IcmsPersistableColumn('post_published_date', 'center', 150));
   		$objectTable->addColumn(new IcmsPersistableColumn('post_uid', 'center', 150));
   		$objectTable->addColumn(new IcmsPersistableColumn('post_status', 'center', 150));
