@@ -92,88 +92,8 @@ function imblogging_getPreviousPage($default=false) {
  * @return string month name
  */
 function imblogging_getMonthNameById($month_id) {
-	global $xoopsConfig;
-	icms_loadLanguageFile('core', 'calendar');
-	if( defined('_EXT_DATE_FUNC') && $xoopsConfig['use_ext_date'] == 1 && _EXT_DATE_FUNC && $xoopsConfig['language'] == 'persian'){
-	switch($month_id) {
-		case 1:
-			return _CAL_FARVARDIN;
-		break;
-		case 2:
-			return _CAL_ORDIBEHESHT;
-		break;
-		case 3:
-			return _CAL_KHORDAD;
-		break;
-		case 4:
-			return _CAL_TIR;
-		break;
-		case 5:
-			return _CAL_MORDAD;
-		break;
-		case 6:
-			return _CAL_SHAHRIVAR;
-		break;
-		case 7:
-			return _CAL_MEHR;
-		break;
-		case 8:
-			return _CAL_ABAN;
-		break;
-		case 9:
-			return _CAL_AZAR;
-		break;
-		case 10:
-			return _CAL_DEY;
-		break;
-		case 11:
-			return _CAL_BAHMAN;
-		break;
-		case 12:
-			return _CAL_ESFAND;
-		break;
+	return Icms_getMonthNameById($month_id);
 	}
-	}else{
-	switch($month_id) {
-		case 1:
-			return _CAL_JANUARY;
-		break;
-		case 2:
-			return _CAL_FEBRUARY;
-		break;
-		case 3:
-			return _CAL_MARCH;
-		break;
-		case 4:
-			return _CAL_APRIL;
-		break;
-		case 5:
-			return _CAL_MAY;
-		break;
-		case 6:
-			return _CAL_JUNE;
-		break;
-		case 7:
-			return _CAL_JULY;
-		break;
-		case 8:
-			return _CAL_AUGUST;
-		break;
-		case 9:
-			return _CAL_SEPTEMBER;
-		break;
-		case 10:
-			return _CAL_OCTOBER;
-		break;
-		case 11:
-			return _CAL_NOVEMBER;
-		break;
-		case 12:
-			return _CAL_DECEMBER;
-		break;
-	}
-}
-}
 
 /**
 * Return a linked username or full name for a specific $userid

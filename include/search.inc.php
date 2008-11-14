@@ -22,7 +22,7 @@ function imblogging_search($queryarray, $andor, $limit, $offset, $userid)
 
 	foreach ($postsArray as $postArray) {
 		$item['image'] = "images/post.png";
-		$item['link'] = str_replace(IMBLOGGING_URLL, '', $postArray['itemUrl']);
+		$item['link'] = str_replace(IMBLOGGING_URL, '', $postArray['itemUrl']);
 		$item['title'] = $postArray['post_title'];
 		$item['time'] = strtotime($postArray['post_published_date']);
 		$item['uid'] = $postArray['post_posterid'];

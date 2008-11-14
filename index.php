@@ -22,7 +22,7 @@ $clean_post_uid = isset($_GET['uid']) ? intval($_GET['uid']) : false;
 $clean_year = isset($_GET['y']) ? intval($_GET['y']) : false;
 $clean_month = isset($_GET['m']) ? intval($_GET['m']) : false;
 $clean_cid = isset($_GET['cid']) ? intval($_GET['cid']) : false;
- $Basic_Check = $xoopsConfig['language'] == "persian" && defined('_EXT_DATE_FUNC') && $xoopsConfig['use_ext_date'] == 1 && _EXT_DATE_FUNC && file_exists(ICMS_ROOT_PATH.'/language/'.$xoopsConfig['language'].'/ext/ext_date_function.php');
+ $Basic_Check = $xoopsConfig['language'] == "persian" && $xoopsConfig['use_ext_date'] == 1;
 if(!empty($_GET['y']) && !empty($_GET['m']) && $Basic_Check)
 {
 		$jyear = $clean_year;
@@ -80,7 +80,7 @@ if($Basic_Check)
 		$gmonth = $clean_month;
 		$gday = 1;
 		list($jyear, $jmonth, $jday) = gregorian_to_jalali( $gyear, $gmonth, $gday );
-		$clean_year =  Convertnumber2farsi($jyear);
+		$clean_year =  icms_conv_nr2local($jyear);
 		$clean_month = $jmonth;
 
 }
