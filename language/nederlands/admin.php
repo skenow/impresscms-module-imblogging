@@ -12,6 +12,13 @@
 
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
+// Requirements
+define("_AM_IMBLOGGING_REQUIREMENTS", "imBlogging Vereisten");
+define("_AM_IMBLOGGING_REQUIREMENTS_INFO", "We hebben uw installatie bekeken. Helaas voldoet het niet aan alle vereisten nodig voor het juist funktioneren van imBlogging. Hieronder zijn de nodig vereisten.");
+define("_AM_IMBLOGGING_REQUIREMENTS_ICMS_BUILD", "imBlogging vereist minimaal ImpressCMS 1.1.1 RC 1.");
+define("_AM_IMBLOGGING_REQUIREMENTS_IMTAGGING", "imBlogging vereist dat imTagging is geïnstalleerd. U kunt het downloaden via ImpressCMS SVN.");
+define("_AM_IMBLOGGING_REQUIREMENTS_SUPPORT", "Indien u vragen heeft verzoeken wij u zich te wenden tot onze forums op: <a href='http://community.impresscms.org'>http://community.impresscms.org</a>.");
+
 // general
 define("_AM_IMBLOGGING_POSTS", "Berichten");
 define("_AM_IMBLOGGING_FIRST_USE", "Dit is de eerste keer dat u deze module gebruikt. Update de module alstublieft om de nodige database dynamisch aan te maken.");
