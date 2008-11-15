@@ -34,7 +34,7 @@
 }
 .imblogging_post_content {clear:both;margin:0; overflow:hidden;text-align:justify;}
 .imblogging_post_categories {
-	background: url(images/category.png) no-repeat left center;
+	background: url(images/category.png) no-repeat right center;
 	padding: 0px 20px;
 	display: block;
 	float: right;
@@ -54,11 +54,11 @@
 }
 #imblogging_post_comments_container {}
 .imblogging_post_comments {
-	background-image: url(images/comments.gif);
-	background-repeat: no-repeat;
-	margin:5px 0 0 0;
+	background: url(images/comments.gif) no-repeat right center;
+	padding: 0px 16px 0px 2px;
+	display: block;
+	margin: 5px 0 0 0;
 	text-align:right;
-	padding-left: 15px;
 	font-size: 80%;
 	float: right;
 }
