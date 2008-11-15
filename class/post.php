@@ -114,7 +114,11 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 	function categories() {
 		$ret = $this->getVar('categories', 'n');
 		$ret = $this->vars['categories']['value'];
-		return is_array($ret) ? $ret : false;
+		if (is_array($ret)) {
+			return $ret;
+		} else {
+			(int)$ret > 0 ? array((int)$ret) : false;
+		}
 	}
 
 	/**
