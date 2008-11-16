@@ -17,7 +17,7 @@ if (!defined("ICMS_ROOT_PATH")) die("O caminho para o raiz do site não foi defi
 define("_CO_IMBLOGGING_POST_POST_TITLE", "Título");
 define("_CO_IMBLOGGING_POST_CATEGORIES_DSC", "Escolha qual as categorias que você gostaria de vincular este blog");
 define("_CO_IMBLOGGING_POST_POST_TITLE", "Título");
-define("_CO_IMBLOGGING_POST_POST_TITLE_DSC", "");
+define("_CO_IMBLOGGING_POST_POST_TITLE_DSC", "Título do Blog");
 define("_CO_IMBLOGGING_POST_POST_CONTENT", "Conteúdo");
 define("_CO_IMBLOGGING_POST_POST_CONTENT_DSC", "");
 define("_CO_IMBLOGGING_POST_POST_PUBLISHED_DATE", "Data");
@@ -28,7 +28,7 @@ define("_CO_IMBLOGGING_POST_POST_STATUS", "Status");
 define("_CO_IMBLOGGING_POST_POST_STATUS_DSC", "");
 define("_CO_IMBLOGGING_POST_POST_CANCOMMENT", "Pode Comentar ?");
 define("_CO_IMBLOGGING_POST_POST_CANCOMMENT_DSC", "");
-define("_CO_IMBLOGGING_POST_ALL_POSTS", "All posts");
+define("_CO_IMBLOGGING_POST_ALL_POSTS", "Todos Blogs");
 
 define("_CO_IMBLOGGING_POST_INFO", "Publicado por %s no %s.");
 define("_CO_IMBLOGGING_POST_FROM_USER", "Todos Blogs de %s");
@@ -46,4 +46,5 @@ define("_CO_IMBLOGGING_POST_STATUS_PRIVATE", "Privado");
 define("_CO_IMBLOGGING_POST_PUBLISHED", "Publicado");
 define("_CO_IMBLOGGING_POST_ON", "on");
 define("_CO_IMBLOGGING_POST_BY", "por");
+define("_CO_IMBLOGGING_FILED_UNDER", "Arquivado em: ");
 ?>
