@@ -61,7 +61,7 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 
 		$this->initCommonVar('counter', false);
 		$this->initCommonVar('dohtml', false, true);
-		$this->initCommonVar('dobr', false);
+		$this->initCommonVar('dobr');
 		$this->initCommonVar('doimage', false, true);
 		$this->initCommonVar('dosmiley', false, true);
 		$this->initCommonVar('doxcode', false, true);
