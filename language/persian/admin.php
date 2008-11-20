@@ -14,7 +14,7 @@ if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
 // Requirements
 define("_AM_IMBLOGGING_REQUIREMENTS", "نیازمندی‌های ماژول");
-define("_AM_IMBLOGGING_REQUIREMENTS_INFO", "We've reviewed your system, unfortunately it doesn't meet all the requirements needed for imBlogging to function. Below are the requirements needed.");
+define("_AM_IMBLOGGING_REQUIREMENTS_INFO", "ما سیستم شما را بررسی کردیم، متاسفانه شما تمامی امکانات مورد نیاز را ندارید. برای به کار انداختن این ماژول باید موارد زیر را داشته باشید.");
 define("_AM_IMBLOGGING_REQUIREMENTS_ICMS_BUILD", "این ماژول برای کار به ایمپرس سی‌ام‌اس ۱.۱.۱ نیازمند است.");
 define("_AM_IMBLOGGING_REQUIREMENTS_IMTAGGING", "این ماژول نیاز به ماژول تگ . برچسب‌های ایمپرس سی‌ام‌اس دارد.");
 define("_AM_IMBLOGGING_REQUIREMENTS_SUPPORT", "برای هرگونه سوال به انجمن ایمپرس سی‌ام‌اس در <a href='http://community.impresscms.org'>http://community.impresscms.org</a> مراجعه نمایید.");
