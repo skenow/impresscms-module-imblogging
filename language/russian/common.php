@@ -29,6 +29,8 @@ define("_CO_IMBLOGGING_POST_POST_CANCOMMENT", "Можно комментиров
 define("_CO_IMBLOGGING_POST_POST_CANCOMMENT_DSC", "");
 define("_CO_IMBLOGGING_POST_ALL_POSTS", "Все сообщения");
 
+define("_CO_IMBLOGGING_POST_POST_REFERENCE", "Ссылочный материал для этого сообщения");
+
 define("_CO_IMBLOGGING_POST_INFO", "Опубликовано %s на %s.");
 define("_CO_IMBLOGGING_POST_FROM_USER", "Все сообщения от %s");
 define("_CO_IMBLOGGING_POST_FROM_MONTH", "Все сообщения, созданные в %s %u");
@@ -43,6 +45,9 @@ define("_CO_IMBLOGGING_POST_STATUS_PRIVATE", "Приватный");
 
 // common language
 define("_CO_IMBLOGGING_POST_PUBLISHED", "Опубликовано");
+define("_CO_IMBLOGGING_POST_PENDING", "Размещено для просмотра");
+define("_CO_IMBLOGGING_POST_DRAFT", "Размещено как черновик");
+define("_CO_IMBLOGGING_POST_PRIVATE", "Опубликовано приватно");
 define("_CO_IMBLOGGING_POST_ON", "на");
 define("_CO_IMBLOGGING_POST_BY", " ");
 define("_CO_IMBLOGGING_FILED_UNDER", "Filed under: ");
