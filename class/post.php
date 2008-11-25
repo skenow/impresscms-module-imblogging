@@ -431,6 +431,8 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 	 * @return CriteriaCompo $criteria
 	 */
 	function getPostsCriteria($start = 0, $limit = 0, $post_uid = false, $cid = false, $year = false, $month = false, $post_id = false) {
+		global $xoopsUser;
+
 		$criteria = new CriteriaCompo();
 		if ($start) {
 			$criteria->setStart($start);
@@ -440,7 +442,10 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 		}
 		$criteria->setSort('post_published_date');
 		$criteria->setOrder('DESC');
-		$criteria->add(new Criteria('post_status', IMBLOGGING_POST_STATUS_PUBLISHED));
+
+		if (!isset($xoopsUser) || !$xoopsUser->isAdmin()) {
+			$criteria->add(new Criteria('post_status', IMBLOGGING_POST_STATUS_PUBLISHED));
+		}
 		if ($post_uid) {
 			$criteria->add(new Criteria('post_uid', $post_uid));
 		}
