@@ -216,7 +216,24 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 	 * @return str post info
 	 */
 	function getPostInfo() {
-		$ret = sprintf(_CO_IMBLOGGING_POST_INFO, $this->getPoster(true), $this->getVar('post_published_date'));
+		$status = $this->getVar('post_status', 'e');
+		switch ($status) {
+			case IMBLOGGING_POST_STATUS_PENDING:
+				$ret = _CO_IMBLOGGING_POST_PENDING;
+			break;
+
+			case IMBLOGGING_POST_STATUS_DRAFT:
+				$ret = _CO_IMBLOGGING_POST_DRAFT;
+			break;
+
+			case IMBLOGGING_POST_STATUS_PRIVATE:
+				$ret = _CO_IMBLOGGING_POST_PRIVATE;
+			break;
+
+			default:
+				$ret = _CO_IMBLOGGING_POST_PUBLISHED;
+			break;
+		}
 		return $ret;
 	}
 
