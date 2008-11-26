@@ -30,6 +30,8 @@ define("_CO_IMBLOGGING_POST_POST_CANCOMMENT", "Kan commentaar geven?");
 define("_CO_IMBLOGGING_POST_POST_CANCOMMENT_DSC", "");
 define("_CO_IMBLOGGING_POST_ALL_POSTS", "All posts");
 
+define("_CO_IMBLOGGING_POST_POST_REFERENCE", "Referentie van deze inzending");
+
 define("_CO_IMBLOGGING_POST_INFO", "Gepubliceerd door %s op %s.");
 define("_CO_IMBLOGGING_POST_FROM_USER", "Alle berichtenen van %s");
 define("_CO_IMBLOGGING_POST_FROM_MONTH", "Alle berichten gemaakt in %s %u");
@@ -44,6 +46,9 @@ define("_CO_IMBLOGGING_POST_STATUS_PRIVATE", "Privé");
 
 // common language
 define("_CO_IMBLOGGING_POST_PUBLISHED", "Gepubliceerd");
+define("_CO_IMBLOGGING_POST_PENDING", "Ingezonden voor recensie");
+define("_CO_IMBLOGGING_POST_DRAFT", "Ingezonden als ontwerp");
+define("_CO_IMBLOGGING_POST_PRIVATE", "Gepubliceerd als privé");
 define("_CO_IMBLOGGING_POST_ON", "op");
 define("_CO_IMBLOGGING_POST_BY", "door");
 define("_CO_IMBLOGGING_FILED_UNDER", "Opgeslagen onder: ");
