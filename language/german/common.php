@@ -29,6 +29,8 @@ define("_CO_IMBLOGGING_POST_POST_CANCOMMENT", "Erlaube Kommentare?");
 define("_CO_IMBLOGGING_POST_POST_CANCOMMENT_DSC", "");
 define("_CO_IMBLOGGING_POST_ALL_POSTS", "Alle Beiträge");
 
+define("_CO_IMBLOGGING_POST_POST_REFERENCE", "Referenz von diesem Beitrag");,
+
 define("_CO_IMBLOGGING_POST_INFO", "Veröffentlicht von %s am %s.");
 define("_CO_IMBLOGGING_POST_FROM_USER", "Alle Beiträge von %s");
 define("_CO_IMBLOGGING_POST_FROM_MONTH", "Alle Beiträge vom Monat %s %u");
@@ -43,6 +45,9 @@ define("_CO_IMBLOGGING_POST_STATUS_PRIVATE", "Privat");
 
 // common language
 define("_CO_IMBLOGGING_POST_PUBLISHED", "Veröffentlicht");
+define("_CO_IMBLOGGING_POST_PENDING", "Zur Prüfung vorgelegt");
+define("_CO_IMBLOGGING_POST_DRAFT", "Als Entwurf hinzugefügt");
+define("_CO_IMBLOGGING_POST_PRIVATE", "Veröffentlicht als privat");
 define("_CO_IMBLOGGING_POST_ON", "am");
 define("_CO_IMBLOGGING_POST_BY", "von");
 define("_CO_IMBLOGGING_FILED_UNDER", "Abgelegt unter: ");
