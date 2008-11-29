@@ -26,6 +26,7 @@ define("_CO_IMBLOGGING_POST_POST_STATUS_DSC", "");
 define("_CO_IMBLOGGING_POST_POST_CANCOMMENT", "¿Admitir comentarios?");
 define("_CO_IMBLOGGING_POST_POST_CANCOMMENT_DSC", "");
 define("_CO_IMBLOGGING_POST_ALL_POSTS", "Todos los artículos");
+define("_CO_IMBLOGGING_POST_POST_REFERENCE", "Referencia de este artículo");
 
 define("_CO_IMBLOGGING_POST_INFO", "Publicado por %s el %s.");
 define("_CO_IMBLOGGING_POST_FROM_USER", "Todos los artículos de %s");
@@ -41,6 +42,9 @@ define("_CO_IMBLOGGING_POST_STATUS_PRIVATE", "Privado");
 
 // common language
 define("_CO_IMBLOGGING_POST_PUBLISHED", "Publicado");
+define("_CO_IMBLOGGING_POST_PENDING", "Enviado para revisión (pendiente)");
+define("_CO_IMBLOGGING_POST_DRAFT", "Enviado como borrador");
+define("_CO_IMBLOGGING_POST_PRIVATE", "Publicado como privado");
 define("_CO_IMBLOGGING_POST_ON", "el");
 define("_CO_IMBLOGGING_POST_BY", "por");
 define("_CO_IMBLOGGING_FILED_UNDER", "Guardado en: ");//pendiente de ver donde se utiliza
