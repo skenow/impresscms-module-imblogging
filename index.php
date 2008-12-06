@@ -22,19 +22,12 @@ $clean_post_uid = isset($_GET['uid']) ? intval($_GET['uid']) : false;
 $clean_year = isset($_GET['y']) ? intval($_GET['y']) : false;
 $clean_month = isset($_GET['m']) ? intval($_GET['m']) : false;
 $clean_cid = isset($_GET['cid']) ? intval($_GET['cid']) : false;
- $Basic_Check = $xoopsConfig['language'] == "persian" && $xoopsConfig['use_ext_date'] == 1;
+$Basic_Check = defined ('_CALENDAR_TYPE') && _CALENDAR_TYPE == "jalali" && $xoopsConfig['use_ext_date'] == 1;
 if(!empty($_GET['y']) && !empty($_GET['m']) && $Basic_Check)
 {
 		$jyear = $clean_year;
 		$jmonth = $clean_month;
-		if ($jmonth <= '6'){
-			$jday = '31';
-		}elseif($jmonth > '6' && $jmonth <= '11'){
-			$jday = '31';
-		}else{
-						$jday = '29';
-		}
-		list($gyear, $gmonth, $gday) = jalali_to_gregorian( $jyear, $jmonth, $jday );
+		list($gyear, $gmonth, $gday) = jalali_to_gregorian( $jyear, $jmonth, '1' );
 		$clean_year =  $gyear;
 		$clean_month = $gmonth;
 

@@ -568,13 +568,12 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 			$postByMonthnr = $postByMonth['posts_month'];
 			$postByYearname = $postByMonth['posts_year'];
 			$postByYearnr = $postByMonth['posts_year'];
-		if($xoopsConfig['language'] == "persian" && $xoopsConfig['use_ext_date'] == 1)
+		if(defined ('_CALENDAR_TYPE') && _CALENDAR_TYPE == "jalali" && $xoopsConfig['use_ext_date'] == 1)
 {
 		include_once ICMS_ROOT_PATH.'/language/'.$xoopsConfig['language'].'/calendar.php';
 		$gyear = $postByYearname;
 		$gmonth = $postByMonthnr;
-		$gday = 1;
-		list($jyear, $jmonth, $jday) = gregorian_to_jalali( $gyear, $gmonth, $gday );
+		list($jyear, $jmonth, $jday) = gregorian_to_jalali( $gyear, $gmonth, '1');
 		$postByYearname =  icms_conv_nr2local($jyear);
 		$postByYearnr =  $jyear;
 		$postByMonthnr = $jmonth;
