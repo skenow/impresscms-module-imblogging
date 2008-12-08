@@ -460,7 +460,7 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 		$criteria->setSort('post_published_date');
 		$criteria->setOrder('DESC');
 
-		if (!isset($xoopsUser) || (is_object($xoopsUser) && !$xoopsUser->isAdmin())) {
+		if (!is_object($xoopsUser) || (is_object($xoopsUser) && !$xoopsUser->isAdmin())) {
 			$criteria->add(new Criteria('post_status', IMBLOGGING_POST_STATUS_PUBLISHED));
 		}
 		if ($post_uid) {
