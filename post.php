@@ -77,14 +77,14 @@ if (in_array($clean_op,$valid_op,true)){
 	case "mod":
 		$postObj = $imblogging_post_handler->get($clean_post_id);
   		if ($clean_post_id > 0 && $postObj->isNew()) {
-			redirect_header(imblogging_getPreviousPage('index.php'), 3, _NOPERM);
+			redirect_header(icms_getPreviousPage('index.php'), 3, _NOPERM);
 		}
 		editpost($postObj);
 		break;
 
 	case "addpost":
         if (!$xoopsSecurity->check()) {
-        	redirect_header(imblogging_getPreviousPage('index.php'), 3, _MD_IMBLOGGING_SECURITY_CHECK_FAILED . implode('<br />', $xoopsSecurity->getErrors()));
+        	redirect_header(icms_getPreviousPage('index.php'), 3, _MD_IMBLOGGING_SECURITY_CHECK_FAILED . implode('<br />', $xoopsSecurity->getErrors()));
         }
          include_once ICMS_ROOT_PATH.'/kernel/icmspersistablecontroller.php';
         $controller = new IcmsPersistableController($imblogging_post_handler);

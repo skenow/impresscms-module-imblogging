@@ -77,7 +77,7 @@ if($Basic_Check)
 		$clean_month = $jmonth;
 
 }
-	$category_pathArray[] = sprintf(_CO_IMBLOGGING_POST_FROM_MONTH, imblogging_getMonthNameById($clean_month), $clean_year);
+	$category_pathArray[] = sprintf(_CO_IMBLOGGING_POST_FROM_MONTH, Icms_getMonthNameById($clean_month), $clean_year);
 }
 
 $extr_arg = count($extr_argArray) > 0 ? implode('&amp;', $extr_argArray) : '';

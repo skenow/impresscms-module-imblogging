@@ -283,7 +283,7 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 	global $xoopsConfig;
 		$post_date = $this->getVar('post_published_date', 'n');
 		$this->post_date_info['year'] = formatTimestamp($post_date, 'Y');
-		$this->post_date_info['month'] = imblogging_getMonthNameById(formatTimestamp($post_date, 'n'));
+		$this->post_date_info['month'] = Icms_getMonthNameById(formatTimestamp($post_date, 'n'));
 		$this->post_date_info['month_short'] = formatTimestamp($post_date, 'month');
 		$this->post_date_info['day'] = formatTimestamp($post_date, 'D');
 		$this->post_date_info['day_number'] = formatTimestamp($post_date, 'daynumber');
@@ -581,7 +581,7 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 }
 			$postByMonth['posts_year_nr'] = $postByYearnr;
 			$postByMonth['posts_month_nr'] = $postByMonthnr;
-			$postByMonth['posts_month_name'] = imblogging_getMonthNameById($postByMonthnr);
+			$postByMonth['posts_month_name'] = Icms_getMonthNameById($postByMonthnr);
 			$postByMonth['posts_year_name'] = $postByYearname;
 			$ret[] = $postByMonth;
 		}
