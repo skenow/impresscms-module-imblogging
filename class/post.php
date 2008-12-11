@@ -127,7 +127,7 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 	 * @return str name of the poster
 	 */
 	function post_uid() {
-		return imblogging_getLinkedUnameFromId($this->getVar('post_uid', 'e'));
+		return icms_getLinkedUnameFromId($this->getVar('post_uid', 'e'));
 	}
 
 	/**
