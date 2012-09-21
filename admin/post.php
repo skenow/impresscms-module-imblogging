@@ -16,8 +16,7 @@
  *
  * @param int $post_id Postid to be edited
 */
-function editpost($post_id = 0)
-{
+function editpost($post_id = 0) {
 	global $imblogging_post_handler, $icmsModule, $icmsAdminTpl, $xoTheme, $icmsUser;
 
 	$postObj = $imblogging_post_handler->get($post_id);
@@ -48,7 +47,7 @@ $icmsOnDemandPreload[] = array(
 	'filename'=>'imtaggingadmincss.php'
 );
 */
-include_once("admin_header.php");
+include_once "admin_header.php";
 
 /** IcmsOndemandPreload is not supported prior to 1.2 Alpha. This is a workaround */
 if (ICMS_VERSION_BUILD < 25) {
@@ -61,7 +60,7 @@ $clean_op = '';
 /** Create a whitelist of valid values, be sure to use appropriate types for each value
  * Be sure to include a value for no parameter, if you have a default condition
  */
-$valid_op = array ('mod','changedField','addpost', 'addcategory', 'del','view','');
+$valid_op = array('mod','changedField','addpost', 'addcategory', 'del','view','');
 
 if (isset($_GET['op'])) $clean_op = htmlentities($_GET['op']);
 if (isset($_POST['op'])) $clean_op = htmlentities($_POST['op']);
@@ -77,7 +76,7 @@ $clean_category_pid = isset($_POST['category_pid']) ? (int) $_POST['category_pid
  * are case sensitive and the 3rd argument determines whether type matching is
  * required
 */
-if (in_array($clean_op,$valid_op,true)){
+if (in_array($clean_op,$valid_op,true)) {
   switch ($clean_op) {
   	case "addcategory":
   		// the logger needs to be disabled in an AJAX request
@@ -93,8 +92,8 @@ if (in_array($clean_op,$valid_op,true)){
 		// rebuild the ImtaggingCategoryTreeElement control
 		$postObj = $imblogging_post_handler->get($clean_post_id);
 
-		include_once(ICMS_ROOT_PATH . "/class/xoopsformloader.php");
-		include_once(ICMS_ROOT_PATH . '/modules/imtagging/class/form/elements/imtaggingcategorytreeelement.php');
+		include_once ICMS_ROOT_PATH . "/class/xoopsformloader.php";
+		include_once ICMS_ROOT_PATH . '/modules/imtagging/class/form/elements/imtaggingcategorytreeelement.php';
 		$category_tree_element = new ImtaggingCategoryTreeElement($postObj, 'categories');
 		echo $category_tree_element->render();
 		exit;
@@ -179,6 +178,7 @@ if (in_array($clean_op,$valid_op,true)){
 
   		$icmsAdminTpl->display('db:imblogging_admin_post.html');
   		break;
+  		
   }
   icms_cp_footer();
 }
@@ -186,4 +186,3 @@ if (in_array($clean_op,$valid_op,true)){
  * If you want to have a specific action taken because the user input was invalid,
  * place it at this point. Otherwise, a blank page will be displayed
  */
-?>

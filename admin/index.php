@@ -13,4 +13,3 @@
 
 header('location: post.php');
 exit;
-?>

@@ -37,5 +37,3 @@ if (is_object($icmsModule) && $icmsModule->dirname() == IMBLOGGING_DIRNAME) {
 		}
 	}
 }
-
-?>

@@ -36,4 +36,3 @@ if (isset($icmsModule)) {
 	$headermenu[$i]['title'] = _MODABOUT_ABOUT;
 	$headermenu[$i]['link'] = ICMS_URL . '/modules/imblogging/admin/about.php';
 }
-?>
