@@ -17,14 +17,14 @@ if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 /**  General Information  */
 $modversion = array(
   'name'=> _MI_IMBLOGGING_MD_NAME,
-  'version'=> 1.0,
+  'version'=> 1.1,
   'description'=> _MI_IMBLOGGING_MD_DESC,
   'author'=> "The SmartFactory",
   'credits'=> "INBOX International inc.",
   'help'=> "",
   'license'=> "GNU General Public License (GPL)",
   'official'=> 0,
-  'dirname'=> basename( dirname( __FILE__)),
+  'dirname'=> basename(dirname(__FILE__)),
 
 /**  Images information  */
   'iconsmall'=> "images/icon_small.png",
@@ -32,15 +32,15 @@ $modversion = array(
   'image'=> "images/icon_big.png", /* for backward compatibility */
 
 /**  Development information */
-  'status_version'=> "Final",
-  'status'=> "Final",
-  'date'=> "2008-10-24",
+  'status_version'=> "Beta",
+  'status'=> "Beta",
+  'date'=> "2012-09-21",
   'author_word'=> "",
 
 /** Contributors */
-  'developer_website_url' => "http://smartfactory.ca",
-  'developer_website_name' => "The SmartFactory",
-  'developer_email' => "info@smartfactory.ca");
+  'developer_website_url' => "",
+  'developer_website_name' => "",
+  'developer_email' => "");
 $modversion['people']['developers'][] = "[url=http://community.impresscms.org/userinfo.php?uid=168]marcan[/url] (Marc-Andr&eacute; Lanciault)";
 $modversion['people']['developers'][] = "[url=http://community.impresscms.org/userinfo.php?uid=392]stranger[/url] (Sina Asghari)";
 $modversion['people']['developers'][] = "[url=http://community.impresscms.org/userinfo.php?uid=69]vaughan[/url]";
@@ -141,7 +141,7 @@ $modversion['templates'][] = array(
 // Retrieve the group user list, because the automatic group_multi config formtype does not include Anonymous group :-(
 $member_handler =& xoops_getHandler('member');
 $groups_array = $member_handler->getGroupList();
-foreach($groups_array as $k=>$v) {
+foreach ($groups_array as $k=>$v) {
 	$select_groups_options[$v] = $k;
 }
 
