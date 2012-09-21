@@ -15,7 +15,7 @@ if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
 function imblogging_search($queryarray, $andor, $limit, $offset, $userid)
 {
-	$imblogging_post_handler = xoops_getModuleHandler('post', 'imblogging');
+	$imblogging_post_handler = icms_getModuleHandler('post', 'imblogging');
 	$postsArray = $imblogging_post_handler->getPostsForSearch($queryarray, $andor, $limit, $offset, $userid);
 
 	$ret = array();

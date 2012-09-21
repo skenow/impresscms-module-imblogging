@@ -14,8 +14,8 @@ if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
 $failed_requirements = array();
 
-/* ImpressCMS Builtd needs to be at lest 19 */
-if (ICMS_VERSION_BUILD < 19) {
+/* ImpressCMS Builtd needs to be at least 19 */
+if ( ICMS_VERSION_BUILD < 19 ) {
 	$failed_requirements[] = _AM_IMBLOGGING_REQUIREMENTS_ICMS_BUILD;
 }
 
@@ -25,10 +25,10 @@ if (!$imtaggingModule) {
 	$failed_requirements[] = _AM_IMBLOGGING_REQUIREMENTS_IMTAGGING;
 }
 if (count($failed_requirements) > 0) {
-	xoops_cp_header();
+	icms_cp_header();
 	$icmsAdminTpl->assign('failed_requirements', $failed_requirements);
 	$icmsAdminTpl->display(IMBLOGGING_ROOT_PATH . 'templates/imblogging_requirements.html');
-	xoops_cp_footer();
+	icms_cp_footer();
 	exit;
 }
 ?>

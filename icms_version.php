@@ -83,9 +83,9 @@ $modversion['search'] = array (
 
 /** Menu information */
 $modversion['hasMain'] = 1;
-global $xoopsModule;
-if (is_object($xoopsModule) && $xoopsModule->dirname() == 'imblogging') {
-	$imblogging_post_handler = xoops_getModuleHandler('post', 'imblogging');
+global $icmsModule;
+if (is_object($icmsModule) && $icmsModule->dirname() == 'imblogging') {
+	$imblogging_post_handler = icms_getModuleHandler('post', 'imblogging');
 	if ($imblogging_post_handler->userCanSubmit()) {
 		$modversion['sub'][1]['name'] = _MI_IMBLOGGING_POST_ADD;
 		$modversion['sub'][1]['url'] = 'post.php?op=mod';

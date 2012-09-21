@@ -9,6 +9,7 @@
 * @package	    core
 * @since		1.1
 * @author		Ignacio Segura, "Nachenko"
+* @deprecated	Use the core class instead
 * @version		$Id: icmsfeed.php 2198 2008-05-16 12:31:26Z malanciault $
 */
 
@@ -31,15 +32,15 @@ class IcmsFeed {
 		var $image = array ();
 
 	function IcmsFeed () {
-		global $xoopsConfig;
-		$this->title = $xoopsConfig['sitename'];
+		global $icmsConfig;
+		$this->title = $icmsConfig['sitename'];
 		$this->url = ICMS_URL;
-		$this->description = $xoopsConfig['slogan'];
+		$this->description = $icmsConfig['slogan'];
 		$this->language = _LANGCODE;
 		$this->charset = _CHARSET;
 		$this->lastBuildDate = formatTimestamp(time(), 'rss');
-		$this->webMaster = $xoopsConfig['adminmail'];
-		$this->channelEditor = $xoopsConfig['adminmail'];
+		$this->webMaster = $icmsConfig['adminmail'];
+		$this->channelEditor = $icmsConfig['adminmail'];
 		$this->generator = ICMS_VERSION_NAME;
 		$this->image = array (
 			'title' => $this->title,

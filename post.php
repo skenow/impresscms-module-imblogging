@@ -17,7 +17,7 @@
 */
 function editpost($postObj)
 {
-	global $imblogging_post_handler, $xoTheme, $xoopsTpl, $xoopsUser;
+	global $imblogging_post_handler, $xoTheme, $icmsTpl, $icmsUser;
 
 	$postObj->setControl('categories', array(
 		'name'=>'categories',
@@ -32,18 +32,18 @@ function editpost($postObj)
 		$postObj->loadCategories();
 		$postObj->hideFieldFromForm(array('post_published_date', 'post_uid', 'meta_keywords', 'meta_description', 'short_url'));
 		$sform = $postObj->getSecureForm(_MD_IMBLOGGING_POST_EDIT, 'addpost');
-		$sform->assign($xoopsTpl, 'imblogging_postform');
-		$xoopsTpl->assign('imblogging_category_path', $postObj->getVar('post_title') . ' > ' . _EDIT);
+		$sform->assign($icmsTpl, 'imblogging_postform');
+		$icmsTpl->assign('imblogging_category_path', $postObj->getVar('post_title') . ' > ' . _EDIT);
 	} else {
 		if (!$imblogging_post_handler->userCanSubmit()) {
 			redirect_header(IMBLOGGING_URL, 3, _NOPERM);
 		}
-		$postObj->setVar('post_uid', $xoopsUser->uid());
+		$postObj->setVar('post_uid', $icmsUser->uid());
 		$postObj->setVar('post_published_date', time());
 		$postObj->hideFieldFromForm(array('post_published_date', 'post_uid', 'meta_keywords', 'meta_description', 'short_url'));
 		$sform = $postObj->getSecureForm(_MD_IMBLOGGING_POST_SUBMIT, 'addpost');
-		$sform->assign($xoopsTpl, 'imblogging_postform');
-		$xoopsTpl->assign('imblogging_category_path', _SUBMIT);
+		$sform->assign($icmsTpl, 'imblogging_postform');
+		$icmsTpl->assign('imblogging_category_path', _SUBMIT);
 	}
 
 	$xoTheme->addStylesheet(ICMS_URL . '/modules/imtagging/module'.(( defined("_ADM_USE_RTL") && _ADM_USE_RTL )?'_rtl':'').'.css');
@@ -54,7 +54,7 @@ include_once 'header.php';
 $xoopsOption['template_main'] = 'imblogging_post.html';
 include_once ICMS_ROOT_PATH . '/header.php';
 
-$imblogging_post_handler = xoops_getModuleHandler('post');
+$imblogging_post_handler = icms_getModuleHandler('post');
 
 /** Use a naming convention that indicates the source of the content of the variable */
 $clean_op = '';
@@ -104,22 +104,22 @@ if (in_array($clean_op,$valid_op,true)){
   	    include_once ICMS_ROOT_PATH.'/kernel/icmspersistablecontroller.php';
         $controller = new IcmsPersistableController($imblogging_post_handler);
 		$controller->handleObjectDeletionFromUserSide();
-		$xoopsTpl->assign('imblogging_category_path', $postObj->getVar('post_title') . ' > ' . _DELETE);
+		$icmsTpl->assign('imblogging_category_path', $postObj->getVar('post_title') . ' > ' . _DELETE);
 
 		break;
 
 	default:
 		$postArray = $imblogging_post_handler->getPost($clean_post_id);
 		$imblogging_post_handler->updateCounter($clean_post_id);
-		$xoopsTpl->assign('imblogging_post', $postArray);
-		$xoopsTpl->assign('imblogging_category_path', $postArray['post_title']);
+		$icmsTpl->assign('imblogging_post', $postArray);
+		$icmsTpl->assign('imblogging_category_path', $postArray['post_title']);
 
-		$xoopsTpl->assign('imblogging_showSubmitLink', true);
-		$xoopsTpl->assign('imblogging_rss_url', IMBLOGGING_URL . 'rss.php');
-		$xoopsTpl->assign('imblogging_rss_info', _MD_IMBLOGGING_RSS_GLOBAL);
+		$icmsTpl->assign('imblogging_showSubmitLink', true);
+		$icmsTpl->assign('imblogging_rss_url', IMBLOGGING_URL . 'rss.php');
+		$icmsTpl->assign('imblogging_rss_info', _MD_IMBLOGGING_RSS_GLOBAL);
 
-		if ($xoopsModuleConfig['com_rule'] && $postArray['post_cancomment']) {
-			$xoopsTpl->assign('imblogging_post_comment', true);
+		if ($icmsModuleConfig['com_rule'] && $postArray['post_cancomment']) {
+			$icmsTpl->assign('imblogging_post_comment', true);
   			include_once ICMS_ROOT_PATH . '/include/comment_view.php';
 		}
 		/**
@@ -131,7 +131,7 @@ if (in_array($clean_op,$valid_op,true)){
 		break;
 	}
 }
-$xoopsTpl->assign('imblogging_module_home', imblogging_getModuleName(true, true));
+$icmsTpl->assign('imblogging_module_home', imblogging_getModuleName(true, true));
 
 include_once 'footer.php';
 ?>

@@ -13,6 +13,8 @@ if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
 
 // post
+define("_CO_IMBLOGGING_POST_CATEGORIES", "Categorías");
+define("_CO_IMBLOGGING_POST_CATEGORIES_DSC", "Seleccione las categorías en las que desea que se incluya este artículo");
 define("_CO_IMBLOGGING_POST_POST_TITLE", "Título");
 define("_CO_IMBLOGGING_POST_POST_TITLE_DSC", "");
 define("_CO_IMBLOGGING_POST_POST_CONTENT", "Contenido");

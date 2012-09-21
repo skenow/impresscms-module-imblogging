@@ -16,7 +16,7 @@ if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 function imblogging_post_recent_show($options)
 {
 	include_once(ICMS_ROOT_PATH . '/modules/imblogging/include/common.php');
-	$imblogging_post_handler = xoops_getModuleHandler('post', 'imblogging');
+	$imblogging_post_handler = icms_getModuleHandler('post', 'imblogging');
 	$block['posts'] = $imblogging_post_handler->getPosts(0, $options[0]);
 
 	return $block;

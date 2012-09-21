@@ -15,17 +15,17 @@ include_once ICMS_ROOT_PATH.'/header.php';
 
 $clean_post_uid = isset($_GET['uid']) ? intval($_GET['uid']) : false;
 
-include_once IMBLOGGING_ROOT_PATH.'/class/icmsfeed.php';
+include_once ICMS_ROOT_PATH . '/class/icmsfeed.php';
 $imblogging_feed = new IcmsFeed();
 
-$imblogging_feed->title = $xoopsConfig['sitename'] . ' - ' . $xoopsModule->name();
+$imblogging_feed->title = $icmsConfig['sitename'] . ' - ' . $icmsModule->name();
 $imblogging_feed->url = XOOPS_URL;
-$imblogging_feed->description = $xoopsConfig['slogan'];
+$imblogging_feed->description = $icmsConfig['slogan'];
 $imblogging_feed->language = _LANGCODE;
 $imblogging_feed->charset = _CHARSET;
-$imblogging_feed->category = $xoopsModule->name();
+$imblogging_feed->category = $icmsModule->name();
 
-$imblogging_post_handler = xoops_getModuleHandler('post');
+$imblogging_post_handler = icms_getModuleHandler('post');
 //ImbloggingPostHandler::getPosts($start = 0, $limit = 0, $post_uid = false, $year = false, $month = false
 $postsArray = $imblogging_post_handler->getPosts(0, 10, $clean_post_uid);
 

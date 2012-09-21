@@ -18,19 +18,19 @@
 */
 function editpost($post_id = 0)
 {
-	global $imblogging_post_handler, $xoopsModule, $icmsAdminTpl, $xoTheme, $xoopsUser;
+	global $imblogging_post_handler, $icmsModule, $icmsAdminTpl, $xoTheme, $icmsUser;
 
 	$postObj = $imblogging_post_handler->get($post_id);
 
 	if (!$postObj->isNew()){
-		$xoopsModule->displayAdminMenu(0, _AM_IMBLOGGING_POSTS . " > " . _CO_ICMS_EDITING);
+		$icmsModule->displayAdminMenu(0, _AM_IMBLOGGING_POSTS . " > " . _CO_ICMS_EDITING);
 		$postObj->loadCategories();
 		$sform = $postObj->getForm(_AM_IMBLOGGING_POST_EDIT, 'addpost');
 		$sform->assign($icmsAdminTpl);
 
 	} else {
-		$postObj->setVar('post_uid', $xoopsUser->uid());
-		$xoopsModule->displayAdminMenu(0, _AM_IMBLOGGING_POSTS . " > " . _CO_ICMS_CREATINGNEW);
+		$postObj->setVar('post_uid', $icmsUser->uid());
+		$icmsModule->displayAdminMenu(0, _AM_IMBLOGGING_POSTS . " > " . _CO_ICMS_CREATINGNEW);
 		$sform = $postObj->getForm(_AM_IMBLOGGING_POST_CREATE, 'addpost');
 		$sform->assign($icmsAdminTpl);
 
@@ -38,7 +38,7 @@ function editpost($post_id = 0)
 	$icmsAdminTpl->assign('postid', $post_id);
 	$icmsAdminTpl->display('db:imblogging_admin_post.html');
 }
-
+/*
 $icmsOnDemandPreload[] = array(
 	'module'=>'imtagging',
 	'filename'=>'jquery.php'
@@ -47,10 +47,15 @@ $icmsOnDemandPreload[] = array(
 	'module'=>'imtagging',
 	'filename'=>'imtaggingadmincss.php'
 );
-
+*/
 include_once("admin_header.php");
 
-$imblogging_post_handler = xoops_getModuleHandler('post');
+/** IcmsOndemandPreload is not supported prior to 1.2 Alpha. This is a workaround */
+if (ICMS_VERSION_BUILD < 25) {
+	$icmsAdminTpl->assign('imblogging_jquery_inc', '<script type="text/javascript" src="' . ICMS_LIBRARIES_URL . '/jquery/jquery.js"></script><link rel="stylesheet" type="text/css" media="all" href="' . ICMS_URL . '/modules/imtagging/module.css" />');
+}
+
+$imblogging_post_handler = icms_getModuleHandler('post');
 /** Use a naming convention that indicates the source of the content of the variable */
 $clean_op = '';
 /** Create a whitelist of valid values, be sure to use appropriate types for each value
@@ -79,7 +84,7 @@ if (in_array($clean_op,$valid_op,true)){
   		$xoopsLogger->disableLogger();
 
 		// adding the new category
-		$imtagging_category_handler = xoops_getModuleHandler('category', 'imtagging');
+		$imtagging_category_handler = icms_getModuleHandler('category', 'imtagging');
 		$categoryObj = $imtagging_category_handler->create();
 		$categoryObj->setVar('category_title', $_POST['category_title']);
 		$categoryObj->setVar('category_pid', $clean_category_pid);
@@ -97,7 +102,7 @@ if (in_array($clean_op,$valid_op,true)){
   	case "mod":
   	case "changedField":
 
-  		xoops_cp_header();
+  		icms_cp_header();
 
   		editpost($clean_post_id);
   		break;
@@ -118,38 +123,41 @@ if (in_array($clean_op,$valid_op,true)){
   	case "view" :
   		$postObj = $imblogging_post_handler->get($clean_post_id);
 
-  		smart_xoops_cp_header();
-  		smart_adminMenu(1, _AM_IMBLOGGING_POST_VIEW . ' > ' . $postObj->getVar('post_title'));
+  		icms_cp_header();
+  		icms_adminMenu(1, _AM_IMBLOGGING_POST_VIEW . ' > ' . $postObj->getVar('post_title'));
 
-  		smart_collapsableBar('postview', $postObj->getVar('post_title') . $postObj->getEditItemLink(), _AM_IMBLOGGING_POST_VIEW_DSC);
+  		icms_collapsableBar('postview', $postObj->getVar('post_title') . $postObj->getEditItemLink(), _AM_IMBLOGGING_POST_VIEW_DSC);
 
   		$postObj->displaySingleObject();
 
-  		smart_close_collapsable('postview');
+  		icms_close_collapsable('postview');
 
-  		smart_collapsableBar('postview_posts', _AM_IMBLOGGING_POSTS, _AM_IMBLOGGING_POSTS_IN_POST_DSC);
+  		icms_collapsableBar('postview_posts', _AM_IMBLOGGING_POSTS, _AM_IMBLOGGING_POSTS_IN_POST_DSC);
 
   		$criteria = new CriteriaCompo();
   		$criteria->add(new Criteria('post_id', $clean_post_id));
 
-  		$objectTable = new SmartObjectTable($imblogging_post_handler, $criteria);
-  		$objectTable->addColumn(new SmartObjectColumn('post_date', _GLOBAL_LEFT, 150));
-  		$objectTable->addColumn(new SmartObjectColumn('post_message'));
-  		$objectTable->addColumn(new SmartObjectColumn('post_uid', _GLOBAL_LEFT, 150));
-
+  		include_once ICMS_ROOT_PATH."/kernel/icmspersistabletable.php";
+  		$objectTable = new IcmsPersistableTable($imblogging_post_handler, $criteria);
+  		$objectTable->addColumn(new IcmsPersistableColumn('post_date', _GLOBAL_LEFT, 150));
+  		$objectTable->addColumn(new IcmsPersistableColumn('post_message'));
+  		$objectTable->addColumn(new IcmsPersistableColumn('post_uid', _GLOBAL_LEFT, 150));
+  		$objectTable->addColumn( new IcmsPersistableColumn( 'counter' ) );
+  		$objectTable->setDefaultSort( 'post_published_date' );
+  		$objectTable->setDefaultOrder( 'DESC' );
   		$objectTable->addIntroButton('addpost', 'post.php?op=mod&post_id=' . $clean_post_id, _AM_IMBLOGGING_POST_CREATE);
 
   		$objectTable->render();
 
-  		smart_close_collapsable('postview_posts');
+  		icms_close_collapsable('postview_posts');
 
   		break;
 
   	default:
 
-  		xoops_cp_header();
+  		icms_cp_header();
 
-  		$xoopsModule->displayAdminMenu(0, _AM_IMBLOGGING_POSTS);
+  		$icmsModule->displayAdminMenu(0, _AM_IMBLOGGING_POSTS);
 
   		include_once ICMS_ROOT_PATH."/kernel/icmspersistabletable.php";
   		$objectTable = new IcmsPersistableTable($imblogging_post_handler);
@@ -157,6 +165,9 @@ if (in_array($clean_op,$valid_op,true)){
   		$objectTable->addColumn(new IcmsPersistableColumn('post_published_date', 'center', 150));
   		$objectTable->addColumn(new IcmsPersistableColumn('post_uid', 'center', 150));
   		$objectTable->addColumn(new IcmsPersistableColumn('post_status', 'center', 150));
+  		$objectTable->addColumn( new IcmsPersistableColumn( 'counter' ) );
+  		$objectTable->setDefaultSort( 'post_published_date' );
+  		$objectTable->setDefaultOrder( 'DESC' );
 
   		$objectTable->addIntroButton('addpost', 'post.php?op=mod', _AM_IMBLOGGING_POST_CREATE);
   		$objectTable->addQuickSearch(array('post_title', 'post_content'));
@@ -169,7 +180,7 @@ if (in_array($clean_op,$valid_op,true)){
   		$icmsAdminTpl->display('db:imblogging_admin_post.html');
   		break;
   }
-  xoops_cp_footer();
+  icms_cp_footer();
 }
 /**
  * If you want to have a specific action taken because the user input was invalid,

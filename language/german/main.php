@@ -21,6 +21,6 @@ define('_MD_IMBLOGGING_SECURITY_CHECK_FAILED', 'Sicherheitscheck fehlgeschlagen.
 
 define('_MD_IMBLOGGING_NAV_PAGES', 'Seiten: ');
 
-define('_MD_IMBLOGGING_RSS_GLOBAL', 'Subscribe to latest posts');
-define('_MD_IMBLOGGING_RSS_POSTER', 'Subscribe to latest posts from this poster');
+define('_MD_IMBLOGGING_RSS_GLOBAL', 'Abonieren der letzten Beiträge');
+define('_MD_IMBLOGGING_RSS_POSTER', 'Abonieren der Beiträge des gewählten Autors');
 ?>

@@ -14,7 +14,7 @@
 include_once 'header.php';
 $com_itemid = isset($_GET['com_itemid']) ? intval($_GET['com_itemid']) : 0;
 if ($com_itemid > 0) {
-	$imblogging_post_handler = xoops_getModuleHandler('post');
+	$imblogging_post_handler = icms_getModuleHandler('post');
 	$postObj = $imblogging_post_handler->get($com_itemid);
 	if ($postObj && !$postObj->isNew()) {
 		//$com_replytext = _POSTEDBY.'&nbsp;<b>'.smartsection_getLinkedUnameFromId($itemObj->uid()) . '</b>&nbsp;'._DATE.'&nbsp;<b>'.$itemObj->dateSub().'</b><br /><br />'.$itemObj->summary();

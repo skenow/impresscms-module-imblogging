@@ -14,7 +14,7 @@ if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 // Module Info
 // The name of this module
 
-global $xoopsModule;
+global $icmsModule;
 define("_MI_IMBLOGGING_MD_NAME", "Blog");
 define("_MI_IMBLOGGING_MD_DESC", "ImpressCMS - einfaches Blog Modul");
 

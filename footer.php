@@ -12,15 +12,15 @@
 
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
-$xoopsTpl->assign("imblogging_adminpage", icms_getModuleAdminLink('imblogging'));
-$xoopsTpl->assign("imblogging_is_admin", $imblogging_isAdmin);
-$xoopsTpl->assign('imblogging_url', IMBLOGGING_URL);
-$xoopsTpl->assign('imblogging_images_url', IMBLOGGING_IMAGES_URL);
-$xoopsTpl->assign('imblogging_userCanSubmit', $imblogging_post_handler->userCanSubmit());
+$icmsTpl->assign("imblogging_adminpage", icms_getModuleAdminLink('imblogging'));
+$icmsTpl->assign("imblogging_is_admin", $imblogging_isAdmin);
+$icmsTpl->assign('imblogging_url', IMBLOGGING_URL);
+$icmsTpl->assign('imblogging_images_url', IMBLOGGING_IMAGES_URL);
+$icmsTpl->assign('imblogging_userCanSubmit', $imblogging_post_handler->userCanSubmit());
 
 $xoTheme->addStylesheet(IMBLOGGING_URL . 'module'.(( defined("_ADM_USE_RTL") && _ADM_USE_RTL )?'_rtl':'').'.css');
 
-$xoopsTpl->assign("ref_smartfactory", "imBlogging is developed by The SmartFactory (http://smartfactory.ca), a division of INBOX International inc. (http://inboxinternational.com)");
+$icmsTpl->assign("ref_smartfactory", "imBlogging is developed by The SmartFactory (http://smartfactory.ca), a division of INBOX International inc. (http://inboxinternational.com)");
 
 include_once(ICMS_ROOT_PATH . '/footer.php');
 
