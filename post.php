@@ -1,33 +1,32 @@
 <?php
 /**
-* Post page
-*
-* @copyright	http://smartfactory.ca The SmartFactory
-* @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
-* @since		1.0
-* @author		marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
-* @package imblogging
-* @version		$Id$
-*/
+ * Post page
+ *
+ * @copyright	http://smartfactory.ca The SmartFactory
+ * @license	http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
+ * @since		1.0
+ * @author		marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
+ * @package	imblogging
+ * @version	$Id$
+ */
 
 /**
  * Edit a Blog Post
  *
  * @param object $postObj ImblogginPost object to be edited
-*/
-function editpost($postObj)
-{
+ */
+function editpost($postObj) {
 	global $imblogging_post_handler, $xoTheme, $icmsTpl, $icmsUser;
 
 	$postObj->setControl('categories', array(
 		'name'=>'categories',
 		'module'=>'imtagging',
-		'userside'=>true
+		'userside'=>TRUE
 	));
 
-	if (!$postObj->isNew()){
+	if (!$postObj->isNew()) {
 		if (!$postObj->userCanEditAndDelete()) {
-			redirect_header($postObj->getItemLink(true), 3, _NOPERM);
+			redirect_header($postObj->getItemLink(TRUE), 3, _NOPERM);
 		}
 		$postObj->loadCategories();
 		$postObj->hideFieldFromForm(array('post_published_date', 'post_uid', 'meta_keywords', 'meta_description', 'short_url'));
@@ -46,7 +45,7 @@ function editpost($postObj)
 		$icmsTpl->assign('imblogging_category_path', _SUBMIT);
 	}
 
-	$xoTheme->addStylesheet(ICMS_URL . '/modules/imtagging/module'.(( defined("_ADM_USE_RTL") && _ADM_USE_RTL )?'_rtl':'').'.css');
+	$xoTheme->addStylesheet(ICMS_URL . '/modules/imtagging/module'. (( defined("_ADM_USE_RTL") && _ADM_USE_RTL)?'_rtl':'').'.css');
 }
 
 include_once 'header.php';
@@ -68,70 +67,69 @@ $clean_post_id = isset($_GET['post_id']) ? intval($_GET['post_id']) : 0 ;
 /** Create a whitelist of valid values, be sure to use appropriate types for each value
  * Be sure to include a value for no parameter, if you have a default condition
  */
-$valid_op = array ('mod','addpost','del','');
+$valid_op = array('mod', 'addpost', 'del', '');
 /**
  * Only proceed if the supplied operation is a valid operation
  */
-if (in_array($clean_op,$valid_op,true)){
-  switch ($clean_op) {
-	case "mod":
-		$postObj = $imblogging_post_handler->get($clean_post_id);
-  		if ($clean_post_id > 0 && $postObj->isNew()) {
-			redirect_header(icms_getPreviousPage('index.php'), 3, _NOPERM);
-		}
-		editpost($postObj);
-		break;
+if (in_array($clean_op, $valid_op, TRUE)){
+	switch ($clean_op) {
+		case "mod":
+			$postObj = $imblogging_post_handler->get($clean_post_id);
+			if ($clean_post_id > 0 && $postObj->isNew()) {
+				redirect_header(icms_getPreviousPage('index.php'), 3, _NOPERM);
+			}
+			editpost($postObj);
+			break;
 
-	case "addpost":
-        if (!$xoopsSecurity->check()) {
-        	redirect_header(icms_getPreviousPage('index.php'), 3, _MD_IMBLOGGING_SECURITY_CHECK_FAILED . implode('<br />', $xoopsSecurity->getErrors()));
-        }
-         include_once ICMS_ROOT_PATH.'/kernel/icmspersistablecontroller.php';
-        $controller = new IcmsPersistableController($imblogging_post_handler);
-		$controller->storeFromDefaultForm(_MD_IMBLOGGING_POST_CREATED, _MD_IMBLOGGING_POST_MODIFIED);
-		break;
+		case "addpost":
+			if (!$xoopsSecurity->check()) {
+				redirect_header(icms_getPreviousPage('index.php'), 3, _MD_IMBLOGGING_SECURITY_CHECK_FAILED . implode('<br />', $xoopsSecurity->getErrors()));
+			}
+			include_once ICMS_ROOT_PATH . '/kernel/icmspersistablecontroller.php';
+			$controller = new IcmsPersistableController($imblogging_post_handler);
+			$controller->storeFromDefaultForm(_MD_IMBLOGGING_POST_CREATED, _MD_IMBLOGGING_POST_MODIFIED);
+			break;
 
-	case "del":
-		$postObj = $imblogging_post_handler->get($clean_post_id);
-		if (!$postObj->userCanEditAndDelete()) {
-			redirect_header($postObj->getItemLink(true), 3, _NOPERM);
-		}
-		if (isset($_POST['confirm'])) {
-		    if (!$xoopsSecurity->check()) {
-		    	redirect_header($impresscms->urls['previouspage'], 3, _MD_IMBLOGGING_SECURITY_CHECK_FAILED . implode('<br />', $xoopsSecurity->getErrors()));
-		    }
-		}
-  	    include_once ICMS_ROOT_PATH.'/kernel/icmspersistablecontroller.php';
-        $controller = new IcmsPersistableController($imblogging_post_handler);
-		$controller->handleObjectDeletionFromUserSide();
-		$icmsTpl->assign('imblogging_category_path', $postObj->getVar('post_title') . ' > ' . _DELETE);
+		case "del":
+			$postObj = $imblogging_post_handler->get($clean_post_id);
+			if (!$postObj->userCanEditAndDelete()) {
+				redirect_header($postObj->getItemLink(TRUE), 3, _NOPERM);
+			}
+			if (isset($_POST['confirm'])) {
+				if (!$xoopsSecurity->check()) {
+					redirect_header($impresscms->urls['previouspage'], 3, _MD_IMBLOGGING_SECURITY_CHECK_FAILED . implode('<br />', $xoopsSecurity->getErrors()));
+				}
+			}
+			include_once ICMS_ROOT_PATH.'/kernel/icmspersistablecontroller.php';
+			$controller = new IcmsPersistableController($imblogging_post_handler);
+			$controller->handleObjectDeletionFromUserSide();
+			$icmsTpl->assign('imblogging_category_path', $postObj->getVar('post_title') . ' > ' . _DELETE);
 
-		break;
+			break;
 
-	default:
-		$postArray = $imblogging_post_handler->getPost($clean_post_id);
-		$imblogging_post_handler->updateCounter($clean_post_id);
-		$icmsTpl->assign('imblogging_post', $postArray);
-		$icmsTpl->assign('imblogging_category_path', $postArray['post_title']);
+		default:
+			$postArray = $imblogging_post_handler->getPost($clean_post_id);
+			$imblogging_post_handler->updateCounter($clean_post_id);
+			$icmsTpl->assign('imblogging_post', $postArray);
+			$icmsTpl->assign('imblogging_category_path', $postArray['post_title']);
 
-		$icmsTpl->assign('imblogging_showSubmitLink', true);
-		$icmsTpl->assign('imblogging_rss_url', IMBLOGGING_URL . 'rss.php');
-		$icmsTpl->assign('imblogging_rss_info', _MD_IMBLOGGING_RSS_GLOBAL);
+			$icmsTpl->assign('imblogging_showSubmitLink', TRUE);
+			$icmsTpl->assign('imblogging_rss_url', IMBLOGGING_URL . 'rss.php');
+			$icmsTpl->assign('imblogging_rss_info', _MD_IMBLOGGING_RSS_GLOBAL);
 
-		if ($icmsModuleConfig['com_rule'] && $postArray['post_cancomment']) {
-			$icmsTpl->assign('imblogging_post_comment', true);
-  			include_once ICMS_ROOT_PATH . '/include/comment_view.php';
-		}
-		/**
-		 * Generating meta information for this page
-		 */
-		$icms_metagen = new IcmsMetagen($postArray['post_title'], $postArray['meta_keywords'], $postArray['meta_description']);
-		$icms_metagen->createMetaTags();
+			if ($icmsModuleConfig['com_rule'] && $postArray['post_cancomment']) {
+				$icmsTpl->assign('imblogging_post_comment', TRUE);
+				include_once ICMS_ROOT_PATH . '/include/comment_view.php';
+			}
+			/**
+			 * Generating meta information for this page
+			 */
+			$icms_metagen = new IcmsMetagen($postArray['post_title'], $postArray['meta_keywords'], $postArray['meta_description']);
+			$icms_metagen->createMetaTags();
 
-		break;
+			break;
 	}
 }
-$icmsTpl->assign('imblogging_module_home', imblogging_getModuleName(true, true));
+$icmsTpl->assign('imblogging_module_home', imblogging_getModuleName(TRUE, TRUE));
 
 include_once 'footer.php';
-?>

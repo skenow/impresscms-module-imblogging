@@ -1,16 +1,16 @@
 <?php
 /**
-* imBlogging version infomation
-*
-* This file holds the configuration information of this module
-*
-* @copyright	http://smartfactory.ca The SmartFactory
-* @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
-* @since		1.0
-* @author		marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
-* @package imblogging
-* @version		$Id$
-*/
+ * imBlogging version information
+ *
+ * This file holds the configuration information of this module
+ *
+ * @copyright	http://smartfactory.ca The SmartFactory
+ * @license	http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
+ * @since		1.0
+ * @author		marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
+ * @package	imblogging
+ * @version	$Id$
+ */
 
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
@@ -24,7 +24,7 @@ $modversion = array(
   'help'=> "",
   'license'=> "GNU General Public License (GPL)",
   'official'=> 0,
-  'dirname'=> basename( dirname( __FILE__ ) ),
+  'dirname'=> basename( dirname( __FILE__)),
 
 /**  Images information  */
   'iconsmall'=> "images/icon_small.png",
@@ -77,7 +77,7 @@ $modversion['onUpdate'] = "include/onupdate.inc.php";
 
 /** Search information */
 $modversion['hasSearch'] = 1;
-$modversion['search'] = array (
+$modversion['search'] = array(
   'file' => "include/search.inc.php",
   'func' => "imblogging_search");
 
@@ -168,21 +168,20 @@ $modversion['hasComments'] = 1;
 $modversion['comments'] = array(
   'itemName' => 'post_id',
   'pageName' => 'post.php',
-  /* Comment callback functions */
+/* Comment callback functions */
   'callbackFile' => 'include/comment.inc.php',
   'callback' => array(
     'approve' => 'imblogging_com_approve',
     'update' => 'imblogging_com_update')
-    );
+);
 
 /** Notification information */
 $modversion['hasNotification'] = 1;
 
-$modversion['notification'] = array (
-  'lookup_file' => 'include/notification.inc.php',
+$modversion['notification'] = array('lookup_file' => 'include/notification.inc.php',
   'lookup_func' => 'imblogging_notify_iteminfo');
 
-$modversion['notification']['category'][1] = array (
+$modversion['notification']['category'][1] = array(
   'name' => 'global',
   'title' => _MI_IMBLOGGING_GLOBAL_NOTIFY,
   'description' => _MI_IMBLOGGING_GLOBAL_NOTIFY_DSC,
@@ -196,5 +195,3 @@ $modversion['notification']['event'][1] = array(
   'description'=> _MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY_DSC,
   'mail_template'=> 'global_post_published',
   'mail_subject'=> _MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY_SBJ);
-
-?>
