@@ -1,20 +1,19 @@
 <?php
-
 /**
-* Classes responsible for managing imBlogging post objects
-*
-* @copyright	http://smartfactory.ca The SmartFactory
-* @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
-* @since		1.0
-* @author		marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
-* @version		$Id$
-*/
+ * Classes responsible for managing imBlogging post objects
+ *
+ * @copyright	http://smartfactory.ca The SmartFactory
+ * @license	http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
+ * @since		1.0
+ * @author		marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
+ * @version	$Id$
+ */
 
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
 // including the IcmsPersistabelSeoObject
 include_once ICMS_ROOT_PATH . '/kernel/icmspersistableseoobject.php';
-include_once(ICMS_ROOT_PATH . '/modules/imblogging/include/common.php');
+include_once ICMS_ROOT_PATH . '/modules/imblogging/include/common.php';
 
 /**
  * Post status definitions
@@ -26,10 +25,10 @@ define('IMBLOGGING_POST_STATUS_PRIVATE', 4);
 
 class ImbloggingPost extends IcmsPersistableSeoObject {
 
-	private	$post_date_info = false;
-	private $poster_info = false;
-	public 	$updating_counter = false;
-	public	$categories = false;
+	private	 $post_date_info = FALSE;
+	private $poster_info = FALSE;
+	public 	$updating_counter = FALSE;
+	public	$categories = FALSE;
 
 	/**
 	 * Constructor
@@ -41,17 +40,17 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 
 		$this->IcmsPersistableObject($handler);
 
-		$this->quickInitVar('post_id', XOBJ_DTYPE_INT, true);
+		$this->quickInitVar('post_id', XOBJ_DTYPE_INT, TRUE);
 		/**
 		 * @todo IPF needs to be able to know what to do with XOBJ_DTYPE_ARRAY, which it does not right now...
 		 */
-		$this->initNonPersistableVar('categories', XOBJ_DTYPE_INT, 'category', false, false, false, true);
+		$this->initNonPersistableVar('categories', XOBJ_DTYPE_INT, 'category', FALSE, FALSE, FALSE, TRUE);
 		$this->quickInitVar('post_title', XOBJ_DTYPE_TXTBOX);
 		$this->quickInitVar('post_content', XOBJ_DTYPE_TXTAREA);
 		$this->quickInitVar('post_published_date', XOBJ_DTYPE_LTIME);
 		$this->quickInitVar('post_uid', XOBJ_DTYPE_INT);
-		$this->quickInitVar('post_status', XOBJ_DTYPE_INT, false, false, false, IMBLOGGING_POST_STATUS_PUBLISHED);
-		$this->quickInitVar('post_cancomment', XOBJ_DTYPE_INT, false, false, false, true);
+		$this->quickInitVar('post_status', XOBJ_DTYPE_INT, FALSE, FALSE, FALSE, IMBLOGGING_POST_STATUS_PUBLISHED);
+		$this->quickInitVar('post_cancomment', XOBJ_DTYPE_INT, FALSE, FALSE, FALSE, TRUE);
 		$this->quickInitVar('post_comments', XOBJ_DTYPE_INT);
 
 		$this->hideFieldFromForm('post_comments');
@@ -59,28 +58,28 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 		$this->quickInitVar('post_notification_sent', XOBJ_DTYPE_INT);
 		$this->hideFieldFromForm('post_notification_sent');
 
-		$this->initCommonVar('counter', false);
-		$this->initCommonVar('dohtml', false, true);
+		$this->initCommonVar('counter', FALSE);
+		$this->initCommonVar('dohtml', FALSE, TRUE);
 		$this->initCommonVar('dobr');
-		$this->initCommonVar('doimage', false, true);
-		$this->initCommonVar('dosmiley', false, true);
-		$this->initCommonVar('doxcode', false, true);
+		$this->initCommonVar('doimage', FALSE, TRUE);
+		$this->initCommonVar('dosmiley', FALSE, TRUE);
+		$this->initCommonVar('doxcode', FALSE, TRUE);
 
 		$this->setControl('categories', array(
 				'name'=>'categories',
 				'module'=>'imtagging'
+				));
+				$this->setControl('post_content', 'dhtmltextarea');
+				$this->setControl('post_uid', 'user');
+				$this->setControl('post_status', array(
+					'itemHandler' => 'post',
+					'method' => 'getPost_statusArray',
+					'module' => 'imblogging'
 			));
-		$this->setControl('post_content', 'dhtmltextarea');
-		$this->setControl('post_uid', 'user');
-		$this->setControl('post_status', array (
-			'itemHandler' => 'post',
-			'method' => 'getPost_statusArray',
-			'module' => 'imblogging'
-		));
 
-		$this->setControl('post_cancomment', 'yesno');
+			$this->setControl('post_cancomment', 'yesno');
 
-		$this->IcmsPersistableSeoObject();
+			$this->IcmsPersistableSeoObject();
 	}
 
 	/**
@@ -117,7 +116,7 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 		if (is_array($ret)) {
 			return $ret;
 		} else {
-			(int)$ret > 0 ? array((int)$ret) : false;
+			(int)$ret > 0 ? array((int)$ret) : FALSE;
 		}
 	}
 
@@ -145,7 +144,7 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 	/**
 	 * Returns the need to br
 	 *
-	* @return bool true | false
+	 * @return bool TRUE | FALSE
 	 */
 	function need_do_br() {
 		global $icmsConfig, $icmsUser;
@@ -156,9 +155,9 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 		$editor_default = $icmsConfig['editor_default'];
 		$gperm_handler = xoops_getHandler('groupperm');
 		if (file_exists(ICMS_EDITOR_PATH . "/" . $editor_default . "/xoops_version.php") && $gperm_handler->checkRight('use_wysiwygeditor', $imblogging_module->mid(), $groups)) {
-			return false;
+			return FALSE;
 		} else {
-			return true;
+			return TRUE;
 		}
 	}
 
@@ -170,7 +169,7 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 	 *    - he is an admin OR
 	 * 	  - he is the poster of this post
 	 *
-	 * @return bool true if user can view this post, false if not
+	 * @return bool TRUE if user can view this post, FALSE if not
 	 */
 	function accessGranted() {
 		global $imblogging_isAdmin, $icmsUser;
@@ -183,7 +182,7 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 	 * @param bool $link with link or not
 	 * @return str poster name linked on his module poster page, or simply poster name
 	 */
-	function getPoster($link = false) {
+	function getPoster($link = FALSE) {
 		if (!$this->poster_info) {
 			$member_handler = xoops_getHandler('member');
 			$poster_uid = $this->getVar('post_uid', 'e');
@@ -220,19 +219,19 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 		switch ($status) {
 			case IMBLOGGING_POST_STATUS_PENDING:
 				$ret = _CO_IMBLOGGING_POST_PENDING;
-			break;
+				break;
 
 			case IMBLOGGING_POST_STATUS_DRAFT:
 				$ret = _CO_IMBLOGGING_POST_DRAFT;
-			break;
+				break;
 
 			case IMBLOGGING_POST_STATUS_PRIVATE:
 				$ret = _CO_IMBLOGGING_POST_PRIVATE;
-			break;
+				break;
 
 			default:
 				$ret = _CO_IMBLOGGING_POST_PUBLISHED;
-			break;
+				break;
 		}
 		return $ret;
 	}
@@ -245,7 +244,7 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 	function getCommentsInfo() {
 		$post_comments = $this->getVar('post_comments');
 		if ($post_comments) {
-			return '<a href="' . $this->getItemLink(true) . '#comments_container">' . sprintf(_CO_IMBLOGGING_POST_COMMENTS_INFO, $post_comments) . '</a>';
+			return '<a href="' . $this->getItemLink(TRUE) . '#comments_container">' . sprintf(_CO_IMBLOGGING_POST_COMMENTS_INFO, $post_comments) . '</a>';
 		} else {
 			return _CO_IMBLOGGING_POST_NO_COMMENT;
 		}
@@ -280,7 +279,7 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 	 * @return VOID
 	 */
 	function getPostDateInfo() {
-	global $icmsConfig;
+		global $icmsConfig;
 		$post_date = $this->getVar('post_published_date', 'n');
 		$this->post_date_info['year'] = formatTimestamp($post_date, 'Y');
 		$this->post_date_info['month'] = Icms_getMonthNameById(formatTimestamp($post_date, 'n'));
@@ -352,15 +351,15 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 	/**
 	 * Check to see wether the current user can edit or delete this post
 	 *
-	 * @return bool true if he can, false if not
+	 * @return bool TRUE if he can, FALSE if not
 	 */
 	function userCanEditAndDelete() {
 		global $icmsUser, $imblogging_isAdmin;
 		if (!is_object($icmsUser)) {
-			return false;
+			return FALSE;
 		}
 		if ($imblogging_isAdmin) {
-			return true;
+			return TRUE;
 		}
 		return $this->getVar('post_uid', 'e') == $icmsUser->uid();
 	}
@@ -376,7 +375,7 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 		$notification_handler = xoops_getHandler('notification');
 
 		$tags['POST_TITLE'] = $this->getVar('post_title');
-		$tags['POST_URL'] = $this->getItemLink(true);
+		$tags['POST_URL'] = $this->getItemLink(TRUE);
 
 		$notification_handler->triggerEvent('global', 0, 'post_published', $tags, array (), $module_id);
 	}
@@ -398,11 +397,11 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 		$ret['post_day_number'] = $this->getPostDayNumber();
 		$ret['post_comment_info'] = $this->getCommentsInfo();
 		$ret['post_content'] = $this->getPostContent();
-		$ret['editItemLink'] = $this->getEditItemLink(false, true, true);
-		$ret['deleteItemLink'] = $this->getDeleteItemLink(false, true, true);
+		$ret['editItemLink'] = $this->getEditItemLink(FALSE, TRUE, TRUE);
+		$ret['deleteItemLink'] = $this->getDeleteItemLink(FALSE, TRUE, TRUE);
 		$ret['userCanEditAndDelete'] = $this->userCanEditAndDelete();
 		$ret['post_posterid'] = $this->getVar('post_uid','e');
-		$ret['post_poster_link'] = $this->getPoster(true);
+		$ret['post_poster_link'] = $this->getPoster(TRUE);
 		return $ret;
 	}
 }
@@ -447,7 +446,7 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 	 * @param int $post_id ID of a single post to retrieve
 	 * @return CriteriaCompo $criteria
 	 */
-	function getPostsCriteria($start = 0, $limit = 0, $post_uid = false, $cid = false, $year = false, $month = false, $post_id = false) {
+	function getPostsCriteria($start = 0, $limit = 0, $post_uid = FALSE, $cid = FALSE, $year = FALSE, $month = FALSE, $post_id = FALSE) {
 		global $icmsUser;
 
 		$criteria = new CriteriaCompo();
@@ -455,7 +454,7 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 			$criteria->setStart($start);
 		}
 		if ($limit) {
-			$criteria->setLimit(intval($limit));
+			$criteria->setLimit((int) ($limit));
 		}
 		$criteria->setSort('post_published_date');
 		$criteria->setOrder('DESC');
@@ -490,8 +489,8 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 	 * @return object ImbloggingPost object
 	 */
 	function getPost($post_id) {
-		$ret = $this->getPosts(0, 0, false, false, false, false, $post_id);
-		return isset($ret[$post_id]) ? $ret[$post_id] : false;
+		$ret = $this->getPosts(0, 0, FALSE, FALSE, FALSE, FALSE, $post_id);
+		return isset($ret[$post_id]) ? $ret[$post_id] : FALSE;
 	}
 
 	/**
@@ -506,9 +505,9 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 	 * @param int $post_id ID of a single post to retrieve
 	 * @return array of posts
 	 */
-	function getPosts($start = 0, $limit = 0, $post_uid = false, $cid=false, $year = false, $month = false, $post_id = false) {
+	function getPosts($start = 0, $limit = 0, $post_uid = FALSE, $cid=FALSE, $year = FALSE, $month = FALSE, $post_id = FALSE) {
 		$criteria = $this->getPostsCriteria($start, $limit, $post_uid, $cid, $year, $month, $post_id);
-		$ret = $this->getObjects($criteria, true, false);
+		$ret = $this->getObjects($criteria, TRUE, FALSE);
 
 		// retrieve the ids of all Posts retrieved
 		$postIds = $this->getIdsFromObjectsAsArray($ret);
@@ -549,8 +548,8 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 	 * @param int $year of posts to display
 	 * @param int $month of posts to display
 	 */
-	function getPostsCount($post_uid, $cid = false, $year = false, $month = false) {
-		$criteria = $this->getPostsCriteria(false, false, $post_uid, $cid, $year, $month);
+	function getPostsCount($post_uid, $cid = FALSE, $year = FALSE, $month = FALSE) {
+		$criteria = $this->getPostsCriteria(FALSE, FALSE, $post_uid, $cid, $year, $month);
 		return $this->getCount($criteria);
 	}
 
@@ -560,25 +559,25 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 		'GROUP BY posts_year, posts_month ' .
 		'HAVING posts_count > 0 ' .
 		'ORDER BY posts_year DESC, posts_month DESC';
-		$postsByMonthArray = $this->query($sql, false);
+		$postsByMonthArray = $this->query($sql, FALSE);
 		$ret = array ();
-	$config_handler =& xoops_gethandler('config');
-	$icmsConfig =& $config_handler->getConfigsByCat(XOOPS_CONF);
+		$config_handler =& xoops_gethandler('config');
+		$icmsConfig =& $config_handler->getConfigsByCat(XOOPS_CONF);
 		foreach ($postsByMonthArray as $postByMonth) {
 			$postByMonthnr = $postByMonth['posts_month'];
 			$postByYearname = $postByMonth['posts_year'];
 			$postByYearnr = $postByMonth['posts_year'];
-		if(defined ('_CALENDAR_TYPE') && _CALENDAR_TYPE == "jalali" && $icmsConfig['use_ext_date'] == 1)
-{
-		include_once ICMS_ROOT_PATH.'/language/'.$icmsConfig['language'].'/calendar.php';
-		$gyear = $postByYearname;
-		$gmonth = $postByMonthnr;
-		list($jyear, $jmonth, $jday) = gregorian_to_jalali( $gyear, $gmonth, '1');
-		$postByYearname =  icms_conv_nr2local($jyear);
-		$postByYearnr =  $jyear;
-		$postByMonthnr = $jmonth;
+			if(defined ('_CALENDAR_TYPE') && _CALENDAR_TYPE == "jalali" && $icmsConfig['use_ext_date'] == 1)
+			{
+				include_once ICMS_ROOT_PATH.'/language/'.$icmsConfig['language'].'/calendar.php';
+				$gyear = $postByYearname;
+				$gmonth = $postByMonthnr;
+				list($jyear, $jmonth, $jday) = gregorian_to_jalali( $gyear, $gmonth, '1');
+				$postByYearname =  icms_conv_nr2local($jyear);
+				$postByYearnr =  $jyear;
+				$postByMonthnr = $jmonth;
 
-}
+			}
 			$postByMonth['posts_year_nr'] = $postByYearnr;
 			$postByMonth['posts_month_nr'] = $postByMonthnr;
 			$postByMonth['posts_month_name'] = Icms_getMonthNameById($postByMonthnr);
@@ -619,7 +618,7 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 			$criteria->add($criteriaKeywords);
 		}
 		$criteria->add(new Criteria('post_status', IMBLOGGING_POST_STATUS_PUBLISHED));
-		return $this->getObjects($criteria, true, false);
+		return $this->getObjects($criteria, TRUE, FALSE);
 	}
 
 	/**
@@ -636,24 +635,24 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 		$postObj = $this->get($post_id);
 		if ($postObj && !$postObj->isNew()) {
 			$postObj->setVar('post_comments', $total_num);
-			$this->insert($postObj, true);
+			$this->insert($postObj, TRUE);
 		}
 	}
 
 	/**
 	 * Check wether the current user can submit a new post or not
 	 *
-	 * @return bool true if he can false if not
+	 * @return bool TRUE if he can FALSE if not
 	 */
 	function userCanSubmit() {
 		global $icmsUser, $imblogging_isAdmin;
 		$imbloggingModuleConfig = icms_getModuleConfig('imblogging');
 
 		if (!is_object($icmsUser)) {
-			return false;
+			return FALSE;
 		}
 		if ($imblogging_isAdmin) {
-			return true;
+			return TRUE;
 		}
 		$user_groups = $icmsUser->getGroups();
 		return count(array_intersect($imbloggingModuleConfig['poster_groups'], $user_groups)) > 0;
@@ -665,13 +664,13 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 	 * Event automatically triggered by IcmsPersistable Framework before the object is inserted or updated.
 	 *
 	 * @param object $obj ImbloggingPost object
-	 * @return true
+	 * @return TRUE
 	 */
 	function beforeSave(& $obj) {
-		if ($obj->updating_counter) return true;
+		if ($obj->updating_counter) return TRUE;
 
 		$obj->setVar('dobr', $obj->need_do_br());
-		return true;
+		return TRUE;
 	}
 
 	/**
@@ -680,10 +679,10 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 	 * Event automatically triggered by IcmsPersistable Framework after the object is inserted or updated
 	 *
 	 * @param object $obj ImbloggingPost object
-	 * @return true
+	 * @return TRUE
 	 */
 	function afterSave(& $obj) {
-		if ($obj->updating_counter)	return true;
+		if ($obj->updating_counter)	return TRUE;
 
 		// storing categories
 		$imtagging_category_link_handler = icms_getModuleHandler('category_link', 'imtagging');
@@ -691,9 +690,9 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 
 		if (!$obj->getVar('post_notification_sent') && $obj->getVar('post_status', 'e') == IMBLOGGING_POST_STATUS_PUBLISHED) {
 			$obj->sendNotifPostPublished();
-			$obj->setVar('post_notification_sent', true);
+			$obj->setVar('post_notification_sent', TRUE);
 		}
-		return true;
+		return TRUE;
 	}
 
 	/**
@@ -706,21 +705,20 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 	 */
 	function updateCounter($id) {
 		$sql = 'UPDATE ' . $this->table . ' SET counter = counter + 1 WHERE ' . $this->keyName . ' = ' . $id;
-		$this->query($sql, null, true);
+		$this->query($sql, NULL, TRUE);
 	}
 
-    /**
-     * Build an array containing all the ids of an array of objects as array
-     *
-     * @param array $objectsAsArray array of IcmsPersistableObject
-     */
-    function getIdsFromObjectsAsArray($objectsAsArray) {
-    	$ret = array();
-    	foreach($objectsAsArray as $array) {
-    		$ret[] = $array[$this->keyName];
-    	}
-    	return $ret;
-    }
+	/**
+	 * Build an array containing all the ids of an array of objects as array
+	 *
+	 * @param array $objectsAsArray array of IcmsPersistableObject
+	 */
+	function getIdsFromObjectsAsArray($objectsAsArray) {
+		$ret = array();
+		foreach($objectsAsArray as $array) {
+			$ret[] = $array[$this->keyName];
+		}
+		return $ret;
+	}
 
 }
-?>

@@ -11,8 +11,7 @@
 
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
-include_once(ICMS_ROOT_PATH . '/modules/imtagging/class/form/elements/imtaggingcategorytreeelement.php');
+include_once ICMS_ROOT_PATH . '/modules/imtagging/class/form/elements/imtaggingcategorytreeelement.php';
 
 class ImbloggingCategoriesElement extends ImtaggingCategoryTreeElement {
 }
-?>
