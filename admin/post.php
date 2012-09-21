@@ -60,7 +60,7 @@ $clean_op = '';
 /** Create a whitelist of valid values, be sure to use appropriate types for each value
  * Be sure to include a value for no parameter, if you have a default condition
  */
-$valid_op = array('mod','changedField','addpost', 'addcategory', 'del','view','');
+$valid_op = array('mod','changedField','addpost', 'addcategory', 'del', 'view', '');
 
 if (isset($_GET['op'])) $clean_op = htmlentities($_GET['op']);
 if (isset($_POST['op'])) $clean_op = htmlentities($_POST['op']);
@@ -76,7 +76,7 @@ $clean_category_pid = isset($_POST['category_pid']) ? (int) $_POST['category_pid
  * are case sensitive and the 3rd argument determines whether type matching is
  * required
 */
-if (in_array($clean_op,$valid_op,true)) {
+if (in_array($clean_op, $valid_op, true)) {
   switch ($clean_op) {
   	case "addcategory":
   		// the logger needs to be disabled in an AJAX request
@@ -141,9 +141,9 @@ if (in_array($clean_op,$valid_op,true)) {
   		$objectTable->addColumn(new IcmsPersistableColumn('post_date', _GLOBAL_LEFT, 150));
   		$objectTable->addColumn(new IcmsPersistableColumn('post_message'));
   		$objectTable->addColumn(new IcmsPersistableColumn('post_uid', _GLOBAL_LEFT, 150));
-  		$objectTable->addColumn( new IcmsPersistableColumn( 'counter' ) );
-  		$objectTable->setDefaultSort( 'post_published_date' );
-  		$objectTable->setDefaultOrder( 'DESC' );
+  		$objectTable->addColumn( new IcmsPersistableColumn('counter'));
+  		$objectTable->setDefaultSort('post_published_date');
+  		$objectTable->setDefaultOrder('DESC');
   		$objectTable->addIntroButton('addpost', 'post.php?op=mod&post_id=' . $clean_post_id, _AM_IMBLOGGING_POST_CREATE);
 
   		$objectTable->render();
@@ -164,9 +164,9 @@ if (in_array($clean_op,$valid_op,true)) {
   		$objectTable->addColumn(new IcmsPersistableColumn('post_published_date', 'center', 150));
   		$objectTable->addColumn(new IcmsPersistableColumn('post_uid', 'center', 150));
   		$objectTable->addColumn(new IcmsPersistableColumn('post_status', 'center', 150));
-  		$objectTable->addColumn( new IcmsPersistableColumn( 'counter' ) );
-  		$objectTable->setDefaultSort( 'post_published_date' );
-  		$objectTable->setDefaultOrder( 'DESC' );
+  		$objectTable->addColumn(new IcmsPersistableColumn('counter'));
+  		$objectTable->setDefaultSort('post_published_date');
+  		$objectTable->setDefaultOrder('DESC');
 
   		$objectTable->addIntroButton('addpost', 'post.php?op=mod', _AM_IMBLOGGING_POST_CREATE);
   		$objectTable->addQuickSearch(array('post_title', 'post_content'));
