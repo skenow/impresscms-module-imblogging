@@ -11,16 +11,16 @@
 
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
-if(!defined("IMBLOGGING_DIRNAME"))		define("IMBLOGGING_DIRNAME", $modversion['dirname'] = basename(dirname(dirname(__FILE__))));
-if(!defined("IMBLOGGING_URL"))			define("IMBLOGGING_URL", ICMS_URL.'/modules/'.IMBLOGGING_DIRNAME.'/');
-if(!defined("IMBLOGGING_ROOT_PATH"))	define("IMBLOGGING_ROOT_PATH", ICMS_ROOT_PATH.'/modules/'.IMBLOGGING_DIRNAME.'/');
-if(!defined("IMBLOGGING_IMAGES_URL"))	define("IMBLOGGING_IMAGES_URL", IMBLOGGING_URL.'images/');
-if(!defined("IMBLOGGING_ADMIN_URL"))	define("IMBLOGGING_ADMIN_URL", IMBLOGGING_URL.'admin/');
+if (!defined("IMBLOGGING_DIRNAME"))		define("IMBLOGGING_DIRNAME", $modversion['dirname'] = basename(dirname(dirname(__FILE__))));
+if (!defined("IMBLOGGING_URL"))			define("IMBLOGGING_URL", ICMS_URL.'/modules/'.IMBLOGGING_DIRNAME.'/');
+if (!defined("IMBLOGGING_ROOT_PATH"))	define("IMBLOGGING_ROOT_PATH", ICMS_ROOT_PATH.'/modules/'.IMBLOGGING_DIRNAME.'/');
+if (!defined("IMBLOGGING_IMAGES_URL"))	define("IMBLOGGING_IMAGES_URL", IMBLOGGING_URL.'images/');
+if (!defined("IMBLOGGING_ADMIN_URL"))	define("IMBLOGGING_ADMIN_URL", IMBLOGGING_URL.'admin/');
 
 // Include the common language file of the module
 icms_loadLanguageFile('imblogging', 'common');
 
-include_once(IMBLOGGING_ROOT_PATH . "include/functions.php");
+include_once IMBLOGGING_ROOT_PATH . "include/functions.php";
 
 // Creating the module object to make it available throughout the module
 $imbloggingModule = icms_getModuleInfo(IMBLOGGING_DIRNAME);
@@ -35,10 +35,8 @@ $imblogging_isAdmin = icms_userIsAdmin(IMBLOGGING_DIRNAME);
 $imbloggingConfig = icms_getModuleConfig(IMBLOGGING_DIRNAME);
 
 // including the post class
-include_once(IMBLOGGING_ROOT_PATH . 'class/post.php');
+include_once IMBLOGGING_ROOT_PATH . 'class/post.php';
 
 // creating the icmsPersistableRegistry to make it available throughout the module
 global $icmsPersistableRegistry;
 $icmsPersistableRegistry = IcmsPersistableRegistry::getInstance();
-
-?>

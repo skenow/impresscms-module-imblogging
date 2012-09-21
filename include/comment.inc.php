@@ -10,15 +10,11 @@
 * @author		marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
 * @version		$Id$
 */
-function imblogging_com_update($item_id, $total_num)
-{
+function imblogging_com_update($item_id, $total_num) {
     $imblogging_post_handler = icms_getModuleHandler('post', 'imblogging');
     $imblogging_post_handler->updateComments($item_id, $total_num);
 }
 
-function imblogging_com_approve(&$comment)
-{
+function imblogging_com_approve(&$comment) {
     // notification mail here
 }
-
-?>
