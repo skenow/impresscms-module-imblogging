@@ -377,7 +377,7 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 		$tags['POST_TITLE'] = $this->getVar('post_title');
 		$tags['POST_URL'] = $this->getItemLink(TRUE);
 
-		$notification_handler->triggerEvent('global', 0, 'post_published', $tags, array (), $module_id);
+		$notification_handler->triggerEvent('global', 0, 'post_published', $tags, array(), $module_id);
 	}
 
 	/**

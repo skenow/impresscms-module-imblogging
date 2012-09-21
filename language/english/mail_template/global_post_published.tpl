@@ -10,7 +10,7 @@ You can read this item here:
 
 -----------
 
-You are receiving this message because you selected to be notified when new items are published in the {MODULE_NAME} module of our site.
+You are receiving this message because you selected to be notified when new items are published in the {X_MODULE} area of our site.
 
 if this is an error or you wish not to receive further  notifications, please update your subscriptions by visiting the link below:
 {X_UNSUBSCRIBE_URL}

@@ -11,7 +11,6 @@
 
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
-
 define('_MD_IMBLOGGING_ADMIN_PAGE', ':: Admin page ::');
 define('_MD_IMBLOGGING_POST_EDIT', 'Edit post');
 define('_MD_IMBLOGGING_POST_SUBMIT', 'Submit post');
@@ -23,4 +22,3 @@ define('_MD_IMBLOGGING_NAV_PAGES', 'Pages: ');
 
 define('_MD_IMBLOGGING_RSS_GLOBAL', 'Subscribe to latest posts');
 define('_MD_IMBLOGGING_RSS_POSTER', 'Subscribe to latest posts from this poster');
-?>

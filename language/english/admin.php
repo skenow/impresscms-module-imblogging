@@ -33,4 +33,3 @@ define("_AM_IMBLOGGING_POST_MODIFIED", "The post was successfully modified.");
 define("_AM_IMBLOGGING_POST_CREATED", "The post has been successfully created.");
 define("_AM_IMBLOGGING_POST_VIEW", "Post info");
 define("_AM_IMBLOGGING_POST_VIEW_DSC", "Here is the info about this post.");
-?>
