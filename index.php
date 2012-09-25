@@ -3,11 +3,11 @@
  * Index page
  *
  * @copyright	http://smartfactory.ca The SmartFactory
- * @license	http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
+ * @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
  * @since		1.0
  * @author		marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
- * @package	imblogging
- * @version	$Id$
+ * @package		imblogging
+ * @version		$Id$
  */
 /** Include the module's header for all pages */
 include_once 'header.php';
@@ -23,10 +23,10 @@ $clean_year = isset($_GET['y']) ? (int) $_GET['y'] : FALSE;
 $clean_month = isset($_GET['m']) ? (int) $_GET['m'] : FALSE;
 $clean_cid = isset($_GET['cid']) ? (int) $_GET['cid'] : FALSE;
 $Basic_Check = defined ('_CALENDAR_TYPE') && _CALENDAR_TYPE == "jalali" && $icmsConfig['use_ext_date'] == 1;
-if(!empty($_GET['y']) && !empty($_GET['m']) && $Basic_Check) {
+if (!empty($_GET['y']) && !empty($_GET['m']) && $Basic_Check) {
 	$jyear = $clean_year;
 	$jmonth = $clean_month;
-	list($gyear, $gmonth, $gday) = jalali_to_gregorian( $jyear, $jmonth, '1');
+	list($gyear, $gmonth, $gday) = jalali_to_gregorian($jyear, $jmonth, '1');
 	$clean_year =  $gyear;
 	$clean_month = $gmonth;
 
@@ -63,14 +63,12 @@ if ($clean_cid) {
 	$category_pathArray[] = $category_name;
 	$extr_argArray[] = 'cid=' . $clean_cid;
 }
-$config_handler =& xoops_gethandler('config');
-$icmsConfig =& $config_handler->getConfigsByCat(XOOPS_CONF);
 if ($clean_year && $clean_month) {
-	if($Basic_Check) {
+	if ($Basic_Check) {
 		$gyear = $clean_year;
 		$gmonth = $clean_month;
 		$gday = 1;
-		list($jyear, $jmonth, $jday) = gregorian_to_jalali( $gyear, $gmonth, $gday);
+		list($jyear, $jmonth, $jday) = gregorian_to_jalali($gyear, $gmonth, $gday);
 		$clean_year =  icms_conv_nr2local($jyear);
 		$clean_month = $jmonth;
 
