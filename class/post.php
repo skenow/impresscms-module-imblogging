@@ -94,10 +94,10 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 	 * @return mixed value of the field that is requested
 	 */
 	function getVar($key, $format = 's') {
-		if ($format == 's' && in_array($key, array ('post_uid',	'post_status', 'categories'))) {
-			return call_user_func(array ($this,	$key));
-		} elseif($format == 'e' && in_array($key, array ('categories'))) {
-			return call_user_func(array ($this,	$key));
+		if ($format == 's' && in_array($key, array('post_uid', 'post_status', 'categories'))) {
+			return call_user_func(array($this, $key));
+		} elseif ($format == 'e' && in_array($key, array('categories'))) {
+			return call_user_func(array($this, $key));
 		}
 		return parent :: getVar($key, $format);
 	}
@@ -119,7 +119,7 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 		if (is_array($ret)) {
 			return $ret;
 		} else {
-			(int)$ret > 0 ? array((int)$ret) : FALSE;
+			(int) $ret > 0 ? array((int) $ret) : FALSE;
 		}
 	}
 
@@ -413,7 +413,7 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 	/**
 	 * @var array of status
 	 */
-	var $_post_statusArray = array ();
+	var $_post_statusArray = array();
 
 	/**
 	 * Constructor
@@ -469,7 +469,7 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 			$criteria->add(new Criteria('post_uid', $post_uid));
 		}
 		if ($cid) {
-			$imtagging_category_link_handler = icms_getModuleHandler('category_link', $moddir,  'imtagging');
+			$imtagging_category_link_handler = icms_getModuleHandler('category_link', $moddir, 'imtagging');
 			$categoryids = $imtagging_category_link_handler->getItemidsForCategory($cid, $this);
 			$criteria->add(new Criteria('post_id', '(' . implode(',', $categoryids) . ')', 'IN'));
 		}
@@ -516,13 +516,13 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 		$postIds = $this->getIdsFromObjectsAsArray($ret);
 
 		// retrieve categories linked to these postIds
-		$imtagging_category_link_handler = icms_getModuleHandler('category_link', $moddir,  'imtagging');
+		$imtagging_category_link_handler = icms_getModuleHandler('category_link', $moddir, 'imtagging');
 		$categoriesObj = $imtagging_category_link_handler->getCategoriesFromObjectIds($postIds, $this);
 
 		// put the category info in each postObj
-		foreach($categoriesObj as $categoryObj) {
+		foreach ($categoriesObj as $categoryObj) {
 			if (isset($categoryObj->items['imblogging']['post']))
-			foreach($categoryObj->items['imblogging']['post'] as $postid) {
+			foreach ($categoryObj->items['imblogging']['post'] as $postid) {
 				$ret[$postid]['categories'][] = array(
 						'id' => $categoryObj->id(),
 						'title' => $categoryObj->getVar('category_title')
@@ -563,21 +563,20 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 		'HAVING posts_count > 0 ' .
 		'ORDER BY posts_year DESC, posts_month DESC';
 		$postsByMonthArray = $this->query($sql, FALSE);
-		$ret = array ();
+		$ret = array();
 		$config_handler =& xoops_gethandler('config');
 		$icmsConfig =& $config_handler->getConfigsByCat(XOOPS_CONF);
 		foreach ($postsByMonthArray as $postByMonth) {
 			$postByMonthnr = $postByMonth['posts_month'];
 			$postByYearname = $postByMonth['posts_year'];
 			$postByYearnr = $postByMonth['posts_year'];
-			if(defined ('_CALENDAR_TYPE') && _CALENDAR_TYPE == "jalali" && $icmsConfig['use_ext_date'] == 1)
-			{
+			if (defined('_CALENDAR_TYPE') && _CALENDAR_TYPE == "jalali" && $icmsConfig['use_ext_date'] == 1) {
 				include_once ICMS_ROOT_PATH.'/language/'.$icmsConfig['language'].'/calendar.php';
 				$gyear = $postByYearname;
 				$gmonth = $postByMonthnr;
-				list($jyear, $jmonth, $jday) = gregorian_to_jalali( $gyear, $gmonth, '1');
-				$postByYearname =  icms_conv_nr2local($jyear);
-				$postByYearnr =  $jyear;
+				list($jyear, $jmonth, $jday) = gregorian_to_jalali($gyear, $gmonth, '1');
+				$postByYearname = icms_conv_nr2local($jyear);
+				$postByYearnr = $jyear;
 				$postByMonthnr = $jmonth;
 
 			}
@@ -616,7 +615,7 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 				$criteriaKeyword->add(new Criteria('post_title', '%' . $queryarray[$i] . '%', 'LIKE'), 'OR');
 				$criteriaKeyword->add(new Criteria('post_content', '%' . $queryarray[$i] . '%', 'LIKE'), 'OR');
 				$criteriaKeywords->add($criteriaKeyword, $andor);
-				unset ($criteriaKeyword);
+				unset($criteriaKeyword);
 			}
 			$criteria->add($criteriaKeywords);
 		}
@@ -688,7 +687,7 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 		if ($obj->updating_counter)	return TRUE;
 
 		// storing categories
-		$imtagging_category_link_handler = icms_getModuleHandler('category_link', $moddir,  'imtagging');
+		$imtagging_category_link_handler = icms_getModuleHandler('category_link', $moddir, 'imtagging');
 		$imtagging_category_link_handler->storeCategoriesForObject($obj);
 
 		if (!$obj->getVar('post_notification_sent') && $obj->getVar('post_status', 'e') == IMBLOGGING_POST_STATUS_PUBLISHED) {
@@ -718,7 +717,7 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 	 */
 	function getIdsFromObjectsAsArray($objectsAsArray) {
 		$ret = array();
-		foreach($objectsAsArray as $array) {
+		foreach ($objectsAsArray as $array) {
 			$ret[] = $array[$this->keyName];
 		}
 		return $ret;

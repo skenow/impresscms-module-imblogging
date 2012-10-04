@@ -16,7 +16,7 @@ define("_AM_IMBLOGGING_REQUIREMENTS", "Requisitos de imBlogging");
 define("_AM_IMBLOGGING_REQUIREMENTS_INFO", "Su sistema no reune todos los requisitos necesarios para el uso de imBlogging y que se detallan a continuación.");
 define("_AM_IMBLOGGING_REQUIREMENTS_ICMS_BUILD", "imBlogging requiere al menos la versión 1.1.1 RC 1 de ImpressCMS");
 define("_AM_IMBLOGGING_REQUIREMENTS_IMTAGGING", "imBlogging requiere que el módulo imTagging esté instalado. Por favor, consiga el mismo en ImpressCMS SVN.");
-define("_AM_IMBLOGGING_REQUIREMENTS_SUPPORT", "Para cualquier problema o cuestión que quiera plantear, visite nuestros foros en  <a href='http://community.impresscms.org'>http://community.impresscms.org</a>.");
+define("_AM_IMBLOGGING_REQUIREMENTS_SUPPORT", "Para cualquier problema o cuestión que quiera plantear, visite nuestros foros en <a href='http://community.impresscms.org'>http://community.impresscms.org</a>.");
 // general
 define("_AM_IMBLOGGING_POSTS", "Artículos");
 define("_AM_IMBLOGGING_FIRST_USE", "Esta es la primera vez que accede al módulo. Por favor, actualízelo para crear dinámicamente el esquema en la base de datos.");

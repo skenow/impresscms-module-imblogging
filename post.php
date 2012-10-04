@@ -45,7 +45,7 @@ function editpost($postObj) {
 		$icmsTpl->assign('imblogging_category_path', _SUBMIT);
 	}
 
-	$xoTheme->addStylesheet(ICMS_URL . '/modules/imtagging/module'. (( defined("_ADM_USE_RTL") && _ADM_USE_RTL)?'_rtl':'').'.css');
+	$xoTheme->addStylesheet(ICMS_MODULES_URL . '/imtagging/module'. ((defined("_ADM_USE_RTL") && _ADM_USE_RTL)?'_rtl':'').'.css');
 }
 
 include_once 'header.php';

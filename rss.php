@@ -11,7 +11,7 @@
  */
 /** Include the module's header for all pages */
 include_once 'header.php';
-include_once ICMS_ROOT_PATH.'/header.php';
+include_once ICMS_ROOT_PATH . '/header.php';
 
 $clean_post_uid = isset($_GET['uid']) ? (int) $_GET['uid'] : FALSE;
 
@@ -29,13 +29,13 @@ $imblogging_post_handler = icms_getModuleHandler('post', $moddir, 'imblogging');
 //ImbloggingPostHandler::getPosts($start = 0, $limit = 0, $post_uid = FALSE, $year = FALSE, $month = FALSE
 $postsArray = $imblogging_post_handler->getPosts(0, 10, $clean_post_uid);
 
-foreach($postsArray as $postArray) {
+foreach ($postsArray as $postArray) {
 	$imblogging_feed->feeds[] = array(
-	  'title' => $postArray['post_title'],
-	  'link' => str_replace('&', '&amp;', $postArray['itemUrl']),
-	  'description' => htmlspecialchars(str_replace('&', '&amp;', $postArray['post_lead']), ENT_QUOTES),
-	  'pubdate' => $postArray['post_published_date_int'],
-	  'guid' => str_replace('&', '&amp;', $postArray['itemUrl']),
+		'title' => $postArray['post_title'],
+		'link' => str_replace('&', '&amp;', $postArray['itemUrl']),
+		'description' => htmlspecialchars(str_replace('&', '&amp;', $postArray['post_lead']), ENT_QUOTES),
+		'pubdate' => $postArray['post_published_date_int'],
+		'guid' => str_replace('&', '&amp;', $postArray['itemUrl']),
 	);
 }
 

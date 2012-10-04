@@ -14,9 +14,9 @@
 
 include_once '../../../include/cp_header.php';
 
-include_once ICMS_ROOT_PATH.'/modules/' . basename(dirname(dirname(__FILE__))) .'/include/common.php';
-if( !defined("IMBLOGGING_ADMIN_URL") ) define('IMBLOGGING_ADMIN_URL', IMBLOGGING_URL . "admin/");
-include_once(IMBLOGGING_ROOT_PATH . 'include/requirements.php');
+include_once ICMS_MODULES_PATH . '/' . basename(dirname(dirname(__FILE__))) .'/include/common.php';
+if (!defined("IMBLOGGING_ADMIN_URL")) define('IMBLOGGING_ADMIN_URL', IMBLOGGING_URL . "admin/");
+include_once IMBLOGGING_ROOT_PATH . 'include/requirements.php';
 
 /**
 * First use page of the module
@@ -32,7 +32,7 @@ if (is_object($icmsModule) && $icmsModule->dirname() == IMBLOGGING_DIRNAME) {
 	if (defined('XOOPS_CPFUNC_LOADED')) {
 		// We are in the admin side of the module
 		if (!$icmsModule->getDBVersion()) {
-			redirect_header(ICMS_URL . '/modules/system/admin.php?fct=modulesadmin&op=update&module=' . IMBLOGGING_DIRNAME, 4, _AM_IMBLOGGING_FIRST_USE);
+			redirect_header(ICMS_MODULES_URL . '/system/admin.php?fct=modulesadmin&op=update&module=' . IMBLOGGING_DIRNAME, 4, _AM_IMBLOGGING_FIRST_USE);
 			exit;
 		}
 	}

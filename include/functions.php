@@ -23,7 +23,7 @@ if (!function_exists('Icms_getMonthNameById')) {
 		global $icmsConfig;
 		icms_loadLanguageFile('core', 'calendar');
 		$month_id = icms_conv_local2nr($month_id);
-		if( $icmsConfig['use_ext_date'] == 1 && defined ('_CALENDAR_TYPE') && _CALENDAR_TYPE == "jalali"){
+		if ($icmsConfig['use_ext_date'] == 1 && defined('_CALENDAR_TYPE') && _CALENDAR_TYPE == "jalali") {
 			switch($month_id) {
 				case 1:
 					return _CAL_FARVARDIN;
@@ -114,11 +114,11 @@ if (!function_exists('icms_conv_local2nr')) {
 	 */
 	function icms_conv_local2nr($string) {
 		$basecheck = defined('_USE_LOCAL_NUM') && _USE_LOCAL_NUM;
-		if ( $basecheck ){
+		if ($basecheck) {
 			$string = str_replace(
-			array(_LCL_NUM0, _LCL_NUM1, _LCL_NUM2, _LCL_NUM3, _LCL_NUM4, _LCL_NUM5, _LCL_NUM6, _LCL_NUM7, _LCL_NUM8, _LCL_NUM9),
-			array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9'),
-			$string);
+					array(_LCL_NUM0, _LCL_NUM1, _LCL_NUM2, _LCL_NUM3, _LCL_NUM4, _LCL_NUM5, _LCL_NUM6, _LCL_NUM7, _LCL_NUM8, _LCL_NUM9),
+					array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9'),
+					$string);
 		}
 		return $string;
 	}
@@ -133,12 +133,12 @@ if (!function_exists('icms_getModuleAdminLink')) {
 	 */
 	function icms_getModuleAdminLink($moduleName=false) {
 		global $icmsModule;
-		if (!$moduleName && (isset ($icmsModule) && is_object($icmsModule))) {
+		if (!$moduleName && (isset($icmsModule) && is_object($icmsModule))) {
 			$moduleName = $icmsModule->getVar('dirname');
 		}
 		$ret = '';
 		if ($moduleName) {
-			$ret = "<a href='" . ICMS_URL . "/modules/$moduleName/admin/index.php'>" . _CO_ICMS_ADMIN_PAGE . "</a>";
+			$ret = "<a href='" . ICMS_MODULES_URL . "/$moduleName/admin/index.php'>" . _CO_ICMS_ADMIN_PAGE . "</a>";
 		}
 		return $ret;
 	}
@@ -155,12 +155,12 @@ if (!function_exists('icms_getModuleAdminLink')) {
 
 function imblogging_getModuleAdminLink($moduleName='imblogging') {
 	global $icmsModule;
-	if (!$moduleName && (isset ($icmsModule) && is_object($icmsModule))) {
+	if (!$moduleName && (isset($icmsModule) && is_object($icmsModule))) {
 		$moduleName = $icmsModule->getVar('dirname');
 	}
 	$ret = '';
 	if ($moduleName) {
-		$ret = "<a href='" . ICMS_URL . "/modules/$moduleName/admin/index.php'>" ._MD_IMBLOGGING_ADMIN_PAGE . "</a>";
+		$ret = "<a href='" . ICMS_MODULES_URL . "/$moduleName/admin/index.php'>" ._MD_IMBLOGGING_ADMIN_PAGE . "</a>";
 	}
 	return $ret;
 }
@@ -175,7 +175,7 @@ function imblogging_getModuleName($withLink = true, $forBreadCrumb = false, $mod
 	}
 	$icmsModule = icms_getModuleInfo($moduleName);
 	$icmsModuleConfig = icms_getModuleConfig($moduleName);
-	if (!isset ($icmsModule)) {
+	if (!isset($icmsModule)) {
 		return '';
 	}
 
@@ -184,15 +184,15 @@ function imblogging_getModuleName($withLink = true, $forBreadCrumb = false, $mod
 	} else {
 		/*	    $seoMode = smart_getModuleModeSEO($moduleName);
 		 if ($seoMode == 'rewrite') {
-		 $seoModuleName = smart_getModuleNameForSEO($moduleName);
-		 $ret = XOOPS_URL . '/' . $seoModuleName . '/';
-		 } elseif ($seoMode == 'pathinfo') {
-		 $ret = XOOPS_URL . '/modules/' . $moduleName . '/seo.php/' . $seoModuleName . '/';
-		 } else {
-			$ret = XOOPS_URL . '/modules/' . $moduleName . '/';
-			}
-			*/
-		$ret = ICMS_URL . '/modules/' . $moduleName . '/';
+		$seoModuleName = smart_getModuleNameForSEO($moduleName);
+		$ret = XOOPS_URL . '/' . $seoModuleName . '/';
+		} elseif ($seoMode == 'pathinfo') {
+		$ret = XOOPS_URL . '/modules/' . $moduleName . '/seo.php/' . $seoModuleName . '/';
+		} else {
+		$ret = XOOPS_URL . '/modules/' . $moduleName . '/';
+		}
+		*/
+		$ret = ICMS_MODULES_URL . '/' . $moduleName . '/';
 		return '<a href="' . $ret . '">' . $icmsModule->getVar('name') . '</a>';
 	}
 }
@@ -209,7 +209,7 @@ function imblogging_getPreviousPage($default=false) {
 	global $impresscms;
 	if (isset($impresscms->urls['previouspage'])) {
 		return $impresscms->urls['previouspage'];
-	} elseif($default) {
+	} elseif ($default) {
 		return $default;
 	} else {
 		return ICMS_URL;

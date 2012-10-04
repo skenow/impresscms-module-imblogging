@@ -27,7 +27,7 @@ if (!empty($_GET['y']) && !empty($_GET['m']) && $Basic_Check) {
 	$jyear = $clean_year;
 	$jmonth = $clean_month;
 	list($gyear, $gmonth, $gday) = jalali_to_gregorian($jyear, $jmonth, '1');
-	$clean_year =  $gyear;
+	$clean_year = $gyear;
 	$clean_month = $gmonth;
 
 }
@@ -69,7 +69,7 @@ if ($clean_year && $clean_month) {
 		$gmonth = $clean_month;
 		$gday = 1;
 		list($jyear, $jmonth, $jday) = gregorian_to_jalali($gyear, $gmonth, $gday);
-		$clean_year =  icms_conv_nr2local($jyear);
+		$clean_year = icms_conv_nr2local($jyear);
 		$clean_month = $jmonth;
 
 	}
