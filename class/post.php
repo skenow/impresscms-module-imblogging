@@ -26,7 +26,7 @@ define('IMBLOGGING_POST_STATUS_PENDING', 2);
 define('IMBLOGGING_POST_STATUS_DRAFT', 3);
 define('IMBLOGGING_POST_STATUS_PRIVATE', 4);
 
-class ImbloggingPost extends IcmsPersistableSeoObject {
+class mod_imblogging_Post extends IcmsPersistableSeoObject {
 
 	private	 $post_date_info = FALSE;
 	private $poster_info = FALSE;
@@ -108,7 +108,7 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 	 * @return void
 	 */
 	function loadCategories() {
-		$imtagging_category_link_handler = icms_getModuleHandler('category_link', $moddir, 'imtagging');
+		$imtagging_category_link_handler = icms_getModuleHandler('category_link', 'imtagging');
 		$ret = $imtagging_category_link_handler->getCategoriesForObject($this->id(), $this->handler);
 		$this->setVar('categories', $ret);
 	}
@@ -408,7 +408,7 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 		return $ret;
 	}
 }
-class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
+class mod_imblogging_PostHandler extends IcmsPersistableObjectHandler {
 
 	/**
 	 * @var array of status
@@ -469,7 +469,7 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 			$criteria->add(new Criteria('post_uid', $post_uid));
 		}
 		if ($cid) {
-			$imtagging_category_link_handler = icms_getModuleHandler('category_link', $moddir, 'imtagging');
+			$imtagging_category_link_handler = icms_getModuleHandler('category_link', 'imtagging');
 			$categoryids = $imtagging_category_link_handler->getItemidsForCategory($cid, $this);
 			$criteria->add(new Criteria('post_id', '(' . implode(',', $categoryids) . ')', 'IN'));
 		}
@@ -516,7 +516,7 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 		$postIds = $this->getIdsFromObjectsAsArray($ret);
 
 		// retrieve categories linked to these postIds
-		$imtagging_category_link_handler = icms_getModuleHandler('category_link', $moddir, 'imtagging');
+		$imtagging_category_link_handler = icms_getModuleHandler('category_link', 'imtagging');
 		$categoriesObj = $imtagging_category_link_handler->getCategoriesFromObjectIds($postIds, $this);
 
 		// put the category info in each postObj
@@ -687,7 +687,7 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 		if ($obj->updating_counter)	return TRUE;
 
 		// storing categories
-		$imtagging_category_link_handler = icms_getModuleHandler('category_link', $moddir, 'imtagging');
+		$imtagging_category_link_handler = icms_getModuleHandler('category_link', 'imtagging');
 		$imtagging_category_link_handler->storeCategoriesForObject($obj);
 
 		if (!$obj->getVar('post_notification_sent') && $obj->getVar('post_status', 'e') == IMBLOGGING_POST_STATUS_PUBLISHED) {

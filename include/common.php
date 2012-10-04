@@ -18,7 +18,7 @@ if (!defined("IMBLOGGING_IMAGES_URL"))	define("IMBLOGGING_IMAGES_URL", IMBLOGGIN
 if (!defined("IMBLOGGING_ADMIN_URL"))	define("IMBLOGGING_ADMIN_URL", IMBLOGGING_URL.'admin/');
 
 // Include the common language file of the module
-icms_loadLanguageFile('imblogging', 'common');
+icms_loadLanguageFile(IMBLOGGING_DIRNAME, 'common');
 
 include_once IMBLOGGING_ROOT_PATH . "include/functions.php";
 

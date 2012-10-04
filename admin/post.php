@@ -54,7 +54,7 @@ if (ICMS_VERSION_BUILD < 25) {
 	$icmsAdminTpl->assign('imblogging_jquery_inc', '<script type="text/javascript" src="' . ICMS_LIBRARIES_URL . '/jquery/jquery.js"></script><link rel="stylesheet" type="text/css" media="all" href="' . ICMS_MODULES_URL . '/imtagging/module.css" />');
 }
 $moddir = basename(dirname(dirname(__FILE__)));
-$imblogging_post_handler = icms_getModuleHandler('post', $moddir, 'imtagging');
+$imblogging_post_handler = icms_getModuleHandler('post', $moddir, 'imblogging');
 /** Use a naming convention that indicates the source of the content of the variable */
 $clean_op = '';
 /** Create a whitelist of valid values, be sure to use appropriate types for each value

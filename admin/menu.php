@@ -24,7 +24,7 @@ if (isset($icmsModule)) {
 	);
 	$headermenu[] = array(
 		'title' => _CO_ICMS_GOTOMODULE,
-		'link' => ICMS_MODULES_URL . $moddir,
+		'link' => ICMS_MODULES_URL . '/' . $moddir,
 	);
 	$headermenu[] = array(
 		'title' => _CO_ICMS_UPDATE_MODULE,
