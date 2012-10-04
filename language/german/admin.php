@@ -33,4 +33,3 @@ define("_AM_IMBLOGGING_POST_MODIFIED", "Der Beitrag wurde geändert.");
 define("_AM_IMBLOGGING_POST_CREATED", "Der Beitrag wurde erstellt.");
 define("_AM_IMBLOGGING_POST_VIEW", "Beitragsinfo");
 define("_AM_IMBLOGGING_POST_VIEW_DSC", "Informationen zu diesem Beitrag.");
-?>

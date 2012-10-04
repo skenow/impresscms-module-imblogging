@@ -13,4 +13,3 @@
 if (!defined("ICMS_ROOT_PATH")) die("O caminho para o raiz do site não foi definido");
 
 define("_MB_IMBLOGGING_POST_RECENT_LIMIT", "Limite de Blogs: ");
-?>

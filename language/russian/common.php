@@ -51,4 +51,3 @@ define("_CO_IMBLOGGING_POST_PRIVATE", "Опубликовано приватно
 define("_CO_IMBLOGGING_POST_ON", "на");
 define("_CO_IMBLOGGING_POST_BY", " ");
 define("_CO_IMBLOGGING_FILED_UNDER", "Filed under: ");
-?>

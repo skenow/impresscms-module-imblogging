@@ -12,7 +12,7 @@
 */
 
 include_once 'header.php';
-$com_itemid = isset($_GET['com_itemid']) ? intval($_GET['com_itemid']) : 0;
+$com_itemid = isset($_GET['com_itemid']) ? (int) $_GET['com_itemid'] : 0;
 if ($com_itemid > 0) {
 	$imblogging_post_handler = icms_getModuleHandler('post', $moddir, 'imblogging');
 	$postObj = $imblogging_post_handler->get($com_itemid);
@@ -27,5 +27,3 @@ if ($com_itemid > 0) {
 		include_once ICMS_ROOT_PATH .'/include/comment_new.php';
 	}
 }
-
-?>

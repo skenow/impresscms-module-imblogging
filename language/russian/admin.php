@@ -33,4 +33,3 @@ define("_AM_IMBLOGGING_POST_MODIFIED", "Сообщение отредактир�
 define("_AM_IMBLOGGING_POST_CREATED", "Сообщение создано.");
 define("_AM_IMBLOGGING_POST_VIEW", "Информация о сообщении");
 define("_AM_IMBLOGGING_POST_VIEW_DSC", "Информация об этом сообщении.");
-?>

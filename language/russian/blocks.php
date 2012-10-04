@@ -12,4 +12,3 @@
 if (!defined("ICMS_ROOT_PATH")) die("Не определен корневой путь к ICMS");
 
 define("_MB_IMBLOGGING_POST_RECENT_LIMIT", "Лимит сообщений: ");
-?>

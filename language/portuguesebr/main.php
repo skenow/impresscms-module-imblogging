@@ -24,4 +24,3 @@ define('_MD_IMBLOGGING_NAV_PAGES', 'Páginas: ');
 
 define('_MD_IMBLOGGING_RSS_GLOBAL', 'Inscrever-se nas últimas mensagens');
 define('_MD_IMBLOGGING_RSS_POSTER', 'Inscrever-se nas últimas mensagens a partir deste momento');
-?>

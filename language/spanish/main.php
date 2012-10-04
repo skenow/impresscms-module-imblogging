@@ -22,4 +22,3 @@ define('_MD_IMBLOGGING_SECURITY_CHECK_FAILED', 'Comprobación de seguridad falli
 define('_MD_IMBLOGGING_NAV_PAGES', 'Páginas: ');
 define('_MD_IMBLOGGING_RSS_GLOBAL', 'Subscribirse a las últimas publicaciones');
 define('_MD_IMBLOGGING_RSS_POSTER', 'Subscribirse a los últimos envíos de este autor');
-?>

@@ -34,4 +34,3 @@ define("_AM_IMBLOGGING_POST_MODIFIED", "O Blog foi modificado com sucesso.");
 define("_AM_IMBLOGGING_POST_CREATED", "O Blog foi criado com sucesso.");
 define("_AM_IMBLOGGING_POST_VIEW", "Blog info");
 define("_AM_IMBLOGGING_POST_VIEW_DSC", "Aqui está a informação sobre este Blog.");
-?>

@@ -47,4 +47,3 @@ define("_CO_IMBLOGGING_POST_PUBLISHED", "منتشر شده");
 define("_CO_IMBLOGGING_POST_ON", "به‌تاریخ");
 define("_CO_IMBLOGGING_POST_BY", "توسط");
 define("_CO_IMBLOGGING_FILED_UNDER", "جای گرفته در: ");
-?>

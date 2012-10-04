@@ -32,4 +32,3 @@ define("_AM_IMBLOGGING_POST_MODIFIED", "El artículo fue modificado con éxito."
 define("_AM_IMBLOGGING_POST_CREATED", "El artículo fue creado con éxito.");
 define("_AM_IMBLOGGING_POST_VIEW", "Información del artículo");
 define("_AM_IMBLOGGING_POST_VIEW_DSC", "Esta es la información sobre el artículo.");
-?>

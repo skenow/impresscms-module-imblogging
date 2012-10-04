@@ -34,4 +34,3 @@ define("_AM_IMBLOGGING_POST_MODIFIED", "این نوشته با موفقیت وی
 define("_AM_IMBLOGGING_POST_CREATED", "نوشته‌ی شما با موفقیت ایجاد شد.");
 define("_AM_IMBLOGGING_POST_VIEW", "اطلاعات نوشته");
 define("_AM_IMBLOGGING_POST_VIEW_DSC", "اطلاعات کلی این پیام.");
-?>

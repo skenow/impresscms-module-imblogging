@@ -47,4 +47,3 @@ define("_CO_IMBLOGGING_POST_PUBLISHED", "Publicado");
 define("_CO_IMBLOGGING_POST_ON", "on");
 define("_CO_IMBLOGGING_POST_BY", "por");
 define("_CO_IMBLOGGING_FILED_UNDER", "Arquivado em: ");
-?>

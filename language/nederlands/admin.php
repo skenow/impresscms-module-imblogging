@@ -34,4 +34,3 @@ define("_AM_IMBLOGGING_POST_MODIFIED", "Het bericht is succesvol gemodificeerd."
 define("_AM_IMBLOGGING_POST_CREATED", "Het bericht is succesvol opgeslagen.");
 define("_AM_IMBLOGGING_POST_VIEW", "Bericht info");
 define("_AM_IMBLOGGING_POST_VIEW_DSC", "Hier is informatie betreffende dit bericht.");
-?>

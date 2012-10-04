@@ -52,4 +52,3 @@ define("_CO_IMBLOGGING_POST_PRIVATE", "Gepubliceerd als privé");
 define("_CO_IMBLOGGING_POST_ON", "op");
 define("_CO_IMBLOGGING_POST_BY", "door");
 define("_CO_IMBLOGGING_FILED_UNDER", "Opgeslagen onder: ");
-?>
