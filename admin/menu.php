@@ -9,30 +9,29 @@
 * @version		$Id$
 */
 
-$i = -1;
-
-$i++;
-$adminmenu[$i]['title'] = _MI_IMBLOGGING_POSTS;
-$adminmenu[$i]['link'] = "admin/post.php";
+$adminmenu[] = array(
+	'title' => _MI_IMBLOGGING_POSTS,
+	'link' => "admin/post.php",
+);
 
 global $icmsModule;
 if (isset($icmsModule)) {
+	$moddir = basename(dirname(dirname(__FILE__)));
 
-	$i = -1;
-
-	$i++;
-	$headermenu[$i]['title'] = _PREFERENCES;
-	$headermenu[$i]['link'] = '../../system/admin.php?fct=preferences&amp;op=showmod&amp;mod=' . $icmsModule->getVar('mid');
-
-	$i++;
-	$headermenu[$i]['title'] = _CO_ICMS_GOTOMODULE;
-	$headermenu[$i]['link'] = ICMS_URL . '/modules/imblogging/';
-
-	$i++;
-	$headermenu[$i]['title'] = _CO_ICMS_UPDATE_MODULE;
-	$headermenu[$i]['link'] = ICMS_URL . '/modules/system/admin.php?fct=modulesadmin&op=update&module=' . $icmsModule->getVar('dirname');
-
-	$i++;
-	$headermenu[$i]['title'] = _MODABOUT_ABOUT;
-	$headermenu[$i]['link'] = ICMS_URL . '/modules/imblogging/admin/about.php';
+	$headermenu[] = array(
+		'title' => _PREFERENCES,
+		'link' => '../../system/admin.php?fct=preferences&amp;op=showmod&amp;mod=' . $icmsModule->getVar('mid'),
+	);
+	$headermenu[] = array(
+		'title' => _CO_ICMS_GOTOMODULE,
+		'link' => ICMS_MODULES_URL . $moddir,
+	);
+	$headermenu[] = array(
+		'title' => _CO_ICMS_UPDATE_MODULE,
+		'link' => ICMS_MODULES_URL . '/system/admin.php?fct=modulesadmin&op=update&module=' . $icmsModule->getVar('dirname'),
+	);
+	$headermenu[] = array(
+		'title' => _MODABOUT_ABOUT,
+		'link' => ICMS_MODULES_URL . $moddir . '/admin/about.php',
+	);
 }

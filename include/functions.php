@@ -145,7 +145,7 @@ if (!function_exists('icms_getModuleAdminLink')) {
 }
 
 /**
- * Get module admion link
+ * Get module admin link
  *
  * @todo to be move in icms core
  *

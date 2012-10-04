@@ -53,7 +53,7 @@ include_once 'header.php';
 $xoopsOption['template_main'] = 'imblogging_post.html';
 include_once ICMS_ROOT_PATH . '/header.php';
 
-$imblogging_post_handler = icms_getModuleHandler('post');
+$imblogging_post_handler = icms_getModuleHandler('post', $moddir, 'imblogging');
 
 /** Use a naming convention that indicates the source of the content of the variable */
 $clean_op = '';

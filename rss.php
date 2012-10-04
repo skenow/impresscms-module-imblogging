@@ -25,7 +25,7 @@ $imblogging_feed->language = _LANGCODE;
 $imblogging_feed->charset = _CHARSET;
 $imblogging_feed->category = $icmsModule->name();
 
-$imblogging_post_handler = icms_getModuleHandler('post');
+$imblogging_post_handler = icms_getModuleHandler('post', $moddir, 'imblogging');
 //ImbloggingPostHandler::getPosts($start = 0, $limit = 0, $post_uid = FALSE, $year = FALSE, $month = FALSE
 $postsArray = $imblogging_post_handler->getPosts(0, 10, $clean_post_uid);
 

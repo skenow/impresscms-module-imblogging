@@ -12,7 +12,7 @@
  * @version	$Id$
  */
 
-if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
+defined("ICMS_ROOT_PATH") || die("ICMS root path not defined");
 
 /**  General Information  */
 $modversion = array(
@@ -25,6 +25,7 @@ $modversion = array(
   'license'=> "GNU General Public License (GPL)",
   'official'=> 0,
   'dirname'=> basename(dirname(__FILE__)),
+  'modname' => 'imblogging',
 
 /**  Images information  */
   'iconsmall'=> "images/icon_small.png",
@@ -84,8 +85,8 @@ $modversion['search'] = array(
 /** Menu information */
 $modversion['hasMain'] = 1;
 global $icmsModule;
-if (is_object($icmsModule) && $icmsModule->dirname() == 'imblogging') {
-	$imblogging_post_handler = icms_getModuleHandler('post', 'imblogging');
+if (is_object($icmsModule) && $icmsModule->dirname() == $modversion['dirname']) {
+	$imblogging_post_handler = icms_getModuleHandler('post', $modversion['dirname'], $modversion['modname']);
 	if ($imblogging_post_handler->userCanSubmit()) {
 		$modversion['sub'][1]['name'] = _MI_IMBLOGGING_POST_ADD;
 		$modversion['sub'][1]['url'] = 'post.php?op=mod';

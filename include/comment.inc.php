@@ -11,7 +11,7 @@
 * @version		$Id$
 */
 function imblogging_com_update($item_id, $total_num) {
-    $imblogging_post_handler = icms_getModuleHandler('post', 'imblogging');
+    $imblogging_post_handler = icms_getModuleHandler('post', $moddir,  'imblogging');
     $imblogging_post_handler->updateComments($item_id, $total_num);
 }
 

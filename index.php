@@ -32,7 +32,7 @@ if (!empty($_GET['y']) && !empty($_GET['m']) && $Basic_Check) {
 
 }
 
-$imblogging_post_handler = icms_getModuleHandler('post');
+$imblogging_post_handler = icms_getModuleHandler('post', $moddir, 'imblogging');
 
 $icmsTpl->assign('imblogging_posts', $imblogging_post_handler->getPosts($clean_start, $icmsModuleConfig['posts_limit'], $clean_post_uid, $clean_cid, $clean_year, $clean_month));
 /**
@@ -58,7 +58,7 @@ if ($clean_post_uid) {
 	$category_pathArray[] = sprintf(_CO_IMBLOGGING_POST_FROM_USER, icms_getLinkedUnameFromId($clean_post_uid));
 }
 if ($clean_cid) {
-	$imtagging_category_handler = icms_getModuleHandler('category', 'imtagging');
+	$imtagging_category_handler = icms_getModuleHandler('category', $moddir, 'imtagging');
 	$category_name = $imtagging_category_handler->getCategoryName($clean_cid);
 	$category_pathArray[] = $category_name;
 	$extr_argArray[] = 'cid=' . $clean_cid;

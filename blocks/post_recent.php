@@ -11,18 +11,20 @@
  * @version	$Id$
  */
 
-if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
+defined("ICMS_ROOT_PATH") || die("ICMS root path not defined");
 
 function imblogging_post_recent_show($options) {
-	include_once ICMS_ROOT_PATH . '/modules/imblogging/include/common.php';
-	$imblogging_post_handler = icms_getModuleHandler('post', 'imblogging');
+	$moddir = basename(dirname(dirname(__FILE__)));
+	include_once ICMS_MODULES_PATH . '/'. $moddir . '/include/common.php';
+	$imblogging_post_handler = icms_getModuleHandler('post', $moddir, 'imblogging');
 	$block['posts'] = $imblogging_post_handler->getPosts(0, $options[0]);
 
 	return $block;
 }
 
 function imblogging_post_recent_edit($options) {
-	include_once ICMS_ROOT_PATH . '/modules/imblogging/include/common.php';
+	$moddir = basename(dirname(dirname(__FILE__)));
+	include_once ICMS_MODULES_PATH . '/'. $moddir . '/include/common.php';
 
 	$form = '<table><tr>';
 	$form .= '<td>' . _MB_IMBLOGGING_POST_RECENT_LIMIT . '</td>';

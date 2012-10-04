@@ -53,8 +53,8 @@ include_once "admin_header.php";
 if (ICMS_VERSION_BUILD < 25) {
 	$icmsAdminTpl->assign('imblogging_jquery_inc', '<script type="text/javascript" src="' . ICMS_LIBRARIES_URL . '/jquery/jquery.js"></script><link rel="stylesheet" type="text/css" media="all" href="' . ICMS_URL . '/modules/imtagging/module.css" />');
 }
-
-$imblogging_post_handler = icms_getModuleHandler('post');
+$moddir = basename(dirname(dirname(__FILE__)));
+$imblogging_post_handler = icms_getModuleHandler('post', $moddir, 'imtagging');
 /** Use a naming convention that indicates the source of the content of the variable */
 $clean_op = '';
 /** Create a whitelist of valid values, be sure to use appropriate types for each value
@@ -83,7 +83,7 @@ if (in_array($clean_op, $valid_op, true)) {
   		$xoopsLogger->disableLogger();
 
 		// adding the new category
-		$imtagging_category_handler = icms_getModuleHandler('category', 'imtagging');
+		$imtagging_category_handler = icms_getModuleHandler('category', $moddir, 'imtagging');
 		$categoryObj = $imtagging_category_handler->create();
 		$categoryObj->setVar('category_title', $_POST['category_title']);
 		$categoryObj->setVar('category_pid', $clean_category_pid);
@@ -93,7 +93,7 @@ if (in_array($clean_op, $valid_op, true)) {
 		$postObj = $imblogging_post_handler->get($clean_post_id);
 
 		include_once ICMS_ROOT_PATH . "/class/xoopsformloader.php";
-		include_once ICMS_ROOT_PATH . '/modules/imtagging/class/form/elements/imtaggingcategorytreeelement.php';
+		include_once ICMS_MODULES_PATH . '/' . $moddir. '/class/form/elements/imtaggingcategorytreeelement.php';
 		$category_tree_element = new ImtaggingCategoryTreeElement($postObj, 'categories');
 		echo $category_tree_element->render();
 		exit;
