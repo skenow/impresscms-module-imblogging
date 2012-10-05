@@ -22,7 +22,7 @@ $clean_post_uid = isset($_GET['uid']) ? (int) $_GET['uid'] : FALSE;
 $clean_year = isset($_GET['y']) ? (int) $_GET['y'] : FALSE;
 $clean_month = isset($_GET['m']) ? (int) $_GET['m'] : FALSE;
 $clean_cid = isset($_GET['cid']) ? (int) $_GET['cid'] : FALSE;
-$Basic_Check = defined ('_CALENDAR_TYPE') && _CALENDAR_TYPE == "jalali" && $icmsConfig['use_ext_date'] == 1;
+$Basic_Check = defined('_CALENDAR_TYPE') && _CALENDAR_TYPE == "jalali" && $icmsConfig['use_ext_date'] == 1;
 if (!empty($_GET['y']) && !empty($_GET['m']) && $Basic_Check) {
 	$jyear = $clean_year;
 	$jmonth = $clean_month;
