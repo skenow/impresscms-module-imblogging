@@ -81,7 +81,7 @@ $extr_arg = count($extr_argArray) > 0 ? implode('&amp;', $extr_argArray) : '';
 $pagenav = new XoopsPageNav($posts_count, $icmsModuleConfig['posts_limit'], $clean_start, 'start', $extr_arg);
 $icmsTpl->assign('navbar', $pagenav->renderNav());
 
-$icmsTpl->assign('imblogging_module_home', imblogging_getModuleName(TRUE, TRUE));
+$icmsTpl->assign('imblogging_module_home', icms_getModuleName(TRUE, TRUE));
 
 $category_path = count($category_pathArray) > 0 ? implode(' > ', $category_pathArray) : FALSE;
 $icmsTpl->assign('imblogging_category_path', $category_path);

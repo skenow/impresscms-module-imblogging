@@ -130,6 +130,6 @@ if (in_array($clean_op, $valid_op, TRUE)) {
 			break;
 	}
 }
-$icmsTpl->assign('imblogging_module_home', imblogging_getModuleName(TRUE, TRUE));
+$icmsTpl->assign('imblogging_module_home', icms_getModuleName(TRUE, TRUE));
 
 include_once 'footer.php';
