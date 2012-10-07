@@ -33,9 +33,9 @@ $modversion = array(
 	'image'=> "images/icon_big.png", /* for backward compatibility */
 
 /**  Development information */
-	'status_version'=> "Beta",
-	'status'=> "Beta",
-	'date'=> "2012-09-21",
+	'status_version'=> "RC",
+	'status'=> "RC",
+	'date'=> "2012-10-10",
 	'author_word'=> "",
 
 /** Contributors */
