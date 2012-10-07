@@ -26,7 +26,7 @@ define('IMBLOGGING_POST_STATUS_PENDING', 2);
 define('IMBLOGGING_POST_STATUS_DRAFT', 3);
 define('IMBLOGGING_POST_STATUS_PRIVATE', 4);
 
-class mod_imblogging_Post extends IcmsPersistableSeoObject {
+class ImbloggingPost extends IcmsPersistableSeoObject {
 
 	private	 $post_date_info = FALSE;
 	private $poster_info = FALSE;
@@ -408,7 +408,7 @@ class mod_imblogging_Post extends IcmsPersistableSeoObject {
 		return $ret;
 	}
 }
-class mod_imblogging_PostHandler extends IcmsPersistableObjectHandler {
+class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 
 	/**
 	 * @var array of status

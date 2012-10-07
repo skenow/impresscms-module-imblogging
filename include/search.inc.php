@@ -14,6 +14,7 @@
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
 function imblogging_search($queryarray, $andor, $limit, $offset, $userid) {
+	$moddir = basename(dirname(dirname(__FILE__)));
 	$imblogging_post_handler = icms_getModuleHandler('post', $moddir, 'imblogging');
 	$postsArray = $imblogging_post_handler->getPostsForSearch($queryarray, $andor, $limit, $offset, $userid);
 
