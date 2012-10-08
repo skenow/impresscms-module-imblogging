@@ -26,6 +26,12 @@ define('IMBLOGGING_POST_STATUS_PENDING', 2);
 define('IMBLOGGING_POST_STATUS_DRAFT', 3);
 define('IMBLOGGING_POST_STATUS_PRIVATE', 4);
 
+/**
+ *
+ * @category	ICMS
+ * @package		Module
+ * @subpackage	imBlogging
+ */
 class ImbloggingPost extends IcmsPersistableSeoObject {
 
 	private	 $post_date_info = FALSE;
@@ -41,7 +47,7 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 	public function __construct(& $handler) {
 		global $icmsConfig;
 
-		$this->IcmsPersistableObject($handler);
+		parent::__construct($handler);
 
 		$this->quickInitVar('post_id', XOBJ_DTYPE_INT, TRUE);
 		/**
@@ -99,7 +105,7 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 		} elseif ($format == 'e' && in_array($key, array('categories'))) {
 			return call_user_func(array($this, $key));
 		}
-		return parent :: getVar($key, $format);
+		return parent::getVar($key, $format);
 	}
 
 	/**
@@ -152,7 +158,7 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 	function need_do_br() {
 		global $icmsConfig, $icmsUser;
 
-		$imblogging_module = icms_getModuleInfo('imblogging');
+		$imblogging_module = icms_getModuleInfo(basename(dirname(dirname(__FILE__))));
 		$groups = $icmsUser->getGroups();
 
 		$editor_default = $icmsConfig['editor_default'];
@@ -352,7 +358,7 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 	}
 
 	/**
-	 * Check to see wether the current user can edit or delete this post
+	 * Check to see if the current user can edit or delete this post
 	 *
 	 * @return bool TRUE if he can, FALSE if not
 	 */
@@ -389,7 +395,7 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 	 * @return array of post info
 	 */
 	function toArray() {
-		$ret = parent :: toArray();
+		$ret = parent::toArray();
 		$ret['post_info'] = $this->getPostInfo();
 		$ret['post_lead'] = $this->getPostLead();
 		$ret['post_published_date_int'] = $this->getVar('post_published_date', 'e');
@@ -408,6 +414,13 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 		return $ret;
 	}
 }
+
+/**
+ *
+ * @category	ICMS
+ * @package		Module
+ * @subpackage	imBlogging
+ */
 class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 
 	/**
@@ -419,11 +432,11 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 	 * Constructor
 	 */
 	public function __construct(& $db) {
-		$this->IcmsPersistableObjectHandler($db, 'post', 'post_id', 'post_title', 'post_content', 'imblogging');
+		parent::__construct($db, 'post', 'post_id', 'post_title', 'post_content', basename(dirname(dirname(__FILE__))));
 	}
 
 	/**
-	 * Retreive the possible status of a post object
+	 * Retrieve the possible status of a post object
 	 *
 	 * @return array of status
 	 */
@@ -508,7 +521,7 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 	 * @param int $post_id ID of a single post to retrieve
 	 * @return array of posts
 	 */
-	function getPosts($start = 0, $limit = 0, $post_uid = FALSE, $cid=FALSE, $year = FALSE, $month = FALSE, $post_id = FALSE) {
+	function getPosts($start = 0, $limit = 0, $post_uid = FALSE, $cid = FALSE, $year = FALSE, $month = FALSE, $post_id = FALSE) {
 		$criteria = $this->getPostsCriteria($start, $limit, $post_uid, $cid, $year, $month, $post_id);
 		$ret = $this->getObjects($criteria, TRUE, FALSE);
 
@@ -571,7 +584,7 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 			$postByYearname = $postByMonth['posts_year'];
 			$postByYearnr = $postByMonth['posts_year'];
 			if (defined('_CALENDAR_TYPE') && _CALENDAR_TYPE == "jalali" && $icmsConfig['use_ext_date'] == 1) {
-				include_once ICMS_ROOT_PATH.'/language/'.$icmsConfig['language'].'/calendar.php';
+				include_once ICMS_ROOT_PATH . '/language/' . $icmsConfig['language'] . '/calendar.php';
 				$gyear = $postByYearname;
 				$gmonth = $postByMonthnr;
 				list($jyear, $jmonth, $jday) = gregorian_to_jalali($gyear, $gmonth, '1');
@@ -642,13 +655,13 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 	}
 
 	/**
-	 * Check wether the current user can submit a new post or not
+	 * Check if the current user can submit a new post or not
 	 *
 	 * @return bool TRUE if he can FALSE if not
 	 */
 	function userCanSubmit() {
 		global $icmsUser, $imblogging_isAdmin;
-		$imbloggingModuleConfig = icms_getModuleConfig('imblogging');
+		$imbloggingModuleConfig = icms_getModuleConfig(basename(dirname(dirname(__FILE__))));
 
 		if (!is_object($icmsUser)) {
 			return FALSE;
@@ -722,5 +735,4 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 		}
 		return $ret;
 	}
-
 }
