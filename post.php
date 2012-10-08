@@ -55,22 +55,21 @@ include_once ICMS_ROOT_PATH . '/header.php';
 
 $imblogging_post_handler = icms_getModuleHandler('post', $moddir, 'imblogging');
 
-/** Use a naming convention that indicates the source of the content of the variable */
+/* Use a naming convention that indicates the source of the content of the variable */
 $clean_op = '';
 
 if (isset($_GET['op'])) $clean_op = $_GET['op'];
 if (isset($_POST['op'])) $clean_op = $_POST['op'];
 
-/** Again, use a naming convention that indicates the source of the content of the variable */
+/* Again, use a naming convention that indicates the source of the content of the variable */
 $clean_post_id = isset($_GET['post_id']) ? (int) $_GET['post_id'] : 0 ;
 
-/** Create a whitelist of valid values, be sure to use appropriate types for each value
+/* Create a whitelist of valid values, be sure to use appropriate types for each value
  * Be sure to include a value for no parameter, if you have a default condition
  */
 $valid_op = array('mod', 'addpost', 'del', '');
-/**
- * Only proceed if the supplied operation is a valid operation
- */
+
+/* Only proceed if the supplied operation is a valid operation */
 if (in_array($clean_op, $valid_op, TRUE)) {
 	switch ($clean_op) {
 		case "mod":
@@ -87,6 +86,8 @@ if (in_array($clean_op, $valid_op, TRUE)) {
 			}
 			include_once ICMS_ROOT_PATH . '/kernel/icmspersistablecontroller.php';
 			$controller = new IcmsPersistableController($imblogging_post_handler);
+			/* need to flush the template option to prevent error on redirect */
+			$xoopsOption['template_main'] = NULL;
 			$controller->storeFromDefaultForm(_MD_IMBLOGGING_POST_CREATED, _MD_IMBLOGGING_POST_MODIFIED);
 			break;
 
@@ -102,6 +103,8 @@ if (in_array($clean_op, $valid_op, TRUE)) {
 			}
 			include_once ICMS_ROOT_PATH . '/kernel/icmspersistablecontroller.php';
 			$controller = new IcmsPersistableController($imblogging_post_handler);
+			/* need to flush the template option to prevent error on redirect */
+			$xoopsOption['template_main'] = NULL;
 			$controller->handleObjectDeletionFromUserSide();
 			$icmsTpl->assign('imblogging_category_path', $postObj->getVar('post_title') . ' > ' . _DELETE);
 
@@ -121,9 +124,7 @@ if (in_array($clean_op, $valid_op, TRUE)) {
 				$icmsTpl->assign('imblogging_post_comment', TRUE);
 				include_once ICMS_ROOT_PATH . '/include/comment_view.php';
 			}
-			/**
-			 * Generating meta information for this page
-			 */
+			/* Generating meta information for this page */
 			$icms_metagen = new IcmsMetagen($postArray['post_title'], $postArray['meta_keywords'], $postArray['meta_description']);
 			$icms_metagen->createMetaTags();
 
