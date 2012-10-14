@@ -477,6 +477,7 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 
 		if (!is_object($icmsUser) || (is_object($icmsUser) && !$icmsUser->isAdmin())) {
 			$criteria->add(new Criteria('post_status', IMBLOGGING_POST_STATUS_PUBLISHED));
+			$criteria->add(new Criteria('post_published_date', time(), '<='));
 		}
 		if ($post_uid) {
 			$criteria->add(new Criteria('post_uid', $post_uid));
