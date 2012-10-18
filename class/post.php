@@ -570,12 +570,18 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 		return $this->getCount($criteria);
 	}
 
+	/**
+	 * Get a count of posts for each month/year
+	 *
+	 * @return	array	An array of year/month post counts
+	 */
 	function getPostsCountByMonth() {
-		$sql = 'SELECT count(post_id) AS posts_count, MONTH(FROM_UNIXTIME(post_published_date)) AS posts_month, YEAR(FROM_UNIXTIME(post_published_date)) AS posts_year ' .
-		'FROM ' . $this->table . ' ' .
-		'GROUP BY posts_year, posts_month ' .
-		'HAVING posts_count > 0 ' .
-		'ORDER BY posts_year DESC, posts_month DESC';
+		$sql = 'SELECT count(post_id) AS posts_count, MONTH(FROM_UNIXTIME(post_published_date)) AS posts_month, YEAR(FROM_UNIXTIME(post_published_date)) AS posts_year'
+				. ' FROM ' . $this->table
+				. ' WHERE post_published_date <= ' . time()
+				. ' GROUP BY posts_year, posts_month'
+				. ' HAVING posts_count > 0'
+				. ' ORDER BY posts_year DESC, posts_month DESC';
 		$postsByMonthArray = $this->query($sql, FALSE);
 		$ret = array();
 		$config_handler =& xoops_gethandler('config');
@@ -607,7 +613,7 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 	 * Get Posts requested by the global search feature
 	 *
 	 * @param array $queryarray array containing the searched keywords
-	 * @param bool $andor wether the keywords should be searched with AND or OR
+	 * @param bool $andor whether the keywords should be searched with AND or OR
 	 * @param int $limit maximum results returned
 	 * @param int $offset where to start in the resulting dataset
 	 * @param int $userid should we return posts by specific poster ?
@@ -634,6 +640,7 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 			$criteria->add($criteriaKeywords);
 		}
 		$criteria->add(new Criteria('post_status', IMBLOGGING_POST_STATUS_PUBLISHED));
+		$criteria->add(new Criteria('post_published_date', time(), '<='));
 		return $this->getObjects($criteria, TRUE, FALSE);
 	}
 
