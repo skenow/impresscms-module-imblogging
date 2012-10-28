@@ -36,6 +36,8 @@ foreach ($postsArray as $postArray) {
 		'description' => htmlspecialchars(str_replace('&', '&amp;', $postArray['post_lead']), ENT_QUOTES),
 		'pubdate' => date('r', $postArray['post_published_date_int']),
 		'guid' => str_replace('&', '&amp;', $postArray['itemUrl']),
+		'author' => '',
+		'category' => '',
 	);
 }
 
