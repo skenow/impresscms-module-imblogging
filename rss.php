@@ -34,7 +34,7 @@ foreach ($postsArray as $postArray) {
 		'title' => $postArray['post_title'],
 		'link' => str_replace('&', '&amp;', $postArray['itemUrl']),
 		'description' => htmlspecialchars(str_replace('&', '&amp;', $postArray['post_lead']), ENT_QUOTES),
-		'pubdate' => date(_DATESTRING, $postArray['post_published_date_int']),
+		'pubdate' => date('r', $postArray['post_published_date_int']),
 		'guid' => str_replace('&', '&amp;', $postArray['itemUrl']),
 	);
 }
