@@ -20,7 +20,7 @@ $imblogging_feed = new IcmsFeed();
 
 $imblogging_feed->title = $icmsConfig['sitename'] . ' - ' . $icmsModule->name();
 $imblogging_feed->url = ICMS_URL;
-$imblogging_feed->description = $icmsConfig['slogan'];
+$imblogging_feed->description = htmlspecialchars($icmsConfig['slogan'], ENT_QUOTES);
 $imblogging_feed->language = _LANGCODE;
 $imblogging_feed->charset = _CHARSET;
 $imblogging_feed->category = $icmsModule->name();
@@ -34,7 +34,7 @@ foreach ($postsArray as $postArray) {
 		'title' => $postArray['post_title'],
 		'link' => str_replace('&', '&amp;', $postArray['itemUrl']),
 		'description' => htmlspecialchars(str_replace('&', '&amp;', $postArray['post_lead']), ENT_QUOTES),
-		'pubdate' => $postArray['post_published_date_int'],
+		'pubdate' => date(_DATESTRING, $postArray['post_published_date_int']),
 		'guid' => str_replace('&', '&amp;', $postArray['itemUrl']),
 	);
 }
