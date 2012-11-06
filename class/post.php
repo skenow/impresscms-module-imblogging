@@ -47,7 +47,11 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 	public function __construct(& $handler) {
 		global $icmsConfig;
 
-		parent::__construct($handler);
+		if (ICMS_VERSION_BUILD >= 55) {
+			parent::__construct($handler);
+		} else {
+			$this->IcmsPersistableObject($handler);
+		}
 
 		$this->quickInitVar('post_id', XOBJ_DTYPE_INT, TRUE);
 		/**
@@ -77,18 +81,18 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 		$this->setControl('categories', array(
 				'name'=>'categories',
 				'module'=>'imtagging'
-				));
-				$this->setControl('post_content', 'dhtmltextarea');
-				$this->setControl('post_uid', 'user');
-				$this->setControl('post_status', array(
-					'itemHandler' => 'post',
-					'method' => 'getPost_statusArray',
-					'module' => 'imblogging'
+			));
+		$this->setControl('post_content', 'dhtmltextarea');
+		$this->setControl('post_uid', 'user');
+		$this->setControl('post_status', array(
+				'itemHandler' => 'post',
+				'method' => 'getPost_statusArray',
+				'module' => 'imblogging'
 			));
 
-			$this->setControl('post_cancomment', 'yesno');
+		$this->setControl('post_cancomment', 'yesno');
 
-			$this->IcmsPersistableSeoObject();
+		$this->IcmsPersistableSeoObject();
 	}
 
 	/**
@@ -577,11 +581,11 @@ class ImbloggingPostHandler extends IcmsPersistableObjectHandler {
 	 */
 	function getPostsCountByMonth() {
 		$sql = 'SELECT count(post_id) AS posts_count, MONTH(FROM_UNIXTIME(post_published_date)) AS posts_month, YEAR(FROM_UNIXTIME(post_published_date)) AS posts_year'
-				. ' FROM ' . $this->table
-				. ' WHERE post_published_date <= ' . time()
-				. ' GROUP BY posts_year, posts_month'
-				. ' HAVING posts_count > 0'
-				. ' ORDER BY posts_year DESC, posts_month DESC';
+		. ' FROM ' . $this->table
+		. ' WHERE post_published_date <= ' . time()
+		. ' GROUP BY posts_year, posts_month'
+		. ' HAVING posts_count > 0'
+		. ' ORDER BY posts_year DESC, posts_month DESC';
 		$postsByMonthArray = $this->query($sql, FALSE);
 		$ret = array();
 		$config_handler =& xoops_gethandler('config');
