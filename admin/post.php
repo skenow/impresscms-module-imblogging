@@ -83,7 +83,8 @@ if (in_array($clean_op, $valid_op, true)) {
 			$xoopsLogger->disableLogger();
 
 			// adding the new category
-			$imtagging_category_handler = icms_getModuleHandler('category', $moddir, 'imtagging');
+			$imtagging = icms_getModuleInfo("imtagging");
+			$imtagging_category_handler = icms_getModuleHandler('category', $imtagging->getVar("dirname"), 'imtagging');
 			$categoryObj = $imtagging_category_handler->create();
 			$categoryObj->setVar('category_title', $_POST['category_title']);
 			$categoryObj->setVar('category_pid', $clean_category_pid);
@@ -93,7 +94,7 @@ if (in_array($clean_op, $valid_op, true)) {
 			$postObj = $imblogging_post_handler->get($clean_post_id);
 
 			include_once ICMS_ROOT_PATH . "/class/xoopsformloader.php";
-			include_once ICMS_MODULES_PATH . '/' . $moddir. '/class/form/elements/imtaggingcategorytreeelement.php';
+			include_once ICMS_MODULES_PATH . '/' . $imtagging->getVar("dirname"). '/class/form/elements/imtaggingcategorytreeelement.php';
 			$category_tree_element = new ImtaggingCategoryTreeElement($postObj, 'categories');
 			echo $category_tree_element->render();
 			exit;
