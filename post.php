@@ -29,7 +29,9 @@ function editpost($postObj) {
 			redirect_header($postObj->getItemLink(TRUE), 3, _NOPERM);
 		}
 		$postObj->loadCategories();
-		$postObj->hideFieldFromForm(array('post_published_date', 'post_uid', 'meta_keywords', 'meta_description', 'short_url'));
+		if (!icmsUser->isAdmin()) {
+			$postObj->hideFieldFromForm(array('post_published_date', 'post_uid', 'meta_keywords', 'meta_description', 'short_url'));
+		}
 		$sform = $postObj->getSecureForm(_MD_IMBLOGGING_POST_EDIT, 'addpost');
 		$sform->assign($icmsTpl, 'imblogging_postform');
 		$icmsTpl->assign('imblogging_category_path', $postObj->getVar('post_title') . ' > ' . _EDIT);
@@ -39,7 +41,9 @@ function editpost($postObj) {
 		}
 		$postObj->setVar('post_uid', $icmsUser->uid());
 		$postObj->setVar('post_published_date', time());
-		$postObj->hideFieldFromForm(array('post_published_date', 'post_uid', 'meta_keywords', 'meta_description', 'short_url'));
+		if (!icmsUser->isAdmin()) {
+			$postObj->hideFieldFromForm(array('post_published_date', 'post_uid', 'meta_keywords', 'meta_description', 'short_url'));
+		}
 		$sform = $postObj->getSecureForm(_MD_IMBLOGGING_POST_SUBMIT, 'addpost');
 		$sform->assign($icmsTpl, 'imblogging_postform');
 		$icmsTpl->assign('imblogging_category_path', _SUBMIT);
