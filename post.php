@@ -24,7 +24,7 @@ function editpost($postObj) {
 		'userside'=>TRUE
 	));
 
-	if (!icmsUser->isAdmin()) {
+	if (!$icmsUser->isAdmin()) {
 		$postObj->hideFieldFromForm(array('post_published_date', 'post_uid', 'meta_keywords', 'meta_description', 'short_url'));
 	}
 	if (!$postObj->isNew()) {
