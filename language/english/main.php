@@ -22,3 +22,5 @@ define('_MD_IMBLOGGING_NAV_PAGES', 'Pages: ');
 
 define('_MD_IMBLOGGING_RSS_GLOBAL', 'Subscribe to latest posts');
 define('_MD_IMBLOGGING_RSS_POSTER', 'Subscribe to latest posts from this poster');
+
+define('_MD_IMBLOGGING_KEEP_READING', 'keep reading ...');

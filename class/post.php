@@ -283,7 +283,14 @@ class ImbloggingPost extends IcmsPersistableSeoObject {
 	function getPostLead() {
 		$ret = $this->getVar('post_content');
 		$slices = explode('[more]', $ret);
-		return $slices[0];
+		if ($slices[1]) {
+			$ret = $slices[0] . ' <a href="' . $this->getItemLink(TRUE) 
+				. '" title="' . $this->getVar('post_title') 
+				. '">' . _MD_IMBLOGGING_KEEP_READING . '</a>';
+		} else {
+			$ret = $slices[0];
+		}
+		return $ret;
 	}
 
 	/**
