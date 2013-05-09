@@ -39,7 +39,7 @@ function editpost($postObj) {
 		if (!$imblogging_post_handler->userCanSubmit()) {
 			redirect_header(IMBLOGGING_URL, 3, _NOPERM);
 		}
-		$postObj->setVar('post_uid', icms::$user->uid());
+		$postObj->setVar('post_uid', icms::$user->getVar("uid"));
 		$postObj->setVar('post_published_date', time());
 		$sform = $postObj->getSecureForm(_MD_IMBLOGGING_POST_SUBMIT, 'addpost');
 		$sform->assign($icmsTpl, 'imblogging_postform');

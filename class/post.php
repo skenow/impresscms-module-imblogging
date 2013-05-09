@@ -158,7 +158,7 @@ class ImbloggingPost extends icms_ipf_seo_Object {
 
 		$editor_default = $icmsConfig['editor_default'];
 		$gperm_handler = icms::handler('icms_member_groupperm');
-		if (file_exists(ICMS_EDITOR_PATH . "/" . $editor_default . "/xoops_version.php") && $gperm_handler->checkRight('use_wysiwygeditor', $imblogging_module->mid(), $groups)) {
+		if (file_exists(ICMS_EDITOR_PATH . "/" . $editor_default . "/xoops_version.php") && $gperm_handler->checkRight('use_wysiwygeditor', $imblogging_module->getVar("mid"), $groups)) {
 			return FALSE;
 		} else {
 			return TRUE;
@@ -178,8 +178,8 @@ class ImbloggingPost extends icms_ipf_seo_Object {
 	 */
 	function accessGranted($perm_name = NULL) {
 		global $imblogging_isAdmin;
-		return $this->getVar('post_status', 'e') == IMBLOGGING_POST_STATUS_PUBLISHED 
-			|| $imblogging_isAdmin 
+		return $this->getVar('post_status', 'e') == IMBLOGGING_POST_STATUS_PUBLISHED
+			|| $imblogging_isAdmin
 			|| $this->getVar('post_uid', 'e') == icms::$user->getVar("uid");
 	}
 
@@ -278,8 +278,8 @@ class ImbloggingPost extends icms_ipf_seo_Object {
 		$ret = $this->getVar('post_content');
 		$slices = explode('[more]', $ret);
 		if ($slices[1]) {
-			$ret = $slices[0] . ' <a href="' . $this->getItemLink(TRUE) 
-				. '" title="' . $this->getVar('post_title') 
+			$ret = $slices[0] . ' <a href="' . $this->getItemLink(TRUE)
+				. '" title="' . $this->getVar('post_title')
 				. '">' . _MD_IMBLOGGING_KEEP_READING . '</a>';
 		} else {
 			$ret = $slices[0];
@@ -385,7 +385,7 @@ class ImbloggingPost extends icms_ipf_seo_Object {
 	function sendNotifPostPublished() {
 		global $imbloggingModule;
 		$module_id = $imbloggingModule->getVar('mid');
-		$notification_handler = icms::handler('notification');
+		$notification_handler = icms::handler('icms_data_notification');
 
 		$tags['POST_TITLE'] = $this->getVar('post_title');
 		$tags['POST_URL'] = $this->getItemLink(TRUE);
