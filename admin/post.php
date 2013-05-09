@@ -17,19 +17,19 @@
  * @param int $post_id Postid to be edited
  */
 function editpost($post_id = 0) {
-	global $imblogging_post_handler, $icmsModule, $icmsAdminTpl, $xoTheme, $icmsUser;
+	global $imblogging_post_handler, $icmsAdminTpl, $xoTheme;
 
 	$postObj = $imblogging_post_handler->get($post_id);
 
 	if (!$postObj->isNew()) {
-		$icmsModule->displayAdminMenu(0, _AM_IMBLOGGING_POSTS . " > " . _CO_ICMS_EDITING);
+		icms::$module->displayAdminMenu(0, _AM_IMBLOGGING_POSTS . " > " . _CO_ICMS_EDITING);
 		$postObj->loadCategories();
 		$sform = $postObj->getForm(_AM_IMBLOGGING_POST_EDIT, 'addpost');
 		$sform->assign($icmsAdminTpl);
 
 	} else {
-		$postObj->setVar('post_uid', $icmsUser->uid());
-		$icmsModule->displayAdminMenu(0, _AM_IMBLOGGING_POSTS . " > " . _CO_ICMS_CREATINGNEW);
+		$postObj->setVar('post_uid', icms::$user->getVar("uid"));
+		icms::$module->displayAdminMenu(0, _AM_IMBLOGGING_POSTS . " > " . _CO_ICMS_CREATINGNEW);
 		$sform = $postObj->getForm(_AM_IMBLOGGING_POST_CREATE, 'addpost');
 		$sform->assign($icmsAdminTpl);
 
@@ -49,10 +49,6 @@ $icmsOnDemandPreload[] = array(
 */
 include_once "admin_header.php";
 
-/** IcmsOndemandPreload is not supported prior to 1.2 Alpha. This is a workaround */
-if (ICMS_VERSION_BUILD < 25) {
-	$icmsAdminTpl->assign('imblogging_jquery_inc', '<script type="text/javascript" src="' . ICMS_LIBRARIES_URL . '/jquery/jquery.js"></script><link rel="stylesheet" type="text/css" media="all" href="' . ICMS_MODULES_URL . '/imtagging/module.css" />');
-}
 $moddir = basename(dirname(dirname(__FILE__)));
 $imblogging_post_handler = icms_getModuleHandler('post', $moddir, 'imblogging');
 /** Use a naming convention that indicates the source of the content of the variable */
@@ -80,20 +76,19 @@ if (in_array($clean_op, $valid_op, true)) {
 	switch ($clean_op) {
 		case "addcategory":
 			// the logger needs to be disabled in an AJAX request
-			$xoopsLogger->disableLogger();
+			icms::$logger->disableLogger();
 
 			// adding the new category
 			$imtagging = icms_getModuleInfo("imtagging");
 			$imtagging_category_handler = icms_getModuleHandler('category', $imtagging->getVar("dirname"), 'imtagging');
 			$categoryObj = $imtagging_category_handler->create();
-			$categoryObj->setVar('category_title', $_POST['category_title']);
+			$categoryObj->setVar('category_title', htmlentities($_POST['category_title']));
 			$categoryObj->setVar('category_pid', $clean_category_pid);
 			$imtagging_category_handler->insert($categoryObj);
 
 			// rebuild the ImtaggingCategoryTreeElement control
 			$postObj = $imblogging_post_handler->get($clean_post_id);
 
-			include_once ICMS_ROOT_PATH . "/class/xoopsformloader.php";
 			include_once ICMS_MODULES_PATH . '/' . $imtagging->getVar("dirname"). '/class/form/elements/imtaggingcategorytreeelement.php';
 			$category_tree_element = new ImtaggingCategoryTreeElement($postObj, 'categories');
 			echo $category_tree_element->render();
@@ -107,15 +102,13 @@ if (in_array($clean_op, $valid_op, true)) {
 			editpost($clean_post_id);
 			break;
 		case "addpost":
-			include_once ICMS_ROOT_PATH."/kernel/icmspersistablecontroller.php";
-			$controller = new IcmsPersistableController($imblogging_post_handler);
+			$controller = new icms_ipf_Controller($imblogging_post_handler);
 			$controller->storeFromDefaultForm(_AM_IMBLOGGING_POST_CREATED, _AM_IMBLOGGING_POST_MODIFIED);
 
 			break;
 
 		case "del":
-			include_once ICMS_ROOT_PATH."/kernel/icmspersistablecontroller.php";
-			$controller = new IcmsPersistableController($imblogging_post_handler);
+			$controller = new icms_ipf_Controller($imblogging_post_handler);
 			$controller->handleObjectDeletion();
 
 			break;
@@ -134,15 +127,14 @@ if (in_array($clean_op, $valid_op, true)) {
 
 			icms_collapsableBar('postview_posts', _AM_IMBLOGGING_POSTS, _AM_IMBLOGGING_POSTS_IN_POST_DSC);
 
-			$criteria = new CriteriaCompo();
-			$criteria->add(new Criteria('post_id', $clean_post_id));
+			$criteria = new icms_db_criteria_Compo();
+			$criteria->add(new icms_db_criteria_Item('post_id', $clean_post_id));
 
-			include_once ICMS_ROOT_PATH."/kernel/icmspersistabletable.php";
-			$objectTable = new IcmsPersistableTable($imblogging_post_handler, $criteria);
-			$objectTable->addColumn(new IcmsPersistableColumn('post_date', _GLOBAL_LEFT, 150));
-			$objectTable->addColumn(new IcmsPersistableColumn('post_message'));
-			$objectTable->addColumn(new IcmsPersistableColumn('post_uid', _GLOBAL_LEFT, 150));
-			$objectTable->addColumn(new IcmsPersistableColumn('counter'));
+			$objectTable = new icms_ipf_view_Table($imblogging_post_handler, $criteria);
+			$objectTable->addColumn(new icms_ipf_view_Column('post_date', _GLOBAL_LEFT, 150));
+			$objectTable->addColumn(new icms_ipf_view_Column('post_message'));
+			$objectTable->addColumn(new icms_ipf_view_Column('post_uid', _GLOBAL_LEFT, 150));
+			$objectTable->addColumn(new icms_ipf_view_Column('counter'));
 			$objectTable->setDefaultSort('post_published_date');
 			$objectTable->setDefaultOrder('DESC');
 			$objectTable->addIntroButton('addpost', 'post.php?op=mod&post_id=' . $clean_post_id, _AM_IMBLOGGING_POST_CREATE);
@@ -157,15 +149,14 @@ if (in_array($clean_op, $valid_op, true)) {
 
 			icms_cp_header();
 
-			$icmsModule->displayAdminMenu(0, _AM_IMBLOGGING_POSTS);
+			icms::$module->displayAdminMenu(0, _AM_IMBLOGGING_POSTS);
 
-			include_once ICMS_ROOT_PATH."/kernel/icmspersistabletable.php";
-			$objectTable = new IcmsPersistableTable($imblogging_post_handler);
-			$objectTable->addColumn(new IcmsPersistableColumn('post_title', _GLOBAL_LEFT));
-			$objectTable->addColumn(new IcmsPersistableColumn('post_published_date', 'center', 150));
-			$objectTable->addColumn(new IcmsPersistableColumn('post_uid', 'center', 150));
-			$objectTable->addColumn(new IcmsPersistableColumn('post_status', 'center', 150));
-			$objectTable->addColumn(new IcmsPersistableColumn('counter'));
+			$objectTable = new icms_ipf_view_Table($imblogging_post_handler);
+			$objectTable->addColumn(new icms_ipf_view_Column('post_title', _GLOBAL_LEFT));
+			$objectTable->addColumn(new icms_ipf_view_Column('post_published_date', 'center', 150));
+			$objectTable->addColumn(new icms_ipf_view_Column('post_uid', 'center', 150));
+			$objectTable->addColumn(new icms_ipf_view_Column('post_status', 'center', 150));
+			$objectTable->addColumn(new icms_ipf_view_Column('counter'));
 			$objectTable->setDefaultSort('post_published_date');
 			$objectTable->setDefaultOrder('DESC');
 

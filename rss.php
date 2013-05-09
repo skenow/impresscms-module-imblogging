@@ -6,7 +6,7 @@
  * @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
  * @since		1.0
  * @author		marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
- * @package imblogging
+ * @package		imblogging
  * @version		$Id$
  */
 /** Include the module's header for all pages */
@@ -15,15 +15,14 @@ include_once ICMS_ROOT_PATH . '/header.php';
 
 $clean_post_uid = isset($_GET['uid']) ? (int) $_GET['uid'] : FALSE;
 
-include_once ICMS_ROOT_PATH . '/class/icmsfeed.php';
-$imblogging_feed = new IcmsFeed();
+$imblogging_feed = new icms_feeds_Rss();
 
-$imblogging_feed->title = $icmsConfig['sitename'] . ' - ' . $icmsModule->name();
+$imblogging_feed->title = $icmsConfig['sitename'] . ' - ' . icms::$module->getVar("name");
 $imblogging_feed->url = ICMS_URL;
 $imblogging_feed->description = htmlspecialchars($icmsConfig['slogan'], ENT_QUOTES);
 $imblogging_feed->language = _LANGCODE;
 $imblogging_feed->charset = _CHARSET;
-$imblogging_feed->category = $icmsModule->name();
+$imblogging_feed->category = icms::$module->getVar("name");
 
 $imblogging_post_handler = icms_getModuleHandler('post', $moddir, 'imblogging');
 //ImbloggingPostHandler::getPosts($start = 0, $limit = 0, $post_uid = FALSE, $year = FALSE, $month = FALSE

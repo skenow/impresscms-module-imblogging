@@ -39,10 +39,10 @@ define(strtoupper(basename(dirname(dirname(__FILE__)))) . '_DB_VERSION', 1);
  */
 function icms_module_update_imblogging($module) {
 	/*
-	 * Using the IcmsDatabaseUpdater to automaticallly manage the database upgrade dynamically
+	 * Using the IcmsDatabaseUpdater to automatically manage the database upgrade dynamically
 	 * according to the class defined in the module
 	 */
-	$icmsDatabaseUpdater = XoopsDatabaseFactory::getDatabaseUpdater();
+	$icmsDatabaseUpdater = icms_db_legacy_Factory::getDatabaseUpdater();
 	$icmsDatabaseUpdater->moduleUpgrade($module);
 	return TRUE;
 }

@@ -1,4 +1,21 @@
-<b><u>=> Unreleased: Version 1.0.1 RC</u></b>
+1.1 RC
+Release Date: 10 May 2013
+
+- Refactored for ImpressCMS 2.0 (will run on 1.3 Final)
+- ImpressCMS 1.3 Final is required to use this module
+
+- posts can be scheduled from the user side
+- meta data can be edited from the user side (admins)
+
+Language changes
+* admin.php
++- define("_AM_IMBLOGGING_REQUIREMENTS_ICMS_BUILD", "imBlogging requires at least ImpressCMS %s");
+
+* common.php
++- _CO_IMBLOGGING_POST_POST_CONTENT_DSC
+	
+
+Unreleased: Version 1.0.1 RC
 
 - Implementing RSS feed for latest posts, globally or by poster (malanciault)
 - Implementing RSS image + link on in user side footer (malanciault)
@@ -8,11 +25,11 @@
 - Fixing archive issues with Jalali calendar (stranger)
 
 
-<b><u>=> 2008-10-24: Version 1.0 Final</u></b>
+2008-10-24: Version 1.0 Final
 
 - Fixing undefined constant WARNING_RC (malanciault/stranger)
 - Adding a Submit link in header of the module for users who can post (malanciault)
 
-<b><u>=> 2008-10-13: Version 1.0 RC</u></b>
+2008-10-13: Version 1.0 RC
 
 - First public release of the module.

@@ -27,11 +27,11 @@ include_once IMBLOGGING_ROOT_PATH . 'include/requirements.php';
 * of those tables are done when the module is updated, we need to force the webmaster to update the
 * module when he first enters the admin side of the module.
 */
-if (is_object($icmsModule) && $icmsModule->dirname() == IMBLOGGING_DIRNAME) {
+if (is_object(icms::$module) && icms::$module->getVar("dirname") == IMBLOGGING_DIRNAME) {
 	// We are in the module
 	if (defined('XOOPS_CPFUNC_LOADED')) {
 		// We are in the admin side of the module
-		if (!$icmsModule->getDBVersion()) {
+		if (!icms::$module->getDBVersion()) {
 			redirect_header(ICMS_MODULES_URL . '/system/admin.php?fct=modulesadmin&op=update&module=' . IMBLOGGING_DIRNAME, 4, _AM_IMBLOGGING_FIRST_USE);
 			exit;
 		}

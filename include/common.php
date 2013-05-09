@@ -38,5 +38,4 @@ $imbloggingConfig = icms_getModuleConfig(IMBLOGGING_DIRNAME);
 include_once IMBLOGGING_ROOT_PATH . 'class/post.php';
 
 // creating the icmsPersistableRegistry to make it available throughout the module
-global $icmsPersistableRegistry;
-$icmsPersistableRegistry = IcmsPersistableRegistry::getInstance();
+$icmsPersistableRegistry = icms_ipf_registry_Handler::getInstance();

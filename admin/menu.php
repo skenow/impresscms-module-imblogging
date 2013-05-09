@@ -14,13 +14,12 @@ $adminmenu[] = array(
 	'link' => "admin/post.php",
 );
 
-global $icmsModule;
-if (isset($icmsModule)) {
+if (isset(icms::$module)) {
 	$moddir = basename(dirname(dirname(__FILE__)));
 
 	$headermenu[] = array(
 		'title' => _PREFERENCES,
-		'link' => '../../system/admin.php?fct=preferences&amp;op=showmod&amp;mod=' . $icmsModule->getVar('mid'),
+		'link' => '../../system/admin.php?fct=preferences&amp;op=showmod&amp;mod=' . icms::$module->getVar('mid'),
 	);
 	$headermenu[] = array(
 		'title' => _CO_ICMS_GOTOMODULE,
@@ -28,10 +27,10 @@ if (isset($icmsModule)) {
 	);
 	$headermenu[] = array(
 		'title' => _CO_ICMS_UPDATE_MODULE,
-		'link' => ICMS_MODULES_URL . '/system/admin.php?fct=modulesadmin&op=update&module=' . $icmsModule->getVar('dirname'),
+		'link' => ICMS_MODULES_URL . '/system/admin.php?fct=modulesadmin&op=update&module=' . icms::$module->getVar('dirname'),
 	);
 	$headermenu[] = array(
 		'title' => _MODABOUT_ABOUT,
-		'link' => ICMS_MODULES_URL . $moddir . '/admin/about.php',
+		'link' => ICMS_MODULES_URL . '/' . $moddir . '/admin/about.php',
 	);
 }

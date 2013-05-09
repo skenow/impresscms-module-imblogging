@@ -3,11 +3,11 @@
  * Post page
  *
  * @copyright	http://smartfactory.ca The SmartFactory
- * @license	http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
+ * @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
  * @since		1.0
  * @author		marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
- * @package	imblogging
- * @version	$Id$
+ * @package		imblogging
+ * @version		$Id$
  */
 
 /**
@@ -16,7 +16,7 @@
  * @param object $postObj ImblogginPost object to be edited
  */
 function editpost($postObj) {
-	global $imblogging_post_handler, $xoTheme, $icmsTpl, $icmsUser;
+	global $imblogging_post_handler, $xoTheme, $icmsTpl;
 
 	$postObj->setControl('categories', array(
 		'name'=>'categories',
@@ -24,7 +24,7 @@ function editpost($postObj) {
 		'userside'=>TRUE
 	));
 
-	if (!$icmsUser->isAdmin()) {
+	if (!icms::$user->isAdmin()) {
 		$postObj->hideFieldFromForm(array('post_published_date', 'post_uid', 'meta_keywords', 'meta_description', 'short_url'));
 	}
 	if (!$postObj->isNew()) {
@@ -39,7 +39,7 @@ function editpost($postObj) {
 		if (!$imblogging_post_handler->userCanSubmit()) {
 			redirect_header(IMBLOGGING_URL, 3, _NOPERM);
 		}
-		$postObj->setVar('post_uid', $icmsUser->uid());
+		$postObj->setVar('post_uid', icms::$user->uid());
 		$postObj->setVar('post_published_date', time());
 		$sform = $postObj->getSecureForm(_MD_IMBLOGGING_POST_SUBMIT, 'addpost');
 		$sform->assign($icmsTpl, 'imblogging_postform');
@@ -85,8 +85,7 @@ if (in_array($clean_op, $valid_op, TRUE)) {
 			if (!$xoopsSecurity->check()) {
 				redirect_header(icms_getPreviousPage('index.php'), 3, _MD_IMBLOGGING_SECURITY_CHECK_FAILED . implode('<br />', $xoopsSecurity->getErrors()));
 			}
-			include_once ICMS_ROOT_PATH . '/kernel/icmspersistablecontroller.php';
-			$controller = new IcmsPersistableController($imblogging_post_handler);
+			$controller = new icms_ipf_Controller($imblogging_post_handler);
 			/* need to flush the template option to prevent error on redirect */
 			$xoopsOption['template_main'] = NULL;
 			$controller->storeFromDefaultForm(_MD_IMBLOGGING_POST_CREATED, _MD_IMBLOGGING_POST_MODIFIED);
@@ -102,8 +101,7 @@ if (in_array($clean_op, $valid_op, TRUE)) {
 					redirect_header($impresscms->urls['previouspage'], 3, _MD_IMBLOGGING_SECURITY_CHECK_FAILED . implode('<br />', $xoopsSecurity->getErrors()));
 				}
 			}
-			include_once ICMS_ROOT_PATH . '/kernel/icmspersistablecontroller.php';
-			$controller = new IcmsPersistableController($imblogging_post_handler);
+			$controller = new icms_ipf_Controller($imblogging_post_handler);
 			/* need to flush the template option to prevent error on redirect */
 			$xoopsOption['template_main'] = NULL;
 			$controller->handleObjectDeletionFromUserSide();
@@ -126,7 +124,7 @@ if (in_array($clean_op, $valid_op, TRUE)) {
 				include_once ICMS_ROOT_PATH . '/include/comment_view.php';
 			}
 			/* Generating meta information for this page */
-			$icms_metagen = new IcmsMetagen($postArray['post_title'], $postArray['meta_keywords'], $postArray['meta_description']);
+			$icms_metagen = new icms_ipf_Metagen($postArray['post_title'], $postArray['meta_keywords'], $postArray['meta_description']);
 			$icms_metagen->createMetaTags();
 
 			break;

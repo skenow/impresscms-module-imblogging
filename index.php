@@ -38,13 +38,12 @@ $icmsTpl->assign('imblogging_posts', $imblogging_post_handler->getPosts($clean_s
 /**
  * Create Navbar
  */
-include_once ICMS_ROOT_PATH . '/class/pagenav.php';
 $posts_count = $imblogging_post_handler->getPostsCount($clean_post_uid, $clean_cid, $clean_year, $clean_month);
 $extr_argArray = array();
 $category_pathArray = array();
 
 if ($clean_post_uid) {
-	$imblogging_poster_link = icms_getLinkedUnameFromId($clean_post_uid);
+	$imblogging_poster_link = icms_member_user_Handler::getUserLink($clean_post_uid);
 	$icmsTpl->assign('imblogging_rss_url', IMBLOGGING_URL . 'rss.php?uid=' . $clean_post_uid);
 	$icmsTpl->assign('imblogging_rss_info', _MD_IMBLOGGING_RSS_POSTER);
 	$extr_arg = 'uid=' . $clean_post_uid;
@@ -55,7 +54,7 @@ if ($clean_post_uid) {
 }
 if ($clean_post_uid) {
 	$extr_argArray[] = 'uid=' . $clean_post_uid;
-	$category_pathArray[] = sprintf(_CO_IMBLOGGING_POST_FROM_USER, icms_getLinkedUnameFromId($clean_post_uid));
+	$category_pathArray[] = sprintf(_CO_IMBLOGGING_POST_FROM_USER, icms_member_user_Handler::getUserLink($clean_post_uid));
 }
 if ($clean_cid) {
 	$imtagging_category_handler = icms_getModuleHandler('category', $moddir, 'imtagging');
@@ -78,7 +77,7 @@ if ($clean_year && $clean_month) {
 
 $extr_arg = count($extr_argArray) > 0 ? implode('&amp;', $extr_argArray) : '';
 
-$pagenav = new XoopsPageNav($posts_count, $icmsModuleConfig['posts_limit'], $clean_start, 'start', $extr_arg);
+$pagenav = new icms_view_PageNav($posts_count, $icmsModuleConfig['posts_limit'], $clean_start, 'start', $extr_arg);
 $icmsTpl->assign('navbar', $pagenav->renderNav());
 
 $icmsTpl->assign('imblogging_module_home', icms_getModuleName(TRUE, TRUE));

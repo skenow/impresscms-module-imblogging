@@ -17,7 +17,7 @@ define("_CO_IMBLOGGING_POST_CATEGORIES_DSC", "Select the categories to which you
 define("_CO_IMBLOGGING_POST_POST_TITLE", "Title");
 define("_CO_IMBLOGGING_POST_POST_TITLE_DSC", "");
 define("_CO_IMBLOGGING_POST_POST_CONTENT", "Content");
-define("_CO_IMBLOGGING_POST_POST_CONTENT_DSC", "");
+define("_CO_IMBLOGGING_POST_POST_CONTENT_DSC", "Use '[more]' to split your post");
 define("_CO_IMBLOGGING_POST_POST_PUBLISHED_DATE", "Date");
 define("_CO_IMBLOGGING_POST_POST_PUBLISHED_DATE_DSC", "");
 define("_CO_IMBLOGGING_POST_POST_UID", "Poster");

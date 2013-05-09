@@ -35,7 +35,7 @@ $modversion = array(
 /**  Development information */
 	'status_version'=> "RC",
 	'status'=> "RC",
-	'date'=> "2012-10-10",
+	'date'=> "2013-05-10",
 	'author_word'=> "",
 
 /** Contributors */
@@ -84,8 +84,7 @@ $modversion['search'] = array(
 
 /** Menu information */
 $modversion['hasMain'] = 1;
-global $icmsModule;
-if (is_object($icmsModule) && $icmsModule->dirname() == $modversion['dirname']) {
+if (is_object(icms::$module) && icms::$module->getVar("dirname") == $modversion['dirname']) {
 	$imblogging_post_handler = icms_getModuleHandler('post', $modversion['dirname'], $modversion['modname']);
 	if ($imblogging_post_handler->userCanSubmit()) {
 		$modversion['sub'][1]['name'] = _MI_IMBLOGGING_POST_ADD;
@@ -140,7 +139,7 @@ $modversion['templates'][] = array(
 /** Preferences information */
 
 // Retrieve the group user list, because the automatic group_multi config formtype does not include Anonymous group :-(
-$member_handler =& xoops_getHandler('member');
+$member_handler =& icms::handler('icms_member');
 $groups_array = $member_handler->getGroupList();
 foreach ($groups_array as $k=>$v) {
 	$select_groups_options[$v] = $k;
