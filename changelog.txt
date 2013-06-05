@@ -1,5 +1,5 @@
 1.1 RC
-Release Date: 10 May 2013
+Release Date: 22 May 2013
 
 - Refactored for ImpressCMS 2.0 (will run on 1.3 Final)
 - ImpressCMS 1.3 Final is required to use this module
@@ -12,7 +12,7 @@ Language changes
 +- define("_AM_IMBLOGGING_REQUIREMENTS_ICMS_BUILD", "imBlogging requires at least ImpressCMS %s");
 
 * common.php
-+- _CO_IMBLOGGING_POST_POST_CONTENT_DSC
++- define("_CO_IMBLOGGING_POST_POST_CONTENT_DSC", "Use '[more]' to split your post");
 	
 
 Unreleased: Version 1.0.1 RC
