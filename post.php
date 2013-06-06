@@ -82,7 +82,7 @@ if (in_array($clean_op, $valid_op, TRUE)) {
 			break;
 
 		case "addpost":
-			if (!$xoopsSecurity->check()) {
+			if (!icms::$security->check()) {
 				redirect_header(icms_getPreviousPage('index.php'), 3, _MD_IMBLOGGING_SECURITY_CHECK_FAILED . implode('<br />', $xoopsSecurity->getErrors()));
 			}
 			$controller = new icms_ipf_Controller($imblogging_post_handler);
@@ -97,7 +97,7 @@ if (in_array($clean_op, $valid_op, TRUE)) {
 				redirect_header($postObj->getItemLink(TRUE), 3, _NOPERM);
 			}
 			if (isset($_POST['confirm'])) {
-				if (!$xoopsSecurity->check()) {
+				if (!icms::$security->check()) {
 					redirect_header($impresscms->urls['previouspage'], 3, _MD_IMBLOGGING_SECURITY_CHECK_FAILED . implode('<br />', $xoopsSecurity->getErrors()));
 				}
 			}

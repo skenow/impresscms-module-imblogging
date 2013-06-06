@@ -19,7 +19,7 @@ $icmsTpl->assign('imblogging_images_url', IMBLOGGING_IMAGES_URL);
 $icmsTpl->assign('imblogging_userCanSubmit', $imblogging_post_handler->userCanSubmit());
 
 $xoTheme->addStylesheet(IMBLOGGING_URL . 'module' . ((defined("_ADM_USE_RTL") && _ADM_USE_RTL) ? '_rtl' : '') . '.css');
-$xoTheme->addLink('alternate', IMBLOGGING_URL . 'rss.php', array('type'=>'application/rss+xml', 'title'=> $icmsConfig['sitename'] . ' - ' . icms::$module->getVar("name")));
+$xoTheme->addLink('alternate', $rss_url, array('type'=>'application/rss+xml', 'title'=> $icmsConfig['sitename'] . ' - ' . icms::$module->getVar("name")));
 
 $icmsTpl->assign("ref_smartfactory", "imBlogging is developed by The SmartFactory (http://smartfactory.ca), a division of INBOX International inc. (http://inboxinternational.com)");
 

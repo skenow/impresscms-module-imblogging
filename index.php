@@ -44,18 +44,20 @@ $category_pathArray = array();
 
 if ($clean_post_uid) {
 	$imblogging_poster_link = icms_member_user_Handler::getUserLink($clean_post_uid);
-	$icmsTpl->assign('imblogging_rss_url', IMBLOGGING_URL . 'rss.php?uid=' . $clean_post_uid);
-	$icmsTpl->assign('imblogging_rss_info', _MD_IMBLOGGING_RSS_POSTER);
 	$extr_arg = 'uid=' . $clean_post_uid;
+	$rss_url .= '?' . $extr_arg;
+	$rss_info = _MD_IMBLOGGING_RSS_POSTER;
+	
+	$extr_argArray[] = $extr_arg;
+	$category_pathArray[] = sprintf(_CO_IMBLOGGING_POST_FROM_USER, icms_member_user_Handler::getUserLink($clean_post_uid));
 } else {
-	$icmsTpl->assign('imblogging_rss_url', IMBLOGGING_URL . 'rss.php');
-	$icmsTpl->assign('imblogging_rss_info', _MD_IMBLOGGING_RSS_GLOBAL);
+	$rss_info = _MD_IMBLOGGING_RSS_GLOBAL;
 	$extr_arg = '';
 }
-if ($clean_post_uid) {
-	$extr_argArray[] = 'uid=' . $clean_post_uid;
-	$category_pathArray[] = sprintf(_CO_IMBLOGGING_POST_FROM_USER, icms_member_user_Handler::getUserLink($clean_post_uid));
-}
+
+$icmsTpl->assign('imblogging_rss_url', $rss_url);
+$icmsTpl->assign('imblogging_rss_info', $rss_info);
+
 if ($clean_cid) {
 	$imtagging_category_handler = icms_getModuleHandler('category', $moddir, 'imtagging');
 	$category_name = $imtagging_category_handler->getCategoryName($clean_cid);
