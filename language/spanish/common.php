@@ -18,7 +18,7 @@ define("_CO_IMBLOGGING_POST_CATEGORIES_DSC", "Seleccione las categorías en las 
 define("_CO_IMBLOGGING_POST_POST_TITLE", "Título");
 define("_CO_IMBLOGGING_POST_POST_TITLE_DSC", "");
 define("_CO_IMBLOGGING_POST_POST_CONTENT", "Contenido");
-define("_CO_IMBLOGGING_POST_POST_CONTENT_DSC", "");
+define("_CO_IMBLOGGING_POST_POST_CONTENT_DSC", "Use '[more]' para dividir el contenido del artículo");
 define("_CO_IMBLOGGING_POST_POST_PUBLISHED_DATE", "Fecha");
 define("_CO_IMBLOGGING_POST_POST_PUBLISHED_DATE_DSC", "");
 define("_CO_IMBLOGGING_POST_POST_UID", "Autor");
