@@ -42,7 +42,7 @@ class ImbloggingPost extends icms_ipf_seo_Object {
 	 * @param object $handler ImbloggingPostHandler object
 	 */
 	public function __construct(& $handler) {
-		
+
 		parent::__construct($handler);
 
 		$this->quickInitVar('post_id', XOBJ_DTYPE_INT, TRUE);
@@ -414,8 +414,26 @@ class ImbloggingPost extends icms_ipf_seo_Object {
 		$ret['deleteItemLink'] = $this->getDeleteItemLink(FALSE, TRUE, TRUE);
 		$ret['userCanEditAndDelete'] = $this->userCanEditAndDelete();
 		$ret['post_posterid'] = $this->getVar('post_uid','e');
-		$ret['post_poster_link'] = $this->getPoster(TRUE);
+		$ret['post_poster_link'] = $this->getPoster(FALSE);
+		$ret['itemLink'] = '<a href="' . $this->getItemLink(TRUE)
+				. '" title="' . $this->getVar('post_title')
+				. '">' . $this->getVar('post_title') . '</a>';
 		return $ret;
+	}
+
+	/**
+	 * Retreive the object user side link
+	 *
+	 * @param bool $onlyUrl whether or not to return a simple URL or a full <a> link
+	 * @return string user side link to the object
+	 */
+	public function getItemLink($onlyUrl = FALSE) {
+		$link = parent::getItemLink($onlyUrl);
+		$short_url = $this->getVar('short_url');
+		if (!empty($short_url)) {
+			$link .= "&amp;post=" . $short_url;
+		}
+		return $link;
 	}
 }
 
