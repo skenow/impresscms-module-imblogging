@@ -431,7 +431,7 @@ class ImbloggingPost extends icms_ipf_seo_Object {
 		$link = parent::getItemLink($onlyUrl);
 		$short_url = $this->getVar('short_url');
 		if (!empty($short_url)) {
-			$link .= "&amp;post=" . $short_url;
+			$link .= "&amp;title=" . $short_url;
 		}
 		return $link;
 	}
