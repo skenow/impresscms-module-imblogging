@@ -662,6 +662,8 @@ class ImbloggingPostHandler extends icms_ipf_Handler {
 		}
 		$criteria->add(new icms_db_criteria_Item('post_status', IMBLOGGING_POST_STATUS_PUBLISHED));
 		$criteria->add(new icms_db_criteria_Item('post_published_date', time(), '<='));
+		$criteria->setSort('post_published_date');
+		$criteria->setOrder('DESC');
 		return $this->getObjects($criteria, TRUE, FALSE);
 	}
 
