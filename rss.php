@@ -14,6 +14,7 @@ include_once 'header.php';
 include_once ICMS_ROOT_PATH . '/header.php';
 
 $clean_post_uid = isset($_GET['uid']) ? (int) $_GET['uid'] : FALSE;
+$clean_cat_id = isset($_GET['cid']) ? (int) $_GET['cid'] : FALSE;
 
 $imblogging_feed = new icms_feeds_Rss();
 
@@ -25,8 +26,7 @@ $imblogging_feed->charset = _CHARSET;
 $imblogging_feed->category = icms::$module->getVar("name");
 
 $imblogging_post_handler = icms_getModuleHandler('post', $moddir, 'imblogging');
-//ImbloggingPostHandler::getPosts($start = 0, $limit = 0, $post_uid = FALSE, $year = FALSE, $month = FALSE
-$postsArray = $imblogging_post_handler->getPosts(0, 10, $clean_post_uid);
+$postsArray = $imblogging_post_handler->getPosts(0, 10, $clean_post_uid, $clean_cat_id);
 
 foreach ($postsArray as $postArray) {
 	$imblogging_feed->feeds[] = array(
