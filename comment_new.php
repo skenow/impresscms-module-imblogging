@@ -18,11 +18,13 @@ if ($com_itemid > 0) {
 	$postObj = $imblogging_post_handler->get($com_itemid);
 	if ($postObj && !$postObj->isNew()) {
 		//$com_replytext = _POSTEDBY.'&nbsp;<b>'.smartsection_getLinkedUnameFromId($itemObj->uid()) . '</b>&nbsp;'._DATE.'&nbsp;<b>'.$itemObj->dateSub().'</b><br /><br />'.$itemObj->summary();
-		$com_replytext = 'test...';
+		//$com_replytext = 'test...';
 		$bodytext = $postObj->getPostLead();
+		/*
 		if ($bodytext != '') {
 			$com_replytext .= '<br /><br />'.$bodytext.'';
 		}
+		*/
 		$com_replytitle = $postObj->getVar('post_title');
 		include_once ICMS_ROOT_PATH .'/include/comment_new.php';
 	}
