@@ -1,3 +1,15 @@
+Added
+- Subscribe to comments for a post
+- Bookmark a post
+
+Fixed
+- Notification for a new post when a comment was added
+
+Language changes
+* modinfo.php
++ define("_MI_IMBLOGGING_POST_NOTIFY", "Post");
++ define("_MI_IMBLOGGING_POST_NOTIFY_DSC", "Notification for a single post");
+
 1.1 RC
 Release Date: 22 May 2013
 

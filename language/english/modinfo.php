@@ -40,5 +40,8 @@ define("_MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY_CAP", "Notify me when a new 
 define("_MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY_DSC", "Receive notification when any new post is published.");
 define("_MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY_SBJ", "[{X_SITENAME}] {X_MODULE} auto-notify : New post published");
 
+define("_MI_IMBLOGGING_POST_NOTIFY", "Post");
+define("_MI_IMBLOGGING_POST_NOTIFY_DSC", "Notification for a single post");
+
 // Submit button
 define("_MI_IMBLOGGING_POST_ADD", "Add a new post");

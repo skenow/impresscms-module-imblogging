@@ -184,8 +184,16 @@ $modversion['notification'] = array('lookup_file' => 'include/notification.inc.p
 $modversion['notification']['category'][1] = array(
 	'name' => 'global',
 	'title' => _MI_IMBLOGGING_GLOBAL_NOTIFY,
-	'description' => _MI_IMBLOGGING_GLOBAL_NOTIFY_DSC,
+	'description' => '_MI_IMBLOGGING_GLOBAL_NOTIFY_DSC',
 	'subscribe_from' => array('index.php', 'post.php'));
+
+$modversion['notification']['category'][] = array(
+		'name' => 'post',
+		'title' => _MI_IMBLOGGING_POST_NOTIFY,
+		'description' => '_MI_IMBLOGGING_POST_NOTIFY_DSC',
+		'subscribe_from' => array('index.php', 'post.php'),
+		'item_name' => 'post_id',
+		'allow_bookmark' => 1);
 
 $modversion['notification']['event'][1] = array(
 	'name' => 'post_published',

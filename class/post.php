@@ -727,7 +727,7 @@ class ImbloggingPostHandler extends icms_ipf_Handler {
 	 * @param object $obj ImbloggingPost object
 	 * @return TRUE
 	 */
-	function afterSave(& $obj) {
+	function afterSave(&$obj) {
 		if ($obj->updating_counter)	return TRUE;
 
 		// storing categories
@@ -737,6 +737,8 @@ class ImbloggingPostHandler extends icms_ipf_Handler {
 		if (!$obj->getVar('post_notification_sent') && $obj->getVar('post_status', 'e') == IMBLOGGING_POST_STATUS_PUBLISHED) {
 			$obj->sendNotifPostPublished();
 			$obj->setVar('post_notification_sent', TRUE);
+			// too late - the record has already been saved! Save again? Effective, but clumsy
+			$this->insert($obj);
 		}
 		return TRUE;
 	}
