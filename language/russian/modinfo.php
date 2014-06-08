@@ -31,6 +31,8 @@ define("_MI_IMBLOGGING_POSTRECENT", "Новейшие сообщения");
 define("_MI_IMBLOGGING_POSTRECENTDSC", "Показать самые новые сообщения");
 define("_MI_IMBLOGGING_POSTBYMONTH", "Сообщения по месяцам");
 define("_MI_IMBLOGGING_POSTBYMONTHDSC", "Показать список месяцев, в которых были сообщения");
+define("_MI_IMBLOGGING_POSTSPOTLIGHT", "Recent posts with spotlight");
+define("_MI_IMBLOGGING_POSTSPOTLIGHTDSC", "Display most recent posts and spotlight the first post");
 
 // Notifications
 define("_MI_IMBLOGGING_GLOBAL_NOTIFY", "Все сообщения");

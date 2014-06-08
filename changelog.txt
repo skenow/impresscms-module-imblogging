@@ -1,6 +1,7 @@
 Added
 - Subscribe to comments for a post
 - Bookmark a post
+- Spotlight block (first post has intro, all others are simple links)
 
 Fixed
 - Notification for a new post when a comment was added
@@ -9,6 +10,9 @@ Language changes
 * modinfo.php
 + define("_MI_IMBLOGGING_POST_NOTIFY", "Post");
 + define("_MI_IMBLOGGING_POST_NOTIFY_DSC", "Notification for a single post");
++ define("_MI_IMBLOGGING_POSTSPOTLIGHT", "Recent posts with spotlight");
++ define("_MI_IMBLOGGING_POSTSPOTLIGHTDSC", "Display most recent posts and spotlight the first post");
+
 
 1.1 RC
 Release Date: 22 May 2013

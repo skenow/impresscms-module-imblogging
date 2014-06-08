@@ -32,6 +32,8 @@ define("_MI_IMBLOGGING_POSTRECENT", "آخرین نوشته‌ها");
 define("_MI_IMBLOGGING_POSTRECENTDSC", "نمایش آخرین پیام‌های ارسالی");
 define("_MI_IMBLOGGING_POSTBYMONTH", "نوشته‌های ماهانه");
 define("_MI_IMBLOGGING_POSTBYMONTHDSC", "Display list of months in which there were posts");
+define("_MI_IMBLOGGING_POSTSPOTLIGHT", "Recent posts with spotlight");
+define("_MI_IMBLOGGING_POSTSPOTLIGHTDSC", "Display most recent posts and spotlight the first post");
 
 // Notifications
 define("_MI_IMBLOGGING_GLOBAL_NOTIFY", "تمام پیام‌ها");

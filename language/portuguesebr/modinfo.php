@@ -7,7 +7,7 @@
 * @since		1.0
 * @author		marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
 * @version		$Id$
-* @translation        GibaPhp - http://br.impresscms.org 
+* @translation        GibaPhp - http://br.impresscms.org
 */
 
 if (!defined("ICMS_ROOT_PATH")) die("O caminho para o raiz do site não foi definido");
@@ -32,6 +32,8 @@ define("_MI_IMBLOGGING_POSTRECENT", "Blogs Recentes");
 define("_MI_IMBLOGGING_POSTRECENTDSC", "Mostrar Blogs Recentes");
 define("_MI_IMBLOGGING_POSTBYMONTH", "Blogs por Mês");
 define("_MI_IMBLOGGING_POSTBYMONTHDSC", "Mostrar lista dos meses dos Blogs recebidos");
+define("_MI_IMBLOGGING_POSTSPOTLIGHT", "Recent posts with spotlight");
+define("_MI_IMBLOGGING_POSTSPOTLIGHTDSC", "Display most recent posts and spotlight the first post");
 
 // Notifications
 define("_MI_IMBLOGGING_GLOBAL_NOTIFY", "Geral");

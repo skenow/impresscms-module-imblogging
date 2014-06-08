@@ -111,6 +111,15 @@ $modversion['blocks'][] = array(
 	'options' => '',
 	'template' => 'imblogging_post_by_month.html');
 
+$modversion['blocks'][] = array(
+		'file' => 'post_recent.php',
+		'name' => _MI_IMBLOGGING_POSTSPOTLIGHT,
+		'description' => _MI_IMBLOGGING_POSTSPOTLIGHTDSC,
+		'show_func' => 'imblogging_post_recent_show',
+		'edit_func' => 'imblogging_post_recent_edit',
+		'options' => '5',
+		'template' => 'imblogging_post_spotlight.html');
+		
 /** Templates information */
 $modversion['templates'][1] = array(
 	'file' => 'imblogging_header.html',

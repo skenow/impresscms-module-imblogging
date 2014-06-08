@@ -32,6 +32,8 @@ define("_MI_IMBLOGGING_POSTRECENT", "Artículos recientes");
 define("_MI_IMBLOGGING_POSTRECENTDSC", "Mostrar los artículos más recientes");
 define("_MI_IMBLOGGING_POSTBYMONTH", "Artículos por mes");
 define("_MI_IMBLOGGING_POSTBYMONTHDSC", "Muestra la lista con los meses en los cuales se publicaron artículos");
+define("_MI_IMBLOGGING_POSTSPOTLIGHT", "Recent posts with spotlight");
+define("_MI_IMBLOGGING_POSTSPOTLIGHTDSC", "Display most recent posts and spotlight the first post");
 
 // Notifications
 define("_MI_IMBLOGGING_GLOBAL_NOTIFY", "Todos los artículos");

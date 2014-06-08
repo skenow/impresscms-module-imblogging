@@ -32,6 +32,8 @@ define("_MI_IMBLOGGING_POSTRECENT", "Recente berichten");
 define("_MI_IMBLOGGING_POSTRECENTDSC", "Geef meest recente berichten weer");
 define("_MI_IMBLOGGING_POSTBYMONTH", "Berichten per maand");
 define("_MI_IMBLOGGING_POSTBYMONTHDSC", "Geef lijst van maanden weer waarin geen berichten zijn");
+define("_MI_IMBLOGGING_POSTSPOTLIGHT", "Recent posts with spotlight");
+define("_MI_IMBLOGGING_POSTSPOTLIGHTDSC", "Display most recent posts and spotlight the first post");
 
 // Notifications
 define("_MI_IMBLOGGING_GLOBAL_NOTIFY", "Alle berichten");
