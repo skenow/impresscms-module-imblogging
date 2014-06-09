@@ -32,8 +32,8 @@ define("_MI_IMBLOGGING_POSTRECENT", "Neue Beiträge");
 define("_MI_IMBLOGGING_POSTRECENTDSC", "Zeigt die neuesten Beiträge an");
 define("_MI_IMBLOGGING_POSTBYMONTH", "Beitrag nach Monat");
 define("_MI_IMBLOGGING_POSTBYMONTHDSC", "Zeigt eine Monatsliste in denen es Beiträge gab");
-define("_MI_IMBLOGGING_POSTSPOTLIGHT", "Recent posts with spotlight");
-define("_MI_IMBLOGGING_POSTSPOTLIGHTDSC", "Display most recent posts and spotlight the first post");
+define("_MI_IMBLOGGING_POSTSPOTLIGHT", "Neueste Einträge im Rampenlicht");
+define("_MI_IMBLOGGING_POSTSPOTLIGHTDSC", "Anzeigen der neuesten Beiträge im Rampenlicht nach den neusten sortiert.");
 
 // Notifications
 define("_MI_IMBLOGGING_GLOBAL_NOTIFY", "Alle Beiträge");
