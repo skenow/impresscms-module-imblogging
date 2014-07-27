@@ -414,7 +414,7 @@ class ImbloggingPost extends icms_ipf_seo_Object {
 		$ret['deleteItemLink'] = $this->getDeleteItemLink(FALSE, TRUE, TRUE);
 		$ret['userCanEditAndDelete'] = $this->userCanEditAndDelete();
 		$ret['post_posterid'] = $this->getVar('post_uid','e');
-		$ret['post_poster_link'] = $this->getPoster(FALSE);
+		$ret['post_poster_link'] = $this->getPoster(TRUE);
 		$ret['itemLink'] = '<a href="' . $this->getItemLink(TRUE)
 				. '" title="' . $this->getVar('post_title')
 				. '">' . $this->getVar('post_title') . '</a>';
