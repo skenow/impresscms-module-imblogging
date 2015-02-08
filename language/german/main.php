@@ -23,3 +23,6 @@ define('_MD_IMBLOGGING_NAV_PAGES', 'Seiten: ');
 
 define('_MD_IMBLOGGING_RSS_GLOBAL', 'Abonieren der letzten Beiträge');
 define('_MD_IMBLOGGING_RSS_POSTER', 'Abonieren der Beiträge des gewählten Autors');
+
+// Submit button
+define("_MD_IMBLOGGING_POST_ADD", "Beitrag hinzufügen");

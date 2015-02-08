@@ -24,3 +24,6 @@ define('_MD_IMBLOGGING_NAV_PAGES', 'Pages: ');
 
 define('_MD_IMBLOGGING_RSS_GLOBAL', 'Abonneer u op de laatste berichten');
 define('_MD_IMBLOGGING_RSS_POSTER', 'Abonneer u op de laatste berichten van deze schrijver');
+
+// Submit button
+define("_MD_IMBLOGGING_POST_ADD", "Voeg nieuw bericht toe");

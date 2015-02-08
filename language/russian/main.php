@@ -23,3 +23,6 @@ define('_MD_IMBLOGGING_NAV_PAGES', 'Страницы: ');
 
 define('_MD_IMBLOGGING_RSS_GLOBAL', 'Подписаться на последние сообщения');
 define('_MD_IMBLOGGING_RSS_POSTER', 'Подписаться на последние сообщения от этого отправителя');
+
+// Submit button
+define("_MD_IMBLOGGING_POST_ADD", "Добавить сообщение");

@@ -24,3 +24,6 @@ define('_MD_IMBLOGGING_RSS_GLOBAL', 'Subscribe to latest posts');
 define('_MD_IMBLOGGING_RSS_POSTER', 'Subscribe to latest posts from this poster');
 
 define('_MD_IMBLOGGING_KEEP_READING', 'keep reading ...');
+//
+Submit button - moved here from modinfo
+define("_MD_IMBLOGGING_POST_ADD", "Add a new post");
