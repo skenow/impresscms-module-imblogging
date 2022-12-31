@@ -31,10 +31,10 @@ define('IMBLOGGING_POST_STATUS_PRIVATE', 4);
  * @subpackage imBlogging
  */
 class ImbloggingPost extends icms_ipf_seo_Object {
-	private $post_date_info = FALSE;
-	private $poster_info = FALSE;
-	public $updating_counter = FALSE;
-	public $categories = FALSE;
+	private $post_date_info = false;
+	private $poster_info = false;
+	public $updating_counter = false;
+	public $categories = false;
 
 	/**
 	 * Constructor
@@ -44,18 +44,18 @@ class ImbloggingPost extends icms_ipf_seo_Object {
 	public function __construct(&$handler) {
 		parent::__construct($handler);
 
-		$this->quickInitVar('post_id', XOBJ_DTYPE_INT, TRUE);
+		$this->quickInitVar('post_id', XOBJ_DTYPE_INT, true);
 		/**
 		 *
 		 * @todo IPF needs to be able to know what to do with XOBJ_DTYPE_ARRAY, which it does not right now...
 		 */
-		$this->initNonPersistableVar('categories', XOBJ_DTYPE_INT, 'category', FALSE, FALSE, FALSE, TRUE);
+		$this->initNonPersistableVar('categories', XOBJ_DTYPE_INT, 'category', false, false, false, true);
 		$this->quickInitVar('post_title', XOBJ_DTYPE_TXTBOX);
-		$this->quickInitVar('post_content', XOBJ_DTYPE_TXTAREA, TRUE, FALSE, _CO_IMBLOGGING_POST_POST_CONTENT_DSC);
+		$this->quickInitVar('post_content', XOBJ_DTYPE_TXTAREA, true, false, _CO_IMBLOGGING_POST_POST_CONTENT_DSC);
 		$this->quickInitVar('post_published_date', XOBJ_DTYPE_LTIME);
 		$this->quickInitVar('post_uid', XOBJ_DTYPE_INT);
-		$this->quickInitVar('post_status', XOBJ_DTYPE_INT, FALSE, FALSE, FALSE, IMBLOGGING_POST_STATUS_PUBLISHED);
-		$this->quickInitVar('post_cancomment', XOBJ_DTYPE_INT, FALSE, FALSE, FALSE, TRUE);
+		$this->quickInitVar('post_status', XOBJ_DTYPE_INT, false, false, false, IMBLOGGING_POST_STATUS_PUBLISHED);
+		$this->quickInitVar('post_cancomment', XOBJ_DTYPE_INT, false, false, false, true);
 		$this->quickInitVar('post_comments', XOBJ_DTYPE_INT);
 
 		$this->hideFieldFromForm('post_comments');
@@ -63,12 +63,12 @@ class ImbloggingPost extends icms_ipf_seo_Object {
 		$this->quickInitVar('post_notification_sent', XOBJ_DTYPE_INT);
 		$this->hideFieldFromForm('post_notification_sent');
 
-		$this->initCommonVar('counter', FALSE);
-		$this->initCommonVar('dohtml', FALSE, TRUE);
-		$this->initCommonVar('dobr', FALSE, FALSE);
-		$this->initCommonVar('doimage', FALSE, TRUE);
-		$this->initCommonVar('dosmiley', FALSE, TRUE);
-		$this->initCommonVar('doxcode', FALSE, TRUE);
+		$this->initCommonVar('counter', false);
+		$this->initCommonVar('dohtml', false, true);
+		$this->initCommonVar('dobr', false, false);
+		$this->initCommonVar('doimage', false, true);
+		$this->initCommonVar('dosmiley', false, true);
+		$this->initCommonVar('doxcode', false, true);
 
 		$this->setControl('categories', array(
 			'name' => 'categories',
@@ -128,7 +128,7 @@ class ImbloggingPost extends icms_ipf_seo_Object {
 			return $ret;
 		} else {
 			(int) $ret > 0 ? array(
-				(int) $ret) : FALSE;
+				(int) $ret) : false;
 		}
 	}
 
@@ -156,7 +156,7 @@ class ImbloggingPost extends icms_ipf_seo_Object {
 	/**
 	 * Returns the need to br
 	 *
-	 * @return bool TRUE | FALSE
+	 * @return bool true | false
 	 */
 	function need_do_br() {
 		global $icmsConfig;
@@ -166,9 +166,9 @@ class ImbloggingPost extends icms_ipf_seo_Object {
 		$editor_default = $icmsConfig['editor_default'];
 		$gperm_handler = icms::handler('icms_member_groupperm');
 		if (file_exists(ICMS_EDITOR_PATH . "/" . $editor_default . "/xoops_version.php") && $gperm_handler->checkRight('use_wysiwygeditor', $imblogging_module->getVar("mid"), $groups)) {
-			return FALSE;
+			return false;
 		} else {
-			return TRUE;
+			return true;
 		}
 	}
 
@@ -181,9 +181,9 @@ class ImbloggingPost extends icms_ipf_seo_Object {
 	 * - he is the poster of this post
 	 *
 	 * @param string $perm_name specific permission to check
-	 * @return bool TRUE if user can view this post, FALSE if not
+	 * @return bool true if user can view this post, false if not
 	 */
-	function accessGranted($perm_name = NULL) {
+	function accessGranted($perm_name = null) {
 		global $imblogging_isAdmin;
 		return $this->getVar('post_status', 'e') == IMBLOGGING_POST_STATUS_PUBLISHED || $imblogging_isAdmin || $this->getVar('post_uid', 'e') == icms::$user->getVar("uid");
 	}
@@ -194,7 +194,7 @@ class ImbloggingPost extends icms_ipf_seo_Object {
 	 * @param bool $link with link or not
 	 * @return string poster name linked on his module poster page, or simply poster name
 	 */
-	function getPoster($link = FALSE) {
+	function getPoster($link = false) {
 		if (!$this->poster_info) {
 			$member_handler = icms::handler('icms_member');
 			$poster_uid = $this->getVar('post_uid', 'e');
@@ -257,7 +257,7 @@ class ImbloggingPost extends icms_ipf_seo_Object {
 	function getCommentsInfo() {
 		$post_comments = $this->getVar('post_comments');
 		if ($post_comments) {
-			return '<a href="' . $this->getItemLink(TRUE) . '#comments_container">' . sprintf(_CO_IMBLOGGING_POST_COMMENTS_INFO, $post_comments) . '</a>';
+			return '<a href="' . $this->getItemLink(true) . '#comments_container">' . sprintf(_CO_IMBLOGGING_POST_COMMENTS_INFO, $post_comments) . '</a>';
 		} else {
 			return _CO_IMBLOGGING_POST_NO_COMMENT;
 		}
@@ -284,7 +284,7 @@ class ImbloggingPost extends icms_ipf_seo_Object {
 		$ret = $this->getVar('post_content');
 		$slices = explode('[more]', $ret);
 		if ($slices[1]) {
-			$ret = $slices[0] . ' <a href="' . $this->getItemLink(TRUE) . '" title="' . $this->getVar('post_title') . '">' . _MD_IMBLOGGING_KEEP_READING . '</a>';
+			$ret = $slices[0] . ' <a href="' . $this->getItemLink(true) . '" title="' . $this->getVar('post_title') . '">' . _MD_IMBLOGGING_KEEP_READING . '</a>';
 		} else {
 			$ret = $slices[0];
 		}
@@ -368,15 +368,15 @@ class ImbloggingPost extends icms_ipf_seo_Object {
 	/**
 	 * Check to see if the current user can edit or delete this post
 	 *
-	 * @return bool TRUE if he can, FALSE if not
+	 * @return bool true if he can, false if not
 	 */
 	function userCanEditAndDelete() {
 		global $imblogging_isAdmin;
 		if (!is_object(icms::$user)) {
-			return FALSE;
+			return false;
 		}
 		if ($imblogging_isAdmin) {
-			return TRUE;
+			return true;
 		}
 		return $this->getVar('post_uid', 'e') == icms::$user->uid();
 	}
@@ -392,7 +392,7 @@ class ImbloggingPost extends icms_ipf_seo_Object {
 		$notification_handler = icms::handler('icms_data_notification');
 
 		$tags['POST_TITLE'] = $this->getVar('post_title');
-		$tags['POST_URL'] = $this->getItemLink(TRUE);
+		$tags['POST_URL'] = $this->getItemLink(true);
 
 		$notification_handler->triggerEvent('global', 0, 'post_published', $tags, array(), $module_id);
 	}
@@ -414,12 +414,12 @@ class ImbloggingPost extends icms_ipf_seo_Object {
 		$ret['post_day_number'] = $this->getPostDayNumber();
 		$ret['post_comment_info'] = $this->getCommentsInfo();
 		$ret['post_content'] = $this->getPostContent();
-		$ret['editItemLink'] = $this->getEditItemLink(FALSE, TRUE, TRUE);
-		$ret['deleteItemLink'] = $this->getDeleteItemLink(FALSE, TRUE, TRUE);
+		$ret['editItemLink'] = $this->getEditItemLink(false, true, true);
+		$ret['deleteItemLink'] = $this->getDeleteItemLink(false, true, true);
 		$ret['userCanEditAndDelete'] = $this->userCanEditAndDelete();
 		$ret['post_posterid'] = $this->getVar('post_uid', 'e');
-		$ret['post_poster_link'] = $this->getPoster(TRUE);
-		$ret['itemLink'] = '<a href="' . $this->getItemLink(TRUE) . '" title="' . $this->getVar('post_title') . '">' . $this->getVar('post_title') . '</a>';
+		$ret['post_poster_link'] = $this->getPoster(true);
+		$ret['itemLink'] = '<a href="' . $this->getItemLink(true) . '" title="' . $this->getVar('post_title') . '">' . $this->getVar('post_title') . '</a>';
 		return $ret;
 	}
 
@@ -429,7 +429,7 @@ class ImbloggingPost extends icms_ipf_seo_Object {
 	 * @param bool $onlyUrl whether or not to return a simple URL or a full <a> link
 	 * @return string user side link to the object
 	 */
-	public function getItemLink($onlyUrl = FALSE) {
+	public function getItemLink($onlyUrl = false) {
 		$link = parent::getItemLink($onlyUrl);
 		$short_url = $this->getVar('short_url');
 		if (!empty($short_url)) {
@@ -487,7 +487,7 @@ class ImbloggingPostHandler extends icms_ipf_Handler {
 	 * @param int $post_id ID of a single post to retrieve
 	 * @return icms_db_criteria_Compo $criteria
 	 */
-	function getPostsCriteria($start = 0, $limit = 0, $post_uid = FALSE, $cid = FALSE, $year = FALSE, $month = FALSE, $post_id = FALSE) {
+	function getPostsCriteria($start = 0, $limit = 0, $post_uid = false, $cid = false, $year = false, $month = false, $post_id = false) {
 		$criteria = new icms_db_criteria_Compo();
 		if ($start) {
 			$criteria->setStart($start);
@@ -529,8 +529,8 @@ class ImbloggingPostHandler extends icms_ipf_Handler {
 	 * @return object ImbloggingPost object
 	 */
 	function getPost($post_id) {
-		$ret = $this->getPosts(0, 0, FALSE, FALSE, FALSE, FALSE, $post_id);
-		return isset($ret[$post_id]) ? $ret[$post_id] : FALSE;
+		$ret = $this->getPosts(0, 0, false, false, false, false, $post_id);
+		return isset($ret[$post_id]) ? $ret[$post_id] : false;
 	}
 
 	/**
@@ -545,9 +545,9 @@ class ImbloggingPostHandler extends icms_ipf_Handler {
 	 * @param int $post_id ID of a single post to retrieve
 	 * @return array of posts
 	 */
-	function getPosts($start = 0, $limit = 0, $post_uid = FALSE, $cid = FALSE, $year = FALSE, $month = FALSE, $post_id = FALSE) {
+	function getPosts($start = 0, $limit = 0, $post_uid = false, $cid = false, $year = false, $month = false, $post_id = false) {
 		$criteria = $this->getPostsCriteria($start, $limit, $post_uid, $cid, $year, $month, $post_id);
-		$ret = $this->getObjects($criteria, TRUE, FALSE);
+		$ret = $this->getObjects($criteria, true, false);
 
 		// retrieve the ids of all Posts retrieved
 		$postIds = $this->getIdsFromObjectsAsArray($ret);
@@ -586,8 +586,8 @@ class ImbloggingPostHandler extends icms_ipf_Handler {
 	 * @param int $year of posts to display
 	 * @param int $month of posts to display
 	 */
-	function getPostsCount($post_uid, $cid = FALSE, $year = FALSE, $month = FALSE) {
-		$criteria = $this->getPostsCriteria(FALSE, FALSE, $post_uid, $cid, $year, $month);
+	function getPostsCount($post_uid, $cid = false, $year = false, $month = false) {
+		$criteria = $this->getPostsCriteria(false, false, $post_uid, $cid, $year, $month);
 		return $this->getCount($criteria);
 	}
 
@@ -598,7 +598,7 @@ class ImbloggingPostHandler extends icms_ipf_Handler {
 	 */
 	function getPostsCountByMonth() {
 		$sql = 'SELECT count(post_id) AS posts_count, MONTH(FROM_UNIXTIME(post_published_date)) AS posts_month, YEAR(FROM_UNIXTIME(post_published_date)) AS posts_year' . ' FROM ' . $this->table . ' WHERE post_published_date <= ' . time() . ' GROUP BY posts_year, posts_month' . ' HAVING posts_count > 0' . ' ORDER BY posts_year DESC, posts_month DESC';
-		$postsByMonthArray = $this->query($sql, FALSE);
+		$postsByMonthArray = $this->query($sql, false);
 		$ret = array();
 		$config_handler = &icms::handler('config');
 		$icmsConfig = &$config_handler->getConfigsByCat(XOOPS_CONF);
@@ -658,7 +658,7 @@ class ImbloggingPostHandler extends icms_ipf_Handler {
 		$criteria->add(new icms_db_criteria_Item('post_published_date', time(), '<='));
 		$criteria->setSort('post_published_date');
 		$criteria->setOrder('DESC');
-		return $this->getObjects($criteria, TRUE, FALSE);
+		return $this->getObjects($criteria, true, false);
 	}
 
 	/**
@@ -675,24 +675,24 @@ class ImbloggingPostHandler extends icms_ipf_Handler {
 		$postObj = $this->get($post_id);
 		if ($postObj && !$postObj->isNew()) {
 			$postObj->setVar('post_comments', $total_num);
-			$this->insert($postObj, TRUE);
+			$this->insert($postObj, true);
 		}
 	}
 
 	/**
 	 * Check if the current user can submit a new post or not
 	 *
-	 * @return bool TRUE if he can FALSE if not
+	 * @return bool true if he can false if not
 	 */
 	function userCanSubmit() {
 		global $imblogging_isAdmin;
 		$imbloggingModuleConfig = icms_getModuleConfig(basename(dirname(__DIR__)));
 
 		if (!is_object(icms::$user)) {
-			return FALSE;
+			return false;
 		}
 		if ($imblogging_isAdmin) {
-			return TRUE;
+			return true;
 		}
 		$user_groups = icms::$user->getGroups();
 		return count(array_intersect($imbloggingModuleConfig['poster_groups'], $user_groups)) > 0;
@@ -704,13 +704,13 @@ class ImbloggingPostHandler extends icms_ipf_Handler {
 	 * Event automatically triggered by IcmsPersistable Framework before the object is inserted or updated.
 	 *
 	 * @param object $obj ImbloggingPost object
-	 * @return TRUE
+	 * @return true
 	 */
 	function beforeSave(&$obj) {
-		if ($obj->updating_counter) return TRUE;
+		if ($obj->updating_counter) return true;
 
 		$obj->setVar('dobr', $obj->need_do_br());
-		return TRUE;
+		return true;
 	}
 
 	/**
@@ -719,10 +719,10 @@ class ImbloggingPostHandler extends icms_ipf_Handler {
 	 * Event automatically triggered by IcmsPersistable Framework after the object is inserted or updated
 	 *
 	 * @param object $obj ImbloggingPost object
-	 * @return TRUE
+	 * @return true
 	 */
 	function afterSave(&$obj) {
-		if ($obj->updating_counter) return TRUE;
+		if ($obj->updating_counter) return true;
 
 		// storing categories
 		$imtagging_category_link_handler = icms_getModuleHandler('category_link', 'imtagging');
@@ -730,11 +730,11 @@ class ImbloggingPostHandler extends icms_ipf_Handler {
 
 		if (!$obj->getVar('post_notification_sent') && $obj->getVar('post_status', 'e') == IMBLOGGING_POST_STATUS_PUBLISHED) {
 			$obj->sendNotifPostPublished();
-			$obj->setVar('post_notification_sent', TRUE);
+			$obj->setVar('post_notification_sent', true);
 			// too late - the record has already been saved! Save again? Effective, but clumsy
 			$this->insert($obj);
 		}
-		return TRUE;
+		return true;
 	}
 
 	/**
@@ -747,7 +747,7 @@ class ImbloggingPostHandler extends icms_ipf_Handler {
 	 */
 	function updateCounter($id) {
 		$sql = 'UPDATE ' . $this->table . ' SET counter = counter + 1 WHERE ' . $this->keyName . ' = ' . $id;
-		$this->query($sql, NULL, TRUE);
+		$this->query($sql, null, true);
 	}
 
 	/**

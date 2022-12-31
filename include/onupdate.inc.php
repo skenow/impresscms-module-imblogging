@@ -46,7 +46,7 @@ function icms_module_update_imblogging($module) {
 	 */
 	$icmsDatabaseUpdater = icms_db_legacy_Factory::getDatabaseUpdater();
 	$icmsDatabaseUpdater->moduleUpgrade($module);
-	return TRUE;
+	return true;
 }
 
 /**
@@ -55,5 +55,5 @@ function icms_module_update_imblogging($module) {
  * @param unknown_type $module
  */
 function icms_module_install_imblogging($module) {
-	return TRUE;
+	return true;
 }

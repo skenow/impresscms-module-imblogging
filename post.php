@@ -8,13 +8,13 @@
  * @since 1.0
  * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
  * @package imblogging
- * 
+ *
  */
 
 /**
  * Edit a Blog Post
  *
- * @param object $postObj ImblogginPost object to be edited
+ * @param object $postObj ImbloggingPost object to be edited
  */
 function editpost($postObj) {
 	global $imblogging_post_handler, $xoTheme, $icmsTpl;
@@ -22,7 +22,7 @@ function editpost($postObj) {
 	$postObj->setControl('categories', array(
 		'name' => 'categories',
 		'module' => 'imtagging',
-		'userside' => TRUE));
+		'userside' => true));
 
 	if (!icms::$user->isAdmin()) {
 		$postObj->hideFieldFromForm(array(
@@ -34,7 +34,7 @@ function editpost($postObj) {
 	}
 	if (!$postObj->isNew()) {
 		if (!$postObj->userCanEditAndDelete()) {
-			redirect_header($postObj->getItemLink(TRUE), 3, _NOPERM);
+			redirect_header($postObj->getItemLink(true), 3, _NOPERM);
 		}
 		$postObj->loadCategories();
 		if (!icms::$user->isAdmin()) {
@@ -97,7 +97,7 @@ $valid_op = array(
 	'');
 
 /* Only proceed if the supplied operation is a valid operation */
-if (in_array($clean_op, $valid_op, TRUE)) {
+if (in_array($clean_op, $valid_op, true)) {
 	switch ($clean_op) {
 		case "mod":
 			$postObj = $imblogging_post_handler->get($clean_post_id);
@@ -113,14 +113,14 @@ if (in_array($clean_op, $valid_op, TRUE)) {
 			}
 			$controller = new icms_ipf_Controller($imblogging_post_handler);
 			/* need to flush the template option to prevent error on redirect */
-			$xoopsOption['template_main'] = NULL;
+			$xoopsOption['template_main'] = null;
 			$controller->storeFromDefaultForm(_MD_IMBLOGGING_POST_CREATED, _MD_IMBLOGGING_POST_MODIFIED);
 			break;
 
 		case "del":
 			$postObj = $imblogging_post_handler->get($clean_post_id);
 			if (!$postObj->userCanEditAndDelete()) {
-				redirect_header($postObj->getItemLink(TRUE), 3, _NOPERM);
+				redirect_header($postObj->getItemLink(true), 3, _NOPERM);
 			}
 			if (isset($_POST['confirm'])) {
 				if (!icms::$security->check()) {
@@ -129,7 +129,7 @@ if (in_array($clean_op, $valid_op, TRUE)) {
 			}
 			$controller = new icms_ipf_Controller($imblogging_post_handler);
 			/* need to flush the template option to prevent error on redirect */
-			$xoopsOption['template_main'] = NULL;
+			$xoopsOption['template_main'] = null;
 			$controller->handleObjectDeletionFromUserSide();
 			$icmsTpl->assign('imblogging_category_path', $postObj->getVar('post_title') . ' > ' . _DELETE);
 
@@ -141,12 +141,12 @@ if (in_array($clean_op, $valid_op, TRUE)) {
 			$icmsTpl->assign('imblogging_post', $postArray);
 			$icmsTpl->assign('imblogging_category_path', $postArray['post_title']);
 
-			$icmsTpl->assign('imblogging_showSubmitLink', TRUE);
+			$icmsTpl->assign('imblogging_showSubmitLink', true);
 			$icmsTpl->assign('imblogging_rss_url', IMBLOGGING_URL . 'rss.php');
 			$icmsTpl->assign('imblogging_rss_info', _MD_IMBLOGGING_RSS_GLOBAL);
 
 			if ($icmsModuleConfig['com_rule'] && $postArray['post_cancomment']) {
-				$icmsTpl->assign('imblogging_post_comment', TRUE);
+				$icmsTpl->assign('imblogging_post_comment', true);
 				include_once ICMS_ROOT_PATH . '/include/comment_view.php';
 			}
 			/* Generating meta information for this page */
@@ -156,6 +156,6 @@ if (in_array($clean_op, $valid_op, TRUE)) {
 			break;
 	}
 }
-$icmsTpl->assign('imblogging_module_home', icms_getModuleName(TRUE, TRUE));
+$icmsTpl->assign('imblogging_module_home', icms_getModuleName(true, true));
 
 include_once 'footer.php';
