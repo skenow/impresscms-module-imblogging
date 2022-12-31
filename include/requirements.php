@@ -6,7 +6,7 @@
  * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
  * @since 1.0
  * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
- * @version $Id$
+ * 
  * @todo this could easily be generalized in a IcmsRequirements class and put in ImpressCMS 1.2 for other modules to use
  */
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");

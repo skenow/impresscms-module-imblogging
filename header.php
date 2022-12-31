@@ -7,7 +7,7 @@
  * @since 1.0
  * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
  * @package imblogging
- * @version $Id$
+ * 
  */
 include_once "../../mainfile.php";
 include_once __DIR__ . '/include/common.php';

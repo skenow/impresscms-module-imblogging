@@ -8,7 +8,7 @@
  * @since 1.0
  * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
  * @package imblogging
- * @version $Id$
+ * 
  */
 
 /**
