@@ -52,7 +52,7 @@ class ImbloggingPost extends icms_ipf_seo_Object {
 		$this->initNonPersistableVar('categories', XOBJ_DTYPE_INT, 'category', false, false, false, true);
 		$this->quickInitVar('post_title', XOBJ_DTYPE_TXTBOX);
 		$this->quickInitVar('post_content', XOBJ_DTYPE_TXTAREA, true, false, _CO_IMBLOGGING_POST_POST_CONTENT_DSC);
-		$this->quickInitVar('post_published_date', XOBJ_DTYPE_LTIME);
+		$this->quickInitVar('post_published_date', XOBJ_DTYPE_LTIME, false, false, _CO_IMBLOGGING_POST_POST_PUBLISHED_DATE_DSC);
 		$this->quickInitVar('post_uid', XOBJ_DTYPE_INT);
 		$this->quickInitVar('post_status', XOBJ_DTYPE_INT, false, false, false, IMBLOGGING_POST_STATUS_PUBLISHED);
 		$this->quickInitVar('post_cancomment', XOBJ_DTYPE_INT, false, false, false, true);
