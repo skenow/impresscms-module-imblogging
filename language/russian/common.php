@@ -18,7 +18,7 @@ define("_CO_IMBLOGGING_POST_POST_TITLE_DSC", "");
 define("_CO_IMBLOGGING_POST_POST_CONTENT", "Контент");
 define("_CO_IMBLOGGING_POST_POST_CONTENT_DSC", "");
 define("_CO_IMBLOGGING_POST_POST_PUBLISHED_DATE", "Дата");
-define("_CO_IMBLOGGING_POST_POST_PUBLISHED_DATE_DSC", "");
+define("_CO_IMBLOGGING_POST_POST_PUBLISHED_DATE_DSC", "By setting a future date and time, you can schedule when posts appear");
 define("_CO_IMBLOGGING_POST_POST_UID", "Отправитель");
 define("_CO_IMBLOGGING_POST_POST_UID_DSC", "");
 define("_CO_IMBLOGGING_POST_POST_STATUS", "Статус");

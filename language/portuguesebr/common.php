@@ -6,7 +6,7 @@
  * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
  * @since 1.0
  * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
- * 
+ *
  * @translation        GibaPhp - http://br.impresscms.org
  */
 if (!defined("ICMS_ROOT_PATH")) die("O caminho para o raiz do site não foi definido");
@@ -19,7 +19,7 @@ define("_CO_IMBLOGGING_POST_POST_TITLE_DSC", "Título do Blog");
 define("_CO_IMBLOGGING_POST_POST_CONTENT", "Conteúdo");
 define("_CO_IMBLOGGING_POST_POST_CONTENT_DSC", "");
 define("_CO_IMBLOGGING_POST_POST_PUBLISHED_DATE", "Data");
-define("_CO_IMBLOGGING_POST_POST_PUBLISHED_DATE_DSC", "");
+define("_CO_IMBLOGGING_POST_POST_PUBLISHED_DATE_DSC", "By setting a future date and time, you can schedule when posts appear");
 define("_CO_IMBLOGGING_POST_POST_UID", "Enviado por");
 define("_CO_IMBLOGGING_POST_POST_UID_DSC", "");
 define("_CO_IMBLOGGING_POST_POST_STATUS", "Status");
