@@ -6,7 +6,7 @@
  * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
  * @since 1.0
  * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
- * 
+ *
  */
 defined("ICMS_ROOT_PATH") || die("ICMS root path not defined");
 
@@ -89,8 +89,8 @@ class ImbloggingPost extends icms_ipf_seo_Object {
 	 * Overriding the IcmsPersistableObject::getVar method to assign a custom method on some
 	 * specific fields to handle the value before returning it
 	 *
-	 * @param str $key key of the field
-	 * @param str $format format that is requested
+	 * @param string $key key of the field
+	 * @param string $format format that is requested
 	 * @return mixed value of the field that is requested
 	 */
 	function getVar($key, $format = 's') {
@@ -135,7 +135,7 @@ class ImbloggingPost extends icms_ipf_seo_Object {
 	/**
 	 * Retrieving the name of the poster, linked to his profile
 	 *
-	 * @return str name of the poster
+	 * @return string name of the poster
 	 */
 	function post_uid() {
 		return icms_member_user_Handler::getUserLink($this->getVar('post_uid', 'e'));
@@ -144,7 +144,7 @@ class ImbloggingPost extends icms_ipf_seo_Object {
 	/**
 	 * Retrieving the status of the post
 	 *
-	 * @param str status of the post
+	 * @param string status of the post
 	 * @return mixed $post_statusArray[$ret] status of the post
 	 */
 	function post_status() {
@@ -192,7 +192,7 @@ class ImbloggingPost extends icms_ipf_seo_Object {
 	 * Get the poster
 	 *
 	 * @param bool $link with link or not
-	 * @return str poster name linked on his module poster page, or simply poster name
+	 * @return string poster name linked on his module poster page, or simply poster name
 	 */
 	function getPoster($link = FALSE) {
 		if (!$this->poster_info) {
@@ -225,7 +225,7 @@ class ImbloggingPost extends icms_ipf_seo_Object {
 	/**
 	 * Retrieve post info (poster and date)
 	 *
-	 * @return str post info
+	 * @return string post info
 	 */
 	function getPostInfo() {
 		$status = $this->getVar('post_status', 'e');
@@ -252,7 +252,7 @@ class ImbloggingPost extends icms_ipf_seo_Object {
 	/**
 	 * Retrieve post comment info (number of comments)
 	 *
-	 * @return str post comment info
+	 * @return string post comment info
 	 */
 	function getCommentsInfo() {
 		$post_comments = $this->getVar('post_comments');
@@ -266,7 +266,7 @@ class ImbloggingPost extends icms_ipf_seo_Object {
 	/**
 	 * Retrieve the post content without [more] tag
 	 *
-	 * @return str post content
+	 * @return string post content
 	 */
 	function getPostContent() {
 		$ret = $this->getVar('post_content');
@@ -278,7 +278,7 @@ class ImbloggingPost extends icms_ipf_seo_Object {
 	/**
 	 * Retrieve post lead, which is everything before the [more] tag
 	 *
-	 * @return str post lead
+	 * @return string post lead
 	 */
 	function getPostLead() {
 		$ret = $this->getVar('post_content');
@@ -320,7 +320,7 @@ class ImbloggingPost extends icms_ipf_seo_Object {
 	/**
 	 * Get month of this post
 	 *
-	 * @return str month of this post
+	 * @return string month of this post
 	 */
 	function getPostMonth() {
 		if (!$this->post_date_info) {
@@ -332,7 +332,7 @@ class ImbloggingPost extends icms_ipf_seo_Object {
 	/**
 	 * Get month short name of this post
 	 *
-	 * @return str month of this post
+	 * @return string month of this post
 	 */
 	function getPostMonthShort() {
 		if (!$this->post_date_info) {
@@ -344,7 +344,7 @@ class ImbloggingPost extends icms_ipf_seo_Object {
 	/**
 	 * Get day of this post
 	 *
-	 * @return str day of this post
+	 * @return string day of this post
 	 */
 	function getPostDay() {
 		if (!$this->post_date_info) {
@@ -356,7 +356,7 @@ class ImbloggingPost extends icms_ipf_seo_Object {
 	/**
 	 * Get day number of this post
 	 *
-	 * @return str day number of this post
+	 * @return string day number of this post
 	 */
 	function getPostDayNumber() {
 		if (!$this->post_date_info) {
