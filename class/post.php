@@ -2,17 +2,18 @@
 /**
  * Classes responsible for managing imBlogging post objects
  *
- * @copyright	http://smartfactory.ca The SmartFactory
- * @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
- * @since		1.0
- * @author		marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
- * @version		$Id$
+ * @copyright http://smartfactory.ca The SmartFactory
+ * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
+ * @since 1.0
+ * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
+ * @version $Id$
  */
-
 defined("ICMS_ROOT_PATH") || die("ICMS root path not defined");
 
 $moddir = basename(dirname(dirname(__FILE__)));
-/** include the common functions for this module */
+/**
+ * include the common functions for this module
+ */
 include_once ICMS_MODULES_PATH . '/' . $moddir . '/include/common.php';
 
 /**
@@ -25,28 +26,27 @@ define('IMBLOGGING_POST_STATUS_PRIVATE', 4);
 
 /**
  *
- * @category	ICMS
- * @package		Module
- * @subpackage	imBlogging
+ * @category ICMS
+ * @package Module
+ * @subpackage imBlogging
  */
 class ImbloggingPost extends icms_ipf_seo_Object {
-
-	private	 $post_date_info = FALSE;
+	private $post_date_info = FALSE;
 	private $poster_info = FALSE;
-	public 	$updating_counter = FALSE;
-	public	$categories = FALSE;
+	public $updating_counter = FALSE;
+	public $categories = FALSE;
 
 	/**
 	 * Constructor
 	 *
 	 * @param object $handler ImbloggingPostHandler object
 	 */
-	public function __construct(& $handler) {
-
+	public function __construct(&$handler) {
 		parent::__construct($handler);
 
 		$this->quickInitVar('post_id', XOBJ_DTYPE_INT, TRUE);
 		/**
+		 *
 		 * @todo IPF needs to be able to know what to do with XOBJ_DTYPE_ARRAY, which it does not right now...
 		 */
 		$this->initNonPersistableVar('categories', XOBJ_DTYPE_INT, 'category', FALSE, FALSE, FALSE, TRUE);
@@ -71,16 +71,14 @@ class ImbloggingPost extends icms_ipf_seo_Object {
 		$this->initCommonVar('doxcode', FALSE, TRUE);
 
 		$this->setControl('categories', array(
-				'name'=>'categories',
-				'module'=>'imtagging'
-			));
+			'name' => 'categories',
+			'module' => 'imtagging'));
 		$this->setControl('post_content', 'dhtmltextarea');
 		$this->setControl('post_uid', 'user');
 		$this->setControl('post_status', array(
-				'itemHandler' => 'post',
-				'method' => 'getPost_statusArray',
-				'module' => 'imblogging'
-			));
+			'itemHandler' => 'post',
+			'method' => 'getPost_statusArray',
+			'module' => 'imblogging'));
 
 		$this->setControl('post_cancomment', 'yesno');
 
@@ -96,10 +94,18 @@ class ImbloggingPost extends icms_ipf_seo_Object {
 	 * @return mixed value of the field that is requested
 	 */
 	function getVar($key, $format = 's') {
-		if ($format == 's' && in_array($key, array('post_uid', 'post_status', 'categories'))) {
-			return call_user_func(array($this, $key));
-		} elseif ($format == 'e' && in_array($key, array('categories'))) {
-			return call_user_func(array($this, $key));
+		if ($format == 's' && in_array($key, array(
+			'post_uid',
+			'post_status',
+			'categories'))) {
+			return call_user_func(array(
+				$this,
+				$key));
+		} elseif ($format == 'e' && in_array($key, array(
+			'categories'))) {
+			return call_user_func(array(
+				$this,
+				$key));
 		}
 		return parent::getVar($key, $format);
 	}
@@ -121,7 +127,8 @@ class ImbloggingPost extends icms_ipf_seo_Object {
 		if (is_array($ret)) {
 			return $ret;
 		} else {
-			(int) $ret > 0 ? array((int) $ret) : FALSE;
+			(int) $ret > 0 ? array(
+				(int) $ret) : FALSE;
 		}
 	}
 
@@ -169,18 +176,16 @@ class ImbloggingPost extends icms_ipf_seo_Object {
 	 * Check is user has access to view this post
 	 *
 	 * User will be able to view the post if
-	 *    - the status of the post is Published OR
-	 *    - he is an admin OR
-	 * 	  - he is the poster of this post
+	 * - the status of the post is Published OR
+	 * - he is an admin OR
+	 * - he is the poster of this post
 	 *
-	 * @param	string	$perm_name	specific permission to check
+	 * @param string $perm_name specific permission to check
 	 * @return bool TRUE if user can view this post, FALSE if not
 	 */
 	function accessGranted($perm_name = NULL) {
 		global $imblogging_isAdmin;
-		return $this->getVar('post_status', 'e') == IMBLOGGING_POST_STATUS_PUBLISHED
-			|| $imblogging_isAdmin
-			|| $this->getVar('post_uid', 'e') == icms::$user->getVar("uid");
+		return $this->getVar('post_status', 'e') == IMBLOGGING_POST_STATUS_PUBLISHED || $imblogging_isAdmin || $this->getVar('post_uid', 'e') == icms::$user->getVar("uid");
 	}
 
 	/**
@@ -196,7 +201,8 @@ class ImbloggingPost extends icms_ipf_seo_Object {
 			$userObj = $member_handler->getuser($poster_uid);
 
 			/**
-			 * We need to make sure the poster is a valid user object. It is possible the user no longer
+			 * We need to make sure the poster is a valid user object.
+			 * It is possible the user no longer
 			 * exists if, for example, he was previously deleted. In that case, we will return Anonymous
 			 */
 			if (is_object($userObj)) {
@@ -278,9 +284,7 @@ class ImbloggingPost extends icms_ipf_seo_Object {
 		$ret = $this->getVar('post_content');
 		$slices = explode('[more]', $ret);
 		if ($slices[1]) {
-			$ret = $slices[0] . ' <a href="' . $this->getItemLink(TRUE)
-				. '" title="' . $this->getVar('post_title')
-				. '">' . _MD_IMBLOGGING_KEEP_READING . '</a>';
+			$ret = $slices[0] . ' <a href="' . $this->getItemLink(TRUE) . '" title="' . $this->getVar('post_title') . '">' . _MD_IMBLOGGING_KEEP_READING . '</a>';
 		} else {
 			$ret = $slices[0];
 		}
@@ -413,11 +417,9 @@ class ImbloggingPost extends icms_ipf_seo_Object {
 		$ret['editItemLink'] = $this->getEditItemLink(FALSE, TRUE, TRUE);
 		$ret['deleteItemLink'] = $this->getDeleteItemLink(FALSE, TRUE, TRUE);
 		$ret['userCanEditAndDelete'] = $this->userCanEditAndDelete();
-		$ret['post_posterid'] = $this->getVar('post_uid','e');
+		$ret['post_posterid'] = $this->getVar('post_uid', 'e');
 		$ret['post_poster_link'] = $this->getPoster(TRUE);
-		$ret['itemLink'] = '<a href="' . $this->getItemLink(TRUE)
-				. '" title="' . $this->getVar('post_title')
-				. '">' . $this->getVar('post_title') . '</a>';
+		$ret['itemLink'] = '<a href="' . $this->getItemLink(TRUE) . '" title="' . $this->getVar('post_title') . '">' . $this->getVar('post_title') . '</a>';
 		return $ret;
 	}
 
@@ -439,13 +441,14 @@ class ImbloggingPost extends icms_ipf_seo_Object {
 
 /**
  *
- * @category	ICMS
- * @package		Module
- * @subpackage	imBlogging
+ * @category ICMS
+ * @package Module
+ * @subpackage imBlogging
  */
 class ImbloggingPostHandler extends icms_ipf_Handler {
 
 	/**
+	 *
 	 * @var array of status
 	 */
 	var $_post_statusArray = array();
@@ -453,7 +456,7 @@ class ImbloggingPostHandler extends icms_ipf_Handler {
 	/**
 	 * Constructor
 	 */
-	public function __construct(& $db) {
+	public function __construct(&$db) {
 		parent::__construct($db, 'post', 'post_id', 'post_title', 'post_content', basename(dirname(dirname(__FILE__))));
 	}
 
@@ -485,7 +488,6 @@ class ImbloggingPostHandler extends icms_ipf_Handler {
 	 * @return icms_db_criteria_Compo $criteria
 	 */
 	function getPostsCriteria($start = 0, $limit = 0, $post_uid = FALSE, $cid = FALSE, $year = FALSE, $month = FALSE, $post_id = FALSE) {
-
 		$criteria = new icms_db_criteria_Compo();
 		if ($start) {
 			$criteria->setStart($start);
@@ -556,12 +558,10 @@ class ImbloggingPostHandler extends icms_ipf_Handler {
 
 		// put the category info in each postObj
 		foreach ($categoriesObj as $categoryObj) {
-			if (isset($categoryObj->items['imblogging']['post']))
-			foreach ($categoryObj->items['imblogging']['post'] as $postid) {
+			if (isset($categoryObj->items['imblogging']['post'])) foreach ($categoryObj->items['imblogging']['post'] as $postid) {
 				$ret[$postid]['categories'][] = array(
-						'id' => $categoryObj->id(),
-						'title' => $categoryObj->getVar('category_title')
-				);
+					'id' => $categoryObj->id(),
+					'title' => $categoryObj->getVar('category_title'));
 			}
 		}
 		return $ret;
@@ -594,19 +594,14 @@ class ImbloggingPostHandler extends icms_ipf_Handler {
 	/**
 	 * Get a count of posts for each month/year
 	 *
-	 * @return	array	An array of year/month post counts
+	 * @return array An array of year/month post counts
 	 */
 	function getPostsCountByMonth() {
-		$sql = 'SELECT count(post_id) AS posts_count, MONTH(FROM_UNIXTIME(post_published_date)) AS posts_month, YEAR(FROM_UNIXTIME(post_published_date)) AS posts_year'
-			. ' FROM ' . $this->table
-			. ' WHERE post_published_date <= ' . time()
-			. ' GROUP BY posts_year, posts_month'
-			. ' HAVING posts_count > 0'
-			. ' ORDER BY posts_year DESC, posts_month DESC';
+		$sql = 'SELECT count(post_id) AS posts_count, MONTH(FROM_UNIXTIME(post_published_date)) AS posts_month, YEAR(FROM_UNIXTIME(post_published_date)) AS posts_year' . ' FROM ' . $this->table . ' WHERE post_published_date <= ' . time() . ' GROUP BY posts_year, posts_month' . ' HAVING posts_count > 0' . ' ORDER BY posts_year DESC, posts_month DESC';
 		$postsByMonthArray = $this->query($sql, FALSE);
 		$ret = array();
-		$config_handler =& icms::handler('config');
-		$icmsConfig =& $config_handler->getConfigsByCat(XOOPS_CONF);
+		$config_handler = &icms::handler('config');
+		$icmsConfig = &$config_handler->getConfigsByCat(XOOPS_CONF);
 		foreach ($postsByMonthArray as $postByMonth) {
 			$postByMonthnr = $postByMonth['posts_month'];
 			$postByYearname = $postByMonth['posts_year'];
@@ -619,7 +614,6 @@ class ImbloggingPostHandler extends icms_ipf_Handler {
 				$postByYearname = icms_conv_nr2local($jyear);
 				$postByYearnr = $jyear;
 				$postByMonthnr = $jmonth;
-
 			}
 			$postByMonth['posts_year_nr'] = $postByYearnr;
 			$postByMonth['posts_month_nr'] = $postByMonthnr;
@@ -651,7 +645,7 @@ class ImbloggingPostHandler extends icms_ipf_Handler {
 		}
 		if ($queryarray) {
 			$criteriaKeywords = new icms_db_criteria_Compo();
-			for ($i = 0; $i < count($queryarray); $i++) {
+			for ($i = 0; $i < count($queryarray); $i++ ) {
 				$criteriaKeyword = new icms_db_criteria_Compo();
 				$criteriaKeyword->add(new icms_db_criteria_Item('post_title', '%' . $queryarray[$i] . '%', 'LIKE'), 'OR');
 				$criteriaKeyword->add(new icms_db_criteria_Item('post_content', '%' . $queryarray[$i] . '%', 'LIKE'), 'OR');
@@ -712,7 +706,7 @@ class ImbloggingPostHandler extends icms_ipf_Handler {
 	 * @param object $obj ImbloggingPost object
 	 * @return TRUE
 	 */
-	function beforeSave(& $obj) {
+	function beforeSave(&$obj) {
 		if ($obj->updating_counter) return TRUE;
 
 		$obj->setVar('dobr', $obj->need_do_br());
@@ -728,7 +722,7 @@ class ImbloggingPostHandler extends icms_ipf_Handler {
 	 * @return TRUE
 	 */
 	function afterSave(&$obj) {
-		if ($obj->updating_counter)	return TRUE;
+		if ($obj->updating_counter) return TRUE;
 
 		// storing categories
 		$imtagging_category_link_handler = icms_getModuleHandler('category_link', 'imtagging');

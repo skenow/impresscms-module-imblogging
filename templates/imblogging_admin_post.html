@@ -1,19 +1,11 @@
-<{$imblogging_jquery_inc}>
+<{$imblogging_jquery_inc}> <{if $imblogging_post_title}>
+<h2><{$imblogging_post_title}></h2>
+<{/if}> <{if $imblogging_post_info}>
+<p><{$imblogging_post_info}></p>
+<{/if}> <{if $imblogging_post_table}> <{$imblogging_post_table}> <{/if}>
 
-<{if $imblogging_post_title}>
-	<h2><{$imblogging_post_title}></h2>
-<{/if}>
-<{if $imblogging_post_info}>
-	<p><{$imblogging_post_info}></p>
-<{/if}>
-
-<{if $imblogging_post_table}>
-	<{$imblogging_post_table}>
-<{/if}>
-
-<{if $addpost}>
-	<{includeq file='db:system_common_form.html' form=$addpost}>
-<{/if}>
+<{if $addpost}> <{includeq file='db:system_common_form.html'
+form=$addpost}> <{/if}>
 
 <script language="JavaScript" type="text/JavaScript">
 	jQuery("#new_category_tray").hide();

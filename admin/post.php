@@ -1,14 +1,15 @@
 <?php
+
 /**
  * Admin page to manage posts
  *
  * List, add, edit and delete post objects
  *
- * @copyright	http://smartfactory.ca The SmartFactory
- * @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
- * @since		1.0
- * @author		marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
- * @version		$Id$
+ * @copyright http://smartfactory.ca The SmartFactory
+ * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
+ * @since 1.0
+ * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
+ * @version $Id$
  */
 
 /**
@@ -26,49 +27,60 @@ function editpost($post_id = 0) {
 		$postObj->loadCategories();
 		$sform = $postObj->getForm(_AM_IMBLOGGING_POST_EDIT, 'addpost');
 		$sform->assign($icmsAdminTpl);
-
 	} else {
 		$postObj->setVar('post_uid', icms::$user->getVar("uid"));
 		icms::$module->displayAdminMenu(0, _AM_IMBLOGGING_POSTS . " > " . _CO_ICMS_CREATINGNEW);
 		$sform = $postObj->getForm(_AM_IMBLOGGING_POST_CREATE, 'addpost');
 		$sform->assign($icmsAdminTpl);
-
 	}
 	$icmsAdminTpl->assign('postid', $post_id);
 	$icmsAdminTpl->display('db:imblogging_admin_post.html');
 }
 /*
- $icmsOnDemandPreload[] = array(
- 		'module'=>'imtagging',
- 		'filename'=>'jquery.php'
- );
-$icmsOnDemandPreload[] = array(
-		'module'=>'imtagging',
-		'filename'=>'imtaggingadmincss.php'
-);
-*/
+ * $icmsOnDemandPreload[] = array(
+ * 'module'=>'imtagging',
+ * 'filename'=>'jquery.php'
+ * );
+ * $icmsOnDemandPreload[] = array(
+ * 'module'=>'imtagging',
+ * 'filename'=>'imtaggingadmincss.php'
+ * );
+ */
 include_once "admin_header.php";
 
 $moddir = basename(dirname(dirname(__FILE__)));
 $imblogging_post_handler = icms_getModuleHandler('post', $moddir, 'imblogging');
-/** Use a naming convention that indicates the source of the content of the variable */
+/**
+ * Use a naming convention that indicates the source of the content of the variable
+ */
 $clean_op = '';
-/** Create a whitelist of valid values, be sure to use appropriate types for each value
+/**
+ * Create a whitelist of valid values, be sure to use appropriate types for each value
  * Be sure to include a value for no parameter, if you have a default condition
  */
-$valid_op = array('mod','changedField','addpost', 'addcategory', 'del', 'view', '');
+$valid_op = array(
+	'mod',
+	'changedField',
+	'addpost',
+	'addcategory',
+	'del',
+	'view',
+	'');
 
 if (isset($_GET['op'])) $clean_op = htmlentities($_GET['op']);
 if (isset($_POST['op'])) $clean_op = htmlentities($_POST['op']);
 
-/** Again, use a naming convention that indicates the source of the content of the variable */
-$clean_post_id = isset($_GET['post_id']) ? (int) $_GET['post_id'] : 0 ;
+/**
+ * Again, use a naming convention that indicates the source of the content of the variable
+ */
+$clean_post_id = isset($_GET['post_id']) ? (int) $_GET['post_id'] : 0;
 $clean_post_id = isset($_POST['post_id']) ? (int) $_POST['post_id'] : $clean_post_id;
-$clean_category_pid = isset($_POST['category_pid']) ? (int) $_POST['category_pid'] : 0 ;
+$clean_category_pid = isset($_POST['category_pid']) ? (int) $_POST['category_pid'] : 0;
 
 /**
  * in_array() is a native PHP function that will determine if the value of the
- * first argument is found in the array listed in the second argument. Strings
+ * first argument is found in the array listed in the second argument.
+ * Strings
  * are case sensitive and the 3rd argument determines whether type matching is
  * required
  */
@@ -89,10 +101,10 @@ if (in_array($clean_op, $valid_op, true)) {
 			// rebuild the ImtaggingCategoryTreeElement control
 			$postObj = $imblogging_post_handler->get($clean_post_id);
 
-			include_once ICMS_MODULES_PATH . '/' . $imtagging->getVar("dirname"). '/class/form/elements/imtaggingcategorytreeelement.php';
+			include_once ICMS_MODULES_PATH . '/' . $imtagging->getVar("dirname") . '/class/form/elements/imtaggingcategorytreeelement.php';
 			$category_tree_element = new ImtaggingCategoryTreeElement($postObj, 'categories');
 			echo $category_tree_element->render();
-			exit;
+			exit();
 			break;
 		case "mod":
 		case "changedField":
@@ -113,7 +125,7 @@ if (in_array($clean_op, $valid_op, true)) {
 
 			break;
 
-		case "view" :
+		case "view":
 			$postObj = $imblogging_post_handler->get($clean_post_id);
 
 			icms_cp_header();
@@ -161,7 +173,9 @@ if (in_array($clean_op, $valid_op, true)) {
 			$objectTable->setDefaultOrder('DESC');
 
 			$objectTable->addIntroButton('addpost', 'post.php?op=mod', _AM_IMBLOGGING_POST_CREATE);
-			$objectTable->addQuickSearch(array('post_title', 'post_content'));
+			$objectTable->addQuickSearch(array(
+				'post_title',
+				'post_content'));
 
 			$objectTable->addFilter('post_status', 'getPost_statusArray');
 			$objectTable->addFilter('post_uid', 'getPostersArray');
@@ -170,7 +184,6 @@ if (in_array($clean_op, $valid_op, true)) {
 
 			$icmsAdminTpl->display('db:imblogging_admin_post.html');
 			break;
-
 	}
 	icms_cp_footer();
 }

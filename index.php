@@ -2,18 +2,22 @@
 /**
  * Index page
  *
- * @copyright	http://smartfactory.ca The SmartFactory
- * @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
- * @since		1.0
- * @author		marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
- * @package		imblogging
- * @version		$Id$
+ * @copyright http://smartfactory.ca The SmartFactory
+ * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
+ * @since 1.0
+ * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
+ * @package imblogging
+ * @version $Id$
  */
-/** Include the module's header for all pages */
+/**
+ * Include the module's header for all pages
+ */
 include_once 'header.php';
 
 $xoopsOption['template_main'] = 'imblogging_index.html';
-/** Include the ICMS header file */
+/**
+ * Include the ICMS header file
+ */
 include_once ICMS_ROOT_PATH . '/header.php';
 
 // At which record shall we start display
@@ -29,7 +33,6 @@ if (!empty($_GET['y']) && !empty($_GET['m']) && $Basic_Check) {
 	list($gyear, $gmonth, $gday) = jalali_to_gregorian($jyear, $jmonth, '1');
 	$clean_year = $gyear;
 	$clean_month = $gmonth;
-
 }
 
 $imblogging_post_handler = icms_getModuleHandler('post', $moddir, 'imblogging');
@@ -47,7 +50,7 @@ if ($clean_post_uid) {
 	$extr_arg = 'uid=' . $clean_post_uid;
 	$rss_url .= '?' . $extr_arg;
 	$rss_info = _MD_IMBLOGGING_RSS_POSTER;
-	
+
 	$extr_argArray[] = $extr_arg;
 	$category_pathArray[] = sprintf(_CO_IMBLOGGING_POST_FROM_USER, icms_member_user_Handler::getUserLink($clean_post_uid));
 } else {
@@ -72,7 +75,6 @@ if ($clean_year && $clean_month) {
 		list($jyear, $jmonth, $jday) = gregorian_to_jalali($gyear, $gmonth, $gday);
 		$clean_year = icms_conv_nr2local($jyear);
 		$clean_month = $jmonth;
-
 	}
 	$category_pathArray[] = sprintf(_CO_IMBLOGGING_POST_FROM_MONTH, Icms_getMonthNameById($clean_month), $clean_year);
 }
@@ -89,5 +91,7 @@ $icmsTpl->assign('imblogging_category_path', $category_path);
 
 $icmsTpl->assign('imblogging_showSubmitLink', TRUE);
 
-/** Include the module's footer */
+/**
+ * Include the module's footer
+ */
 include_once 'footer.php';

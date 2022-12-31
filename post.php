@@ -1,13 +1,14 @@
 <?php
+
 /**
  * Post page
  *
- * @copyright	http://smartfactory.ca The SmartFactory
- * @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
- * @since		1.0
- * @author		marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
- * @package		imblogging
- * @version		$Id$
+ * @copyright http://smartfactory.ca The SmartFactory
+ * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
+ * @since 1.0
+ * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
+ * @package imblogging
+ * @version $Id$
  */
 
 /**
@@ -19,13 +20,17 @@ function editpost($postObj) {
 	global $imblogging_post_handler, $xoTheme, $icmsTpl;
 
 	$postObj->setControl('categories', array(
-		'name'=>'categories',
-		'module'=>'imtagging',
-		'userside'=>TRUE
-	));
+		'name' => 'categories',
+		'module' => 'imtagging',
+		'userside' => TRUE));
 
 	if (!icms::$user->isAdmin()) {
-		$postObj->hideFieldFromForm(array('post_published_date', 'post_uid', 'meta_keywords', 'meta_description', 'short_url'));
+		$postObj->hideFieldFromForm(array(
+			'post_published_date',
+			'post_uid',
+			'meta_keywords',
+			'meta_description',
+			'short_url'));
 	}
 	if (!$postObj->isNew()) {
 		if (!$postObj->userCanEditAndDelete()) {
@@ -33,7 +38,12 @@ function editpost($postObj) {
 		}
 		$postObj->loadCategories();
 		if (!icms::$user->isAdmin()) {
-			$postObj->hideFieldFromForm(array('post_published_date', 'post_uid', 'meta_keywords', 'meta_description', 'short_url'));
+			$postObj->hideFieldFromForm(array(
+				'post_published_date',
+				'post_uid',
+				'meta_keywords',
+				'meta_description',
+				'short_url'));
 		}
 		$sform = $postObj->getSecureForm(_MD_IMBLOGGING_POST_EDIT, 'addpost');
 		$sform->assign($icmsTpl, 'imblogging_postform');
@@ -44,15 +54,20 @@ function editpost($postObj) {
 		}
 		$postObj->setVar('post_uid', icms::$user->getVar("uid"));
 		$postObj->setVar('post_published_date', time());
-			if (!icms::$user->isAdmin()) {
-			$postObj->hideFieldFromForm(array('post_published_date', 'post_uid', 'meta_keywords', 'meta_description', 'short_url'));
+		if (!icms::$user->isAdmin()) {
+			$postObj->hideFieldFromForm(array(
+				'post_published_date',
+				'post_uid',
+				'meta_keywords',
+				'meta_description',
+				'short_url'));
 		}
 		$sform = $postObj->getSecureForm(_MD_IMBLOGGING_POST_SUBMIT, 'addpost');
 		$sform->assign($icmsTpl, 'imblogging_postform');
 		$icmsTpl->assign('imblogging_category_path', _SUBMIT);
 	}
 
-	$xoTheme->addStylesheet(ICMS_MODULES_URL . '/imtagging/module'. ((defined("_ADM_USE_RTL") && _ADM_USE_RTL)?'_rtl':'').'.css');
+	$xoTheme->addStylesheet(ICMS_MODULES_URL . '/imtagging/module' . ((defined("_ADM_USE_RTL") && _ADM_USE_RTL) ? '_rtl' : '') . '.css');
 }
 
 include_once 'header.php';
@@ -69,12 +84,17 @@ if (isset($_GET['op'])) $clean_op = $_GET['op'];
 if (isset($_POST['op'])) $clean_op = $_POST['op'];
 
 /* Again, use a naming convention that indicates the source of the content of the variable */
-$clean_post_id = isset($_GET['post_id']) ? (int) $_GET['post_id'] : 0 ;
+$clean_post_id = isset($_GET['post_id']) ? (int) $_GET['post_id'] : 0;
 
-/* Create a whitelist of valid values, be sure to use appropriate types for each value
+/*
+ * Create a whitelist of valid values, be sure to use appropriate types for each value
  * Be sure to include a value for no parameter, if you have a default condition
  */
-$valid_op = array('mod', 'addpost', 'del', '');
+$valid_op = array(
+	'mod',
+	'addpost',
+	'del',
+	'');
 
 /* Only proceed if the supplied operation is a valid operation */
 if (in_array($clean_op, $valid_op, TRUE)) {

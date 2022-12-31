@@ -12,13 +12,12 @@
  * $modversion['onUpdate'] = "include/onupdate.inc.php";
  * </code>
  *
- * @copyright	http://smartfactory.ca The SmartFactory
- * @license	http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
- * @since		1.0
- * @author		marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
- * @version	$Id$
+ * @copyright http://smartfactory.ca The SmartFactory
+ * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
+ * @since 1.0
+ * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
+ * @version $Id$
  */
-
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
 // this needs to be the latest db version - and match the dirname
@@ -28,13 +27,16 @@ define(strtoupper(basename(dirname(dirname(__FILE__)))) . '_DB_VERSION', 1);
  * it is possible to define custom functions which will be call when the module is updating at the
  * correct time in update incrementation. Simpy define a function named <direname_db_upgrade_db_version>
  */
-/*function imblogging_db_upgrade_1() {
- }
- function imblogging_db_upgrade_2() {
- }*/
+/*
+ * function imblogging_db_upgrade_1() {
+ * }
+ * function imblogging_db_upgrade_2() {
+ * }
+ */
 
 /**
  * This can be based on the module name (not the module directory)
+ *
  * @param unknown_type $module
  */
 function icms_module_update_imblogging($module) {
@@ -49,9 +51,9 @@ function icms_module_update_imblogging($module) {
 
 /**
  * This can be based on the module name (not the module directory)
+ *
  * @param unknown_type $module
  */
 function icms_module_install_imblogging($module) {
-
 	return TRUE;
 }

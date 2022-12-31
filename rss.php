@@ -2,14 +2,16 @@
 /**
  * Generating an RSS feed
  *
- * @copyright	http://smartfactory.ca The SmartFactory
- * @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
- * @since		1.0
- * @author		marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
- * @package		imblogging
- * @version		$Id$
+ * @copyright http://smartfactory.ca The SmartFactory
+ * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
+ * @since 1.0
+ * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
+ * @package imblogging
+ * @version $Id$
  */
-/** Include the module's header for all pages */
+/**
+ * Include the module's header for all pages
+ */
 include_once 'header.php';
 include_once ICMS_ROOT_PATH . '/header.php';
 
@@ -36,8 +38,7 @@ foreach ($postsArray as $postArray) {
 		'pubdate' => date('r', $postArray['post_published_date_int']),
 		'guid' => str_replace('&', '&amp;', $postArray['itemUrl']),
 		'author' => '',
-		'category' => '',
-	);
+		'category' => '');
 }
 
 $imblogging_feed->render();
