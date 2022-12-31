@@ -10,7 +10,7 @@
  */
 defined("ICMS_ROOT_PATH") || die("ICMS root path not defined");
 
-$moddir = basename(dirname(dirname(__FILE__)));
+$moddir = basename(dirname(__DIR__));
 /**
  * include the common functions for this module
  */
@@ -160,7 +160,7 @@ class ImbloggingPost extends icms_ipf_seo_Object {
 	 */
 	function need_do_br() {
 		global $icmsConfig;
-		$imblogging_module = icms_getModuleInfo(basename(dirname(dirname(__FILE__))));
+		$imblogging_module = icms_getModuleInfo(basename(dirname(__DIR__)));
 		$groups = icms::$user->getGroups();
 
 		$editor_default = $icmsConfig['editor_default'];
@@ -457,7 +457,7 @@ class ImbloggingPostHandler extends icms_ipf_Handler {
 	 * Constructor
 	 */
 	public function __construct(&$db) {
-		parent::__construct($db, 'post', 'post_id', 'post_title', 'post_content', basename(dirname(dirname(__FILE__))));
+		parent::__construct($db, 'post', 'post_id', 'post_title', 'post_content', basename(dirname(__DIR__)));
 	}
 
 	/**
@@ -686,7 +686,7 @@ class ImbloggingPostHandler extends icms_ipf_Handler {
 	 */
 	function userCanSubmit() {
 		global $imblogging_isAdmin;
-		$imbloggingModuleConfig = icms_getModuleConfig(basename(dirname(dirname(__FILE__))));
+		$imbloggingModuleConfig = icms_getModuleConfig(basename(dirname(__DIR__)));
 
 		if (!is_object(icms::$user)) {
 			return FALSE;

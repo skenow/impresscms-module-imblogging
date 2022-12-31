@@ -13,7 +13,7 @@
  */
 include_once '../../../include/cp_header.php';
 
-include_once ICMS_MODULES_PATH . '/' . basename(dirname(dirname(__FILE__))) . '/include/common.php';
+include_once ICMS_MODULES_PATH . '/' . basename(dirname(__DIR__)) . '/include/common.php';
 if (!defined("IMBLOGGING_ADMIN_URL")) define('IMBLOGGING_ADMIN_URL', IMBLOGGING_URL . "admin/");
 include_once IMBLOGGING_ROOT_PATH . 'include/requirements.php';
 

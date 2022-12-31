@@ -48,7 +48,7 @@ function editpost($post_id = 0) {
  */
 include_once "admin_header.php";
 
-$moddir = basename(dirname(dirname(__FILE__)));
+$moddir = basename(dirname(__DIR__));
 $imblogging_post_handler = icms_getModuleHandler('post', $moddir, 'imblogging');
 /**
  * Use a naming convention that indicates the source of the content of the variable

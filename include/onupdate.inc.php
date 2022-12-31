@@ -21,7 +21,7 @@
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
 // this needs to be the latest db version - and match the dirname
-define(strtoupper(basename(dirname(dirname(__FILE__)))) . '_DB_VERSION', 1);
+define(strtoupper(basename(dirname(__DIR__))) . '_DB_VERSION', 1);
 
 /*
  * it is possible to define custom functions which will be call when the module is updating at the

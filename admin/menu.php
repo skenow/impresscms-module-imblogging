@@ -13,7 +13,7 @@ $adminmenu[] = array(
 	'link' => "admin/post.php");
 
 if (isset(icms::$module)) {
-	$moddir = basename(dirname(dirname(__FILE__)));
+	$moddir = basename(dirname(__DIR__));
 
 	$headermenu[] = array(
 		'title' => _PREFERENCES,

@@ -24,7 +24,7 @@
 function imblogging_notify_iteminfo($category, $item_id) {
 	global $icmsModuleConfig, $icmsConfig;
 
-	$moddir = basename(dirname(dirname(__FILE__)));
+	$moddir = basename(dirname(__DIR__));
 
 	if ($category == 'global') {
 		$item['name'] = '';
