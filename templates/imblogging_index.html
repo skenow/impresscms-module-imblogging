@@ -1,39 +1,37 @@
-<{includeq file='db:imblogging_header.html'}>
-
-<{foreach item=imblogging_post from=$imblogging_posts}>
-	<div class="imblogging_post_container">
+<{includeq file='db:imblogging_header.html'}> <{foreach
+item=imblogging_post from=$imblogging_posts}>
+<div class="imblogging_post_container">
 
 	<div class="post-date">
-		<span class="month"><{$imblogging_post.post_month_short}></span>
-		<span class="day"><{$imblogging_post.post_day_number}></span>
+		<span class="month"><{$imblogging_post.post_month_short}></span> <span
+			class="day"><{$imblogging_post.post_day_number}></span>
 	</div>
-		<h2 class="post-title"><{$imblogging_post.itemLink}></h2>
-		<div class="imblogging_post_info"><{$imblogging_post.post_info}> <{$smarty.const._CO_IMBLOGGING_POST_BY}> <img src="<{$imblogging_images_url}>user.gif" alt="" /> <{$imblogging_post.post_uid}>
-		<{if $imblogging_post.categories}>
+	<h2 class="post-title"><{$imblogging_post.itemLink}></h2>
+	<div class="imblogging_post_info">
+		<{$imblogging_post.post_info}>
+		<{$smarty.const._CO_IMBLOGGING_POST_BY}> <img
+			src="<{$imblogging_images_url}>user.gif" alt="" />
+		<{$imblogging_post.post_uid}> <{if $imblogging_post.categories}>
 		<div class="left_main">
-		<div class="imblogging_post_filed_under"><{$smarty.const._CO_IMBLOGGING_FILED_UNDER}></div>
+			<div class="imblogging_post_filed_under"><{$smarty.const._CO_IMBLOGGING_FILED_UNDER}></div>
 			<div class="imblogging_post_categories">
 				<{foreach item=category from=$imblogging_post.categories name=loop}>
-					<a href="index.php?cid=<{$category.id}>"><{$category.title}></a><{if !$smarty.foreach.loop.last}>, <{/if}>
-			 	<{/foreach}>
-			 </div>
+				<a href="index.php?cid=<{$category.id}>"><{$category.title}></a><{if
+				!$smarty.foreach.loop.last}>, <{/if}> <{/foreach}>
+			</div>
 		</div>
-		<{/if}>
-		</div>
-		<div class="imblogging_post_content">
-			<{$imblogging_post.post_lead}>
-		</div>
-
-		<div class="imblogging_post_comments">
-			<{$imblogging_post.post_comment_info}>
-		</div>
-		<{if $imblogging_post.userCanEditAndDelete}>
-			<div class="imblogging_admin_links"><{$imblogging_post.editItemLink}><{$imblogging_post.deleteItemLink}></div>
 		<{/if}>
 	</div>
-<{/foreach}>
-<{if $navbar}>
-	<div id="imblogging_navbar"><{$smarty.const._MD_IMBLOGGING_NAV_PAGES}> <{$navbar}></div>
-<{/if}>
+	<div class="imblogging_post_content">
+		<{$imblogging_post.post_lead}></div>
 
-<{includeq file='db:imblogging_footer.html'}>
+	<div class="imblogging_post_comments">
+		<{$imblogging_post.post_comment_info}></div>
+	<{if $imblogging_post.userCanEditAndDelete}>
+	<div class="imblogging_admin_links"><{$imblogging_post.editItemLink}><{$imblogging_post.deleteItemLink}></div>
+	<{/if}>
+</div>
+<{/foreach}> <{if $navbar}>
+<div id="imblogging_navbar"><{$smarty.const._MD_IMBLOGGING_NAV_PAGES}>
+	<{$navbar}></div>
+<{/if}> <{includeq file='db:imblogging_footer.html'}>

@@ -1,14 +1,13 @@
 <?php
 /**
-* English language constants related to module information
-*
-* @copyright	http://smartfactory.ca The SmartFactory
-* @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
-* @since		1.0
-* @author		marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
-* @version		$Id$
-*/
-
+ * English language constants related to module information
+ *
+ * @copyright http://smartfactory.ca The SmartFactory
+ * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
+ * @since 1.0
+ * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
+ * @version $Id$
+ */
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
 // Module Info
@@ -19,7 +18,6 @@ define("_MI_IMBLOGGING_MD_NAME", "Blog");
 define("_MI_IMBLOGGING_MD_DESC", "ImpressCMS - einfaches Blog Modul");
 
 define("_MI_IMBLOGGING_POSTS", "Beiträge");
-
 
 // Configs
 define("_MI_IMBLOGGING_POSTERGR", "Gruppen die Beiträge schreiben dürfen");
