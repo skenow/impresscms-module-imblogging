@@ -378,7 +378,7 @@ class ImbloggingPost extends icms_ipf_seo_Object {
 		if ($imblogging_isAdmin) {
 			return true;
 		}
-		return $this->getVar('post_uid', 'e') == icms::$user->uid();
+		return $this->getVar('post_uid', 'e') == icms::$user->getVar('uid');
 	}
 
 	/**
