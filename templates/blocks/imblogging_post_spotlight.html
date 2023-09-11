@@ -1,11 +1,13 @@
-<{foreach item=imblogging_post from=$block.posts name=post}> <{if
-$smarty.foreach.post.first}> <{$imblogging_post.itemLink}>
-<br />
-<{$imblogging_post.post_lead}>
-<br style="clear: both;" />
-<hr />
-<ul>
+<{foreach item=imblogging_post from=$block.posts name=post}> 
+	<{if $smarty.foreach.post.first}> <{$imblogging_post.itemLink}>
+		<br />
+		<{$imblogging_post.post_lead}>
+		<br style="clear: both;" />
+		<hr />
+		<ul>
 	<{else}>
-	<li><{$imblogging_post.itemLink}><br />
-	</li> <{/if}> <{/foreach}>
+		<li><{$imblogging_post.itemLink}><br />
+		</li> 
+	<{/if}> 
+<{/foreach}>
 </ul>

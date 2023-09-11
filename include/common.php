@@ -6,11 +6,11 @@
  * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
  * @since 1.0
  * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
- * @version $Id$
+ * 
  */
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
-if (!defined("IMBLOGGING_DIRNAME")) define("IMBLOGGING_DIRNAME", $modversion['dirname'] = basename(dirname(dirname(__FILE__))));
+if (!defined("IMBLOGGING_DIRNAME")) define("IMBLOGGING_DIRNAME", $modversion['dirname'] = basename(dirname(__DIR__)));
 if (!defined("IMBLOGGING_URL")) define("IMBLOGGING_URL", ICMS_MODULES_URL . '/' . IMBLOGGING_DIRNAME . '/');
 if (!defined("IMBLOGGING_ROOT_PATH")) define("IMBLOGGING_ROOT_PATH", ICMS_MODULES_PATH . '/' . IMBLOGGING_DIRNAME . '/');
 if (!defined("IMBLOGGING_IMAGES_URL")) define("IMBLOGGING_IMAGES_URL", IMBLOGGING_URL . 'images/');

@@ -7,7 +7,7 @@
  * @since 1.0
  * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
  * @package imblogging
- * @version $Id$
+ *
  */
 /**
  * Include the module's header for all pages
@@ -22,10 +22,10 @@ include_once ICMS_ROOT_PATH . '/header.php';
 
 // At which record shall we start display
 $clean_start = isset($_GET['start']) ? (int) $_GET['start'] : 0;
-$clean_post_uid = isset($_GET['uid']) ? (int) $_GET['uid'] : FALSE;
-$clean_year = isset($_GET['y']) ? (int) $_GET['y'] : FALSE;
-$clean_month = isset($_GET['m']) ? (int) $_GET['m'] : FALSE;
-$clean_cid = isset($_GET['cid']) ? (int) $_GET['cid'] : FALSE;
+$clean_post_uid = isset($_GET['uid']) ? (int) $_GET['uid'] : false;
+$clean_year = isset($_GET['y']) ? (int) $_GET['y'] : false;
+$clean_month = isset($_GET['m']) ? (int) $_GET['m'] : false;
+$clean_cid = isset($_GET['cid']) ? (int) $_GET['cid'] : false;
 $Basic_Check = defined('_CALENDAR_TYPE') && _CALENDAR_TYPE == "jalali" && $icmsConfig['use_ext_date'] == 1;
 if (!empty($_GET['y']) && !empty($_GET['m']) && $Basic_Check) {
 	$jyear = $clean_year;
@@ -37,7 +37,7 @@ if (!empty($_GET['y']) && !empty($_GET['m']) && $Basic_Check) {
 
 $imblogging_post_handler = icms_getModuleHandler('post', $moddir, 'imblogging');
 
-$icmsTpl->assign('imblogging_posts', $imblogging_post_handler->getPosts($clean_start, $icmsModuleConfig['posts_limit'], $clean_post_uid, $clean_cid, $clean_year, $clean_month));
+$icmsTpl->assign('imblogging_posts', $imblogging_post_handler->getPosts($clean_start, icms::$module->config['posts_limit'], $clean_post_uid, $clean_cid, $clean_year, $clean_month));
 /**
  * Create Navbar
  */
@@ -81,15 +81,15 @@ if ($clean_year && $clean_month) {
 
 $extr_arg = count($extr_argArray) > 0 ? implode('&amp;', $extr_argArray) : '';
 
-$pagenav = new icms_view_PageNav($posts_count, $icmsModuleConfig['posts_limit'], $clean_start, 'start', $extr_arg);
+$pagenav = new icms_view_PageNav($posts_count, icms::$module->config['posts_limit'], $clean_start, 'start', $extr_arg);
 $icmsTpl->assign('navbar', $pagenav->renderNav());
 
-$icmsTpl->assign('imblogging_module_home', icms_getModuleName(TRUE, TRUE));
+$icmsTpl->assign('imblogging_module_home', icms_getModuleName(true, true));
 
-$category_path = count($category_pathArray) > 0 ? implode(' > ', $category_pathArray) : FALSE;
+$category_path = count($category_pathArray) > 0 ? implode(' > ', $category_pathArray) : false;
 $icmsTpl->assign('imblogging_category_path', $category_path);
 
-$icmsTpl->assign('imblogging_showSubmitLink', TRUE);
+$icmsTpl->assign('imblogging_showSubmitLink', true);
 
 /**
  * Include the module's footer

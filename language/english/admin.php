@@ -6,7 +6,7 @@
  * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
  * @since 1.0
  * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
- * @version $Id$
+ * 
  */
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
@@ -15,7 +15,7 @@ define("_AM_IMBLOGGING_REQUIREMENTS", "imBlogging Requirements");
 define("_AM_IMBLOGGING_REQUIREMENTS_INFO", "We've reviewed your system, unfortunately it doesn't meet all the requirements needed for imBlogging to function. Below are the requirements needed.");
 define("_AM_IMBLOGGING_REQUIREMENTS_ICMS_BUILD", "imBlogging requires at least ImpressCMS %s");
 define("_AM_IMBLOGGING_REQUIREMENTS_IMTAGGING", "imBlogging requires imTagging to be installed. Please get it from ImpressCMS SVN.");
-define("_AM_IMBLOGGING_REQUIREMENTS_SUPPORT", "Should you have any question or concerns, please visit our forums at <a href='http://community.impresscms.org'>http://community.impresscms.org</a>.");
+define("_AM_IMBLOGGING_REQUIREMENTS_SUPPORT", "Should you have any question or concerns, please visit our forums at <a href='https://www.impresscms.org/modules/iforum/'>https://www.impresscms.org/modules/iforum/</a>.");
 
 // general
 define("_AM_IMBLOGGING_POSTS", "Posts");

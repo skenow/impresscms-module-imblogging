@@ -7,7 +7,7 @@
  * @since 1.0
  * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
  * @translation    McDonald
- * @version $Id$
+ *
  */
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
@@ -19,7 +19,7 @@ define("_CO_IMBLOGGING_POST_POST_TITLE_DSC", "");
 define("_CO_IMBLOGGING_POST_POST_CONTENT", "Inhoud");
 define("_CO_IMBLOGGING_POST_POST_CONTENT_DSC", "");
 define("_CO_IMBLOGGING_POST_POST_PUBLISHED_DATE", "Datum");
-define("_CO_IMBLOGGING_POST_POST_PUBLISHED_DATE_DSC", "");
+define("_CO_IMBLOGGING_POST_POST_PUBLISHED_DATE_DSC", "By setting a future date and time, you can schedule when posts appear");
 define("_CO_IMBLOGGING_POST_POST_UID", "Inzender");
 define("_CO_IMBLOGGING_POST_POST_UID_DSC", "");
 define("_CO_IMBLOGGING_POST_POST_STATUS", "Status");

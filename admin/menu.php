@@ -1,19 +1,19 @@
 <?php
 /**
- * Configuring the amdin side menu for the module
+ * Configuring the admin side menu for the module
  *
  * @copyright http://smartfactory.ca The SmartFactory
  * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
  * @since 1.0
  * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
- * @version $Id$
+ *
  */
 $adminmenu[] = array(
 	'title' => _MI_IMBLOGGING_POSTS,
 	'link' => "admin/post.php");
 
 if (isset(icms::$module)) {
-	$moddir = basename(dirname(dirname(__FILE__)));
+	$moddir = basename(dirname(__DIR__));
 
 	$headermenu[] = array(
 		'title' => _PREFERENCES,

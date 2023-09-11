@@ -7,7 +7,7 @@
  * @since 1.0
  * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
  * @package imblogging
- * @version $Id$
+ * 
  */
 /**
  * Include the module's header for all pages
@@ -15,8 +15,8 @@
 include_once 'header.php';
 include_once ICMS_ROOT_PATH . '/header.php';
 
-$clean_post_uid = isset($_GET['uid']) ? (int) $_GET['uid'] : FALSE;
-$clean_cat_id = isset($_GET['cid']) ? (int) $_GET['cid'] : FALSE;
+$clean_post_uid = isset($_GET['uid']) ? (int) $_GET['uid'] : false;
+$clean_cat_id = isset($_GET['cid']) ? (int) $_GET['cid'] : false;
 
 $imblogging_feed = new icms_feeds_Rss();
 

@@ -7,7 +7,7 @@
  * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
  * @since 1.0
  * @author Sina Asghari (aka stranger) <pesian_stranger@users.sourceforge.net>
- * @version $Id$
+ * 
  */
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
@@ -16,7 +16,7 @@ define("_AM_IMBLOGGING_REQUIREMENTS", "نیازمندی‌های ماژول");
 define("_AM_IMBLOGGING_REQUIREMENTS_INFO", "ما سیستم شما را بررسی کردیم، متاسفانه شما تمامی امکانات مورد نیاز را ندارید. برای به کار انداختن این ماژول باید موارد زیر را داشته باشید.");
 define("_AM_IMBLOGGING_REQUIREMENTS_ICMS_BUILD", "این ماژول برای کار به ایمپرس سی‌ام‌اس ۱.۱.۱ نیازمند است.");
 define("_AM_IMBLOGGING_REQUIREMENTS_IMTAGGING", "این ماژول نیاز به ماژول تگ . برچسب‌های ایمپرس سی‌ام‌اس دارد.");
-define("_AM_IMBLOGGING_REQUIREMENTS_SUPPORT", "برای هرگونه سوال به انجمن ایمپرس سی‌ام‌اس در <a href='http://community.impresscms.org'>http://community.impresscms.org</a> مراجعه نمایید.");
+define("_AM_IMBLOGGING_REQUIREMENTS_SUPPORT", "برای هرگونه سوال به انجمن ایمپرس سی‌ام‌اس در <a href='https://www.impresscms.org/modules/iforum/'>https://www.impresscms.org/modules/iforum/</a> مراجعه نمایید.");
 
 // general
 define("_AM_IMBLOGGING_POSTS", "پیام‌ها");

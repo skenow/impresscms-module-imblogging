@@ -6,7 +6,7 @@
  * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
  * @since 1.0
  * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
- * @version $Id$ Russian translation. Charset: utf-8 (without BOM)
+ *  Russian translation. Charset: utf-8 (without BOM)
  */
 if (!defined("ICMS_ROOT_PATH")) die("Не определен корневой путь к ICMS");
 
@@ -15,7 +15,7 @@ define("_AM_IMBLOGGING_REQUIREMENTS", "Требования imBlogging");
 define("_AM_IMBLOGGING_REQUIREMENTS_INFO", "Мы просмотрели Вашу систему, к сожалению она не содержит всего необходимого для функционирования модуля imBlogging. Ниже представлены необходимые требования.");
 define("_AM_IMBLOGGING_REQUIREMENTS_ICMS_BUILD", "Для правильного функционирования модуля imBlogging требуется версия не ниже ImpressCMS 1.1.1 RC 1.");
 define("_AM_IMBLOGGING_REQUIREMENTS_IMTAGGING", "Для функционирования модуля imBlogging необходимо установить модуль imTagging. Пожалуйста, возьмите этот модуль в ImpressCMS SVN-депозитарии.");
-define("_AM_IMBLOGGING_REQUIREMENTS_SUPPORT", "Если у Вас имеются вопросы или пожелания, пожалуйста, посетите наш форум на сайте <a href='http://community.impresscms.org'>http://community.impresscms.org</a>.");
+define("_AM_IMBLOGGING_REQUIREMENTS_SUPPORT", "Если у Вас имеются вопросы или пожелания, пожалуйста, посетите наш форум на сайте <a href='https://www.impresscms.org/modules/iforum/'>https://www.impresscms.org/modules/iforum/</a>.");
 
 // general
 define("_AM_IMBLOGGING_POSTS", "Сообщения");

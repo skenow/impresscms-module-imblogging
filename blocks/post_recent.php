@@ -8,12 +8,12 @@
  * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
  * @since 1.0
  * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
- * @version $Id$
+ * 
  */
 defined("ICMS_ROOT_PATH") || die("ICMS root path not defined");
 
 function imblogging_post_recent_show($options) {
-	$moddir = basename(dirname(dirname(__FILE__)));
+	$moddir = basename(dirname(__DIR__));
 	include_once ICMS_MODULES_PATH . '/' . $moddir . '/include/common.php';
 	$imblogging_post_handler = icms_getModuleHandler('post', $moddir, 'imblogging');
 	$block['posts'] = $imblogging_post_handler->getPosts(0, $options[0]);
@@ -22,7 +22,7 @@ function imblogging_post_recent_show($options) {
 }
 
 function imblogging_post_recent_edit($options) {
-	$moddir = basename(dirname(dirname(__FILE__)));
+	$moddir = basename(dirname(__DIR__));
 	include_once ICMS_MODULES_PATH . '/' . $moddir . '/include/common.php';
 
 	$form = '<table><tr>';

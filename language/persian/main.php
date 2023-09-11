@@ -7,7 +7,7 @@
  * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
  * @since 1.0
  * @author Sina Asghari (aka stranger) <pesian_stranger@users.sourceforge.net>
- * @version $Id$
+ * 
  */
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 

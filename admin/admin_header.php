@@ -9,11 +9,11 @@
  * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
  * @since 1.0
  * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
- * @version $Id$
+ * 
  */
 include_once '../../../include/cp_header.php';
 
-include_once ICMS_MODULES_PATH . '/' . basename(dirname(dirname(__FILE__))) . '/include/common.php';
+include_once ICMS_MODULES_PATH . '/' . basename(dirname(__DIR__)) . '/include/common.php';
 if (!defined("IMBLOGGING_ADMIN_URL")) define('IMBLOGGING_ADMIN_URL', IMBLOGGING_URL . "admin/");
 include_once IMBLOGGING_ROOT_PATH . 'include/requirements.php';
 

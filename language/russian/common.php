@@ -6,7 +6,7 @@
  * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
  * @since 1.0
  * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
- * @version $Id$ Russian translation. Charset: utf-8 (without BOM)
+ *  Russian translation. Charset: utf-8 (without BOM)
  */
 if (!defined("ICMS_ROOT_PATH")) die("Не определен корневой путь к ICMS");
 
@@ -18,7 +18,7 @@ define("_CO_IMBLOGGING_POST_POST_TITLE_DSC", "");
 define("_CO_IMBLOGGING_POST_POST_CONTENT", "Контент");
 define("_CO_IMBLOGGING_POST_POST_CONTENT_DSC", "");
 define("_CO_IMBLOGGING_POST_POST_PUBLISHED_DATE", "Дата");
-define("_CO_IMBLOGGING_POST_POST_PUBLISHED_DATE_DSC", "");
+define("_CO_IMBLOGGING_POST_POST_PUBLISHED_DATE_DSC", "By setting a future date and time, you can schedule when posts appear");
 define("_CO_IMBLOGGING_POST_POST_UID", "Отправитель");
 define("_CO_IMBLOGGING_POST_POST_UID_DSC", "");
 define("_CO_IMBLOGGING_POST_POST_STATUS", "Статус");

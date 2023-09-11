@@ -2,7 +2,7 @@
 	<ul>
 		<{foreach item=posts_by_month from=$block.posts_by_months}>
 		<li><a
-			href="<{$xoops_url}>/modules/<{$block.dirname}>/index.php?y=<{$posts_by_month.posts_year_nr}>&m=<{$posts_by_month.posts_month_nr}>"><{$posts_by_month.posts_month_name}>
+			href="<{$icms_url}>/modules/<{$block.dirname}>/index.php?y=<{$posts_by_month.posts_year_nr}>&m=<{$posts_by_month.posts_month_nr}>"><{$posts_by_month.posts_month_name}>
 				<{$posts_by_month.posts_year_name}>
 				(<{$posts_by_month.posts_count}>)</li>
 		</a> <{/foreach}>

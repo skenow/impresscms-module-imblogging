@@ -7,7 +7,7 @@
  * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
  * @since 1.0
  * @author Sina Asghari (aka stranger) <pesian_stranger@users.sourceforge.net>
- * @version $Id$
+ *
  */
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
@@ -19,7 +19,7 @@ define("_CO_IMBLOGGING_POST_POST_TITLE_DSC", "");
 define("_CO_IMBLOGGING_POST_POST_CONTENT", "متن");
 define("_CO_IMBLOGGING_POST_POST_CONTENT_DSC", "");
 define("_CO_IMBLOGGING_POST_POST_PUBLISHED_DATE", "تاریخ");
-define("_CO_IMBLOGGING_POST_POST_PUBLISHED_DATE_DSC", "");
+define("_CO_IMBLOGGING_POST_POST_PUBLISHED_DATE_DSC", "By setting a future date and time, you can schedule when posts appear");
 define("_CO_IMBLOGGING_POST_POST_UID", "نویسنده");
 define("_CO_IMBLOGGING_POST_POST_UID_DSC", "");
 define("_CO_IMBLOGGING_POST_POST_STATUS", "وضعیت");

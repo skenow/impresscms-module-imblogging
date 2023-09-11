@@ -16,12 +16,12 @@
  * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
  * @since 1.0
  * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
- * @version $Id$
+ * 
  */
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
 // this needs to be the latest db version - and match the dirname
-define(strtoupper(basename(dirname(dirname(__FILE__)))) . '_DB_VERSION', 1);
+define(strtoupper(basename(dirname(__DIR__))) . '_DB_VERSION', 1);
 
 /*
  * it is possible to define custom functions which will be call when the module is updating at the
@@ -46,7 +46,7 @@ function icms_module_update_imblogging($module) {
 	 */
 	$icmsDatabaseUpdater = icms_db_legacy_Factory::getDatabaseUpdater();
 	$icmsDatabaseUpdater->moduleUpgrade($module);
-	return TRUE;
+	return true;
 }
 
 /**
@@ -55,5 +55,5 @@ function icms_module_update_imblogging($module) {
  * @param unknown_type $module
  */
 function icms_module_install_imblogging($module) {
-	return TRUE;
+	return true;
 }
