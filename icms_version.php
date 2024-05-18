@@ -194,6 +194,14 @@ $modversion['config'][] = array(
 	'valuetype' => 'text',
 	'default' => 5);
 
+$modversion['config'][] = array(
+    'name' => 'show_mod_name_breadcrumb',
+    'title' => '_MI_IMBLOGGING_MODNAME_BREADCRUMB',
+    'description' => '_MI_IMBLOGGING_MODNAME_BREADCRUMB_DSC',
+    'formtype' => 'yesno',
+    'valuetype' => 'int',
+    'default' => 1);
+
 /**
  * Comments information
  */

@@ -26,6 +26,8 @@ define("_MI_IMBLOGGING_POSTERGR", "Groups allowed to posts");
 define("_MI_IMBLOGGING_POSTERGRDSC", "Select the groups which are allowed to create new posts. Please note that a user belonging to one of these groups will be able to post directly on the site. The module currently has no moderation feature.");
 define("_MI_IMBLOGGING_LIMIT", "Posts limit");
 define("_MI_IMBLOGGING_LIMITDSC", "Number of posts to display on user side.");
+define('_MI_IMBLOGGING_MODNAME_BREADCRUMB', 'Include Module Name in Breadcrumb and Title');
+define('_MI_IMBLOGGING_MODNAME_BREADCRUMB_DSC', 'Do you want the module name included as part of the paget title?');
 
 // Blocks
 define("_MI_IMBLOGGING_POSTRECENT", "Recent posts");
