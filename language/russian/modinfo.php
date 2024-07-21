@@ -25,6 +25,14 @@ define("_MI_IMBLOGGING_POSTERGRDSC", "Выбор групп, которым ра
 define("_MI_IMBLOGGING_LIMIT", "Ограничения сообщений");
 define("_MI_IMBLOGGING_LIMITDSC", "Кол-во сообщений для показа пользователям.");
 
+// For IPF Metagen
+define('_MI_IMBLOGGING_MODNAME_BREADCRUMB', 'Include Module Name in Breadcrumb and Title');
+define('_MI_IMBLOGGING_MODNAME_BREADCRUMB_DSC', 'Do you want the module name included as part of the paget title?');
+define('_MI_IMBLOGGING_METADESC', "Module's Meta Description");
+define('_MI_IMBLOGGING_METADESC_DSC', 'The meta description to be used for the main page of the module');
+define('_MI_IMBLOGGING_KEYWORDS', 'Default keywords for the module');
+define('_MI_IMBLOGGING_KEYWORDS_DSC', 'The meta keywords to be used for the main page of the module');
+
 // Blocks
 define("_MI_IMBLOGGING_POSTRECENT", "Новейшие сообщения");
 define("_MI_IMBLOGGING_POSTRECENTDSC", "Показать самые новые сообщения");

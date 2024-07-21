@@ -6,7 +6,7 @@
  * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
  * @since 1.0
  * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
- * 
+ *
  * @translation        GibaPhp - http://br.impresscms.org
  */
 if (!defined("ICMS_ROOT_PATH")) die("O caminho para o raiz do site não foi definido");
@@ -25,6 +25,14 @@ define("_MI_IMBLOGGING_POSTERGR", "Grupos permitidos para enviar Blogs");
 define("_MI_IMBLOGGING_POSTERGRDSC", "Selecione os grupos que têm permissão para criar novos Blogs. Observe que um usuário que pertença a um destes grupos será capaz de enviar diretamente um Blog para o site. O módulo atualmente ainda não tem nenhum recurso moderação.");
 define("_MI_IMBLOGGING_LIMIT", "Limite de Blogs");
 define("_MI_IMBLOGGING_LIMITDSC", "Número de Blogs visualizados na área de usuário.");
+
+// For IPF Metagen
+define('_MI_IMBLOGGING_MODNAME_BREADCRUMB', 'Include Module Name in Breadcrumb and Title');
+define('_MI_IMBLOGGING_MODNAME_BREADCRUMB_DSC', 'Do you want the module name included as part of the paget title?');
+define('_MI_IMBLOGGING_METADESC', "Module's Meta Description");
+define('_MI_IMBLOGGING_METADESC_DSC', 'The meta description to be used for the main page of the module');
+define('_MI_IMBLOGGING_KEYWORDS', 'Default keywords for the module');
+define('_MI_IMBLOGGING_KEYWORDS_DSC', 'The meta keywords to be used for the main page of the module');
 
 // Blocks
 define("_MI_IMBLOGGING_POSTRECENT", "Blogs Recentes");

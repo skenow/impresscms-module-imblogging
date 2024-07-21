@@ -42,17 +42,32 @@ $icmsTpl->assign('imblogging_posts', $imblogging_post_handler->getPosts($clean_s
  * Create Navbar
  */
 $posts_count = $imblogging_post_handler->getPostsCount($clean_post_uid, $clean_cid, $clean_year, $clean_month);
+
+// Initialize some variables
+$category_meta_description = $category_meta_keywords = '';
 $extr_argArray = array();
 $category_pathArray = array();
+$title_combined = array();
 
 if ($clean_post_uid) {
+	$imb_user_handler = new icms_member_user_Handler(icms::$xoopsDB);
+	$author = $imb_user_handler->get($clean_post_uid);
+	
 	$imblogging_poster_link = icms_member_user_Handler::getUserLink($clean_post_uid);
 	$extr_arg = 'uid=' . $clean_post_uid;
 	$rss_url .= '?' . $extr_arg;
 	$rss_info = _MD_IMBLOGGING_RSS_POSTER;
 
 	$extr_argArray[] = $extr_arg;
-	$category_pathArray[] = sprintf(_CO_IMBLOGGING_POST_FROM_USER, icms_member_user_Handler::getUserLink($clean_post_uid));
+	// removed code duplication here - icms_member_user_Handler::getUserLink($clean_post_uid) was called a 2nd time
+	$category_pathArray[] = sprintf(_CO_IMBLOGGING_POST_FROM_USER, $imblogging_poster_link);
+	
+	// get information to use for meta properties when filtered by author
+	$author_name = $author->getVar('uname');
+	$title_combined['author'] = sprintf(_CO_IMBLOGGING_POST_FROM_USER, $author_name);
+	// what can be used for meta description when showing posts by an author? Their bio (extra info) from their profile?
+	$author_bio = $author->getVar('bio');
+	
 } else {
 	$rss_info = _MD_IMBLOGGING_RSS_GLOBAL;
 	$extr_arg = '';
@@ -66,6 +81,12 @@ if ($clean_cid) {
 	$category_name = $imtagging_category_handler->getCategoryName($clean_cid);
 	$category_pathArray[] = $category_name;
 	$extr_argArray[] = 'cid=' . $clean_cid;
+	
+	// category meta information
+	$categoryObj = $imtagging_category_handler->get($clean_cid);
+	$category_meta_description = $categoryObj->getVar('meta_description');
+	$category_meta_keywords = $categoryObj->getVar('meta_keywords');
+	$title_combined['category'] = $category_name;
 }
 if ($clean_year && $clean_month) {
 	if ($Basic_Check) {
@@ -76,7 +97,8 @@ if ($clean_year && $clean_month) {
 		$clean_year = icms_conv_nr2local($jyear);
 		$clean_month = $jmonth;
 	}
-	$category_pathArray[] = sprintf(_CO_IMBLOGGING_POST_FROM_MONTH, Icms_getMonthNameById($clean_month), $clean_year);
+	$category_pathArray[] = sprintf(_CO_IMBLOGGING_POST_FROM_MONTH, icms_getMonthNameById($clean_month), $clean_year);
+	$title_combined['date'] = sprintf(_CO_IMBLOGGING_POST_FROM_MONTH, icms_getMonthNameById($clean_month), $clean_year);
 }
 
 $extr_arg = count($extr_argArray) > 0 ? implode('&amp;', $extr_argArray) : '';
@@ -90,6 +112,41 @@ $category_path = count($category_pathArray) > 0 ? implode(' > ', $category_pathA
 $icmsTpl->assign('imblogging_category_path', $category_path);
 
 $icmsTpl->assign('imblogging_showSubmitLink', true);
+
+/**
+ *  Generating meta information for this page
+ *  This page will generate several 'pages'
+ *  As the number of posts increases, there will be multiple pages
+ *  The page can also be filtered by category (imTagging) - which has its own meta properties
+ *  And, you can get a list of posts by an author
+ *  We need to account for all these to provide unique page titles for them all (at a minimum)
+ */
+
+// some combination of the module, category, author, and page #
+// ideally - an array of different parts of the title to be assembled based on preferences set
+// for now let's just use the module name
+$page_title = icms_getModuleName(false);
+
+// some combination of the module, category, author, and page #
+// if empty - icms_ipf_Metagen->createMetaKeywords() uses the title and description
+$page_keywords = icms::$module->config['module_meta_keywords'];
+
+// some combination of the module, category, author, and page #
+// by default, if nothing is provided for this, icms_ipf_Metagen->setDescription() will use the module's meta description
+if (!empty($category_meta_description)) {
+	$page_description = $category_meta_description;
+} elseif (!empty($author_bio)) {
+	$page_description = $author_bio;
+} else {
+	$page_description = icms::$module->config['module_meta_description'];
+}
+
+// icms_ipf_Metagen takes 4 arguments - the last is 'categoryPath'
+$page_category_path = $category_path;
+
+// Generating meta information for this page
+$icms_metagen = new icms_ipf_Metagen($page_title, $page_keywords, $page_description, $page_category_path);
+$icms_metagen->createMetaTags();
 
 /**
  * Include the module's footer

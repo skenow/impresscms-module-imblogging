@@ -9,7 +9,7 @@
  * @since 1.0
  * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
  * @package imblogging
- * 
+ *
  */
 defined("ICMS_ROOT_PATH") || die("ICMS root path not defined");
 
@@ -193,6 +193,30 @@ $modversion['config'][] = array(
 	'formtype' => 'textbox',
 	'valuetype' => 'text',
 	'default' => 5);
+
+$modversion['config'][] = array(
+    'name' => 'show_mod_name_breadcrumb',
+    'title' => '_MI_IMBLOGGING_MODNAME_BREADCRUMB',
+    'description' => '_MI_IMBLOGGING_MODNAME_BREADCRUMB_DSC',
+    'formtype' => 'yesno',
+    'valuetype' => 'int',
+    'default' => 1);
+
+$modversion['config'][] = array(
+	'name' => 'module_meta_keywords',
+	'title' => '_MI_IMBLOGGING_KEYWORDS',
+	'description' => '_MI_IMBLOGGING_KEYWORDS_DSC',
+	'formtype' => 'textbox',
+	'valuetype' => 'text',
+	'default' => '');
+
+$modversion['config'][] = array(
+	'name' => 'module_meta_description',
+	'title' => '_MI_IMBLOGGING_METADESC',
+	'description' => '_MI_IMBLOGGING_METADESC_DSC',
+	'formtype' => 'textbox',
+	'valuetype' => 'text',
+	'default' => '');
 
 /**
  * Comments information

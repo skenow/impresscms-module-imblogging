@@ -6,7 +6,7 @@
  * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
  * @since 1.0
  * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
- * 
+ *
  */
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
@@ -24,6 +24,14 @@ define("_MI_IMBLOGGING_POSTERGR", "Grupos a los que se permite publicar artícul
 define("_MI_IMBLOGGING_POSTERGRDSC", "Seleccione los grupos de usuarios que pueden publicar nuevos artículos. Tenga en cuenta que un usuario perteneciente a cualquiera de los grupos que elija podrá publicar directamente en el sitio web y que el módulo actualmente no tiene la característica de moderar los envios..");
 define("_MI_IMBLOGGING_LIMIT", "Límite de artículos");
 define("_MI_IMBLOGGING_LIMITDSC", "Número de artículos que se mostrarán en el sitio.");
+
+// For IPF Metagen
+define('_MI_IMBLOGGING_MODNAME_BREADCRUMB', 'Include Module Name in Breadcrumb and Title');
+define('_MI_IMBLOGGING_MODNAME_BREADCRUMB_DSC', 'Do you want the module name included as part of the paget title?');
+define('_MI_IMBLOGGING_METADESC', "Module's Meta Description");
+define('_MI_IMBLOGGING_METADESC_DSC', 'The meta description to be used for the main page of the module');
+define('_MI_IMBLOGGING_KEYWORDS', 'Default keywords for the module');
+define('_MI_IMBLOGGING_KEYWORDS_DSC', 'The meta keywords to be used for the main page of the module');
 
 // Blocks
 define("_MI_IMBLOGGING_POSTRECENT", "Artículos recientes");
