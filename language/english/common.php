@@ -30,7 +30,7 @@ define("_CO_IMBLOGGING_POST_ALL_POSTS", "All posts");
 define("_CO_IMBLOGGING_POST_POST_REFERENCE", "Reference of this post");
 
 define("_CO_IMBLOGGING_POST_INFO", "Published by %s on %s.");
-define("_CO_IMBLOGGING_POST_FROM_USER", "All posts of %s");
+define("_CO_IMBLOGGING_POST_FROM_USER", "All posts by %s");
 define("_CO_IMBLOGGING_POST_FROM_MONTH", "All posts made in %s %u");
 define("_CO_IMBLOGGING_POST_COMMENTS_INFO", "%d comments");
 define("_CO_IMBLOGGING_POST_NO_COMMENT", "No comment");

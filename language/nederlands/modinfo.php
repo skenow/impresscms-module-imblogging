@@ -7,7 +7,7 @@
  * @since 1.0
  * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
  * @translation    McDonald
- * 
+ *
  */
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
@@ -25,6 +25,14 @@ define("_MI_IMBLOGGING_POSTERGR", "Groeps toegestaan om te posten");
 define("_MI_IMBLOGGING_POSTERGRDSC", "Selecteer de groepen die nieuwe berichten mogen inzenden. Gelieve op te merken op dat een gebruiker die tot één van deze groepen behoort direct op de plaats zal kunnen posten. De module heeft momenteel geen modificatie optie.");
 define("_MI_IMBLOGGING_LIMIT", "Berichten limiet");
 define("_MI_IMBLOGGING_LIMITDSC", "Aantal berichten weer te geven aan gebruikers zijde.");
+
+// For IPF Metagen
+define('_MI_IMBLOGGING_MODNAME_BREADCRUMB', 'Include Module Name in Breadcrumb and Title');
+define('_MI_IMBLOGGING_MODNAME_BREADCRUMB_DSC', 'Do you want the module name included as part of the paget title?');
+define('_MI_IMBLOGGING_METADESC', "Module's Meta Description");
+define('_MI_IMBLOGGING_METADESC_DSC', 'The meta description to be used for the main page of the module');
+define('_MI_IMBLOGGING_KEYWORDS', 'Default keywords for the module');
+define('_MI_IMBLOGGING_KEYWORDS_DSC', 'The meta keywords to be used for the main page of the module');
 
 // Blocks
 define("_MI_IMBLOGGING_POSTRECENT", "Recente berichten");
