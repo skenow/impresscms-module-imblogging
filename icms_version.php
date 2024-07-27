@@ -50,17 +50,18 @@ $modversion = array(
 /**
  * Contributors
  */
-$modversion['people']['developers'][] = "[url=https://www.impresscms.org/userinfo.php?uid=168]marcan[/url] (Marc-Andr&eacute; Lanciault)";
-$modversion['people']['developers'][] = "[url=https://www.impresscms.org/userinfo.php?uid=392]stranger[/url] (Sina Asghari)";
-$modversion['people']['developers'][] = "[url=https://www.impresscms.org/userinfo.php?uid=69]vaughan[/url]";
-$modversion['people']['developers'][] = "[url=https://www.impresscms.org/userinfo.php?uid=54]skenow[/url]";
-$modversion['people']['developers'][] = "[url=https://www.impresscms.org/userinfo.php?uid=10]sato-san[/url]";
-$modversion['people']['testers'][] = "[url=https://www.impresscms.org/userinfo.php?uid=53]davidl2[/url]";
-$modversion['people']['testers'][] = "[url=https://www.impresscms.org/userinfo.php?uid=340]nekro[/url]";
-$modversion['people']['translators'][] = "[url=https://www.impresscms.org/userinfo.php?uid=392]stranger[/url] (Sina Asghari)";
-$modversion['people']['translators'][] = "[url=https://www.impresscms.org/userinfo.php?uid=10]sato-san[/url]";
-$modversion['people']['translators'][] = "[url=https://www.impresscms.org/userinfo.php?uid=179]McDonald[/url]";
-$modversion['people']['translators'][] = "[url=https://www.impresscms.org/userinfo.php?uid=14]GibaPhp[/url]";
+$modversion['people']['developers'][] = array(
+	"[url=https://www.impresscms.org/userinfo.php?uid=168]marcan[/url] (Marc-Andr&eacute; Lanciault)",
+	"[url=https://www.impresscms.org/userinfo.php?uid=392]stranger[/url] (Sina Asghari)",
+	"[url=https://www.impresscms.org/userinfo.php?uid=69]vaughan[/url]",
+	"[url=https://www.impresscms.org/userinfo.php?uid=54]skenow[/url]",
+	"[url=https://www.impresscms.org/userinfo.php?uid=10]sato-san[/url]");
+$modversion['people']['testers'][] = array("[url=https://www.impresscms.org/userinfo.php?uid=53]davidl2[/url]",
+	"[url=https://www.impresscms.org/userinfo.php?uid=340]nekro[/url]");
+$modversion['people']['translators'][] = array("[url=https://www.impresscms.org/userinfo.php?uid=392]stranger[/url] (Sina Asghari)",
+	"[url=https://www.impresscms.org/userinfo.php?uid=10]sato-san[/url]",
+	"[url=https://www.impresscms.org/userinfo.php?uid=179]McDonald[/url]",
+	"[url=https://www.impresscms.org/userinfo.php?uid=14]GibaPhp[/url]");
 $modversion['people']['documenters'][] = "[url=https://www.impresscms.org/userinfo.php?uid=372]UnderDog[/url]";
 //$modversion['people']['other'][] = "";
 
