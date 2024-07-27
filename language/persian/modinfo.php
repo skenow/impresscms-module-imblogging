@@ -14,7 +14,6 @@ if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 // Module Info
 // The name of this module
 
-global $icmsModule;
 define("_MI_IMBLOGGING_MD_NAME", "وبلاگ");
 define("_MI_IMBLOGGING_MD_DESC", "ماژولی برای وبلاگ نویسی در ایمپرس سی‌ام‌اس");
 
@@ -25,6 +24,8 @@ define("_MI_IMBLOGGING_POSTERGR", "گروه‌های مجاز به نویسند�
 define("_MI_IMBLOGGING_POSTERGRDSC", "گروه‌های مجاز به نوشتن مطالب را تعیین کنید. این ماژول در حال حاضر قابلیت مدیریتی ندارد.");
 define("_MI_IMBLOGGING_LIMIT", "محدودیت پیام‌ها");
 define("_MI_IMBLOGGING_LIMITDSC", "تعداد پیام‌های نمایان در قسمت کاربری.");
+define('_MI_IMBLOGGING_DEF_VIEW_PERM', 'Default View Permissions');
+define('_MI_IMBLOGGING_DEF_VIEW_PERM_DSC', 'By default, Who can read posts. Individual posts can be adjusted');
 
 // For IPF Metagen
 define('_MI_IMBLOGGING_MODNAME_BREADCRUMB', 'Include Module Name in Breadcrumb and Title');

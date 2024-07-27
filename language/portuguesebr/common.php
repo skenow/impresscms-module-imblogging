@@ -27,6 +27,8 @@ define("_CO_IMBLOGGING_POST_POST_STATUS_DSC", "");
 define("_CO_IMBLOGGING_POST_POST_CANCOMMENT", "Pode Comentar ?");
 define("_CO_IMBLOGGING_POST_POST_CANCOMMENT_DSC", "");
 define("_CO_IMBLOGGING_POST_ALL_POSTS", "Todos Blogs");
+define('_CO_IMBLOGGING_POST_READ_PERMISSION', 'Read permission');
+define('_CO_IMBLOGGING_POST_READ_PERMISSION_DSC', 'Groups that can read this post');
 
 define("_CO_IMBLOGGING_POST_INFO", "Publicado por %s no %s.");
 define("_CO_IMBLOGGING_POST_FROM_USER", "Todos Blogs de %s");
