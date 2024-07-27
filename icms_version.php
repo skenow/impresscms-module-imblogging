@@ -18,7 +18,7 @@ defined("ICMS_ROOT_PATH") || die("ICMS root path not defined");
  */
 $modversion = array(
 	'name'=> _MI_IMBLOGGING_MD_NAME,
-	'version' => 1.1,
+	'version' => '1.2.0',
 	'description'=> _MI_IMBLOGGING_MD_DESC,
 	'author'=> "The SmartFactory",
 	'credits'=> "INBOX International inc.",
