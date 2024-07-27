@@ -4,11 +4,11 @@
  *
  * This file holds the configuration information of this module
  *
- * @copyright http://smartfactory.ca The SmartFactory
- * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
- * @since 1.0
- * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
- * @package imblogging
+ * @copyright	http://smartfactory.ca The SmartFactory
+ * @license	http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
+ * @since		1.0
+ * @author		marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
+ * @package	imblogging
  *
  */
 defined("ICMS_ROOT_PATH") || die("ICMS root path not defined");
@@ -17,36 +17,40 @@ defined("ICMS_ROOT_PATH") || die("ICMS root path not defined");
  * General Information
  */
 $modversion = array(
-	'name' => _MI_IMBLOGGING_MD_NAME,
+	'name'=> _MI_IMBLOGGING_MD_NAME,
 	'version' => 1.1,
-	'description' => _MI_IMBLOGGING_MD_DESC,
-	'author' => "The SmartFactory",
-	'credits' => "INBOX International inc.",
-	'help' => "",
-	'license' => "GNU General Public License (GPL)",
-	'official' => 0,
+	'description'=> _MI_IMBLOGGING_MD_DESC,
+	'author'=> "The SmartFactory",
+	'credits'=> "INBOX International inc.",
+	'help'=> "",
+	'license'=> "GNU General Public License (GPL)",
+	'official'=> 0,
 	'dirname' => basename(__DIR__),
 	'modname' => 'imblogging',
 
 	/**
 	 * Images information
 	 */
-	'iconsmall' => "images/icon_small.png",
-	'iconbig' => "images/icon_big.png",
-	'image' => "images/icon_big.png", /* for backward compatibility */
+	'iconsmall'=> "images/icon_small.png",
+	'iconbig'=> "images/icon_big.png",
+	'image'=> "images/icon_big.png", /* for backward compatibility */
 
 /**  Development information */
-	'status_version' => "RC",
-	'status' => "RC",
-	'date' => "2013-05-10",
-	'author_word' => "",
+	'status_version'=> "RC",
+	'status'=> "RC",
+	'date' => "2024-08-01",
+	'author_word'=> "",
 
 	/**
 	 * Contributors
 	 */
 	'developer_website_url' => "",
 	'developer_website_name' => "",
-	'developer_email' => "");
+	'developer_email' => "",
+	'warning' => _CO_ICMS_WARNING_RC
+);
+
+
 $modversion['people']['developers'][] = "[url=https://www.impresscms.org/userinfo.php?uid=168]marcan[/url] (Marc-Andr&eacute; Lanciault)";
 $modversion['people']['developers'][] = "[url=https://www.impresscms.org/userinfo.php?uid=392]stranger[/url] (Sina Asghari)";
 $modversion['people']['developers'][] = "[url=https://www.impresscms.org/userinfo.php?uid=69]vaughan[/url]";
@@ -59,7 +63,7 @@ $modversion['people']['translators'][] = "[url=https://www.impresscms.org/userin
 $modversion['people']['translators'][] = "[url=https://www.impresscms.org/userinfo.php?uid=179]McDonald[/url]";
 $modversion['people']['translators'][] = "[url=https://www.impresscms.org/userinfo.php?uid=14]GibaPhp[/url]";
 $modversion['people']['documenters'][] = "[url=https://www.impresscms.org/userinfo.php?uid=372]UnderDog[/url]";
-// $modversion['people']['other'][] = "";
+//$modversion['people']['other'][] = "";
 
 /**
  * Manual
@@ -67,8 +71,6 @@ $modversion['people']['documenters'][] = "[url=https://www.impresscms.org/userin
 $modversion['manual']['wiki'][] = "<a href='https://www.impresscms.org/modules/simplywiki/index.php?page=ImBlogging' target='_blank'>English</a>";
 $modversion['manual']['wiki'][] = "<a href='https://www.impresscms.org/modules/simplywiki/index.php?page=ImBlogging/es' target='_blank'>Español</a>";
 $modversion['manual']['wiki'][] = "<a href='https://www.impresscms.org/modules/simplywiki/index.php?page=ImBlogging/pt-br' target='_blank'>Português do Brasil</a>";
-
-$modversion['warning'] = _CO_ICMS_WARNING_RC;
 
 /**
  * Administrative information
@@ -150,7 +152,7 @@ $modversion['templates'][] = array(
 	'file' => 'imblogging_footer.html',
 	'description' => 'Module Footer');
 
-$modversion['templates'][] = array(
+$modversion['templates'][]= array(
 	'file' => 'imblogging_admin_post.html',
 	'description' => 'Post Index');
 
@@ -173,7 +175,7 @@ $modversion['templates'][] = array(
 // Retrieve the group user list, because the automatic group_multi config formtype does not include Anonymous group :-(
 $member_handler = &icms::handler('icms_member');
 $groups_array = $member_handler->getGroupList();
-foreach ($groups_array as $k => $v) {
+foreach ($groups_array as $k=>$v) {
 	$select_groups_options[$v] = $k;
 }
 
@@ -187,6 +189,15 @@ $modversion['config'][1] = array(
 	'default' => '1');
 
 $modversion['config'][] = array(
+	'name' => 'def_perm_post_view',
+	'title' => '_MI_IMBLOGGING_DEF_VIEW_PERM',
+	'description' => '_MI_IMBLOGGING_DEF_VIEW_PERM_DSC',
+	'formtype' => 'select_multi',
+	'valuetype' => 'array',
+	'options' => $select_groups_options,
+	'default' => '1');
+	
+$modversion['config'][] = array(
 	'name' => 'posts_limit',
 	'title' => '_MI_IMBLOGGING_LIMIT',
 	'description' => '_MI_IMBLOGGING_LIMITDSC',
@@ -195,12 +206,12 @@ $modversion['config'][] = array(
 	'default' => 5);
 
 $modversion['config'][] = array(
-    'name' => 'show_mod_name_breadcrumb',
-    'title' => '_MI_IMBLOGGING_MODNAME_BREADCRUMB',
-    'description' => '_MI_IMBLOGGING_MODNAME_BREADCRUMB_DSC',
-    'formtype' => 'yesno',
-    'valuetype' => 'int',
-    'default' => 1);
+	'name' => 'show_mod_name_breadcrumb',
+	'title' => '_MI_IMBLOGGING_MODNAME_BREADCRUMB',
+	'description' => '_MI_IMBLOGGING_MODNAME_BREADCRUMB_DSC',
+	'formtype' => 'yesno',
+	'valuetype' => 'int',
+	'default' => 1);
 
 $modversion['config'][] = array(
 	'name' => 'module_meta_keywords',
@@ -229,7 +240,7 @@ $modversion['comments'] = array(
 	/* Comment callback functions */
 	'callbackFile' => 'include/comment.inc.php',
 	'callback' => array(
-		'approve' => 'imblogging_com_approve',
+			'approve' => 'imblogging_com_approve',
 		'update' => 'imblogging_com_update'));
 
 /**
@@ -261,9 +272,9 @@ $modversion['notification']['category'][] = array(
 
 $modversion['notification']['event'][1] = array(
 	'name' => 'post_published',
-	'category' => 'global',
-	'title' => _MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY,
-	'caption' => _MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY_CAP,
-	'description' => _MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY_DSC,
-	'mail_template' => 'global_post_published',
-	'mail_subject' => _MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY_SBJ);
+	'category'=> 'global',
+	'title'=> _MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY,
+	'caption'=> _MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY_CAP,
+	'description'=> _MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY_DSC,
+	'mail_template'=> 'global_post_published',
+	'mail_subject'=> _MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY_SBJ);

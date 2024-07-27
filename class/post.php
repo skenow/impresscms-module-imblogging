@@ -458,6 +458,7 @@ class ImbloggingPostHandler extends icms_ipf_Handler {
 	 */
 	public function __construct(&$db) {
 		parent::__construct($db, 'post', 'post_id', 'post_title', 'post_content', basename(dirname(__DIR__)));
+		$this->addPermission('post_view', _CO_IMBLOGGING_POST_READ_PERMISSION, _CO_IMBLOGGING_POST_READ_PERMISSION_DSC);
 	}
 
 	/**
@@ -519,6 +520,9 @@ class ImbloggingPostHandler extends icms_ipf_Handler {
 		if ($post_id) {
 			$criteria->add(new icms_db_criteria_Item('post_id', $post_id));
 		}
+		
+		$this->setGrantedObjectsCriteria($criteria, 'post_view');
+		
 		return $criteria;
 	}
 
