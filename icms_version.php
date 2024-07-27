@@ -41,16 +41,15 @@ $modversion = array(
 	'date' => "2024-08-01",
 	'author_word'=> "",
 
-	/**
-	 * Contributors
-	 */
 	'developer_website_url' => "",
 	'developer_website_name' => "",
 	'developer_email' => "",
 	'warning' => _CO_ICMS_WARNING_RC
 );
 
-
+/**
+ * Contributors
+ */
 $modversion['people']['developers'][] = "[url=https://www.impresscms.org/userinfo.php?uid=168]marcan[/url] (Marc-Andr&eacute; Lanciault)";
 $modversion['people']['developers'][] = "[url=https://www.impresscms.org/userinfo.php?uid=392]stranger[/url] (Sina Asghari)";
 $modversion['people']['developers'][] = "[url=https://www.impresscms.org/userinfo.php?uid=69]vaughan[/url]";
