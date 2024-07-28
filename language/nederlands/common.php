@@ -27,6 +27,8 @@ define("_CO_IMBLOGGING_POST_POST_STATUS_DSC", "");
 define("_CO_IMBLOGGING_POST_POST_CANCOMMENT", "Kan commentaar geven?");
 define("_CO_IMBLOGGING_POST_POST_CANCOMMENT_DSC", "");
 define("_CO_IMBLOGGING_POST_ALL_POSTS", "All posts");
+define('_CO_IMBLOGGING_POST_READ_PERMISSION', 'Read permission');
+define('_CO_IMBLOGGING_POST_READ_PERMISSION_DSC', 'Groups that can read this post');
 
 define("_CO_IMBLOGGING_POST_POST_REFERENCE", "Referentie van deze inzending");
 
