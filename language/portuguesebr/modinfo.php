@@ -14,7 +14,6 @@ if (!defined("ICMS_ROOT_PATH")) die("O caminho para o raiz do site não foi defi
 // Module Info
 // The name of this module
 
-global $icmsModule;
 define("_MI_IMBLOGGING_MD_NAME", "imBlogging");
 define("_MI_IMBLOGGING_MD_DESC", "Módulo simples de Blog para o ImpressCMS");
 
@@ -25,6 +24,8 @@ define("_MI_IMBLOGGING_POSTERGR", "Grupos permitidos para enviar Blogs");
 define("_MI_IMBLOGGING_POSTERGRDSC", "Selecione os grupos que têm permissão para criar novos Blogs. Observe que um usuário que pertença a um destes grupos será capaz de enviar diretamente um Blog para o site. O módulo atualmente ainda não tem nenhum recurso moderação.");
 define("_MI_IMBLOGGING_LIMIT", "Limite de Blogs");
 define("_MI_IMBLOGGING_LIMITDSC", "Número de Blogs visualizados na área de usuário.");
+define('_MI_IMBLOGGING_DEF_VIEW_PERM', 'Default View Permissions');
+define('_MI_IMBLOGGING_DEF_VIEW_PERM_DSC', 'By default, Who can read posts. Individual posts can be adjusted');
 
 // For IPF Metagen
 define('_MI_IMBLOGGING_MODNAME_BREADCRUMB', 'Include Module Name in Breadcrumb and Title');

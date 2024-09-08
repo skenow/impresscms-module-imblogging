@@ -122,14 +122,16 @@ $icmsTpl->assign('imblogging_showSubmitLink', true);
  *  We need to account for all these to provide unique page titles for them all (at a minimum)
  */
 
-// some combination of the module, category, author, and page #
-// ideally - an array of different parts of the title to be assembled based on preferences set
-// for now let's just use the module name
+// category and author do contribute to the page title without any further logic
 $page_title = icms_getModuleName(false);
 
 // some combination of the module, category, author, and page #
 // if empty - icms_ipf_Metagen->createMetaKeywords() uses the title and description
-$page_keywords = icms::$module->config['module_meta_keywords'];
+if (!empty($category_meta_keywords)) {
+	$page_keywords = $category_meta_keywords;
+} else {
+	$page_keywords = icms::$module->config['module_meta_keywords'];
+}
 
 // some combination of the module, category, author, and page #
 // by default, if nothing is provided for this, icms_ipf_Metagen->setDescription() will use the module's meta description
