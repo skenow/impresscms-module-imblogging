@@ -47,7 +47,6 @@ $posts_count = $imblogging_post_handler->getPostsCount($clean_post_uid, $clean_c
 $category_meta_description = $category_meta_keywords = '';
 $extr_argArray = array();
 $category_pathArray = array();
-$title_combined = array();
 
 if ($clean_post_uid) {
 	$imb_user_handler = new icms_member_user_Handler(icms::$xoopsDB);
@@ -64,7 +63,6 @@ if ($clean_post_uid) {
 	
 	// get information to use for meta properties when filtered by author
 	$author_name = $author->getVar('uname');
-	$title_combined['author'] = sprintf(_CO_IMBLOGGING_POST_FROM_USER, $author_name);
 	// what can be used for meta description when showing posts by an author? Their bio (extra info) from their profile?
 	$author_bio = $author->getVar('bio');
 	
@@ -86,7 +84,6 @@ if ($clean_cid) {
 	$categoryObj = $imtagging_category_handler->get($clean_cid);
 	$category_meta_description = $categoryObj->getVar('meta_description');
 	$category_meta_keywords = $categoryObj->getVar('meta_keywords');
-	$title_combined['category'] = $category_name;
 }
 if ($clean_year && $clean_month) {
 	if ($Basic_Check) {
@@ -98,7 +95,6 @@ if ($clean_year && $clean_month) {
 		$clean_month = $jmonth;
 	}
 	$category_pathArray[] = sprintf(_CO_IMBLOGGING_POST_FROM_MONTH, icms_getMonthNameById($clean_month), $clean_year);
-	$title_combined['date'] = sprintf(_CO_IMBLOGGING_POST_FROM_MONTH, icms_getMonthNameById($clean_month), $clean_year);
 }
 
 $extr_arg = count($extr_argArray) > 0 ? implode('&amp;', $extr_argArray) : '';
