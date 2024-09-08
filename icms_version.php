@@ -4,11 +4,11 @@
  *
  * This file holds the configuration information of this module
  *
- * @copyright	http://smartfactory.ca The SmartFactory
- * @license	http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
- * @since		1.0
- * @author		marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
- * @package	imblogging
+ * @copyright http://smartfactory.ca The SmartFactory
+ * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
+ * @since 1.0
+ * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
+ * @package imblogging
  *
  */
 defined("ICMS_ROOT_PATH") || die("ICMS root path not defined");
@@ -31,15 +31,15 @@ $modversion = array(
 	/**
 	 * Images information
 	 */
-	'iconsmall'=> "images/icon_small.png",
-	'iconbig'=> "images/icon_big.png",
-	'image'=> "images/icon_big.png", /* for backward compatibility */
+	'iconsmall' => "images/icon_small.png",
+	'iconbig' => "images/icon_big.png",
+	'image' => "images/icon_big.png", /* for backward compatibility */
 
 /**  Development information */
-	'status_version'=> "RC",
-	'status'=> "RC",
+	'status_version' => "RC",
+	'status' => "RC",
 	'date' => "2024-08-01",
-	'author_word'=> "",
+	'author_word' => "",
 
 	'developer_website_url' => "",
 	'developer_website_name' => "",
@@ -63,7 +63,7 @@ $modversion['people']['translators'][] = array("[url=https://www.impresscms.org/
 	"[url=https://www.impresscms.org/userinfo.php?uid=179]McDonald[/url]",
 	"[url=https://www.impresscms.org/userinfo.php?uid=14]GibaPhp[/url]");
 $modversion['people']['documenters'][] = "[url=https://www.impresscms.org/userinfo.php?uid=372]UnderDog[/url]";
-//$modversion['people']['other'][] = "";
+// $modversion['people']['other'][] = "";
 
 /**
  * Manual
@@ -152,7 +152,7 @@ $modversion['templates'][] = array(
 	'file' => 'imblogging_footer.html',
 	'description' => 'Module Footer');
 
-$modversion['templates'][]= array(
+$modversion['templates'][] = array(
 	'file' => 'imblogging_admin_post.html',
 	'description' => 'Post Index');
 
@@ -175,7 +175,7 @@ $modversion['templates'][] = array(
 // Retrieve the group user list, because the automatic group_multi config formtype does not include Anonymous group :-(
 $member_handler = &icms::handler('icms_member');
 $groups_array = $member_handler->getGroupList();
-foreach ($groups_array as $k=>$v) {
+foreach ($groups_array as $k => $v) {
 	$select_groups_options[$v] = $k;
 }
 
@@ -206,12 +206,12 @@ $modversion['config'][] = array(
 	'default' => 5);
 
 $modversion['config'][] = array(
-	'name' => 'show_mod_name_breadcrumb',
-	'title' => '_MI_IMBLOGGING_MODNAME_BREADCRUMB',
-	'description' => '_MI_IMBLOGGING_MODNAME_BREADCRUMB_DSC',
-	'formtype' => 'yesno',
-	'valuetype' => 'int',
-	'default' => 1);
+    'name' => 'show_mod_name_breadcrumb',
+    'title' => '_MI_IMBLOGGING_MODNAME_BREADCRUMB',
+    'description' => '_MI_IMBLOGGING_MODNAME_BREADCRUMB_DSC',
+    'formtype' => 'yesno',
+    'valuetype' => 'int',
+    'default' => 1);
 
 $modversion['config'][] = array(
 	'name' => 'module_meta_keywords',
@@ -240,7 +240,7 @@ $modversion['comments'] = array(
 	/* Comment callback functions */
 	'callbackFile' => 'include/comment.inc.php',
 	'callback' => array(
-			'approve' => 'imblogging_com_approve',
+		'approve' => 'imblogging_com_approve',
 		'update' => 'imblogging_com_update'));
 
 /**
@@ -272,9 +272,9 @@ $modversion['notification']['category'][] = array(
 
 $modversion['notification']['event'][1] = array(
 	'name' => 'post_published',
-	'category'=> 'global',
-	'title'=> _MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY,
-	'caption'=> _MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY_CAP,
-	'description'=> _MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY_DSC,
-	'mail_template'=> 'global_post_published',
-	'mail_subject'=> _MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY_SBJ);
+	'category' => 'global',
+	'title' => _MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY,
+	'caption' => _MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY_CAP,
+	'description' => _MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY_DSC,
+	'mail_template' => 'global_post_published',
+	'mail_subject' => _MI_IMBLOGGING_GLOBAL_POST_PUBLISHED_NOTIFY_SBJ);
